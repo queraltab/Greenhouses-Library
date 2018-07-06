@@ -138,7 +138,7 @@ equation
             -100},{100,100}}), graphics), Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={Bitmap(
             extent={{-100,100},{100,-100}}, fileName=
-              "modelica://Greenhouse/Icons/chp.png")}),
+              "modelica://Greenhouse/Resources/Images/chp.png")}),
     experiment(StopTime=3600),
     __Dymola_experimentSetupOutput);
 end CHP;

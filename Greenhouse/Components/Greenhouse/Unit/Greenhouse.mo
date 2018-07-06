@@ -1105,5 +1105,5 @@ Vapour transfer"),
                                  Icon(coordinateSystem(preserveAspectRatio=false,
           extent={{-240,-180},{240,180}}), graphics={Bitmap(extent={{-214,168},{
               214,-188}}, fileName=
-              "modelica://Greenhouse/Icons/Greenhouse_drawing.png")}));
+              "modelica://Greenhouse/Resources/Images/Greenhouse_drawing.png")}));
 end Greenhouse;

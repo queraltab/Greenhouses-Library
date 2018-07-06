@@ -18,8 +18,8 @@ annotation (Icon(graphics={
           fillPattern=FillPattern.Solid,
           points={{-23.333,30.0},{46.667,0.0},{-23.333,-30.0}}),
         Rectangle(
-          fillColor = {128,128,128},
-          pattern = LinePattern.None,
-          fillPattern = FillPattern.Solid,
+          fillColor=  {128,128,128},
+          pattern=  LinePattern.None,
+          fillPattern=  FillPattern.Solid,
           extent={{-70,-4.5},{0,4.5}})}));
 end Sources;

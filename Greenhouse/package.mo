@@ -2,17 +2,12 @@ within ;
 package Greenhouse "The Greenhouse Modelica Library"
 
 
-
-
-
-
-
   annotation (uses(
     conversion(noneFromVersion=""), Modelica(version="3.2.1"),
     DymolaCommands(version="1.1")),  Icon(coordinateSystem(preserveAspectRatio=
             false, extent={{-100,-100},{100,100}}), graphics={Bitmap(extent={{
               -100,100},{100,-100}}, fileName=
-            "modelica://Greenhouse/Icons/GreenhouseLibraryIcon.png")}),
+            "modelica://Greenhouse/Resources/Images/GreenhouseLibraryIcon.png")}),
     Documentation(info="<html>
     
     <h1>Welcome to the Greenhouse library!</h1>
