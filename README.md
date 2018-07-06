@@ -5,6 +5,9 @@ For greenhouse-scale simulation, the proposed library includes the modelling of 
 
 Explore the Examples package to get a feeling of the modelling possibility that the Greenhouse library offers!
 
+The ThermoCycle package is free software licensed under the Modelica License 2. It can be redistributed and/or modified under the terms of this license.
+
 Main developers:
-Queralt Altes-Buch (qaltes@uliege.be - University of Liege, Energy Systems Research Unit, Belgium)
+
+- Queralt Altes-Buch (qaltes@uliege.be - University of Liege, Energy Systems Research Unit, Belgium)
 
