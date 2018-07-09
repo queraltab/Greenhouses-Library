@@ -442,8 +442,9 @@ model Greenhouse_1
   Modelica.Blocks.Sources.CombiTimeTable TMY_and_control(
     tableOnFile=true,
     tableName="tab",
-    fileName="E:/Dropbox/Models/modelica libraries/Data/10Dec-22Nov.txt",
-    columns=1:10) "Set-points for the climate"
+    columns=1:10,
+    fileName="C:/Greenhouse/Resources/Data/10Dec-22Nov.txt")
+    "Set-points for the climate"
     annotation (Placement(transformation(extent={{-152,152},{-132,172}})));
 
   Modelica.Blocks.Sources.RealExpression CO2_SP_var(y=SP_new.y[3]*1.94)
@@ -452,8 +453,7 @@ model Greenhouse_1
     tableOnFile=true,
     tableName="tab",
     columns=1:2,
-    fileName=
-        "E:/Dox/Queralt - Server/Modelica/Data/SC_usable_10Dec-22Nov.txt")
+    fileName="C:/Greenhouse/Resources/Data/SC_usable_10Dec-22Nov.txt")
     annotation (Placement(transformation(extent={{206,-62},{192,-48}})));
   ControlSystems.Climate.Control_ThScreen SC(R_Glob_can=I_glob.y,
       R_Glob_can_min=35)
@@ -474,8 +474,8 @@ model Greenhouse_1
   Modelica.Blocks.Sources.CombiTimeTable SP_new(
     tableOnFile=true,
     tableName="tab",
-    fileName="E:/Dox/Queralt - Server/Modelica/Data/SP_10Dec-22Nov.txt",
-    columns=1:3)
+    columns=1:3,
+    fileName="C:/Greenhouse/Resources/Data/SP_10Dec-22Nov.txt")
     "Climate set points 10Dec-22Nov: daily setpoints based on maximizing photosynthesis rate, minimum night temperature of 16, 24h mean temperature of 20"
     annotation (Placement(transformation(extent={{-118,152},{-98,172}})));
 equation
@@ -1104,13 +1104,18 @@ Vapour transfer"),
           fillPattern=FillPattern.Solid)}),
                                  Icon(coordinateSystem(preserveAspectRatio=false,
           extent={{-240,-180},{240,180}}), graphics={
-        Ellipse(lineColor=  {75,138,73},
+        Ellipse(lineColor = {75,138,73},
                 fillColor={255,255,255},
-                fillPattern=  FillPattern.Solid,
+                fillPattern = FillPattern.Solid,
                 extent={{-180,-180},{180,180}}),
-        Polygon(lineColor=  {0,0,255},
-                fillColor=  {75,138,73},
-                pattern=  LinePattern.None,
-                fillPattern=  FillPattern.Solid,
-                points={{-70,120},{110,0},{-70,-120},{-70,120}})}));
+        Polygon(lineColor = {0,0,255},
+                fillColor = {75,138,73},
+                pattern = LinePattern.None,
+                fillPattern = FillPattern.Solid,
+                points={{-70,120},{110,0},{-70,-120},{-70,120}})}),
+    Documentation(info="<html>
+<h5><big>Simulation of greenhouse climate</h5>
+<p><big>This example intends to illustrate the simulation of a greenhouse climate. The greenhouse is built by interconnecting all of the energy and mass <a href=\"modelica://Greenhouse.Flows\">Flows</a> presents in a greenhouse to their related <a href=\"modelica://Greenhouse.Components.Greenhouse\">Components</a>. The model has been parametrized using the values of greenhouse design for a Venlo-type greenhouse (typical in the Belgium-Netherlands region) and the cultivation techniques for tomato crop.</p>
+<p><big>The input weather data is a TMY for Brussels. The simulated period is from 10th December to 22nd November.</p>
+</html>"));
 end Greenhouse_1;

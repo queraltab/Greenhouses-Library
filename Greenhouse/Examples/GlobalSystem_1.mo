@@ -271,13 +271,19 @@ Storage"),
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           textString="CHP")}), Icon(graphics={
-        Ellipse(lineColor=  {75,138,73},
+        Ellipse(lineColor = {75,138,73},
                 fillColor={255,255,255},
-                fillPattern=  FillPattern.Solid,
+                fillPattern = FillPattern.Solid,
                 extent={{-100,-100},{100,100}}),
-        Polygon(lineColor=  {0,0,255},
-                fillColor=  {75,138,73},
-                pattern=  LinePattern.None,
-                fillPattern=  FillPattern.Solid,
-                points={{-36,60},{64,0},{-36,-60},{-36,60}})}));
+        Polygon(lineColor = {0,0,255},
+                fillColor = {75,138,73},
+                pattern = LinePattern.None,
+                fillPattern = FillPattern.Solid,
+                points={{-36,60},{64,0},{-36,-60},{-36,60}})}),
+    Documentation(info="<html>
+<p><big>This example intends to illustrate the energy flows interacting between the greenhouse and generation and storage units. To that end, the greenhouse model is used as a grey box and is connected to a CHP unit and a thermal energy storage tank.</p>
+<p><big>The storage tank is based a nodal model from the ThermoCycle library. In this example, it is connected as an open buffer, i.e. the CHP is not connected to the greenhouse but only to the tank.</p>
+<p><big>The CHP unit is sized to provide the peak load of the thermal demand of the greenhouse, which can be extracted from the example <a href=\"modelica://Greenhouse.Examples/Greenhouse_1\">Greenhouse_1</a>. The thermal energy storage unit is sized considering a storage period of 8h and given the DELTAT between the inlet and outlet. </p>
+<p><big>The CHP is providing the heating and electrical demand from the greenhouse. Excess of electricity is sold back to the grid. Lack of electricity is bought from the grid. Constant prices are used for the selling and buying of electricty and buying of gas.</p>
+</html>"));
 end GlobalSystem_1;

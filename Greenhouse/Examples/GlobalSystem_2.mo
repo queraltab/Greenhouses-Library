@@ -153,8 +153,9 @@ model GlobalSystem_2
   Modelica.Blocks.Sources.CombiTimeTable BruTMY(
     tableOnFile=true,
     tableName="tab",
-    fileName="E:/Dropbox/Models/modelica libraries/Data/10Dec-22Nov.txt",
-    columns=1:10) "TMY of Brussels for the period of 10Dec to 22Nov"
+    columns=1:10,
+    fileName="C:/Greenhouse/Resources/Data/10Dec-22Nov.txt")
+    "TMY of Brussels for the period of 10Dec to 22Nov"
     annotation (Placement(transformation(extent={{-76,80},{-62,94}})));
 equation
   Mdot_2ry = if time<1e4 then 10 else (if controller.CHP then 5 else 0);
@@ -378,13 +379,17 @@ Storage"),
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           textString="HP")}), Icon(graphics={
-        Ellipse(lineColor=  {75,138,73},
+        Ellipse(lineColor = {75,138,73},
                 fillColor={255,255,255},
-                fillPattern=  FillPattern.Solid,
+                fillPattern = FillPattern.Solid,
                 extent={{-100,-100},{100,100}}),
-        Polygon(lineColor=  {0,0,255},
-                fillColor=  {75,138,73},
-                pattern=  LinePattern.None,
-                fillPattern=  FillPattern.Solid,
-                points={{-36,60},{64,0},{-36,-60},{-36,60}})}));
+        Polygon(lineColor = {0,0,255},
+                fillColor = {75,138,73},
+                pattern = LinePattern.None,
+                fillPattern = FillPattern.Solid,
+                points={{-36,60},{64,0},{-36,-60},{-36,60}})}),
+    Documentation(info="<html>
+    <p><big>This is a second example aiming at illustrating the energy flows interacting between the greenhouse and generation and storage units. In the previous example <a href=\"modelica://Greenhouse.Examples/GlobalSystem_1\">GlobalSystem_1</a>, a considerable part of the produced electricity is sold back to the grid and, in the absence of subsidies, is remunerated at a price close to the wholesale price of electricity. Because the retail price of electricity is significantly higher than the wholesale price, prosumers have a clear advantage at maximizing their level of self-consumption. </p>
+    <p><big>To evaluate the potential of such activity, we propose a new case study in which we maximize the self-consumption rate through the use of a heat pump. To that end, the heat pump model from the Greenhouse library is used and is connected in series with the CHP. The excess of electricity that initially was being fed back to the grid is now used to power the heat pump. The heat pump is sized so that its nominal electrical capacity is equal to the excess of electricity of the CHP in nominal conditions. </p>
+</html>"));
 end GlobalSystem_2;
