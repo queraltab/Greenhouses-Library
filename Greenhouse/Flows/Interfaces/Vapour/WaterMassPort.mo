@@ -1,4 +1,4 @@
-within Greenhouse.Flows.Interfaces.Vapour;
+within Greenhouses.Flows.Interfaces.Vapour;
 partial connector WaterMassPort
   "Water mass port for 1-dim. water vapour mass transfer"
   Modelica.SIunits.Pressure VP "Port vapour pressure";

@@ -1,7 +1,7 @@
-within Greenhouse.Flows.VapourMassTransfer;
+within Greenhouses.Flows.VapourMassTransfer;
 model MV_CanopyTranspiration
   "Vapour mass flow released by the canopy due to transpiration processes. The model must be connected like the following: canopy (filled port) - air (unfilled port)"
-  extends Greenhouse.Flows.Interfaces.Vapour.Element1D;
+  extends Greenhouses.Flows.Interfaces.Vapour.Element1D;
 
   /*********************** Parameters ***********************/
   parameter Modelica.SIunits.Area A "floor surface";

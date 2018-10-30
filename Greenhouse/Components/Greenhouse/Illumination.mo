@@ -1,4 +1,4 @@
-within Greenhouse.Components.Greenhouse;
+within Greenhouses.Components.Greenhouse;
 model Illumination "Artificial Illumination of the greenhouse"
   /******************** Parameters ********************/
   parameter Boolean power_input=false
@@ -95,7 +95,7 @@ equation
   R_PAR_Can_umol = R_PAR_Can/0.25*eta_GlobPAR;
 
   //Multi layer model for NIR (CF: canopy-floor; cover: Roof-ThermalScreen, CCF: cover-CF)
-  (tau_CF_NIR,rho_CF_NIR) = .Greenhouse.Functions.MultiLayer_TauRho(
+  (tau_CF_NIR,rho_CF_NIR) = .Greenhouses.Functions.MultiLayer_TauRho(
     exp(-K_NIR*LAI),
     1 - rho_FlrNIR,
     rho_CanNIR*(1 - exp(-K_NIR*LAI)),

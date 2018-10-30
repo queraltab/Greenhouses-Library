@@ -1,4 +1,4 @@
-within Greenhouse.Flows.Sources;
+within Greenhouses.Flows.Sources;
 package Vapour 
   annotation (Icon(graphics={
         Rectangle(

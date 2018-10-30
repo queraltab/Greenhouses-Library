@@ -1,4 +1,4 @@
-within Greenhouse.Components.Greenhouse;
+within Greenhouses.Components.Greenhouse;
 model Air_Top "Temperature of air in top compartment computed by static equation because of
 its small heat capacity"
 
@@ -49,7 +49,7 @@ equation
   rho = Modelica.Media.Air.ReferenceAir.Air_pT.density_pT(1e5,heatPort.T);
   der(T) = 1/(rho*c_p*V)*Q_flow;
 
-  RH = massPort.VP/.Greenhouse.Functions.SaturatedVapourPressure(heatPort.T -
+  RH = massPort.VP/.Greenhouses.Functions.SaturatedVapourPressure(heatPort.T -
     273.15);
 
   connect(portT.y,preTem. T)

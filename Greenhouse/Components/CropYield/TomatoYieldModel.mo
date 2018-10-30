@@ -1,4 +1,4 @@
-within Greenhouse.Components.CropYield;
+within Greenhouses.Components.CropYield;
 model TomatoYieldModel
 
   //***************** Parameters *******************//
@@ -31,9 +31,9 @@ model TomatoYieldModel
   Real MC_BufFruit(unit="mg/(m2.s)")
     "Carbohydrate flow from the buffer to the fruits";
   Real MC_BufLeaf(unit="mg/(m2.s)")
-    "Carbohydrate flow from the buffer to the fruits";
+    "Carbohydrate flow from the buffer to the leaves";
   Real MC_BufStem(unit="mg/(m2.s)")
-    "Carbohydrate flow from the buffer to the fruits";
+    "Carbohydrate flow from the buffer to the stems and roots";
 
   Real T_canC(unit="degC");
   Real T_can24C(unit="degC");

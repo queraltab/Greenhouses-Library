@@ -1,7 +1,7 @@
-within Greenhouse.Components.Greenhouse.BasicComponents;
+within Greenhouses.Components.Greenhouse.BasicComponents;
 model AirVP
   "Greenhouse air vapour pressure by numerical integration of the differential equation of the moisture content"
-  import Greenhouse;
+  import Greenhouse = Greenhouses;
 
   /*********************** Parameters ***********************/
   Modelica.SIunits.Volume V_air=1e3 annotation(Dialog(group="Varying inputs"));

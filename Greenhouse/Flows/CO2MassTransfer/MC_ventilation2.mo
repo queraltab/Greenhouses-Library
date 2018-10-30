@@ -1,7 +1,7 @@
-within Greenhouse.Flows.CO2MassTransfer;
+within Greenhouses.Flows.CO2MassTransfer;
 model MC_ventilation2
   "CO2 mass flow accompanying an air flow caused by ventilation processes"
-  extends Greenhouse.Flows.Interfaces.CO2.Element1D;
+  extends Greenhouses.Flows.Interfaces.CO2.Element1D;
 
   /*********************** Parameters ***********************/
 

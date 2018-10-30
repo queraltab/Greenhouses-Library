@@ -1,4 +1,4 @@
-within Greenhouse.Components.Greenhouse;
+within Greenhouses.Components.Greenhouse;
 model Canopy
   /********************* Parameters ***********************/
   parameter Integer N_rad=2

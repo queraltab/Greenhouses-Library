@@ -1,6 +1,6 @@
-within Greenhouse.Flows.CO2MassTransfer;
+within Greenhouses.Flows.CO2MassTransfer;
 model CO2_Air "CO2 mass balance of an air volume"
-  import Greenhouse;
+  import Greenhouse = Greenhouses;
 
   /*********************** Parameters ***********************/
   Modelica.SIunits.Length cap_CO2=4

@@ -2,3 +2,7 @@ MultiLayer_TauRho
 SaturatedVapourPressure
 DerivativeSaturatedVapourPressure
 WaterVapourPressure
+Enumerations
+TestRig
+transition_factor
+transition_factor_alt

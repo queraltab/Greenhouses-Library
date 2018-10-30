@@ -1,4 +1,4 @@
-within Greenhouse.Components.Greenhouse;
+within Greenhouses.Components.Greenhouse;
 model Solar_model "Global, PAR and NIR heat fluxes"
 
   /********************* Parameters ***********************/
@@ -99,12 +99,12 @@ equation
 
   //Paremeters characteristic of the greenhouse components
   // Cover: Multi-layer model Roof-ThermalScreen
-  (tau_ML_covPAR,rho_ML_covPAR) = .Greenhouse.Functions.MultiLayer_TauRho(
+  (tau_ML_covPAR,rho_ML_covPAR) = .Greenhouses.Functions.MultiLayer_TauRho(
     tau_RfPAR,
     tau_thScrPAR,
     rho_RfPAR,
     rho_thScrPAR);
-  (tau_ML_covNIR,rho_ML_covNIR) = .Greenhouse.Functions.MultiLayer_TauRho(
+  (tau_ML_covNIR,rho_ML_covNIR) = .Greenhouses.Functions.MultiLayer_TauRho(
     tau_RfNIR,
     tau_thScrNIR,
     rho_RfNIR,
@@ -137,14 +137,14 @@ equation
   P_SunCan_Glob = R_SunCan_Glob*A;
   R_PAR_Can = R_SunCan_PAR + R_FlrCan_PAR;
   R_PAR_Can_umol = R_PAR_Can/eta_glob_PAR*eta_GlobPAR;
-  (tau_CF_NIR,rho_CF_NIR) = .Greenhouse.Functions.MultiLayer_TauRho(
+  (tau_CF_NIR,rho_CF_NIR) = .Greenhouses.Functions.MultiLayer_TauRho(
     exp(-K_NIR*LAI),
     1 - rho_FlrNIR,
     rho_CanNIR*(1 - exp(-K_NIR*LAI)),
     rho_FlrNIR);
 
   //Multi layer model for NIR (CF: canopy-floor; cover: Roof-ThermalScreen, CCF: cover-CF)
-  (tau_CCF_NIR,rho_CCF_NIR) = .Greenhouse.Functions.MultiLayer_TauRho(
+  (tau_CCF_NIR,rho_CCF_NIR) = .Greenhouses.Functions.MultiLayer_TauRho(
     tau_covNIR,
     tau_CF_NIR,
     rho_covNIR,

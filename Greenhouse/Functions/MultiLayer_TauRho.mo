@@ -1,4 +1,4 @@
-within Greenhouse.Functions;
+within Greenhouses.Functions;
 function MultiLayer_TauRho
   "Transmission and reflection coefficient of a double layer"
   input Real tau_1;

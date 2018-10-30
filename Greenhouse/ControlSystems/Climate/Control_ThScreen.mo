@@ -1,4 +1,4 @@
-within Greenhouse.ControlSystems.Climate;
+within Greenhouses.ControlSystems.Climate;
 model Control_ThScreen
   "Controller for the thermal screen closure including a crack for dehumidification (of 2% and 4%)"
   Modelica.SIunits.HeatFlux R_Glob_can=0 annotation(Dialog(group="Varying inputs"));

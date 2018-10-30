@@ -1,4 +1,4 @@
-within Greenhouse.ControlSystems.HVAC;
+within Greenhouses.ControlSystems.HVAC;
 model Control_Dehumidifier "Controller for the dehumidifier"
   parameter Modelica.SIunits.Temperature T_max=273.15+60 "Fill level of tank 1";
   parameter Modelica.SIunits.Temperature T_min = 273.15+50
@@ -47,7 +47,7 @@ model Control_Dehumidifier "Controller for the dehumidifier"
         rotation=0)));
   Modelica.Blocks.Sources.RealExpression RH_setpoint(y=0.85)
     annotation (Placement(transformation(extent={{-46,-56},{-26,-36}})));
-  ThermoCycle.Components.Units.ControlSystems.PID PID_HR(
+  PID                                             PID_HR(
     CSstart=0.5,
     steadyStateInit=false,
     CSmin=0,

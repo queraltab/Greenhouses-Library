@@ -1,8 +1,8 @@
-within Greenhouse.Flows.FluidFlow;
+within Greenhouses.Flows.FluidFlow;
 model Flow1DimInc
   "1-D fluid flow model (finite volume discretization - incompressible fluid model). Based on the Cell component"
-  import Greenhouse;
-replaceable package Medium = ThermoCycle.Media.DummyFluid constrainedby
+  import Greenhouse = Greenhouses;
+replaceable package Medium = Media.DummyFluid constrainedby
     Modelica.Media.Interfaces.PartialMedium
     "Medium model - Incompressible Fluid" annotation (choicesAllMatching = true);
 public
@@ -22,10 +22,12 @@ public
  end SummaryClass;
  SummaryClass Summary( T_profile(n=N, T_cell = Cells[:].T), n=N, h = Cells[:].h, hnode = hnode_, rho = Cells.rho, T = Cells.T, Mdot = InFlow.m_flow, p = Cells[1].p);
 /************ Thermal and fluid ports ***********/
-  ThermoCycle.Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
+  Greenhouse.Flows.Interfaces.Fluid.FlangeA
+                                       InFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}}),
         iconTransformation(extent={{-120,-20},{-80,20}})));
-  ThermoCycle.Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium =
+  Greenhouse.Flows.Interfaces.Fluid.FlangeB
+                                       OutFlow(redeclare package Medium =
         Medium)
     annotation (Placement(transformation(extent={{80,-10},{100,10}}),
         iconTransformation(extent={{80,-20},{120,20}})));
@@ -52,17 +54,17 @@ parameter Modelica.SIunits.Pressure pstart "Fluid pressure start value"
         N) "Start value of enthalpy vector (initialized by default)"
     annotation (Dialog(tab="Initialization"));
 /***************************************   NUMERICAL OPTIONS  ***************************************************/
-  import ThermoCycle.Functions.Enumerations.Discretizations;
-  parameter Discretizations Discretization=ThermoCycle.Functions.Enumerations.Discretizations.centr_diff
+  import Greenhouses.Functions.Enumerations.Discretizations;
+  parameter Discretizations Discretization=Greenhouse.Functions.Enumerations.Discretizations.centr_diff
     "Selection of the spatial discretization scheme"  annotation (Dialog(tab="Numerical options"));
   parameter Boolean steadystate=true
     "if true, sets the derivative of h (working fluids enthalpy in each cell) to zero during Initialization"
     annotation (Dialog(group="Initialization options", tab="Initialization"));
   /******************************* HEAT TRANSFER MODEL **************************************/
 replaceable model Flow1DimIncHeatTransferModel =
-    ThermoCycle.Components.HeatFlow.HeatTransfer.MassFlowDependence
+    Greenhouse.Flows.FluidFlow.HeatTransfer.MassFlowDependence
 constrainedby
-    ThermoCycle.Components.HeatFlow.HeatTransfer.BaseClasses.PartialHeatTransferZones
+    Greenhouse.Flows.FluidFlow.HeatTransfer.BaseClasses.PartialHeatTransferZones
     "Fluid heat transfer model" annotation (choicesAllMatching = true);
 /***************  VARIABLES ******************/
   Modelica.SIunits.Power Q_tot "Total heat flux exchanged by the thermal port";
@@ -81,7 +83,7 @@ constrainedby
     hstart=hstart,
     each steadystate=steadystate)
     annotation (Placement(transformation(extent={{-26,-62},{28,-18}})));
-  ThermoCycle.Interfaces.HeatTransfer.ThermalPortConverter thermalPortConverter(N=N)
+  Greenhouse.Flows.Interfaces.Heat.ThermalPortConverter    thermalPortConverter(N=N)
     annotation (Placement(transformation(extent={{-8,-4},{10,22}})));
 protected
   Modelica.SIunits.SpecificEnthalpy hnode_[N+1];
@@ -127,8 +129,8 @@ equation
       points={{2,57},{2,82}},
       color={127,0,0},
       smooth=Smooth.None));
-  annotation (Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-120,
-            -120},{120,120}}),
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-120,-120},
+            {120,120}}),
                       graphics), Icon(coordinateSystem(preserveAspectRatio=false,
                   extent={{-120,-120},{120,120}}),
                                       graphics={Rectangle(

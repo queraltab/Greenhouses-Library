@@ -1,13 +1,13 @@
-within Greenhouse.Flows.Interfaces.Vapour;
+within Greenhouses.Flows.Interfaces.Vapour;
 partial model Element1D
   "Partial water mass transfer element with two WaterMassPort connectors that does not store energy"
 
   Modelica.SIunits.MassFlowRate MV_flow "Mass flow rate from port_a -> port_b";
   Modelica.SIunits.PressureDifference dP "port_a.VP - port_b.VP";
 public
-  Greenhouse.Flows.Interfaces.Vapour.WaterMassPort_a port_a annotation (
+  Greenhouses.Flows.Interfaces.Vapour.WaterMassPort_a port_a annotation (
       Placement(transformation(extent={{-110,-10},{-90,10}}, rotation=0)));
-  Greenhouse.Flows.Interfaces.Vapour.WaterMassPort_b port_b annotation (
+  Greenhouses.Flows.Interfaces.Vapour.WaterMassPort_b port_b annotation (
       Placement(transformation(extent={{90,-10},{110,10}}, rotation=0)));
 equation
   dP = port_a.VP - port_b.VP;

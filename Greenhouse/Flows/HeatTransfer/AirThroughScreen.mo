@@ -1,4 +1,4 @@
-within Greenhouse.Flows.HeatTransfer;
+within Greenhouses.Flows.HeatTransfer;
 model AirThroughScreen "Heat exchange and air exchange rate through the screen"
   extends Modelica.Thermal.HeatTransfer.Interfaces.Element1D;
 

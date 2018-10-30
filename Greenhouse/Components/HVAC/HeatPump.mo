@@ -1,9 +1,8 @@
-within Greenhouse.Components.HVAC;
+within Greenhouses.Components.HVAC;
 model HeatPump
   "Performance-based model of a heat pump in which we consider a constant secondary-law efficiency and a linear correlation between the nominal power and temperature"
 
-  replaceable package Medium = ThermoCycle.Media.StandardWater
-                                               constrainedby
+  replaceable package Medium = Greenhouses.Media.StandardWater constrainedby
     Modelica.Media.Interfaces.PartialMedium "Main fluid"   annotation (choicesAllMatching = true);
 
   parameter Modelica.SIunits.Volume V=0.005 "Internal volume";
@@ -31,33 +30,34 @@ model HeatPump
   Modelica.SIunits.Temperature Th;
   Modelica.SIunits.Power Wdot_in;
 
-  ThermoCycle.Components.FluidFlow.Pipes.Cell1DimInc fluid(
-    Discretization=ThermoCycle.Functions.Enumerations.Discretizations.upwind_AllowFlowReversal,
+  Flows.FluidFlow.Cell1DimInc                        fluid(
     redeclare package Medium = Medium,
     Mdotnom=0.1,
-    redeclare model HeatTransfer =
-        ThermoCycle.Components.HeatFlow.HeatTransfer.Constant,
     Vi=V,
     Ai=A,
     hstart=Medium.specificEnthalpy_pT(1E5, Th_start),
     Unom=1000,
-    pstart=10000000000) annotation (Placement(transformation(
+    redeclare model HeatTransfer =
+        Greenhouses.Flows.FluidFlow.HeatTransfer.Constant,
+    pstart=10000000000,
+    Discretization=Greenhouses.Functions.Enumerations.Discretizations.upwind_AllowFlowReversal)
+                        annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=90,
         origin={-50,6})));
 
- ThermoCycle.Interfaces.Fluid.FlangeA InFlow(redeclare package Medium =
+ Flows.Interfaces.Fluid.FlangeA       InFlow(redeclare package Medium =
         Medium)
     annotation (Placement(transformation(extent={{-90,-48},{-70,-28}}),
         iconTransformation(extent={{-84,-76},{-64,-56}})));
- ThermoCycle.Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium =
+ Flows.Interfaces.Fluid.FlangeB       OutFlow(redeclare package Medium =
         Medium)
     annotation (Placement(transformation(extent={{-92,58},{-72,78}}),
         iconTransformation(extent={{-84,60},{-64,80}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a HeatSource
     annotation (Placement(transformation(extent={{72,-16},{92,4}}),
         iconTransformation(extent={{82,-6},{92,4}})));
-  ThermoCycle.Interfaces.HeatTransfer.HeatPortConverter heatPortConverter(A=A, N=1)
+  Flows.Interfaces.Heat.HeatPortConverter               heatPortConverter(A=A, N=1)
     annotation (Placement(transformation(extent={{-14,-4},{-34,16}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow prescribedHeatFlow
     annotation (Placement(transformation(extent={{28,-4},{8,16}})));

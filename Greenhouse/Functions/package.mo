@@ -1,4 +1,4 @@
-within Greenhouse;
+within Greenhouses;
 package Functions 
 annotation (Icon(graphics={
         Rectangle(

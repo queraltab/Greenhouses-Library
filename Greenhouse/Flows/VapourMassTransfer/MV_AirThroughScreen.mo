@@ -1,7 +1,7 @@
-within Greenhouse.Flows.VapourMassTransfer;
+within Greenhouses.Flows.VapourMassTransfer;
 model MV_AirThroughScreen
   "Vapour mass flow exchanged from the greenhouse main air zone (below the thermal screen) to the top air zone (above the screen)"
-  extends Greenhouse.Flows.Interfaces.Vapour.Element1D;
+  extends Greenhouses.Flows.Interfaces.Vapour.Element1D;
 
   /*********************** Parameters ***********************/
   parameter Modelica.SIunits.Area A "floor surface";

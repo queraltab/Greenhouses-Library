@@ -1,4 +1,4 @@
-within Greenhouse.Flows.HeatTransfer;
+within Greenhouses.Flows.HeatTransfer;
 model FreeConvection "Upward or downward heat exchange by free convection from an horizontal or inclined 
   surface. If studying heat exchange of Air-Floor: connect the filled port to the floor 
   and the unfilled port to the air."

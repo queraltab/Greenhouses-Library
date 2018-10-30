@@ -1,4 +1,4 @@
-within Greenhouse.Flows.Interfaces.Heat;
+within Greenhouses.Flows.Interfaces.Heat;
 partial model Element1D_discretized
   "Partial heat transfer element with two HeatPort connectors that does not store energy"
 
@@ -8,8 +8,8 @@ partial model Element1D_discretized
   Modelica.SIunits.HeatFlowRate Q_flow[nNodes]
     "Heat flow rate from port_a -> port_b";
   Modelica.SIunits.TemperatureDifference dT[nNodes] "port_a.T - port_b.T";
-  Greenhouse.Flows.Interfaces.Heat.HeatPorts_a[nNodes] heatPorts_a annotation (
-      Placement(transformation(
+  Greenhouses.Flows.Interfaces.Heat.HeatPorts_a[nNodes] heatPorts_a annotation (
+     Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-100,0}), iconTransformation(

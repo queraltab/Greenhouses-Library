@@ -1,4 +1,4 @@
-within Greenhouse.Flows.HeatTransfer;
+within Greenhouses.Flows.HeatTransfer;
 model PipeFreeConvection_N
   "Heating pipe heat exchange by free or hindered convection with air"
 
@@ -18,8 +18,8 @@ model PipeFreeConvection_N
   Modelica.SIunits.HeatFlowRate Q_flow;
   Modelica.SIunits.TemperatureDifference dT[nNodes] "port_a.T - port_b.T";
 
-  Greenhouse.Flows.Interfaces.Heat.HeatPorts_a[nNodes] heatPorts_a annotation (
-      Placement(transformation(
+  Greenhouses.Flows.Interfaces.Heat.HeatPorts_a[nNodes] heatPorts_a annotation (
+     Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-100,0}), iconTransformation(

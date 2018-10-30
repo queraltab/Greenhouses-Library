@@ -1,8 +1,8 @@
-within Greenhouse.Flows.Interfaces.CO2;
+within Greenhouses.Flows.Interfaces.CO2;
 connector CO2Port_a
   "CO2 port for 1-dim. CO2 transfer (filled rectangular icon)"
 
-  extends Greenhouse.Flows.Interfaces.CO2.CO2Port;
+  extends Greenhouses.Flows.Interfaces.CO2.CO2Port;
 
   annotation(defaultComponentName = "port_a",
     Documentation(info="<HTML>

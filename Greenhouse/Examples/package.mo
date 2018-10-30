@@ -1,7 +1,5 @@
-within Greenhouse;
+within Greenhouses;
 package Examples 
-
-
 
 
 annotation (Icon(graphics={

@@ -1,4 +1,4 @@
-within Greenhouse.Examples;
+within Greenhouses.Examples;
 model GlobalSystem_2
   "Greenhouse connected to a CHP, a heat pump and thermal energy storage"
   Real Mdot_2ry(unit="kg/s",start=0.528);
@@ -57,7 +57,7 @@ model GlobalSystem_2
     annotation (Placement(transformation(extent={{26,-4},{18,4}})));
   Modelica.Blocks.Sources.Constant set_Qdot_nom_gas_CHP(k=1750e3)
     annotation (Placement(transformation(extent={{40,-2},{36,2}})));
-  ThermoCycle.Components.Units.Tanks.HeatStorageWaterHeater.Heat_storage_hx_R
+  Components.HVAC.HeatStorageWaterHeater.Heat_storage_hx_R
                                  TES(
     h_T=0.6,
     U_amb=2,
@@ -94,36 +94,36 @@ model GlobalSystem_2
         Modelica.Media.Water.ConstantPropertyLiquidWater)
     annotation (Placement(transformation(extent={{-16,34},{-8,40}})));
 
-  ThermoCycle.Components.Units.ExpansionAndCompressionMachines.Pump_Mdot pump_2ry(
+  Flows.FluidFlow.Pump_Mdot                                              pump_2ry(
       redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater)
     annotation (Placement(transformation(extent={{-60,-64},{-48,-52}})));
-  ThermoCycle.Components.FluidFlow.Reservoirs.SinkP sinkP_2ry(redeclare package
+  Flows.FluidFlow.Reservoirs.SinkP                  sinkP_2ry(redeclare package
       Medium = Modelica.Media.Water.ConstantPropertyLiquidWater, p0=1000000)
     annotation (Placement(transformation(extent={{-76,-48},{-88,-36}})));
-  ThermoCycle.Components.Units.PdropAndValves.Pdrop pdrop_2ry(
+  Flows.FluidFlow.Pdrop                             pdrop_2ry(
     Mdot_max=0.5,
     redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater,
     DELTAp_max=1100)
     annotation (Placement(transformation(extent={{-88,-64},{-76,-52}})));
 
-  Components.Greenhouse.Unit.Greenhouse
-             G annotation (Placement(transformation(extent={{46,26},{94,62}})));
+  Components.Greenhouse.Unit.Greenhouse G
+    annotation (Placement(transformation(extent={{46,26},{94,62}})));
   ControlSystems.HVAC.Control_2 controller(T_max=343.15, T_min=313.15)
     annotation (Placement(transformation(extent={{-74,-2},{-54,18}})));
-  ThermoCycle.Components.Units.ExpansionAndCompressionMachines.Pump_Mdot pump_1ry(
+  Flows.FluidFlow.Pump_Mdot                                              pump_1ry(
       redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater, Mdot_0=0.528)
     annotation (Placement(transformation(extent={{24,44},{36,56}})));
-  ThermoCycle.Components.Units.PdropAndValves.Pdrop pdrop_1ry(
+  Flows.FluidFlow.Pdrop                             pdrop_1ry(
     redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater,
     Mdot_max=0.5,
     DELTAp_max=1100)
     annotation (Placement(transformation(extent={{-6,48},{6,60}})));
 
-  ThermoCycle.Components.FluidFlow.Reservoirs.SinkP sinkP_1ry(redeclare package
+  Flows.FluidFlow.Reservoirs.SinkP                  sinkP_1ry(redeclare package
       Medium = Modelica.Media.Water.ConstantPropertyLiquidWater, p0=1000000)
     annotation (Placement(transformation(extent={{6,62},{-6,74}})));
   Modelica.Blocks.Sources.RealExpression set_Mdot_2ry(y=Mdot_2ry)
@@ -142,10 +142,10 @@ model GlobalSystem_2
         Modelica.Media.Water.ConstantPropertyLiquidWater,
     redeclare package Medium2 = Modelica.Media.Air.SimpleAir)
     annotation (Placement(transformation(extent={{0,-56},{-20,-36}})));
-  ThermoCycle.Components.FluidFlow.Reservoirs.SinkP sinkP_air(redeclare package
+  Flows.FluidFlow.Reservoirs.SinkP                  sinkP_air(redeclare package
       Medium = Modelica.Media.Air.SimpleAir, p0=100000)
     annotation (Placement(transformation(extent={{14,-58},{26,-46}})));
-  ThermoCycle.Components.FluidFlow.Reservoirs.SourceMdot sourceMdot(redeclare
+  Flows.FluidFlow.Reservoirs.SourceMdot                  sourceMdot(redeclare
       package Medium = Modelica.Media.Air.SimpleAir, Mdot_0=1)
     annotation (Placement(transformation(extent={{26,-44},{14,-32}})));
   Modelica.Blocks.Sources.RealExpression set_Mdot_air(y=Mdot_air)

@@ -1,4 +1,4 @@
-within Greenhouse.Flows.Interfaces.Heat;
+within Greenhouses.Flows.Interfaces.Heat;
 connector HeatFluxVectorOutput =output Modelica.SIunits.HeatFlux
   "Heat Flux output connector used for vector of connectors"
                                                             annotation (

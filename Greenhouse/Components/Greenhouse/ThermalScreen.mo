@@ -1,4 +1,4 @@
-within Greenhouse.Components.Greenhouse;
+within Greenhouses.Components.Greenhouse;
 model ThermalScreen
 
   /******************** Parameters ********************/
@@ -6,8 +6,6 @@ model ThermalScreen
   parameter Modelica.SIunits.SpecificHeatCapacity c_p=1.8e3;
   parameter Modelica.SIunits.Length h=0.35e-3 "thickness of the thermal screen";
   parameter Modelica.SIunits.Area A "floor surface";
-  parameter Modelica.SIunits.SpecificEnergy DELTAH=2.45e6
-    "latent heat of water vaporization";
   parameter Real tau_FIR=0.15
     "FIR transmission coefficient of the thermal screen";
 

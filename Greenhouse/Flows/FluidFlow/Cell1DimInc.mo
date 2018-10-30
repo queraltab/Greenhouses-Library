@@ -1,18 +1,19 @@
-within Greenhouse.Flows.FluidFlow;
+within Greenhouses.Flows.FluidFlow;
 model Cell1DimInc "1-D incompressible fluid flow model"
-replaceable package Medium = ThermoCycle.Media.DummyFluid constrainedby
+  import Greenhouse = Greenhouses;
+replaceable package Medium = Media.DummyFluid constrainedby
     Modelica.Media.Interfaces.PartialMedium
     "Medium model - Incompressible Fluid" annotation (choicesAllMatching = true);
 /************ Thermal and fluid ports ***********/
- ThermoCycle.Interfaces.Fluid.FlangeA InFlow(redeclare package Medium =
+ Interfaces.Fluid.FlangeA             InFlow(redeclare package Medium =
         Medium)
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}}),
         iconTransformation(extent={{-120,-20},{-80,20}})));
- ThermoCycle.Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium =
+ Interfaces.Fluid.FlangeB             OutFlow(redeclare package Medium =
         Medium)
     annotation (Placement(transformation(extent={{80,-10},{100,10}}),
         iconTransformation(extent={{80,-18},{120,20}})));
-ThermoCycle.Interfaces.HeatTransfer.ThermalPortL  Wall_int
+Interfaces.Heat.ThermalPortL                      Wall_int
     annotation (Placement(transformation(extent={{-28,40},{32,60}}),
         iconTransformation(extent={{-40,40},{40,60}})));
 /************ Geometric characteristics **************/
@@ -29,8 +30,8 @@ parameter Modelica.SIunits.Pressure pstart "Fluid pressure start value"
   parameter Medium.SpecificEnthalpy hstart=1E5 "Start value of enthalpy"
     annotation (Dialog(tab="Initialization"));
 /****************** NUMERICAL OPTIONS  ***********************/
-  import ThermoCycle.Functions.Enumerations.Discretizations;
-  parameter Discretizations Discretization=ThermoCycle.Functions.Enumerations.Discretizations.centr_diff
+  import Greenhouses.Functions.Enumerations.Discretizations;
+  parameter Discretizations Discretization=Greenhouse.Functions.Enumerations.Discretizations.centr_diff
     "Selection of the spatial discretization scheme"  annotation (Dialog(tab="Numerical options"));
   parameter Boolean steadystate=true
     "if true, sets the derivative of h (working fluids enthalpy in each cell) to zero during Initialization"
@@ -38,11 +39,12 @@ parameter Modelica.SIunits.Pressure pstart "Fluid pressure start value"
 /********************************* HEAT TRANSFER MODEL ********************************/
 /* Heat transfer Model */
 replaceable model HeatTransfer =
-ThermoCycle.Components.HeatFlow.HeatTransfer.MassFlowDependence
+Greenhouse.Flows.FluidFlow.HeatTransfer.MassFlowDependence
 constrainedby
-    ThermoCycle.Components.HeatFlow.HeatTransfer.BaseClasses.PartialHeatTransferZones
+    Greenhouse.Flows.FluidFlow.HeatTransfer.BaseClasses.PartialHeatTransferZones
     "Convective heat transfer"                                                         annotation (choicesAllMatching = true);
-HeatTransfer heatTransfer( redeclare final package Medium = Medium,
+Greenhouse.Flows.FluidFlow.HeatTransfer.MassFlowDependence
+             heatTransfer( redeclare final package Medium = Medium,
 final n=1,
 final Mdotnom = Mdotnom/Nt,
 final Unom_l = Unom,

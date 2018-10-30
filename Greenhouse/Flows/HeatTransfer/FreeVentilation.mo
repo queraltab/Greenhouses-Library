@@ -1,4 +1,4 @@
-within Greenhouse.Flows.HeatTransfer;
+within Greenhouses.Flows.HeatTransfer;
 model FreeVentilation "Heat exchange by ventilation"
   extends Modelica.Thermal.HeatTransfer.Interfaces.Element1D;
 
@@ -27,7 +27,8 @@ model FreeVentilation "Heat exchange by ventilation"
   Modelica.SIunits.SpecificHeatCapacity c_p_air=1005;
   Real f_vent;
 
-  HeatAndVapourTransfer.Utilities.NaturalVentilationRate_1 airExchangeRate(
+  HeatAndVapourTransfer.VentilationRates.NaturalVentilationRate_1
+                                                           airExchangeRate(
     phi=phi,
     fr_window=fr_window,
     l=l,

@@ -1,4 +1,4 @@
-within Greenhouse.Flows.Sources.Heat;
+within Greenhouses.Flows.Sources.Heat;
 model FixedHeatFlow "Fixed heat flow boundary condition"
   parameter Modelica.SIunits.HeatFlowRate Q_flow "Fixed heat flow rate at port";
 

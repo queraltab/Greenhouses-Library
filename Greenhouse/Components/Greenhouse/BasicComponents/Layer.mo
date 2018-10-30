@@ -1,4 +1,4 @@
-within Greenhouse.Components.Greenhouse.BasicComponents;
+within Greenhouses.Components.Greenhouse.BasicComponents;
 model Layer
   /******************** Parameters ********************/
   parameter Modelica.SIunits.Density rho;

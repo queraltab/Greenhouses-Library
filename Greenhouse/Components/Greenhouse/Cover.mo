@@ -1,4 +1,4 @@
-within Greenhouse.Components.Greenhouse;
+within Greenhouses.Components.Greenhouse;
 model Cover
   /******************** Parameters ********************/
   parameter Modelica.SIunits.Density rho=2600 "Cover density (glass)";

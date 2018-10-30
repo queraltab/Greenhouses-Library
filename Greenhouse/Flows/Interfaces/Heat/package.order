@@ -5,3 +5,7 @@ HeatFluxVectorOutput
 Element1D_discretized
 HeatPorts_a
 HeatPortConverter_ThermoCycle_Modelica
+ThermalPortL
+ThermalPortConverter
+HeatPortConverter
+ThermalPort

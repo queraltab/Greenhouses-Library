@@ -1,4 +1,4 @@
-within Greenhouse.Flows;
+within Greenhouses.Flows;
 package Sensors 
   annotation (Icon(graphics={
         Rectangle(

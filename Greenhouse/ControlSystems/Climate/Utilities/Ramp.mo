@@ -1,4 +1,4 @@
-within Greenhouse.ControlSystems.Climate.Utilities;
+within Greenhouses.ControlSystems.Climate.Utilities;
 block Ramp "Generate ramp signal"
   parameter Real height=1 "Height of ramps";
   parameter Modelica.SIunits.Time duration(min=0.0, start=2)

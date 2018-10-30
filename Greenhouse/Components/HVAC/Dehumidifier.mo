@@ -1,4 +1,4 @@
-within Greenhouse.Components.HVAC;
+within Greenhouses.Components.HVAC;
 model Dehumidifier
   "Dehumidifier model based on the characteristics of the industrial dehumidifier CD520L"
 

@@ -1,8 +1,8 @@
-within Greenhouse.Flows.HeatTransfer;
+within Greenhouses.Flows.HeatTransfer;
 model ThermalConductor
   "Lumped thermal element transporting heat without storing it"
   extends Modelica.Thermal.HeatTransfer.Interfaces.Element1D;
-  Modelica.SIunits.ThermalConductance G
+  Modelica.SIunits.ThermalConductance G=1
     "Constant thermal conductance of material"  annotation (Dialog(group="Varying inputs"));
 
 equation

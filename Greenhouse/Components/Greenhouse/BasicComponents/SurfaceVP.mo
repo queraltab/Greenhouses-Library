@@ -1,4 +1,4 @@
-within Greenhouse.Components.Greenhouse.BasicComponents;
+within Greenhouses.Components.Greenhouse.BasicComponents;
 model SurfaceVP
   "Vapour pressure at a surface defined by the saturated vapour pressure for its temperature"
 

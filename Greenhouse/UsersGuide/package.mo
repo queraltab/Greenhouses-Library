@@ -1,4 +1,4 @@
-within Greenhouse;
+within Greenhouses;
 package UsersGuide 
   extends Modelica.Icons.Information;
 

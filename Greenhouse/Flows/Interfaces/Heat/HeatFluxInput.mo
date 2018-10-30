@@ -1,4 +1,4 @@
-within Greenhouse.Flows.Interfaces.Heat;
+within Greenhouses.Flows.Interfaces.Heat;
 connector HeatFluxInput =
                       input Modelica.SIunits.HeatFlux
   "'input Heat Flux' as connector"                                                annotation (

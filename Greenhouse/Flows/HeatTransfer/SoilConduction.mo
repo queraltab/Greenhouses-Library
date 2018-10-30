@@ -1,6 +1,6 @@
-within Greenhouse.Flows.HeatTransfer;
+within Greenhouses.Flows.HeatTransfer;
 model SoilConduction
-  import Greenhouse;
+  import Greenhouse = Greenhouses;
   parameter Modelica.SIunits.Area A "floor surface";
   parameter Integer N_c(min=0)=2 "number of concrete layers";
   parameter Integer N_s(min=1)=5 "number of soil layers";

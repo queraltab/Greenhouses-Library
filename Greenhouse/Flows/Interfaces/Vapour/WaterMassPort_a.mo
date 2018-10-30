@@ -1,8 +1,8 @@
-within Greenhouse.Flows.Interfaces.Vapour;
+within Greenhouses.Flows.Interfaces.Vapour;
 connector WaterMassPort_a
   "Water mass port for 1-dim. water vapour mass transfer (filled rectangular icon)"
 
-  extends Greenhouse.Flows.Interfaces.Vapour.WaterMassPort;
+  extends Greenhouses.Flows.Interfaces.Vapour.WaterMassPort;
 
   annotation(defaultComponentName = "port_a",
     Documentation(info="<HTML>

@@ -1,7 +1,7 @@
-within Greenhouse.Flows.HeatAndVapourTransfer;
+within Greenhouses.Flows.HeatAndVapourTransfer;
 model Ventilation
   "Heat and vapour mass flows exchanged from the greenhouse air to the outside air by ventilation"
-  extends Greenhouse.Flows.Interfaces.HeatAndVapour.Element1D;
+  extends Greenhouses.Flows.Interfaces.HeatAndVapour.Element1D;
 
   /*********************** Parameters ***********************/
   parameter Modelica.SIunits.Area A "Greenhouse floor surface";
@@ -36,16 +36,15 @@ model Ventilation
   //Real VEC_TopOut(unit="kg/(s.Pa.m2)") "Mass transfer coefficient";
   //Real MV_flow2;
 
-  Utilities.NaturalVentilationRate_2 NaturalVentilationRate(
+  VentilationRates.NaturalVentilationRate_2 NaturalVentilationRate(
     thermalScreen=thermalScreen,
     u=u,
     dT=dT,
     T_a=HeatPort_a.T,
     T_b=HeatPort_b.T,
     U_roof=U_vents,
-    SC=SC)
-    annotation (Placement(transformation(extent={{-20,20},{20,60}})));
-  Utilities.ForcedVentilationRate ForcedVentilationRate(
+    SC=SC) annotation (Placement(transformation(extent={{-20,20},{20,60}})));
+  VentilationRates.ForcedVentilationRate ForcedVentilationRate(
     A=A,
     phi_VentForced=phi_VentForced,
     U_VentForced=U_VentForced)

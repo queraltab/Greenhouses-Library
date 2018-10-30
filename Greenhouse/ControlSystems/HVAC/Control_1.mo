@@ -1,4 +1,4 @@
-within Greenhouse.ControlSystems.HVAC;
+within Greenhouses.ControlSystems.HVAC;
 model Control_1 "Controller for the CHP and heat pump and TES"
   parameter Modelica.SIunits.Temperature T_max=273.15+60 "Fill level of tank 1";
   parameter Modelica.SIunits.Temperature T_min = 273.15+50

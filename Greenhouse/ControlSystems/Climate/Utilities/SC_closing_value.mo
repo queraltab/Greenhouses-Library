@@ -1,4 +1,4 @@
-within Greenhouse.ControlSystems.Climate.Utilities;
+within Greenhouses.ControlSystems.Climate.Utilities;
 block SC_closing_value
   "Timer measuring the time from the time instant where the Boolean input became true"
 

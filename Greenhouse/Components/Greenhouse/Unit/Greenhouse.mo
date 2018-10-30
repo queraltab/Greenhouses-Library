@@ -1,4 +1,4 @@
-within Greenhouse.Components.Greenhouse.Unit;
+within Greenhouses.Components.Greenhouse.Unit;
 model Greenhouse
   "Ready-to-use Venlo-type greenhouse for tomato crop cultivated from 10Dec-22Nov (weather data from TMY)"
   Modelica.SIunits.HeatFlux q_low;
@@ -14,7 +14,7 @@ model Greenhouse
   Real E_el_tot_kWhm2(unit="kW.h/m2");
   Real E_el_tot(unit="kW.h");
 
-  Components.Greenhouse.Cover cover(
+  Cover cover(
     rho=2600,
     c_p=840,
     A=surface.k,
@@ -22,13 +22,13 @@ model Greenhouse
     h_cov=1e-3,
     phi=0.43633231299858)
     annotation (Placement(transformation(extent={{22,112},{50,140}})));
-  Components.Greenhouse.Air air(
+  Air air(
     A=surface.k,
     steadystate=true,
     steadystateVP=true,
     h_Air=h_Air.y)
     annotation (Placement(transformation(extent={{66,-58},{94,-30}})));
-  Components.Greenhouse.Canopy canopy(
+  Canopy canopy(
     A=surface.k,
     steadystate=true,
     LAI=TYM.LAI)
@@ -42,13 +42,13 @@ model Greenhouse
     FFab1=pipe_up.FF,
     FFab2=thScreen.FF_ij)
     annotation (Placement(transformation(extent={{-4,-82},{16,-62}})));
-  Components.Greenhouse.Floor floor(
+  Floor floor(
     rho=1,
     c_p=2e6,
     A=surface.k,
     V=0.01*surface.k,
-    steadystate=true)
-    annotation (Placement(transformation(extent={{-182,-168},{-156,-142}})));
+    steadystate=true) annotation (Placement(transformation(extent={{-182,-168},
+            {-156,-142}})));
 
   Flows.HeatTransfer.Radiation_T4 Q_rad_FlrCan(
     A=surface.k,
@@ -82,7 +82,7 @@ model Greenhouse
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={86,140})));
-  Components.Greenhouse.Illumination illu(
+  Illumination illu(
     A=surface.k,
     power_input=true,
     LAI=TYM.LAI,
@@ -143,7 +143,7 @@ model Greenhouse
     FFb=thScreen.FF_i)
     annotation (Placement(transformation(extent={{-156,-130},{-136,-110}})));
 
-  Components.Greenhouse.ThermalScreen thScreen(
+  ThermalScreen thScreen(
     A=surface.k,
     SC=SC.y,
     steadystate=false)
@@ -156,13 +156,13 @@ model Greenhouse
     FFa=thScreen.FF_i)
     annotation (Placement(transformation(extent={{-40,124},{-20,144}})));
 
-  Components.Greenhouse.Air_Top air_Top(
+  Air_Top air_Top(
     steadystate=true,
     steadystateVP=true,
     h_Top=0.4,
     A=surface.k)
     annotation (Placement(transformation(extent={{-56,86},{-26,114}})));
-  Components.Greenhouse.Solar_model solar_model(
+  Solar_model solar_model(
     A=surface.k,
     LAI=TYM.LAI,
     SC=SC.y)
@@ -340,7 +340,7 @@ model Greenhouse
     annotation (Placement(transformation(extent={{-94,88},{-74,108}})));
   Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor Tair_sensor
     annotation (Placement(transformation(extent={{136,-74},{146,-64}})));
-  ThermoCycle.Components.Units.ControlSystems.PID PID_Mdot(
+  ControlSystems.PID                              PID_Mdot(
     PVmin=18 + 273.15,
     PVmax=22 + 273.15,
     PVstart=0.5,
@@ -404,7 +404,7 @@ model Greenhouse
     annotation (Placement(transformation(extent={{88,-98},{108,-78}})));
   Flows.Sources.CO2.PrescribedCO2Flow MC_ExtAir(phi_ExtCO2=27)
     annotation (Placement(transformation(extent={{152,-10},{132,10}})));
-  ThermoCycle.Components.Units.ControlSystems.PID PID_CO2(
+  ControlSystems.PID                              PID_CO2(
     PVstart=0.5,
     CSstart=0.5,
     steadyStateInit=false,
@@ -467,13 +467,13 @@ model Greenhouse
     columns=1:3)
     "Climate set points 10Dec-22Nov: daily setpoints based on maximizing photosynthesis rate, minimum night temperature of 16, 24h mean temperature of 20"
     annotation (Placement(transformation(extent={{-118,152},{-98,172}})));
-  ThermoCycle.Interfaces.Fluid.FlangeA flangeA(redeclare package Medium =
+  Flows.Interfaces.Fluid.FlangeA       flangeA(redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater)
                                                annotation (Placement(
         transformation(extent={{-36,-182},{-16,-162}}),
                                                       iconTransformation(
           extent={{-176,-60},{-156,-40}})));
-  ThermoCycle.Interfaces.Fluid.FlangeB flangeB(redeclare package Medium =
+  Flows.Interfaces.Fluid.FlangeB       flangeB(redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater)
                                                annotation (Placement(
         transformation(extent={{38,-22},{58,-2}}),
@@ -570,8 +570,7 @@ equation
       color={191,0,0},
       smooth=Smooth.Bezier));
   connect(thScreen.heatPort, Q_rad_ScrCov.port_a) annotation (Line(
-      points={{-122.6,66},{-122,66},{-122,110},{-70,110},{-70,134},{-40,134},{-40,
-          134}},
+      points={{-122.6,66},{-122,66},{-122,110},{-70,110},{-70,134},{-40,134}},
       color={191,0,0},
       smooth=Smooth.Bezier));
   connect(Q_rad_ScrCov.port_b, cover.heatPort) annotation (Line(
@@ -1012,8 +1011,9 @@ equation
       color={0,0,127},
       smooth=Smooth.None));
   annotation (
-      Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-240,-180},{240,
-            180}}), graphics={
+      Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-240,
+            -180},{240,180}}),
+                    graphics={
         Polygon(
           points={{-190,-158},{130,-158},{130,66},{-30,166},{-190,66},{-190,-158}},
           lineColor={135,135,135},
@@ -1105,5 +1105,5 @@ Vapour transfer"),
                                  Icon(coordinateSystem(preserveAspectRatio=false,
           extent={{-240,-180},{240,180}}), graphics={Bitmap(extent={{-214,168},{
               214,-188}}, fileName=
-              "modelica://Greenhouse/Resources/Images/Greenhouse_drawing.png")}));
+              "modelica://Greenhouses/Resources/Images/Greenhouse_drawing.png")}));
 end Greenhouse;

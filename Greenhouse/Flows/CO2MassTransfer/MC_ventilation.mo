@@ -1,7 +1,7 @@
-within Greenhouse.Flows.CO2MassTransfer;
+within Greenhouses.Flows.CO2MassTransfer;
 model MC_ventilation
   "CO2 mass flow exchange accompanying an air ventilation process. Distinguishes from the two different air zones on the presence of a thermal screen."
-  extends Greenhouse.Flows.Interfaces.CO2.Element1D;
+  extends Greenhouses.Flows.Interfaces.CO2.Element1D;
 
   /*********************** Parameters ***********************/
   parameter Boolean thermalScreen=false
@@ -22,15 +22,15 @@ model MC_ventilation
   /*********************** Variables ***********************/
   Real f_vent;
 
-  HeatAndVapourTransfer.Utilities.NaturalVentilationRate_2 airExchangeRate(
+  HeatAndVapourTransfer.VentilationRates.NaturalVentilationRate_2
+    airExchangeRate(
     thermalScreen=thermalScreen,
     u=u,
     dT=T_a - T_b,
     U_roof=U_vents,
     SC=SC,
     T_a=T_a,
-    T_b=T_b)
-    annotation (Placement(transformation(extent={{-12,32},{8,52}})));
+    T_b=T_b) annotation (Placement(transformation(extent={{-12,32},{8,52}})));
 equation
   // CO2 exchange, dependent on the air exchange rate
   if thermalScreen then

@@ -1,7 +1,7 @@
-within Greenhouse.Flows.HeatAndVapourTransfer;
+within Greenhouses.Flows.HeatAndVapourTransfer;
 model AirThroughScreen
   "Heat and mass flux exchange and air exchange rate through the screen"
-  extends Greenhouse.Flows.Interfaces.HeatAndVapour.Element1D;
+  extends Greenhouses.Flows.Interfaces.HeatAndVapour.Element1D;
 
   /*********************** Parameters ***********************/
   parameter Modelica.SIunits.Area A "floor surface";

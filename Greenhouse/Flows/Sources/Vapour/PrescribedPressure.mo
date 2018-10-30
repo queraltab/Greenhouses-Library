@@ -1,8 +1,8 @@
-within Greenhouse.Flows.Sources.Vapour;
+within Greenhouses.Flows.Sources.Vapour;
 model PrescribedPressure "Variable pressure boundary condition in Pascals"
 
-  Greenhouse.Flows.Interfaces.Vapour.WaterMassPort_b port annotation (Placement(
-        transformation(extent={{90,-10},{110,10}}, rotation=0)));
+  Greenhouses.Flows.Interfaces.Vapour.WaterMassPort_b port annotation (
+      Placement(transformation(extent={{90,-10},{110,10}}, rotation=0)));
   Modelica.Blocks.Interfaces.RealInput VP(unit="Pa") annotation (Placement(transformation(
           extent={{-140,-20},{-100,20}}, rotation=0)));
 equation

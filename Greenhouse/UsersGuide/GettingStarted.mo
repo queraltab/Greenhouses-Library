@@ -1,4 +1,4 @@
-within Greenhouse.UsersGuide;
+within Greenhouses.UsersGuide;
 class GettingStarted
 extends Modelica.Icons.Information;
 

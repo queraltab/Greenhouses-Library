@@ -1,4 +1,4 @@
-within Greenhouse.ControlSystems.Climate;
+within Greenhouses.ControlSystems.Climate;
 model Uvents_T_Mdot
   "PI for the window's opening. The control is based on the maximum air temperature allowed in the greenhouse."
   Modelica.SIunits.Temperature T_air=293.15 annotation(Dialog(group="Varying inputs"));
@@ -11,7 +11,7 @@ model Uvents_T_Mdot
   Modelica.Blocks.Interfaces.RealOutput y
     annotation (Placement(transformation(extent={{100,-10},{120,10}}),
         iconTransformation(extent={{100,-10},{120,10}})));
-  ThermoCycle.Components.Units.ControlSystems.PID PIDT(
+  PID                                             PIDT(
     PVstart=0.5,
     CSstart=0.5,
     CSmin=0,
@@ -22,7 +22,7 @@ model Uvents_T_Mdot
     PVmin=12 + 273.15,
     CSmax=U_max)
     annotation (Placement(transformation(extent={{-8,14},{12,34}})));
-  ThermoCycle.Components.Units.ControlSystems.PID PIDT_noH(
+  PID                                             PIDT_noH(
     PVstart=0.5,
     CSstart=0.5,
     CSmin=0,

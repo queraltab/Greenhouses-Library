@@ -1,4 +1,4 @@
-within Greenhouse.UsersGuide;
+within Greenhouses.UsersGuide;
 model Contacts "Authors' contacts"
   extends Modelica.Icons.Contact;
   annotation (Documentation(info="<html>

@@ -1,4 +1,4 @@
-within Greenhouse.Flows.HeatTransfer;
+within Greenhouses.Flows.HeatTransfer;
 model CanopyFreeConvection "Leaves heat exchange by free convection with air"
   extends Modelica.Thermal.HeatTransfer.Interfaces.Element1D;
 

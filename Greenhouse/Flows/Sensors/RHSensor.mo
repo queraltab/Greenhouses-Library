@@ -1,4 +1,4 @@
-within Greenhouse.Flows.Sensors;
+within Greenhouses.Flows.Sensors;
 model RHSensor "Relative Humidity sensor"
   Modelica.SIunits.Pressure VP;
   Modelica.SIunits.Pressure VPsat;
@@ -6,7 +6,7 @@ model RHSensor "Relative Humidity sensor"
   Modelica.Blocks.Interfaces.RealOutput RH
     "Absolute temperature as output signal"
     annotation (Placement(transformation(extent={{90,-10},{110,10}}, rotation=0)));
-  Greenhouse.Flows.Interfaces.Vapour.WaterMassPort_a massPort annotation (
+  Greenhouses.Flows.Interfaces.Vapour.WaterMassPort_a massPort annotation (
       Placement(transformation(extent={{-110,-50},{-90,-30}}, rotation=0)));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort annotation (
       Placement(transformation(extent={{-110,30},{-90,50}},  rotation=0)));
@@ -16,8 +16,8 @@ equation
 
   // Relative humidity
   VP=massPort.VP;
-  VPsat = Greenhouse.Functions.SaturatedVapourPressure(heatPort.T - 273.15);
-  RH = massPort.VP/Greenhouse.Functions.SaturatedVapourPressure(heatPort.T -
+  VPsat = Greenhouses.Functions.SaturatedVapourPressure(heatPort.T - 273.15);
+  RH = massPort.VP/Greenhouses.Functions.SaturatedVapourPressure(heatPort.T -
     273.15);
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-100,-100},{100,

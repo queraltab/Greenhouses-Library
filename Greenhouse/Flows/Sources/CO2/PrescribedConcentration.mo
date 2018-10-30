@@ -1,8 +1,8 @@
-within Greenhouse.Flows.Sources.CO2;
+within Greenhouses.Flows.Sources.CO2;
 model PrescribedConcentration
   "Variable CO2 concentration boundary condition in mg/m3"
 
-  Greenhouse.Flows.Interfaces.CO2.CO2Port_b port annotation (Placement(
+  Greenhouses.Flows.Interfaces.CO2.CO2Port_b port annotation (Placement(
         transformation(extent={{90,-10},{110,10}}, rotation=0)));
   Modelica.Blocks.Interfaces.RealInput CO2(unit="mg/m3") annotation (Placement(transformation(
           extent={{-140,-20},{-100,20}}, rotation=0)));

@@ -1,5 +1,7 @@
-within Greenhouse.Components;
+within Greenhouses.Components;
 package Greenhouse 
+
+
 annotation (Icon(graphics={
         Polygon(
           points={{-100,-100},{40,-100},{40,40},{-30,100},{-100,40},{-100,-100}},

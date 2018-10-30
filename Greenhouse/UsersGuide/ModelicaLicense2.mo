@@ -1,4 +1,4 @@
-within Greenhouse.UsersGuide;
+within Greenhouses.UsersGuide;
 class ModelicaLicense2 "Modelica License 2"
 extends Modelica.Icons.Info;
 annotation (Documentation(info="<html>

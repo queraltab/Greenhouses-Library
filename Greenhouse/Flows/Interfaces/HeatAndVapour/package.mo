@@ -1,4 +1,4 @@
-within Greenhouse.Flows.Interfaces;
+within Greenhouses.Flows.Interfaces;
 package HeatAndVapour 
   annotation (Icon(graphics={
         Rectangle(

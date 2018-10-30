@@ -1,7 +1,7 @@
-within Greenhouse.Flows.VapourMassTransfer;
+within Greenhouses.Flows.VapourMassTransfer;
 model MV_cnv_condensation
   "Vapour mass transfer (and possible condensation) caused by convection at a surface. The model must be connected as following: air (filled port) - surface (empty port)"
-  extends Greenhouse.Flows.Interfaces.Vapour.Element1D;
+  extends Greenhouses.Flows.Interfaces.Vapour.Element1D;
 
   /*********************** Parameters ***********************/
   parameter Modelica.SIunits.Area A "floor surface";

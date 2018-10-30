@@ -1,4 +1,4 @@
-within Greenhouse.Flows.HeatTransfer;
+within Greenhouses.Flows.HeatTransfer;
 model OutsideAirConvection
   "Cover heat exchange by convection with outside air function of wind speed"
   extends Modelica.Thermal.HeatTransfer.Interfaces.Element1D;

@@ -1,4 +1,4 @@
-within Greenhouse.Flows;
+within Greenhouses.Flows;
 package Interfaces 
 annotation (Icon(graphics={
         Rectangle(

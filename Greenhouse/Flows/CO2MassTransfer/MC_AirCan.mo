@@ -1,4 +1,4 @@
-within Greenhouse.Flows.CO2MassTransfer;
+within Greenhouses.Flows.CO2MassTransfer;
 model MC_AirCan
   "Greenhouse CO2 net assimilation rate by the canopy. The value computed in a yield model is used as input."
 
@@ -8,7 +8,7 @@ model MC_AirCan
                                                                                                         annotation (Dialog(group="Varying inputs"));
 
   /******************** Connectors ********************/
-  Greenhouse.Flows.Interfaces.CO2.CO2Port_a port "Partial CO2 pressure"
+  Greenhouses.Flows.Interfaces.CO2.CO2Port_a port "Partial CO2 pressure"
     annotation (Placement(transformation(extent={{-10,80},{10,100}}),
         iconTransformation(extent={{-10,80},{10,100}})));
 

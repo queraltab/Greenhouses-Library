@@ -1,12 +1,12 @@
-within Greenhouse.Components.HVAC;
+within Greenhouses.Components.HVAC;
 model HeatPump_ConsoClim
   "Variation of ConsoClim model. Imposing the Wdot instead of the T_cd"
   replaceable package Medium1 =
-    ThermoCycle.Media.StandardWater constrainedby
+    Greenhouses.Media.StandardWater constrainedby
     Modelica.Media.Interfaces.PartialMedium "Condenser" annotation (choicesAllMatching = true);
 
   replaceable package Medium2 =
-    ThermoCycle.Media.StandardWater constrainedby
+    Greenhouses.Media.StandardWater constrainedby
     Modelica.Media.Interfaces.PartialMedium "Evaporator" annotation (choicesAllMatching = true);
 
   Modelica.Blocks.Interfaces.RealOutput W_dot_cp(start = 1) "[W]"
@@ -66,16 +66,16 @@ model HeatPump_ConsoClim
     "Maximum temperature at the outlet";
   parameter Modelica.SIunits.Time tau = 60 "Start-up time constant";
 
-  ThermoCycle.Interfaces.Fluid.FlangeA Supply_cd(redeclare package Medium =
+  Flows.Interfaces.Fluid.FlangeA       Supply_cd(redeclare package Medium =
         Medium1) annotation (Placement(transformation(extent={{80,-80},{100,-60}}),
         iconTransformation(extent={{80,-80},{100,-60}})));
-  ThermoCycle.Interfaces.Fluid.FlangeB Exhaust_cd(redeclare package Medium =
+  Flows.Interfaces.Fluid.FlangeB       Exhaust_cd(redeclare package Medium =
         Medium1) annotation (Placement(transformation(extent={{80,60},{100,80}}),
         iconTransformation(extent={{80,60},{100,80}})));
-  ThermoCycle.Interfaces.Fluid.FlangeA Supply_ev(redeclare package Medium =
+  Flows.Interfaces.Fluid.FlangeA       Supply_ev(redeclare package Medium =
         Medium2) annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
         iconTransformation(extent={{-100,60},{-80,80}})));
-  ThermoCycle.Interfaces.Fluid.FlangeB Exhaust_ev(redeclare package Medium =
+  Flows.Interfaces.Fluid.FlangeB       Exhaust_ev(redeclare package Medium =
         Medium2) annotation (Placement(transformation(extent={{-100,-80},{-80,-60}}),
         iconTransformation(extent={{-100,-80},{-80,-60}})));
   Modelica.Blocks.Interfaces.RealInput W_dot_set annotation (Placement(
@@ -83,22 +83,22 @@ model HeatPump_ConsoClim
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,-110})));
-  ThermoCycle.Components.FluidFlow.Pipes.Cell1DimInc fluid(
-    Discretization=ThermoCycle.Functions.Enumerations.Discretizations.upwind_AllowFlowReversal,
+  Flows.FluidFlow.Cell1DimInc                        fluid(
     Mdotnom=0.1,
-    redeclare model HeatTransfer =
-        ThermoCycle.Components.HeatFlow.HeatTransfer.Constant,
     Vi=V,
     Ai=A,
     Unom=1000,
     redeclare package Medium = Medium1,
+    hstart=Medium1.specificEnthalpy_pT(1E5, Th_start),
+    redeclare model HeatTransfer =
+        Greenhouses.Flows.FluidFlow.HeatTransfer.Constant,
     pstart=10000000000,
-    hstart=Medium1.specificEnthalpy_pT(1E5, Th_start))
+    Discretization=Greenhouses.Functions.Enumerations.Discretizations.upwind_AllowFlowReversal)
                         annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={48,4})));
-  ThermoCycle.Interfaces.HeatTransfer.HeatPortConverter heatPortConverter(A=A, N=1)
+  Flows.Interfaces.Heat.HeatPortConverter               heatPortConverter(A=A, N=1)
     annotation (Placement(transformation(extent={{0,-6},{20,14}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow prescribedHeatFlow
     annotation (Placement(transformation(extent={{-46,-6},{-26,14}})));

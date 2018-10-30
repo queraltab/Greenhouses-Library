@@ -1,4 +1,4 @@
-within Greenhouse.Examples;
+within Greenhouses.Examples;
 model Greenhouse_1
   "Simulation of a Venlo-type greenhouse for tomato crop cultivated from 10Dec-22Nov (weather data from TMY)"
   Modelica.SIunits.HeatFlux q_low;
@@ -340,7 +340,7 @@ model Greenhouse_1
     annotation (Placement(transformation(extent={{-94,88},{-74,108}})));
   Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor Tair_sensor
     annotation (Placement(transformation(extent={{136,-74},{146,-64}})));
-  ThermoCycle.Components.Units.ControlSystems.PID PID_Mdot(
+  ControlSystems.PID                              PID_Mdot(
     PVmin=18 + 273.15,
     PVmax=22 + 273.15,
     PVstart=0.5,
@@ -362,7 +362,8 @@ model Greenhouse_1
   Modelica.Blocks.Sources.RealExpression u_wind(y=TMY_and_control.y[6])
     annotation (Placement(transformation(extent={{222,128},{202,148}})));
   Modelica.Blocks.Sources.RealExpression VPout(y=
-        Greenhouse.Functions.WaterVapourPressure(TMY_and_control.y[2],
+        Greenhouses.Functions.WaterVapourPressure(
+                                                 TMY_and_control.y[2],
         TMY_and_control.y[3]))
     annotation (Placement(transformation(extent={{226,70},{202,90}})));
   Modelica.Blocks.Sources.RealExpression OnOff(y=TMY_and_control.y[10])
@@ -405,7 +406,7 @@ model Greenhouse_1
     annotation (Placement(transformation(extent={{88,-98},{108,-78}})));
   Flows.Sources.CO2.PrescribedCO2Flow MC_ExtAir(phi_ExtCO2=27)
     annotation (Placement(transformation(extent={{152,-10},{132,10}})));
-  ThermoCycle.Components.Units.ControlSystems.PID PID_CO2(
+  ControlSystems.PID                              PID_CO2(
     PVstart=0.5,
     CSstart=0.5,
     steadyStateInit=false,
@@ -418,13 +419,13 @@ model Greenhouse_1
     annotation (Placement(transformation(extent={{194,-6},{176,12}})));
   Modelica.Blocks.Sources.RealExpression CO2_air_PV(y=CO2_air.CO2)
     annotation (Placement(transformation(extent={{234,-14},{214,6}})));
-  ThermoCycle.Components.FluidFlow.Reservoirs.SourceMdot sourceMdot_1ry(
+  Flows.FluidFlow.Reservoirs.SourceMdot                  sourceMdot_1ry(
     redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater,
     Mdot_0=0.528,
     T_0=363.15)
     annotation (Placement(transformation(extent={{160,-114},{138,-92}})));
-  ThermoCycle.Components.FluidFlow.Reservoirs.SinkP sinkP_2ry(redeclare package
+  Flows.FluidFlow.Reservoirs.SinkP                  sinkP_2ry(redeclare package
       Medium =         Modelica.Media.Water.ConstantPropertyLiquidWater, p0=
        1000000)
     annotation (Placement(transformation(extent={{-20,-20},{-10,-10}})));
@@ -443,7 +444,7 @@ model Greenhouse_1
     tableOnFile=true,
     tableName="tab",
     columns=1:10,
-    fileName="C:/Greenhouse/Resources/Data/10Dec-22Nov.txt")
+    fileName="C:/Greenhouses/Resources/Data/10Dec-22Nov.txt")
     "Set-points for the climate"
     annotation (Placement(transformation(extent={{-152,152},{-132,172}})));
 
@@ -453,7 +454,7 @@ model Greenhouse_1
     tableOnFile=true,
     tableName="tab",
     columns=1:2,
-    fileName="C:/Greenhouse/Resources/Data/SC_usable_10Dec-22Nov.txt")
+    fileName="C:/Greenhouses/Resources/Data/SC_usable_10Dec-22Nov.txt")
     annotation (Placement(transformation(extent={{206,-62},{192,-48}})));
   ControlSystems.Climate.Control_ThScreen SC(R_Glob_can=I_glob.y,
       R_Glob_can_min=35)
@@ -475,7 +476,7 @@ model Greenhouse_1
     tableOnFile=true,
     tableName="tab",
     columns=1:3,
-    fileName="C:/Greenhouse/Resources/Data/SP_10Dec-22Nov.txt")
+    fileName="C:/Greenhouses/Resources/Data/SP_10Dec-22Nov.txt")
     "Climate set points 10Dec-22Nov: daily setpoints based on maximizing photosynthesis rate, minimum night temperature of 16, 24h mean temperature of 20"
     annotation (Placement(transformation(extent={{-118,152},{-98,172}})));
 equation
@@ -1114,8 +1115,9 @@ Vapour transfer"),
                 fillPattern = FillPattern.Solid,
                 points={{-70,120},{110,0},{-70,-120},{-70,120}})}),
     Documentation(info="<html>
-<h5><big>Simulation of greenhouse climate</h5>
-<p><big>This example intends to illustrate the simulation of a greenhouse climate. The greenhouse is built by interconnecting all of the energy and mass <a href=\"modelica://Greenhouse.Flows\">Flows</a> presents in a greenhouse to their related <a href=\"modelica://Greenhouse.Components.Greenhouse\">Components</a>. The model has been parametrized using the values of greenhouse design for a Venlo-type greenhouse (typical in the Belgium-Netherlands region) and the cultivation techniques for tomato crop.</p>
-<p><big>The input weather data is a TMY for Brussels. The simulated period is from 10th December to 22nd November.</p>
+<p><b><font style=\"font-size: 12pt; \">Simulation of greenhouse climate</b></p>
+<p><big>This example intends to illustrate the simulation of a greenhouse climate. The greenhouse is built by interconnecting all of the energy and mass <a href=\"modelica://Greenhouse.Flows\">Flows</a> presents in a greenhouse to their related <a href=\"modelica://Greenhouse.Components.Greenhouse\">Components</a>. The model has been parametrized using the values of greenhouse design for a Venlo-type greenhouse (typical in the Belgian-Dutch region) and the cultivation techniques for tomato crop.</p>
+<p><big>The input weather data is a TMY for Brussels. The simulated period is from 10th December to 22nd November. The user must place the library in the directory C:/ or change the path to the data input files (fileName in CombiTimeTables).</p>
+<p><big>The goal of this example is to show the energy flows interacting in a greenhouse. Thus, no generation units are modeled for the heating demand. A source model is used instead, whose mass flow rate is controlled by a PID controller. Both the source and the PID are models from the ThermoCycle library (open-source here: <a href=\"http://thermocycle.net\">http://thermocycle.net</a>).</p>
 </html>"));
 end Greenhouse_1;

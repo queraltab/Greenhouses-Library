@@ -1,6 +1,7 @@
-within Greenhouse.ControlSystems.Climate;
+within Greenhouses.ControlSystems.Climate;
 model Uvents_RH_T_Mdot
   "Controller for window's opening. The control is based on keeping humidity and temperature below the allowed limit."
+  import Greenhouse = Greenhouses;
   Real RH_air_input=0.75
     "If connector not used, input here the relative humidity of the air"                      annotation(Dialog(group="Varying inputs"));
   Modelica.SIunits.Temperature T_air=293.15 annotation(Dialog(group="Varying inputs"));
@@ -15,7 +16,7 @@ model Uvents_RH_T_Mdot
         iconTransformation(extent={{100,-10},{120,10}})));
   Modelica.Blocks.Interfaces.RealInput RH_air
     annotation (Placement(transformation(extent={{-120,40},{-80,80}})));
-  ThermoCycle.Components.Units.ControlSystems.PID PID(
+  Greenhouse.ControlSystems.PID                   PID(
     PVstart=0.5,
     CSstart=0.5,
     PVmax=1,
@@ -28,7 +29,7 @@ model Uvents_RH_T_Mdot
     annotation (Placement(transformation(extent={{-20,54},{0,74}})));
   Modelica.Blocks.Sources.Constant RH_max(k=0.85)
     annotation (Placement(transformation(extent={{-60,74},{-40,94}})));
-  ThermoCycle.Components.Units.ControlSystems.PID PIDT(
+  Greenhouse.ControlSystems.PID                   PIDT(
     PVstart=0.5,
     CSstart=0.5,
     CSmin=0,
@@ -39,7 +40,7 @@ model Uvents_RH_T_Mdot
     PVmin=12 + 273.15,
     CSmax=U_max)
     annotation (Placement(transformation(extent={{-20,-20},{0,0}})));
-  ThermoCycle.Components.Units.ControlSystems.PID PIDT_noH(
+  Greenhouse.ControlSystems.PID                   PIDT_noH(
     PVstart=0.5,
     CSstart=0.5,
     CSmin=0,

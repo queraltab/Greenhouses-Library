@@ -1,4 +1,4 @@
-within Greenhouse.Functions;
+within Greenhouses.Functions;
 function SaturatedVapourPressure "Saturated vapour pressure at any temperature"
 
   input Real TSat(unit="degC",displayUnit="degC",

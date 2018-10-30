@@ -1,4 +1,4 @@
-within Greenhouse.Components.HVAC;
+within Greenhouses.Components.HVAC;
 model HeatingPipe
   "Primary heating distribution netwrok with a control of pipe mass flow rate. Pipe model using a 1-D fluid flow model (finite volume discretization - incompressible fluid model) from the ThermoCycle library."
   /******************** Parameters ********************/
@@ -26,13 +26,13 @@ model HeatingPipe
     redeclare package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater,
     steadystate=true,
     redeclare model Flow1DimIncHeatTransferModel =
-        ThermoCycle.Components.HeatFlow.HeatTransfer.Ideal,
+        Greenhouses.Flows.FluidFlow.HeatTransfer.Ideal,
     Unom=0,
     N=N,
     A=l*Modelica.Constants.pi*d,
     V=Modelica.Constants.pi*(d/2)^2*l,
     Nt=N_p,
-    Discretization=ThermoCycle.Functions.Enumerations.Discretizations.upwind_AllowFlowReversal,
+    Discretization=Greenhouses.Functions.Enumerations.Discretizations.upwind_AllowFlowReversal,
     Mdotnom=Mdotnom,
     pstart=200000,
     Tstart_inlet=353.15,
@@ -43,11 +43,11 @@ public
   Flows.Interfaces.Heat.HeatPorts_a[N] heatPorts annotation (Placement(
         transformation(extent={{-10,-10},{10,10}}), iconTransformation(extent={{
             -40,30},{40,50}})));
-  ThermoCycle.Interfaces.Fluid.FlangeA pipe_in(redeclare package Medium =
+  Flows.Interfaces.Fluid.FlangeA       pipe_in(redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (
       Placement(transformation(extent={{-90,-10},{-70,10}}),
         iconTransformation(extent={{-90,-10},{-70,10}})));
-  ThermoCycle.Interfaces.Fluid.FlangeB pipe_out(redeclare package Medium =
+  Flows.Interfaces.Fluid.FlangeB       pipe_out(redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (
       Placement(transformation(extent={{70,-10},{90,10}}),
         iconTransformation(extent={{70,-10},{90,10}})));
@@ -72,9 +72,8 @@ equation
       points={{12,-54},{50,-54},{50,0},{80,0}},
       color={0,0,255},
       smooth=Smooth.None));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}),
-                         graphics={Ellipse(
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
+            {100,100}}), graphics={Ellipse(
           extent={{-82,30},{-36,-30}},
           fillColor={135,135,135},
           fillPattern=FillPattern.Solid,

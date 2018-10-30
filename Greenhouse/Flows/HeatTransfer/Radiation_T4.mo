@@ -1,4 +1,4 @@
-within Greenhouse.Flows.HeatTransfer;
+within Greenhouses.Flows.HeatTransfer;
 model Radiation_T4 "Lumped thermal element for radiation heat transfer"
   extends Modelica.Thermal.HeatTransfer.Interfaces.Element1D;
 

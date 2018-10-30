@@ -1,4 +1,4 @@
-within Greenhouse.Components.Greenhouse;
+within Greenhouses.Components.Greenhouse;
 model Air
   /******************** Parameters ********************/
   parameter Integer N_rad=2
@@ -62,7 +62,7 @@ equation
   der(T) = 1/(rho*c_p*V)*(Q_flow + P_Air);
 
   // Relative humidity
-  RH = massPort.VP/.Greenhouse.Functions.SaturatedVapourPressure(heatPort.T -
+  RH = massPort.VP/.Greenhouses.Functions.SaturatedVapourPressure(heatPort.T -
     273.15);
 
   connect(portT.y,preTem. T)

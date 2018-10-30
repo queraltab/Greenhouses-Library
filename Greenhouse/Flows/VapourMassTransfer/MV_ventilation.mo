@@ -1,7 +1,7 @@
-within Greenhouse.Flows.VapourMassTransfer;
+within Greenhouses.Flows.VapourMassTransfer;
 model MV_ventilation
   "Vapour mass flow exchanged from the greenhouse air to the outside air by ventilation"
-  extends Greenhouse.Flows.Interfaces.Vapour.Element1D;
+  extends Greenhouses.Flows.Interfaces.Vapour.Element1D;
 
   /*********************** Parameters ***********************/
   parameter Modelica.SIunits.Area A "floor surface";
@@ -30,7 +30,8 @@ model MV_ventilation
   Real R=8314 "gas constant";
   Modelica.SIunits.MolarMass M_H = 18 "kg/kmol";
 
-  HeatAndVapourTransfer.Utilities.NaturalVentilationRate_1 airExchangeRate(
+  HeatAndVapourTransfer.VentilationRates.NaturalVentilationRate_1
+    airExchangeRate(
     phi=phi,
     fr_window=fr_window,
     l=l,

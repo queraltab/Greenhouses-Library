@@ -1,4 +1,4 @@
-within Greenhouse.ControlSystems.Climate;
+within Greenhouses.ControlSystems.Climate;
 model Control_Illu "Controller for the artificial illumination"
   Modelica.SIunits.HeatFlux R_t_PAR=0 annotation(Dialog(group="Varying inputs"));
   parameter Real R_illu(unit "W/m2")=100;

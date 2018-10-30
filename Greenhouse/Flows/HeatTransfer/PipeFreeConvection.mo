@@ -1,4 +1,4 @@
-within Greenhouse.Flows.HeatTransfer;
+within Greenhouses.Flows.HeatTransfer;
 model PipeFreeConvection
   "Heating pipe heat exchange by free or hindered convection with air"
   extends Modelica.Thermal.HeatTransfer.Interfaces.Element1D;

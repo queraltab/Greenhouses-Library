@@ -1,7 +1,7 @@
-within Greenhouse.Flows.HeatAndVapourTransfer;
+within Greenhouses.Flows.HeatAndVapourTransfer;
 model Convection_Evaporation
   "Upward heat exchange by free convection between the thermal screen (filled port) and top air (empty port). Mass transfer by evaporation from upper side of the screen to the air at the top compartment"
-  extends Greenhouse.Flows.Interfaces.HeatAndVapour.Element1D;
+  extends Greenhouses.Flows.Interfaces.HeatAndVapour.Element1D;
 
   /*********************** Parameters ***********************/
   parameter Modelica.SIunits.Area A "floor surface";

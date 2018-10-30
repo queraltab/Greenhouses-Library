@@ -1,4 +1,4 @@
-within Greenhouse.Flows;
+within Greenhouses.Flows;
 package Sources 
 annotation (Icon(graphics={
         Rectangle(

@@ -1,4 +1,4 @@
-within Greenhouse.Flows.CO2MassTransfer;
+within Greenhouses.Flows.CO2MassTransfer;
 model CO2_SetPoint
   "The CO2 setpoint depends on the global radiation and the aperture of the ventilation openings"
   parameter Modelica.SIunits.HeatFlux I_g_max=500

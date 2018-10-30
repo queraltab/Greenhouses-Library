@@ -1,14 +1,14 @@
-within Greenhouse.Flows.Interfaces.Heat;
+within Greenhouses.Flows.Interfaces.Heat;
 model HeatPortConverter_ThermoCycle_Modelica
   "Heat port converter from the Modelica Library to the ThermoCycle Library heat port models"
   parameter Modelica.SIunits.Area A "Heat transfer area";
   parameter Integer N(min=1)=2 "Number of ports in series";
   parameter Integer Nt(min=1)=1 "Number of cells in parallel";
-  ThermoCycle.Interfaces.HeatTransfer.ThermalPort thermocyclePort(N=N)
+  ThermalPort                                     thermocyclePort(N=N)
     annotation (Placement(transformation(extent={{-32,-40},{28,-20}}),
         iconTransformation(extent={{-40,-40},{40,-20}})));
 public
-  Greenhouse.Flows.Interfaces.Heat.HeatPorts_a[N] heatPorts annotation (
+  Greenhouses.Flows.Interfaces.Heat.HeatPorts_a[N] heatPorts annotation (
       Placement(transformation(extent={{-10,22},{10,42}}), iconTransformation(
           extent={{-40,20},{40,40}})));
 equation
