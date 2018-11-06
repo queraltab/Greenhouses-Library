@@ -46,18 +46,16 @@ model HeatPump
         rotation=90,
         origin={-50,6})));
 
- Flows.Interfaces.Fluid.FlangeA       InFlow(redeclare package Medium =
-        Medium)
+  Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-90,-48},{-70,-28}}),
         iconTransformation(extent={{-84,-76},{-64,-56}})));
- Flows.Interfaces.Fluid.FlangeB       OutFlow(redeclare package Medium =
-        Medium)
+  Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-92,58},{-72,78}}),
         iconTransformation(extent={{-84,60},{-64,80}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a HeatSource
     annotation (Placement(transformation(extent={{72,-16},{92,4}}),
         iconTransformation(extent={{82,-6},{92,4}})));
-  Flows.Interfaces.Heat.HeatPortConverter               heatPortConverter(A=A, N=1)
+  Interfaces.Heat.HeatPortConverter heatPortConverter(A=A, N=1)
     annotation (Placement(transformation(extent={{-14,-4},{-34,16}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow prescribedHeatFlow
     annotation (Placement(transformation(extent={{28,-4},{8,16}})));

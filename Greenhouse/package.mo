@@ -1,5 +1,5 @@
 within ;
-package Greenhouses "The Greenhouse Modelica Library"
+package Greenhouses "The Greenhouses Modelica Library"
 
 
   annotation (uses(
@@ -7,7 +7,7 @@ package Greenhouses "The Greenhouse Modelica Library"
     DymolaCommands(version="1.1")),  Icon(coordinateSystem(preserveAspectRatio=
             false, extent={{-100,-100},{100,100}}), graphics={Bitmap(extent={{
               -100,100},{100,-100}}, fileName=
-            "modelica://Greenhouses/Resources/Images/GreenhouseLibraryIcon.png")}),
+            "modelica://Greenhouses/Resources/Images/GreenhousesLibraryIcon.jpg")}),
     Documentation(info="<html>
 <p><b></font><font style=\"font-size: 17pt; \">Welcome to the Greenhouse library!</b> </p>
 <p>The <b>Greenhouse</b> library is an <b>open-source</b> library for dynamic modelling of greenhouse indoor climate developed in the Modelica language. The library aims at providing an open modelling framework to simulate greenhouse climate and the energy interaction of greenhouses with generation (e.g. CHP and heat pumps) and storage units. </p>

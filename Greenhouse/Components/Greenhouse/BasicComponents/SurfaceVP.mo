@@ -10,9 +10,9 @@ model SurfaceVP
   Real VP(unit="Pa");
 
   /******************** Connectors ********************/
-  Flows.Interfaces.Vapour.WaterMassPort_a port "Saturation pressure"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}}),
-        iconTransformation(extent={{-10,-10},{10,10}})));
+  Interfaces.Vapour.WaterMassPort_a port "Saturation pressure" annotation (
+      Placement(transformation(extent={{-10,-10},{10,10}}), iconTransformation(
+          extent={{-10,-10},{10,10}})));
 
 equation
   VP = Functions.SaturatedVapourPressure(T - 273.15);

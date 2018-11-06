@@ -6,8 +6,8 @@ model RHSensor "Relative Humidity sensor"
   Modelica.Blocks.Interfaces.RealOutput RH
     "Absolute temperature as output signal"
     annotation (Placement(transformation(extent={{90,-10},{110,10}}, rotation=0)));
-  Greenhouses.Flows.Interfaces.Vapour.WaterMassPort_a massPort annotation (
-      Placement(transformation(extent={{-110,-50},{-90,-30}}, rotation=0)));
+  Greenhouses.Interfaces.Vapour.WaterMassPort_a massPort annotation (Placement(
+        transformation(extent={{-110,-50},{-90,-30}}, rotation=0)));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPort annotation (
       Placement(transformation(extent={{-110,30},{-90,50}},  rotation=0)));
 equation

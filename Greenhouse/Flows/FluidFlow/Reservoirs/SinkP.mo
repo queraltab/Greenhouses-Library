@@ -16,8 +16,8 @@ model SinkP "Pressure sink"
         origin={40,88},
         extent={{-20,-20},{20,20}},
         rotation=270)));
-  Greenhouses.Flows.Interfaces.Fluid.FlangeB flangeB(redeclare package Medium
-      = Medium) annotation (Placement(transformation(extent={{-94,-10},{-74,10}}),
+  Greenhouses.Interfaces.Fluid.FlangeB flangeB(redeclare package Medium =
+        Medium) annotation (Placement(transformation(extent={{-94,-10},{-74,10}}),
         iconTransformation(extent={{-94,-10},{-74,10}})));
 equation
   flangeB.p = p;

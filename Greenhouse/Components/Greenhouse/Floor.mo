@@ -31,8 +31,8 @@ public
     annotation (Placement(transformation(extent={{-10,-10},{10,10}}),
         iconTransformation(extent={{-10,-10},{10,10}})));
 
-  Flows.Interfaces.Heat.HeatFluxVectorInput R_Flr_Glob[N_rad] annotation (
-      Placement(transformation(
+  Interfaces.Heat.HeatFluxVectorInput R_Flr_Glob[N_rad] annotation (Placement(
+        transformation(
         extent={{-20,-20},{20,20}},
         rotation=-90,
         origin={-60,40})));

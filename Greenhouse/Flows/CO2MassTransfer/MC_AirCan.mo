@@ -8,9 +8,9 @@ model MC_AirCan
                                                                                                         annotation (Dialog(group="Varying inputs"));
 
   /******************** Connectors ********************/
-  Greenhouses.Flows.Interfaces.CO2.CO2Port_a port "Partial CO2 pressure"
-    annotation (Placement(transformation(extent={{-10,80},{10,100}}),
-        iconTransformation(extent={{-10,80},{10,100}})));
+  Greenhouses.Interfaces.CO2.CO2Port_a port "Partial CO2 pressure" annotation (
+      Placement(transformation(extent={{-10,80},{10,100}}), iconTransformation(
+          extent={{-10,80},{10,100}})));
 
 equation
   port.MC_flow = MC_AirCan;

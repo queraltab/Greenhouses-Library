@@ -5,17 +5,15 @@ replaceable package Medium = Media.DummyFluid constrainedby
     Modelica.Media.Interfaces.PartialMedium
     "Medium model - Incompressible Fluid" annotation (choicesAllMatching = true);
 /************ Thermal and fluid ports ***********/
- Interfaces.Fluid.FlangeA             InFlow(redeclare package Medium =
-        Medium)
+  Greenhouse.Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}}),
         iconTransformation(extent={{-120,-20},{-80,20}})));
- Interfaces.Fluid.FlangeB             OutFlow(redeclare package Medium =
-        Medium)
+  Greenhouse.Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{80,-10},{100,10}}),
         iconTransformation(extent={{80,-18},{120,20}})));
-Interfaces.Heat.ThermalPortL                      Wall_int
-    annotation (Placement(transformation(extent={{-28,40},{32,60}}),
-        iconTransformation(extent={{-40,40},{40,60}})));
+  Greenhouse.Interfaces.Heat.ThermalPortL Wall_int annotation (Placement(
+        transformation(extent={{-28,40},{32,60}}), iconTransformation(extent={{
+            -40,40},{40,60}})));
 /************ Geometric characteristics **************/
   parameter Integer Nt(min=1)=1 "Number of cells in parallel";
   constant Real pi = Modelica.Constants.pi "pi-greco";

@@ -6,15 +6,15 @@ model Cell1DimInc_2ports
     "Medium model - Incompressible Fluid" annotation (choicesAllMatching=true);
 
   /************ Thermal and fluid ports ***********/
-  Flows.Interfaces.Fluid.FlangeA       InFlow(redeclare package Medium =
-        Medium) annotation (Placement(transformation(extent={{-100,-10},{-80,
-            10}}), iconTransformation(extent={{-120,-20},{-80,20}})));
-  Flows.Interfaces.Fluid.FlangeB       OutFlow(redeclare package Medium =
-        Medium) annotation (Placement(transformation(extent={{80,-10},{100,10}}),
+  Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{-100,-10},{-80,10}}),
+        iconTransformation(extent={{-120,-20},{-80,20}})));
+  Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{80,-10},{100,10}}),
         iconTransformation(extent={{80,-18},{120,20}})));
-  Flows.Interfaces.Heat.ThermalPortL               Wall_int annotation (
-      Placement(transformation(extent={{-28,40},{32,60}}), iconTransformation(
-          extent={{-40,40},{40,60}})));
+  Interfaces.Heat.ThermalPortL Wall_int annotation (Placement(transformation(
+          extent={{-28,40},{32,60}}), iconTransformation(extent={{-40,40},{40,
+            60}})));
 
   /************ Geometric characteristics **************/
   constant Real pi=Modelica.Constants.pi "pi-greco";
@@ -73,9 +73,9 @@ model Cell1DimInc_2ports
     final x=0,
     final FluidState={fluidState})
     annotation (Placement(transformation(extent={{2,8},{22,-12}})));
-  Flows.Interfaces.Heat.ThermalPortL               HXInt annotation (
-      Placement(transformation(extent={{20,-60},{40,-40}}),
-        iconTransformation(extent={{20,-60},{40,-40}})));
+  Interfaces.Heat.ThermalPortL HXInt annotation (Placement(transformation(
+          extent={{20,-60},{40,-40}}), iconTransformation(extent={{20,-60},{40,
+            -40}})));
 
   /***************  VARIABLES ******************/
   Medium.ThermodynamicState fluidState;

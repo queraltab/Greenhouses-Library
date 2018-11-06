@@ -41,13 +41,13 @@ public
 
   BasicComponents.SurfaceVP surfaceVP(T=heatPort.T)
     annotation (Placement(transformation(extent={{38,-100},{58,-80}})));
-  Flows.Interfaces.Vapour.WaterMassPort_a massPort annotation (Placement(
+  Interfaces.Vapour.WaterMassPort_a massPort annotation (Placement(
         transformation(extent={{-10,-116},{10,-96}}), iconTransformation(extent=
            {{-10,-116},{10,-96}})));
 
-  Flows.Interfaces.Heat.HeatFluxVectorInput R_Can_Glob[N_rad] annotation (
-      Placement(transformation(extent={{-50,60},{-10,100}}), iconTransformation(
-          extent={{-50,60},{-10,100}})));
+  Interfaces.Heat.HeatFluxVectorInput R_Can_Glob[N_rad] annotation (Placement(
+        transformation(extent={{-50,60},{-10,100}}), iconTransformation(extent=
+            {{-50,60},{-10,100}})));
 equation
   if cardinality(R_Can_Glob)==0 then
     for i in 1:N_rad loop

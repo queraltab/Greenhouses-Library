@@ -29,8 +29,8 @@ model Radiation_N "Lumped thermal element for radiation heat transfer"
   // Discretization
   parameter Integer nNodes(min=1)=2 "Number of discrete flow volumes";
 
-  Greenhouses.Flows.Interfaces.Heat.HeatPorts_a[nNodes] heatPorts_a annotation (
-     Placement(transformation(
+  Greenhouses.Interfaces.Heat.HeatPorts_a[nNodes] heatPorts_a annotation (
+      Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-100,0}), iconTransformation(

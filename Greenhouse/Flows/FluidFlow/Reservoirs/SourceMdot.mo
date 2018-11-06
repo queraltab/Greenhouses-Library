@@ -36,7 +36,7 @@ model SourceMdot "Flowrate source for fluid flows"
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={-2,60})));
- Greenhouses.Flows.Interfaces.Fluid.FlangeB flangeB(redeclare package Medium =
+  Greenhouses.Interfaces.Fluid.FlangeB flangeB(redeclare package Medium =
         Medium)
     annotation (Placement(transformation(extent={{80,-10},{100,10}})));
 equation

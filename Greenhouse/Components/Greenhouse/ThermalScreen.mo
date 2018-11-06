@@ -40,7 +40,7 @@ public
 
   BasicComponents.SurfaceVP surfaceVP(T=T)
     annotation (Placement(transformation(extent={{20,20},{40,40}})));
-  Flows.Interfaces.Vapour.WaterMassPort_a massPort
+  Interfaces.Vapour.WaterMassPort_a massPort
     annotation (Placement(transformation(extent={{14,-10},{34,10}})));
 equation
   FF_i = SC;

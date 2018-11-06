@@ -167,7 +167,7 @@ model Greenhouse_1
     LAI=TYM.LAI,
     SC=SC.y)
     annotation (Placement(transformation(extent={{-200,130},{-178,152}})));
-  Components.HVAC.HeatingPipe pipe_low(
+  Components.Greenhouse.HeatingPipe pipe_low(
     d=0.051,
     freePipe=false,
     A=surface.k,
@@ -228,7 +228,7 @@ model Greenhouse_1
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-100,-114})));
-  Components.HVAC.HeatingPipe pipe_up(
+  Components.Greenhouse.HeatingPipe pipe_up(
     A=surface.k,
     freePipe=true,
     d=0.025,
@@ -1105,14 +1105,14 @@ Vapour transfer"),
           fillPattern=FillPattern.Solid)}),
                                  Icon(coordinateSystem(preserveAspectRatio=false,
           extent={{-240,-180},{240,180}}), graphics={
-        Ellipse(lineColor = {75,138,73},
+        Ellipse(lineColor=  {75,138,73},
                 fillColor={255,255,255},
-                fillPattern = FillPattern.Solid,
+                fillPattern=  FillPattern.Solid,
                 extent={{-180,-180},{180,180}}),
-        Polygon(lineColor = {0,0,255},
-                fillColor = {75,138,73},
-                pattern = LinePattern.None,
-                fillPattern = FillPattern.Solid,
+        Polygon(lineColor=  {0,0,255},
+                fillColor=  {75,138,73},
+                pattern=  LinePattern.None,
+                fillPattern=  FillPattern.Solid,
                 points={{-70,120},{110,0},{-70,-120},{-70,120}})}),
     Documentation(info="<html>
 <p><b><font style=\"font-size: 12pt; \">Simulation of greenhouse climate</b></p>

@@ -1,7 +1,7 @@
 within Greenhouses.Flows.CO2MassTransfer;
 model MC_ventilation
   "CO2 mass flow exchange accompanying an air ventilation process. Distinguishes from the two different air zones on the presence of a thermal screen."
-  extends Greenhouses.Flows.Interfaces.CO2.Element1D;
+  extends Greenhouses.Interfaces.CO2.Element1D;
 
   /*********************** Parameters ***********************/
   parameter Boolean thermalScreen=false

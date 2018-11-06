@@ -78,18 +78,18 @@ model Solar_model "Global, PAR and NIR heat fluxes"
 
   /********************* Connectors *********************/
 
-  Flows.Interfaces.Heat.HeatFluxInput I_glob
+  Interfaces.Heat.HeatFluxInput I_glob
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
-  Flows.Interfaces.Heat.HeatFluxOutput R_SunCov_Glob annotation (Placement(
+  Interfaces.Heat.HeatFluxOutput R_SunCov_Glob annotation (Placement(
         transformation(extent={{100,40},{120,60}}), iconTransformation(extent={
             {100,40},{120,60}})));
-  Flows.Interfaces.Heat.HeatFluxOutput R_SunAir_Glob annotation (Placement(
+  Interfaces.Heat.HeatFluxOutput R_SunAir_Glob annotation (Placement(
         transformation(extent={{100,-10},{120,10}}), iconTransformation(extent=
             {{100,-10},{120,10}})));
-  Flows.Interfaces.Heat.HeatFluxOutput R_SunCan_Glob annotation (Placement(
+  Interfaces.Heat.HeatFluxOutput R_SunCan_Glob annotation (Placement(
         transformation(extent={{100,-60},{120,-40}}), iconTransformation(extent=
            {{100,-60},{120,-40}})));
-  Flows.Interfaces.Heat.HeatFluxOutput R_SunFlr_Glob annotation (Placement(
+  Interfaces.Heat.HeatFluxOutput R_SunFlr_Glob annotation (Placement(
         transformation(extent={{100,-110},{120,-90}}), iconTransformation(
           extent={{100,-110},{120,-90}})));
 equation

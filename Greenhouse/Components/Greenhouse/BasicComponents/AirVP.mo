@@ -19,7 +19,7 @@ model AirVP
   Modelica.SIunits.Pressure VP(start=VP_start);
 
   /******************** Connectors ********************/
-  Greenhouse.Flows.Interfaces.Vapour.WaterMassPort_a port(VP(start=VP_start))
+  Greenhouse.Interfaces.Vapour.WaterMassPort_a port(VP(start=VP_start))
     "Saturation pressure" annotation (Placement(transformation(extent={{60,40},
             {80,60}}), iconTransformation(extent={{-10,-10},{10,10}})));
 

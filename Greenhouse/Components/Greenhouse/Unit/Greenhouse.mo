@@ -167,7 +167,7 @@ model Greenhouse
     LAI=TYM.LAI,
     SC=SC.y)
     annotation (Placement(transformation(extent={{-200,130},{-178,152}})));
-  HVAC.HeatingPipe pipe_low(
+  HeatingPipe pipe_low(
     d=0.051,
     freePipe=false,
     A=surface.k,
@@ -228,7 +228,7 @@ model Greenhouse
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-100,-114})));
-  HVAC.HeatingPipe pipe_up(
+  HeatingPipe pipe_up(
     A=surface.k,
     freePipe=true,
     d=0.025,
@@ -467,17 +467,14 @@ model Greenhouse
     columns=1:3)
     "Climate set points 10Dec-22Nov: daily setpoints based on maximizing photosynthesis rate, minimum night temperature of 16, 24h mean temperature of 20"
     annotation (Placement(transformation(extent={{-118,152},{-98,172}})));
-  Flows.Interfaces.Fluid.FlangeA       flangeA(redeclare package Medium =
-        Modelica.Media.Water.ConstantPropertyLiquidWater)
-                                               annotation (Placement(
-        transformation(extent={{-36,-182},{-16,-162}}),
-                                                      iconTransformation(
+  Interfaces.Fluid.FlangeA flangeA(redeclare package Medium =
+        Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (Placement(
+        transformation(extent={{-36,-182},{-16,-162}}), iconTransformation(
           extent={{-176,-60},{-156,-40}})));
-  Flows.Interfaces.Fluid.FlangeB       flangeB(redeclare package Medium =
-        Modelica.Media.Water.ConstantPropertyLiquidWater)
-                                               annotation (Placement(
-        transformation(extent={{38,-22},{58,-2}}),
-        iconTransformation(extent={{-176,-158},{-156,-138}})));
+  Interfaces.Fluid.FlangeB flangeB(redeclare package Medium =
+        Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (Placement(
+        transformation(extent={{38,-22},{58,-2}}), iconTransformation(extent={{
+            -176,-158},{-156,-138}})));
   Modelica.Blocks.Interfaces.RealOutput PID_Mdot_CS annotation (Placement(
         transformation(extent={{164,-106},{144,-86}}),iconTransformation(extent={{156,
             -104},{176,-84}})));

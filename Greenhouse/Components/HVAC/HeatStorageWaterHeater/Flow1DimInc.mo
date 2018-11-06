@@ -21,16 +21,15 @@ public
  end SummaryClass;
  SummaryClass Summary( T_profile(n=N, T_cell = Cells[:].T), n=N, h = Cells[:].h, hnode = hnode_, rho = Cells.rho, T = Cells.T, Mdot = InFlow.m_flow, p = Cells[1].p);
 /************ Thermal and fluid ports ***********/
-  Flows.Interfaces.Fluid.FlangeA       InFlow(redeclare package Medium = Medium)
+  Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}}),
         iconTransformation(extent={{-120,-20},{-80,20}})));
-  Flows.Interfaces.Fluid.FlangeB       OutFlow(redeclare package Medium =
-        Medium)
+  Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{80,-10},{100,10}}),
         iconTransformation(extent={{80,-18},{120,20}})));
-  Flows.Interfaces.Heat.ThermalPort               Wall_int(N=N)
-    annotation (Placement(transformation(extent={{-28,40},{32,60}}),
-        iconTransformation(extent={{-40,40},{40,60}})));
+  Interfaces.Heat.ThermalPort Wall_int(N=N) annotation (Placement(
+        transformation(extent={{-28,40},{32,60}}), iconTransformation(extent={{
+            -40,40},{40,60}})));
 /************ Geometric characteristics **************/
   parameter Integer Nt(min=1)=1 "Number of cells in parallel";
   constant Real pi = Modelica.Constants.pi "pi-greco";
@@ -85,7 +84,7 @@ constrainedby Flows.FluidFlow.HeatTransfer.BaseClasses.PartialHeatTransferZones
     each steadystate=steadystate)
                         annotation (Placement(transformation(extent={{-26,-62},
             {28,-18}})));
-  Flows.Interfaces.Heat.ThermalPortConverter               thermalPortConverter(N=N)
+  Interfaces.Heat.ThermalPortConverter thermalPortConverter(N=N)
     annotation (Placement(transformation(extent={{-8,-4},{10,22}})));
 protected
   Modelica.SIunits.SpecificEnthalpy hnode_[N+1];

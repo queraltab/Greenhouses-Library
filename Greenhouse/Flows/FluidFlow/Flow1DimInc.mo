@@ -22,13 +22,10 @@ public
  end SummaryClass;
  SummaryClass Summary( T_profile(n=N, T_cell = Cells[:].T), n=N, h = Cells[:].h, hnode = hnode_, rho = Cells.rho, T = Cells.T, Mdot = InFlow.m_flow, p = Cells[1].p);
 /************ Thermal and fluid ports ***********/
-  Greenhouse.Flows.Interfaces.Fluid.FlangeA
-                                       InFlow(redeclare package Medium = Medium)
+  Greenhouse.Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}}),
         iconTransformation(extent={{-120,-20},{-80,20}})));
-  Greenhouse.Flows.Interfaces.Fluid.FlangeB
-                                       OutFlow(redeclare package Medium =
-        Medium)
+  Greenhouse.Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{80,-10},{100,10}}),
         iconTransformation(extent={{80,-20},{120,20}})));
 /************ Geometric characteristics **************/
@@ -83,21 +80,21 @@ constrainedby
     hstart=hstart,
     each steadystate=steadystate)
     annotation (Placement(transformation(extent={{-26,-62},{28,-18}})));
-  Greenhouse.Flows.Interfaces.Heat.ThermalPortConverter    thermalPortConverter(N=N)
+  Greenhouse.Interfaces.Heat.ThermalPortConverter thermalPortConverter(N=N)
     annotation (Placement(transformation(extent={{-8,-4},{10,22}})));
 protected
   Modelica.SIunits.SpecificEnthalpy hnode_[N+1];
   /*************************************** EQUATION *************************************/
 public
-  Greenhouse.Flows.Interfaces.Heat.HeatPortConverter_ThermoCycle_Modelica
+  Greenhouse.Interfaces.Heat.HeatPortConverter_ThermoCycle_Modelica
     heatPort_ThermoCycle_Modelica(
     N=N,
     A=A,
     Nt=Nt) annotation (Placement(transformation(extent={{-8,44},{12,64}})));
 public
-  Greenhouse.Flows.Interfaces.Heat.HeatPorts_a[N] heatPorts_a annotation (
-      Placement(transformation(extent={{-8,72},{12,92}}), iconTransformation(
-          extent={{-40,40},{40,60}})));
+  Greenhouse.Interfaces.Heat.HeatPorts_a[N] heatPorts_a annotation (Placement(
+        transformation(extent={{-8,72},{12,92}}), iconTransformation(extent={{-40,
+            40},{40,60}})));
 equation
   // Connect wall and refrigerant cells with eachother
   for i in 1:N-1 loop

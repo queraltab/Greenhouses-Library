@@ -1,5 +1,6 @@
 within Greenhouses.Flows.FluidFlow;
 model Pump_Mdot "Pump model - Prescribed mass flow rate"
+  import Greenhouses;
   /***************************************** FLUID *****************************************/
   replaceable package Medium = Greenhouses.Media.DummyFluid constrainedby
     Modelica.Media.Interfaces.PartialMedium "Medium model" annotation (choicesAllMatching = true);
@@ -19,10 +20,10 @@ model Pump_Mdot "Pump model - Prescribed mass flow rate"
   Modelica.SIunits.Pressure p "Inlet pressure";
   Modelica.SIunits.Density rho(start=1000) "Liquid density";
   Modelica.SIunits.Power Wdot "Power Consumption";
-  Interfaces.Fluid.FlangeA inlet(redeclare package Medium = Medium) annotation (
-     Placement(transformation(extent={{-92,-14},{-52,24}}), iconTransformation(
-          extent={{-92,-14},{-52,24}})));
-  Interfaces.Fluid.FlangeB outlet(redeclare package Medium = Medium)
+  Greenhouses.Interfaces.Fluid.FlangeA inlet(redeclare package Medium = Medium)
+    annotation (Placement(transformation(extent={{-92,-14},{-52,24}}),
+        iconTransformation(extent={{-92,-14},{-52,24}})));
+  Greenhouses.Interfaces.Fluid.FlangeB outlet(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{36,54},{76,94}}),
         iconTransformation(extent={{36,54},{76,94}})));
   Modelica.Blocks.Interfaces.RealInput flow_in

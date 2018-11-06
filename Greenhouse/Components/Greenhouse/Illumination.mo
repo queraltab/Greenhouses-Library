@@ -43,7 +43,7 @@ model Illumination "Artificial Illumination of the greenhouse"
   Modelica.Blocks.Interfaces.RealInput switch
     annotation (Placement(transformation(extent={{-42,44},{-2,84}})));
 
-  Flows.Interfaces.Heat.HeatFluxOutput R_IluAir_Glob annotation (Placement(
+  Interfaces.Heat.HeatFluxOutput R_IluAir_Glob annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
@@ -51,7 +51,7 @@ model Illumination "Artificial Illumination of the greenhouse"
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={60,-70})));
-  Flows.Interfaces.Heat.HeatFluxOutput R_IluCan_Glob annotation (Placement(
+  Interfaces.Heat.HeatFluxOutput R_IluCan_Glob annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
@@ -59,7 +59,7 @@ model Illumination "Artificial Illumination of the greenhouse"
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={0,-70})));
-  Flows.Interfaces.Heat.HeatFluxOutput R_IluFlr_Glob annotation (Placement(
+  Interfaces.Heat.HeatFluxOutput R_IluFlr_Glob annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,

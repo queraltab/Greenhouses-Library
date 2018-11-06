@@ -1,7 +1,7 @@
 within Greenhouses.Flows.HeatAndVapourTransfer;
 model Ventilation
   "Heat and vapour mass flows exchanged from the greenhouse air to the outside air by ventilation"
-  extends Greenhouses.Flows.Interfaces.HeatAndVapour.Element1D;
+  extends Greenhouses.Interfaces.HeatAndVapour.Element1D;
 
   /*********************** Parameters ***********************/
   parameter Modelica.SIunits.Area A "Greenhouse floor surface";

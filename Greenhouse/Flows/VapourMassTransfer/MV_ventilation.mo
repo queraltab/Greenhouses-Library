@@ -1,7 +1,7 @@
 within Greenhouses.Flows.VapourMassTransfer;
 model MV_ventilation
   "Vapour mass flow exchanged from the greenhouse air to the outside air by ventilation"
-  extends Greenhouses.Flows.Interfaces.Vapour.Element1D;
+  extends Greenhouses.Interfaces.Vapour.Element1D;
 
   /*********************** Parameters ***********************/
   parameter Modelica.SIunits.Area A "floor surface";

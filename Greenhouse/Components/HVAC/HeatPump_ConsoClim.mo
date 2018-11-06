@@ -66,17 +66,17 @@ model HeatPump_ConsoClim
     "Maximum temperature at the outlet";
   parameter Modelica.SIunits.Time tau = 60 "Start-up time constant";
 
-  Flows.Interfaces.Fluid.FlangeA       Supply_cd(redeclare package Medium =
-        Medium1) annotation (Placement(transformation(extent={{80,-80},{100,-60}}),
+  Interfaces.Fluid.FlangeA Supply_cd(redeclare package Medium = Medium1)
+    annotation (Placement(transformation(extent={{80,-80},{100,-60}}),
         iconTransformation(extent={{80,-80},{100,-60}})));
-  Flows.Interfaces.Fluid.FlangeB       Exhaust_cd(redeclare package Medium =
-        Medium1) annotation (Placement(transformation(extent={{80,60},{100,80}}),
+  Interfaces.Fluid.FlangeB Exhaust_cd(redeclare package Medium = Medium1)
+    annotation (Placement(transformation(extent={{80,60},{100,80}}),
         iconTransformation(extent={{80,60},{100,80}})));
-  Flows.Interfaces.Fluid.FlangeA       Supply_ev(redeclare package Medium =
-        Medium2) annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
+  Interfaces.Fluid.FlangeA Supply_ev(redeclare package Medium = Medium2)
+    annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
         iconTransformation(extent={{-100,60},{-80,80}})));
-  Flows.Interfaces.Fluid.FlangeB       Exhaust_ev(redeclare package Medium =
-        Medium2) annotation (Placement(transformation(extent={{-100,-80},{-80,-60}}),
+  Interfaces.Fluid.FlangeB Exhaust_ev(redeclare package Medium = Medium2)
+    annotation (Placement(transformation(extent={{-100,-80},{-80,-60}}),
         iconTransformation(extent={{-100,-80},{-80,-60}})));
   Modelica.Blocks.Interfaces.RealInput W_dot_set annotation (Placement(
         transformation(extent={{-34,-130},{6,-90}}), iconTransformation(
@@ -98,7 +98,7 @@ model HeatPump_ConsoClim
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={48,4})));
-  Flows.Interfaces.Heat.HeatPortConverter               heatPortConverter(A=A, N=1)
+  Interfaces.Heat.HeatPortConverter heatPortConverter(A=A, N=1)
     annotation (Placement(transformation(extent={{0,-6},{20,14}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow prescribedHeatFlow
     annotation (Placement(transformation(extent={{-46,-6},{-26,14}})));

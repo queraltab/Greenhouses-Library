@@ -103,8 +103,7 @@ parameter Modelica.SIunits.SpecificHeatCapacity c_wall_hx= 500
         Greenhouses.Flows.FluidFlow.HeatTransfer.Constant)
     annotation (Placement(transformation(extent={{-16,-10},{18,24}})));
 
-  Flows.Interfaces.Heat.ThermalPortConverter               thermalPortConverter(N=N2 - N1
-         + 1)
+  Interfaces.Heat.ThermalPortConverter thermalPortConverter(N=N2 - N1 + 1)
     annotation (Placement(transformation(extent={{-8,-4},{12,-32}})));
 
   MetalWall                           metalWall(
@@ -135,24 +134,21 @@ end SummaryBase;
 replaceable record SummaryClass = SummaryBase;
 SummaryClass Summary( T_profile( n=N, Tsf = Tsf_,  Twall = Twall_, Twf = cell1DimInc_hx.T));
 
-Flows.Interfaces.Heat.ThermalPortL               Wall_ext
-    annotation (Placement(transformation(extent={{-14,48},{16,60}}),
-        iconTransformation(extent={{-40,-6},{-34,12}})));
-  Flows.Interfaces.Fluid.FlangeA       MainFluid_su(redeclare package Medium =
-        MainFluid) annotation (Placement(transformation(extent={{-52,-94},{-32,-74}}),
-                   iconTransformation(extent={{-42,-84},{-32,-74}})));
-  Flows.Interfaces.Fluid.FlangeB       SecondaryFluid_ex(redeclare package
-      Medium = SecondaryFluid)
-                   annotation (Placement(transformation(extent={{-64,-76},{-44,-56}}),
-        iconTransformation(extent={{34,-36},{46,-24}})));
-  Flows.Interfaces.Fluid.FlangeB       MainFluid_ex(redeclare package Medium =
-        MainFluid) annotation (Placement(transformation(extent={{-14,72},{6,
-            92}}),
+  Interfaces.Heat.ThermalPortL Wall_ext annotation (Placement(transformation(
+          extent={{-14,48},{16,60}}), iconTransformation(extent={{-40,-6},{-34,
+            12}})));
+  Interfaces.Fluid.FlangeA MainFluid_su(redeclare package Medium = MainFluid)
+    annotation (Placement(transformation(extent={{-52,-94},{-32,-74}}),
+        iconTransformation(extent={{-42,-84},{-32,-74}})));
+  Interfaces.Fluid.FlangeB SecondaryFluid_ex(redeclare package Medium =
+        SecondaryFluid) annotation (Placement(transformation(extent={{-64,-76},
+            {-44,-56}}), iconTransformation(extent={{34,-36},{46,-24}})));
+  Interfaces.Fluid.FlangeB MainFluid_ex(redeclare package Medium = MainFluid)
+    annotation (Placement(transformation(extent={{-14,72},{6,92}}),
         iconTransformation(extent={{-6,80},{6,92}})));
-  Flows.Interfaces.Fluid.FlangeA       SecondaryFluid_su(redeclare package
-      Medium = SecondaryFluid)
-                        annotation (Placement(transformation(extent={{54,-76},{74,
-            -56}}),iconTransformation(extent={{34,28},{46,40}})));
+  Interfaces.Fluid.FlangeA SecondaryFluid_su(redeclare package Medium =
+        SecondaryFluid) annotation (Placement(transformation(extent={{54,-76},{
+            74,-56}}), iconTransformation(extent={{34,28},{46,40}})));
   Modelica.Blocks.Interfaces.BooleanInput R_on_off annotation (Placement(
         transformation(
         extent={{-20,-20},{20,20}},

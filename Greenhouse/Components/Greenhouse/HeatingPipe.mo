@@ -1,4 +1,4 @@
-within Greenhouses.Components.HVAC;
+within Greenhouses.Components.Greenhouse;
 model HeatingPipe
   "Primary heating distribution netwrok with a control of pipe mass flow rate. Pipe model using a 1-D fluid flow model (finite volume discretization - incompressible fluid model) from the ThermoCycle library."
   /******************** Parameters ********************/
@@ -40,17 +40,17 @@ model HeatingPipe
     annotation (Placement(transformation(extent={{-10,-66},{14,-42}})));
 
 public
-  Flows.Interfaces.Heat.HeatPorts_a[N] heatPorts annotation (Placement(
-        transformation(extent={{-10,-10},{10,10}}), iconTransformation(extent={{
-            -40,30},{40,50}})));
-  Flows.Interfaces.Fluid.FlangeA       pipe_in(redeclare package Medium =
-        Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (
-      Placement(transformation(extent={{-90,-10},{-70,10}}),
-        iconTransformation(extent={{-90,-10},{-70,10}})));
-  Flows.Interfaces.Fluid.FlangeB       pipe_out(redeclare package Medium =
-        Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (
-      Placement(transformation(extent={{70,-10},{90,10}}),
-        iconTransformation(extent={{70,-10},{90,10}})));
+  Interfaces.Heat.HeatPorts_a[N] heatPorts annotation (Placement(transformation(
+          extent={{-10,-10},{10,10}}), iconTransformation(extent={{-40,30},{40,
+            50}})));
+  Interfaces.Fluid.FlangeA pipe_in(redeclare package Medium =
+        Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (Placement(
+        transformation(extent={{-90,-10},{-70,10}}), iconTransformation(extent=
+            {{-90,-10},{-70,10}})));
+  Interfaces.Fluid.FlangeB pipe_out(redeclare package Medium =
+        Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (Placement(
+        transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{
+            70,-10},{90,10}})));
 equation
   if freePipe then
     c=0.5;

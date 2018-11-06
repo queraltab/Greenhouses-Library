@@ -20,11 +20,10 @@ model Pdrop "Linear pressure drop"
   /* Variables */
   Modelica.SIunits.MassFlowRate Mdot(start=Mdot_start);
   Modelica.SIunits.Pressure DELTAp(start=DELTAp_start);
-  Greenhouses.Flows.Interfaces.Fluid.FlangeA InFlow(redeclare package Medium =
-        Medium)
+  Greenhouses.Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
-  Greenhouses.Flows.Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium
-      = Medium)
+  Greenhouses.Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium =
+        Medium)
     annotation (Placement(transformation(extent={{80,-10},{100,10}})));
 equation
   InFlow.m_flow + OutFlow.m_flow = 0 "Mass balance";

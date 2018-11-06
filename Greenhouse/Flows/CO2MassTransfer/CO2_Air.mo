@@ -18,7 +18,7 @@ model CO2_Air "CO2 mass balance of an air volume"
   Real CO2_ppm;
 
   /******************** Connectors ********************/
-  Greenhouse.Flows.Interfaces.CO2.CO2Port_a port(CO2(start=CO2_start))
+  Greenhouse.Interfaces.CO2.CO2Port_a port(CO2(start=CO2_start))
     "Partial CO2 pressure" annotation (Placement(transformation(extent={{60,40},
             {80,60}}), iconTransformation(extent={{-10,-10},{10,10}})));
 

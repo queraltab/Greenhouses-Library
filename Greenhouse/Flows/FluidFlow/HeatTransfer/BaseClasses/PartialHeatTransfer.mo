@@ -19,7 +19,7 @@ partial model PartialHeatTransfer
     Modelica.SIunits.Temperature[n] T_fluid = Medium.temperature(FluidState)
     "Temperature of the fluid for the heat transfer process";
 
-  Greenhouses.Flows.Interfaces.Heat.ThermalPortL[n] thermalPortL annotation (
+  Greenhouses.Interfaces.Heat.ThermalPortL[n] thermalPortL annotation (
       Placement(transformation(extent={{-24,56},{20,76}}), iconTransformation(
           extent={{-24,56},{20,76}})));
 

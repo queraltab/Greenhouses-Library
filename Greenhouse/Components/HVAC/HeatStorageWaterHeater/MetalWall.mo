@@ -25,12 +25,12 @@ parameter Modelica.SIunits.Area Aint "Heat exchange area internal side";
 /*Numerical Option */
 parameter Boolean steadystate_T_wall=true
     "if true, sets the derivative of T_wall to zero during Initialization"    annotation (Dialog(group="Initialization options", tab="Initialization"));
-  Flows.Interfaces.Heat.ThermalPort Wall_int(N=N, T(start=Tstart_wall))
-    annotation (Placement(transformation(extent={{-30,20},{30,40}}),
-        iconTransformation(extent={{-30,20},{30,40}})));
-  Flows.Interfaces.Heat.ThermalPort Wall_ext(N=N, T(start=Tstart_wall))
-    annotation (Placement(transformation(extent={{-30,-20},{30,0}}),
-        iconTransformation(extent={{-32,-40},{28,-20}})));
+  Interfaces.Heat.ThermalPort Wall_int(N=N, T(start=Tstart_wall)) annotation (
+      Placement(transformation(extent={{-30,20},{30,40}}), iconTransformation(
+          extent={{-30,20},{30,40}})));
+  Interfaces.Heat.ThermalPort Wall_ext(N=N, T(start=Tstart_wall)) annotation (
+      Placement(transformation(extent={{-30,-20},{30,0}}), iconTransformation(
+          extent={{-32,-40},{28,-20}})));
 /* METAL WALL */
 Modelica.SIunits.Temperature T_wall[N](start=linspace(
           Tstart_wall_1,

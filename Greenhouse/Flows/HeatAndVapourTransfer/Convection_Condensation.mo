@@ -2,7 +2,7 @@ within Greenhouses.Flows.HeatAndVapourTransfer;
 model Convection_Condensation "Upward or downward heat exchange by free convection from an horizontal or inclined surface.
   Mass transfer by condensation from the air (filled port) to the cover/screen (empty port).
   If studying heat exchange of Air-Floor: connect the filled port to the floor and the unfilled port to the air."
-  extends Greenhouses.Flows.Interfaces.HeatAndVapour.Element1D;
+  extends Greenhouses.Interfaces.HeatAndVapour.Element1D;
 
   /*********************** Parameters ***********************/
   parameter Modelica.SIunits.Angle phi

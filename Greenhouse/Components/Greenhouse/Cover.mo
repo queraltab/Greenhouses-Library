@@ -36,9 +36,9 @@ public
 
   BasicComponents.SurfaceVP surfaceVP(T=heatPort.T)
     annotation (Placement(transformation(extent={{30,20},{50,40}})));
-  Flows.Interfaces.Vapour.WaterMassPort_a massPort
+  Interfaces.Vapour.WaterMassPort_a massPort
     annotation (Placement(transformation(extent={{30,-10},{50,10}})));
-  Flows.Interfaces.Heat.HeatFluxInput R_SunCov_Glob annotation (Placement(
+  Interfaces.Heat.HeatFluxInput R_SunCov_Glob annotation (Placement(
         transformation(
         extent={{-20,-20},{20,20}},
         rotation=-90,

@@ -40,11 +40,11 @@ public
 
   BasicComponents.AirVP airVP(V_air=V, steadystate=steadystateVP)
     annotation (Placement(transformation(extent={{38,24},{58,44}})));
-  Flows.Interfaces.Vapour.WaterMassPort_a massPort annotation (Placement(
+  Interfaces.Vapour.WaterMassPort_a massPort annotation (Placement(
         transformation(extent={{12,-10},{32,10}}), iconTransformation(extent={{
             12,-10},{32,10}})));
-  Flows.Interfaces.Heat.HeatFluxVectorInput R_Air_Glob[N_rad] annotation (
-      Placement(transformation(
+  Interfaces.Heat.HeatFluxVectorInput R_Air_Glob[N_rad] annotation (Placement(
+        transformation(
         extent={{-20,-20},{20,20}},
         rotation=-90,
         origin={-50,60})));
