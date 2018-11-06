@@ -2,8 +2,10 @@ within Greenhouses.Components.HVAC;
 model CHP
 
   //replaceable package Medium = Modelica.Media.Water.WaterIF97_ph;
-  replaceable package Medium = Greenhouses.Media.StandardWater constrainedby
-    Modelica.Media.Interfaces.PartialMedium "Main fluid"   annotation (choicesAllMatching = true);
+  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater
+                                                                                constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+      annotation (choicesAllMatching = true);
 
   parameter Modelica.SIunits.Volume V=0.005 "Internal volume";
   parameter Modelica.SIunits.Area A = 10 "Heat exchange area";

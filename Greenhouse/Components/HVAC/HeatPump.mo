@@ -2,8 +2,10 @@ within Greenhouses.Components.HVAC;
 model HeatPump
   "Performance-based model of a heat pump in which we consider a constant secondary-law efficiency and a linear correlation between the nominal power and temperature"
 
-  replaceable package Medium = Greenhouses.Media.StandardWater constrainedby
-    Modelica.Media.Interfaces.PartialMedium "Main fluid"   annotation (choicesAllMatching = true);
+  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater
+                                                                                constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+      annotation (choicesAllMatching = true);
 
   parameter Modelica.SIunits.Volume V=0.005 "Internal volume";
   parameter Modelica.SIunits.Area A = 10 "Heat exchange area";

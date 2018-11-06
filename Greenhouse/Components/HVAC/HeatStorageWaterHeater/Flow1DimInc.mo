@@ -1,9 +1,10 @@
 within Greenhouses.Components.HVAC.HeatStorageWaterHeater;
 model Flow1DimInc
   "1-D fluid flow model (finite volume discretization - incompressible fluid model). Based on the Cell component"
-replaceable package Medium = Media.DummyFluid constrainedby
-    Modelica.Media.Interfaces.PartialMedium
-    "Medium model - Incompressible Fluid" annotation (choicesAllMatching = true);
+  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater
+                                                                                constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+      annotation (choicesAllMatching = true);
 public
  record SummaryClass
     replaceable Arrays T_profile;

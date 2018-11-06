@@ -2,12 +2,15 @@ within Greenhouses.Components.HVAC;
 model HeatPump_ConsoClim
   "Variation of ConsoClim model. Imposing the Wdot instead of the T_cd"
   replaceable package Medium1 =
-    Greenhouses.Media.StandardWater constrainedby
-    Modelica.Media.Interfaces.PartialMedium "Condenser" annotation (choicesAllMatching = true);
+      Modelica.Media.Water.ConstantPropertyLiquidWater                          constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component condenser"
+      annotation (choicesAllMatching = true);
 
   replaceable package Medium2 =
-    Greenhouses.Media.StandardWater constrainedby
-    Modelica.Media.Interfaces.PartialMedium "Evaporator" annotation (choicesAllMatching = true);
+      Modelica.Media.Water.ConstantPropertyLiquidWater                          constrainedby
+    Modelica.Media.Interfaces.PartialMedium
+    "Medium in the component evaporator"
+      annotation (choicesAllMatching = true);
 
   Modelica.Blocks.Interfaces.RealOutput W_dot_cp(start = 1) "[W]"
     annotation (Placement(transformation(extent={{54,98},{74,118}}),

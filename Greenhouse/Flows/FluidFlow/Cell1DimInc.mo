@@ -1,9 +1,11 @@
 within Greenhouses.Flows.FluidFlow;
 model Cell1DimInc "1-D incompressible fluid flow model"
   import Greenhouse = Greenhouses;
-replaceable package Medium = Media.DummyFluid constrainedby
-    Modelica.Media.Interfaces.PartialMedium
-    "Medium model - Incompressible Fluid" annotation (choicesAllMatching = true);
+  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater
+                                                                                constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+      annotation (choicesAllMatching = true);
+
 /************ Thermal and fluid ports ***********/
   Greenhouse.Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}}),
@@ -36,9 +38,16 @@ parameter Modelica.SIunits.Pressure pstart "Fluid pressure start value"
     annotation (Dialog(group="Initialization options", tab="Initialization"));
 /********************************* HEAT TRANSFER MODEL ********************************/
 /* Heat transfer Model */
-replaceable model HeatTransfer =
-Greenhouse.Flows.FluidFlow.HeatTransfer.MassFlowDependence
-constrainedby
+//   replaceable model HeatTransfer =
+//       Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.IdealFlowHeatTransfer
+//     constrainedby
+//     Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.PartialFlowHeatTransfer
+//     "Wall heat transfer"
+//      annotation (Dialog(tab="Assumptions", group="Heat transfer",enable=use_HeatTransfer),choicesAllMatching=true);
+
+ replaceable model HeatTransfer =
+ Greenhouse.Flows.FluidFlow.HeatTransfer.MassFlowDependence
+ constrainedby
     Greenhouse.Flows.FluidFlow.HeatTransfer.BaseClasses.PartialHeatTransferZones
     "Convective heat transfer"                                                         annotation (choicesAllMatching = true);
 Greenhouse.Flows.FluidFlow.HeatTransfer.MassFlowDependence

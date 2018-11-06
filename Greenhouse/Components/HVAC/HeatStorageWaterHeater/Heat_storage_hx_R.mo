@@ -2,12 +2,15 @@ within Greenhouses.Components.HVAC.HeatStorageWaterHeater;
 model Heat_storage_hx_R
   "Stratified tank with an internal heat exchanger, ambient heat losses and resistance heating"
 
-replaceable package MainFluid = Media.StandardWater
-                                               constrainedby
-    Modelica.Media.Interfaces.PartialMedium "Main fluid"   annotation (choicesAllMatching = true);
-replaceable package SecondaryFluid = Media.StandardWater
-                                               constrainedby
-    Modelica.Media.Interfaces.PartialMedium "Secondary fluid"  annotation (choicesAllMatching = true);
+  replaceable package MainFluid =
+      Modelica.Media.Water.ConstantPropertyLiquidWater                          constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+      annotation (choicesAllMatching = true);
+
+  replaceable package SecondaryFluid =
+      Modelica.Media.Water.ConstantPropertyLiquidWater                          constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+      annotation (choicesAllMatching = true);
 
   parameter Modelica.SIunits.Length htot=1 "Total height of the tank";
   parameter Modelica.SIunits.Length h1=0.3

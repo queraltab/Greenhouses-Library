@@ -1,8 +1,10 @@
 within Greenhouses.Flows.FluidFlow.Reservoirs;
 model SinkP "Pressure sink"
   extends Greenhouses.Icons.Water.SourceP;
-  replaceable package Medium = Greenhouses.Media.DummyFluid constrainedby
-    Modelica.Media.Interfaces.PartialMedium "Medium model" annotation (choicesAllMatching = true);
+  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater
+                                                                                constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+      annotation (choicesAllMatching = true);
   parameter Modelica.SIunits.Pressure p0=1.01325e5 "Nominal pressure";
   parameter Modelica.SIunits.SpecificEnthalpy h=1e5 "Nominal specific enthalpy";
   Modelica.SIunits.Pressure p;

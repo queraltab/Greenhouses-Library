@@ -1,8 +1,10 @@
 within Greenhouses.Flows.FluidFlow;
 model Pdrop "Linear pressure drop"
   extends Greenhouses.Icons.Water.PressDrop;
-    replaceable package Medium = Greenhouses.Media.R245fa_CP constrainedby
-    Modelica.Media.Interfaces.PartialMedium "Medium model" annotation (choicesAllMatching = true);
+  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater
+                                                                                constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+      annotation (choicesAllMatching = true);
    /* Define the type of pressure drop */
   import Greenhouses.Functions.Enumerations.PressureDrops;
   parameter PressureDrops DPtype=PressureDrops.UD;

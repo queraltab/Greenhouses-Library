@@ -8,3 +8,4 @@ type Discretizations = enumeration(
     upwind_AllowFlowReversal
       "Upwind Scheme - Allows Flow Reversal (and zero flow too)",
     upwind_smooth "Upwind Scheme with Smoothing");
+

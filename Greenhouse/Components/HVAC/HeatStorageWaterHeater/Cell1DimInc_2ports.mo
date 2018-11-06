@@ -1,9 +1,10 @@
 within Greenhouses.Components.HVAC.HeatStorageWaterHeater;
 model Cell1DimInc_2ports
   "1-D incompressible fluid flow model with three thermal ports (two with a heat transfer model)"
-  replaceable package Medium = Media.StandardWater constrainedby
-    Modelica.Media.Interfaces.PartialMedium
-    "Medium model - Incompressible Fluid" annotation (choicesAllMatching=true);
+  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater
+                                                                                constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+      annotation (choicesAllMatching = true);
 
   /************ Thermal and fluid ports ***********/
   Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)

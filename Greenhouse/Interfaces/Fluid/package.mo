@@ -2,8 +2,6 @@ within Greenhouses.Interfaces;
 package Fluid 
 
 
-
-
   annotation (Icon(graphics={
         Rectangle(
           lineColor={200,200,200},
