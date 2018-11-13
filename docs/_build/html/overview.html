@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview &mdash; Greenhouses  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Greenhouses  documentation" href="index.html"/>
+        <link rel="next" title="Components" href="components.html"/>
+        <link rel="prev" title="Welcome to Greenhouses’s documentation!" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Greenhouses
+          
+
+          
+            
+            <img src="_static/Greenhouses_logo.jpg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#library-structure">Library structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graphical-user-interface">Graphical user interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flows.html">Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="control.html">Control Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Greenhouses</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Overview</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overview">
+<span id="id1"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>A greenhouse climate model is a model that describes the indoor climate of a greenhouse
+resulting from the greenhouse design, the outdoor climate and a specific control. In
+greenhouses, the indoor climate is characterized by the temperature, the vapor pressure of
+water (i.e. the relative humidity) and the CO<sub>2</sub> concentration of the air. Together with the
+temperature of the heating pipes, the indoor climate constitutes the climate controller feed-
+back quantities. However, in order to attain the desired climate, the variables with an indirect
+influence on the climate also need to be modeled. These are mainly the characteristics relative
+to the canopy and the envelope (i.e. the cover, the floor and the thermal screen). The canopy
+temperature has an impact on its photosynthesis and transpiration, which decrease the CO<sub>2</sub>
+concentration and increase the vapor content of the air, respectively. Evaporation or
+condensation at surfaces may occur depending on the water vapor pressure difference with
+respect to the air. The temperature of the envelope influences the vapor pressure of water of
+the air, which is decreased by condensation at the cover and at the thermal screen. The
+thermal screen is a membrane used to reduce the energy requirement to heat the greenhouse. Given the porous nature of the screen,
+air and moisture is exchanged through its fabric. Air exchange with the outside decreases the
+vapor pressure of water and the CO<sub>2</sub> concentration of the air, which can be increased by
+supplementary CO<sub>2</sub> supply by an external source.</p>
+<p>Greenhouse climate models have been the object of a substantial literature. While many
+models have been developed (<a class="reference internal" href="index.html#bot-greenhouse-1983" id="id2">[Bot83]</a>, <a class="reference internal" href="index.html#de-zwart-analyzing-1996" id="id3">[DZ96]</a>, <a class="reference internal" href="index.html#impron-simple-2007" id="id4">[IHB07]</a>, <a class="reference internal" href="index.html#luo-simulation-2005" id="id5">[LFdZD+05]</a>,
+<a class="reference internal" href="index.html#van-ooteghem-optimal-2010" id="id6">[vO10]</a> ), most of them can only be used for a single location and for a
+specific greenhouse structure and climate. Recently, a more generic greenhouse climate model
+<a class="reference internal" href="index.html#vanthoor-methodology-2011-greenhouse" id="id7">[VSvHdV11]</a> combining the work of <a class="reference internal" href="index.html#bot-greenhouse-1983" id="id8">[Bot83]</a> and <a class="reference internal" href="index.html#de-zwart-analyzing-1996" id="id9">[DZ96]</a> was developed. The model was validated for a range of climates and greenhouse designs. For the purpose of this
+work, the model <a class="reference internal" href="index.html#vanthoor-methodology-2011-greenhouse" id="id10">[VSvHdV11]</a> has been implemented in the Modelica language. It should
+be noted that, when the screen is drawn, the air of the greenhouse is divided in two zones, i.e.
+below and above the screen. These zones are modeled separately and their climate is assumed to be homogeneous.
+In all the models of the library, the air zones below and above the thermal screen are going to be referred as main and
+top air zones, respectively.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/greenhousestatevariables.png"><img alt="_images/greenhousestatevariables.png" src="_images/greenhousestatevariables.png" style="width: 421.2px; height: 484.0px;" /></a>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial, the necessary steps to lead the correct packages to use Greenhouses with Dymola 2018 are reported.</p>
+<ol class="arabic simple">
+<li>Download the Greenhouses library from the <a class="reference external" href="https://github.com/queraltab/GreenhouseLibrary">Greenhouses github repository</a>.</li>
+<li>Launch Dymola 2018 on your computer.</li>
+<li>From the Dymola window, use the <em>Open</em> icon to browse to the Greenhouses folder and open the Greenhouses package.mo file.</li>
+</ol>
+<div class="align-center figure">
+<img alt="_images/gettingstarted1.png" src="_images/gettingstarted1.png" />
+</div>
+<p>Dymola loads the Greenhouses library and the following will be displayed:</p>
+<div class="align-center figure">
+<img alt="_images/gettingstarted2.png" src="_images/gettingstarted2.png" />
+</div>
+<p>Congratulations! You have set the environment needed to use the Greenhouses library in Dymola 2018. You are now ready to simulate a wide range of greenhouse climates and thermal systems. Enjoy it!</p>
+</div>
+<div class="section" id="library-structure">
+<h2>Library structure<a class="headerlink" href="#library-structure" title="Permalink to this headline">¶</a></h2>
+<p>The Greenhouses library is hierarchically structured into different packages, listed below:</p>
+<ul class="simple">
+<li><strong>Components</strong> is the central part of the library. It is organized in three sub-packages: Greenhouse, HVAC and CropYield. It contains all the models available in the library from the simple greenhouse components (e.g. cover) to already-build greenhouse models ready to use; generation units models and a yield model for tomato crop.</li>
+<li><strong>Flows</strong> contains models of the flows that are encountered in a greenhouse system. It is organized in eight sub-packages that model the heat, vapour mass and CO<sub>2</sub> mass transfer, as well as fluid flow. It also contains a sub-package of interfaces, which defined the type of connectors used in the library.</li>
+<li><strong>ControlSystems</strong> contains the control units. It is organized in two sub-packages: climate control (i.e. the control of the thermal screen, artificial lighting and window’s aperture) and HVAC control (i.e. the control of the operation of the generation units).</li>
+<li><strong>Examples</strong> contains models where the components of the library can be tested. It includes the simulation of a greenhouse and two system-scale models that simulate the greenhouse connected to thermal energy storage, a CHP and a heat pump.</li>
+<li><strong>Interfaces</strong> contains all the type of connectors used in the library.</li>
+<li><strong>Functions</strong> are the empirical correlations used to characterize some of the models presents in the library.</li>
+<li><strong>Icons</strong> defines the graphical interface for some of the models in the library.</li>
+</ul>
+<p>The main packages are further divided into sub-packages and models. In Greenhouses, each model has a relative documentation explaining the main features. To access the documentation layer of each model you can click on the INFO icon on the Dymola menu.</p>
+<div class="align-center figure">
+<img alt="_images/librarystructure3.png" src="_images/librarystructure3.png" />
+</div>
+</div>
+<div class="section" id="graphical-user-interface">
+<h2>Graphical user interface<a class="headerlink" href="#graphical-user-interface" title="Permalink to this headline">¶</a></h2>
+<p>The developed modeling framework, being object-oriented, is made of independent sub-models for each
+greenhouse component and exchanged flow, that are interconnected to build a greenhouse model. The sub-models interact together through
+standard interfaces called ports. For modeling heat transfer and fluid flow, the heat transfer and the thermo-fluid flow connectors from the Modelica Standard Library are used. For moisture and CO<sub>2</sub> mass transfer, two connectors have been developed. An extra connector is debeloped for the short-wave radiation heat inputs. In total, five connectors are distinguished:</p>
+<ul class="simple">
+<li><strong>Heat port</strong>: from the Modelica Standard Library. Graphically represented by a red square, it is a thermal port for 1-dim heat transfer. Temperature (<span class="math notranslate nohighlight">\(T\)</span> [K]) and heat flow rate (<span class="math notranslate nohighlight">\(\dot{Q}\)</span> [W]) are the potential and flow variables, respectively.</li>
+<li><strong>Water mass port</strong>: graphically represented by a blue square, it is a mass port for 1-dim moisture transfer. The vapor pressure of water (<span class="math notranslate nohighlight">\(P_v\)</span> [Pa]) and the vapor mass flow rate (<span class="math notranslate nohighlight">\(\dot{M}_v\)</span> [kg s⁻¹]) are the potential and flow variables, respectively.</li>
+<li><strong>CO</strong><sub>2</sub> <strong>mass port</strong>: graphically represented by a grey square, it is a mass port for 1-dim CO<sub>2</sub> mass transfer. The CO<sub>2</sub> concentration (<span class="math notranslate nohighlight">\(CO2\)</span> [mg m⁻³]) and the CO<sub>2</sub> mass flow rate (<span class="math notranslate nohighlight">\(\dot{m}_c\)</span> [mg m⁻² s⁻¹]) are the potential and flow variables, respectively.</li>
+<li><strong>Short-wave radiation connector</strong>: graphically represented by a yellow triangle (single input) or circle (vector input), it is an input/output connector for forced radiation flows from the sun and supplementary lighting. The radiation flow (W m⁻²) is the potential variable.</li>
+<li><strong>Thermo-fluid port</strong>: from the Modelica Standard Library. Graphically represented by a blue circle, it is an interface for quasi one-dimensional fluid flow in a piping network (incompressible or compressible, one or more phases, one or more substances). The connector is defined by the pressure and the mass flow rate as the potential and flow variables. Specific enthalpy and mass fractions are stream variables.</li>
+</ul>
+<p>For more information on the definition of connectors, check the <a class="reference external" href="https://build.openmodelica.org/Documentation/Modelica.UsersGuide.Connectors.html">Modelica users guide</a>.</p>
+<p>An example of greenhouse model is shown in the figure below. As it can be distinguished, the greenhouse modeled in this example consists of two levels of heating circuits, roof windows (but not side vents), natural ventilation (no forced ventilation) and a movable thermal screen. The majority of the flows distinguished in a greenhouse originate from convection at surfaces, ventilation processes, conduction at the soil and long-wave infrared radiation. Forced flows such as the short-wave radiation from the sun, latent heat flows or the sensible heat from supplementary lighting are also considered.</p>
+<div class="align-center figure">
+<img alt="_images/greenhousemodel.png" src="_images/greenhousemodel.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="components.html" class="btn btn-neutral float-right" title="Components" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to Greenhouses’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Queralt Altes-Buch.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

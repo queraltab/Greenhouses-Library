@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Examples &mdash; Greenhouses  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Greenhouses  documentation" href="index.html"/>
+        <link rel="prev" title="Control Systems" href="control.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Greenhouses
+          
+
+          
+            
+            <img src="_static/Greenhouses_logo.jpg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flows.html">Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="control.html">Control Systems</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#greenhouse-1">Greenhouse_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#globalsystem-1">GlobalSystem_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#globalsystem-2">GlobalSystem_2</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Greenhouses</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Examples</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="examples">
+<span id="id1"></span><h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="greenhouse-1">
+<h2>Greenhouse_1<a class="headerlink" href="#greenhouse-1" title="Permalink to this headline">¶</a></h2>
+<p>This example intends to illustrate the simulation of the climate in a greenhouse. The greenhouse model is built by connecting all the greenhouse components to the energy and mass flows presents in a greenhouse. As it can be distinguished, the greenhouse modeled in this example consists of two levels of heating circuits, roof windows (but not side vents), natural ventilation (no forced ventilation) and a movable thermal screen. It should be noted that, when the screen is drawn, the air of the greenhouse is divided in two zones, i.e. below and above the screen. These zones are modeled separately (models <em>air</em> and <em>air_Top</em>) and their climate is assumed to be homogeneous. The models parameters have been set to typical values for Venlo-type greenhouse construction design dedicated to tomato crop cultivation. The greenhouse floor area and the mean greenhouse height are set in two individual block sources.</p>
+<p>The simulated greenhouse is located in Belgium and the simulation period is from the 10th of December to the 22nd of November. Two input data files are required:</p>
+<ul class="simple">
+<li><em>Weather data</em>: The input weather data for the simulation period is extracted from a TMY for Brussels and can be found in ‘Greenhouses/Resources/Data/10Dec-22Nov.txt’. The file contains data for the outside air temperature, air pressure, wind speed and global irradiation. The sky temperature, previously computed in a Python script, is also included in this file.</li>
+<li><em>Climate control set-points</em>: The temperature and CO<sub>2</sub> set-points for the simulation period are calculated according to the strategy presented in <a class="reference internal" href="control.html#control"><span class="std std-ref">Control Systems</span></a> and can be found in ‘Greenhouses/Resources/Data/SP_10Dec-22Nov.txt’.</li>
+</ul>
+<p>These <em>.txt</em> files are accessed by means of <em>TMY_and_control</em> and <em>SP_new</em>, which are two <em>CombiTimeTables</em> models from the Modelica Standard Library. The path to the data files is introduced in the variable <em>fileName</em>, which in the example it is set to the folder ‘C:/Greenhouses/Resources/Data’. Therefore, in order for the model to find the data input files, the user must place the library in the directory C:/ or change the path to the files (i.e. <em>fileName</em> in the models <em>TMY_and_control</em> and <em>SP_new</em>).</p>
+<p>The goal of this example is to show the energy flows interacting in a greenhouse. Thus, no generation units are included. Instead, the heating pipes are connected to a water source and sink model. The model includes the following controls:</p>
+<ul class="simple">
+<li><em>PID_Mdot</em>: A PI controller adjusts the output mass flow rate of the water source connected to the heating pipes by compaing the air temperature set-point and present value.</li>
+<li><em>PID_CO2</em>: A PI controller adjusts the output of the CO<sub>2</sub> external source by comparing the actual CO<sub>2</sub> concentration of the air to its set-point.</li>
+<li><em>Ctrl_SC</em>: A state graph adjusts the screen closure (SC) according to the strategy presented in <a class="reference internal" href="control.html#control"><span class="std std-ref">Control Systems</span></a>. The real inputs must be connected to the air relative humidity, the outdoor temperature, the indoor air temperature set-point and the usable hours of the screen. The usable hours are 1h30 before dusk, 1h30 after dawn and during night. In the global he global outside irradiation</li>
+<li><em>vents</em>: A PI controller adjusts the opening of the windows according to the strategy presented in <a class="reference internal" href="control.html#control"><span class="std std-ref">Control Systems</span></a>. The opening depends mainly on the indoor air relative humidity and temperature.</li>
+<li><em>OnOff</em>: controls the ON/OFF operation of the supplementary lighting according to the strategy presented in <a class="reference internal" href="control.html#control"><span class="std std-ref">Control Systems</span></a>. The control output, previously computed in a Python script, is input as a <em>.txt</em> file by means of the <em>TMY_and_control</em> model.</li>
+</ul>
+<div class="align-center figure">
+<img alt="_images/example1.png" src="_images/example1.png" />
+</div>
+</div>
+<div class="section" id="globalsystem-1">
+<h2>GlobalSystem_1<a class="headerlink" href="#globalsystem-1" title="Permalink to this headline">¶</a></h2>
+<p>This example illustrates the energy flows of a greenhouse connected to a CHP unit and a thermal storage tank. The greenhouse is modeled by the ready-to-use greenhouse model included in <em>Greenhouse/Unit</em> sub-package, in which the parameters are already set to typical values for Venlo-type greenhouse construction design dedicated to tomato crop cultivation. Thus, no parameters are required to be set by the user. A heat-driven control decides when to run the CHP unit.</p>
+<p>The limited electrical load of greenhouses implies an excess electricity generation when using CHP units, which have a power-to-heat ratio usually close to one. This excess electricity is fed to the grid and, in the absence of subsidies, remunerated at a price close to the wholesale price of electricity.</p>
+<div class="align-center figure">
+<img alt="_images/example2.png" src="_images/example2.png" />
+</div>
+</div>
+<div class="section" id="globalsystem-2">
+<h2>GlobalSystem_2<a class="headerlink" href="#globalsystem-2" title="Permalink to this headline">¶</a></h2>
+<p>Because the retail price of electricity is significantly higher than wholesale price, prosumers have a clear advantage at maximizing their level of self-consumption <a class="reference internal" href="index.html#quoilin-quantifying-2016" id="id2">[QKM+16]</a>. In order to evaluate the potential of such activity and to illustrate the use of the library, a third simulation is included. In this example, the particular case of maximizing the self-consumption level of the system simulated in <em>GlobalSystem_1</em> is evaluated. To that end, a heat pump is added to the system. A heat-driven control decides when to run the CHP and the heat pump.</p>
+<div class="align-center figure">
+<img alt="_images/example3.png" src="_images/example3.png" />
+</div>
+<p>A comparison of the results obtained by <em>GlobalSystem_1</em> and <em>GlobalSystem_2</em> is presented in <a class="reference internal" href="index.html#altes-buch-modeling-2018" id="id3">[ABQL18]</a>. The total consumption of gas and the total thermal and electrical production over the simulation period is represented in the following sankey diagrams.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/results1.png"><img alt="_images/results1.png" src="_images/results1.png" style="width: 527.4px; height: 382.2px;" /></a>
+</div>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/results2.png"><img alt="_images/results2.png" src="_images/results2.png" style="width: 563.4px; height: 339.6px;" /></a>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="control.html" class="btn btn-neutral" title="Control Systems" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Queralt Altes-Buch.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

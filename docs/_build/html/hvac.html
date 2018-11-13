@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>HVAC &mdash; Greenhouses  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Greenhouses  documentation" href="index.html"/>
+        <link rel="up" title="Components" href="components.html"/>
+        <link rel="next" title="Crop Yield" href="cropyield.html"/>
+        <link rel="prev" title="Greenhouse" href="greenhouse.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Greenhouses
+          
+
+          
+            
+            <img src="_static/Greenhouses_logo.jpg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="components.html">Components</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="greenhouse.html">Greenhouse</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HVAC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chp">CHP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#heat-pump">Heat Pump</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#heat-pump-consoclim">Heat Pump Consoclim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thermal-energy-storage">Thermal energy storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cropyield.html">Crop Yield</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="flows.html">Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="control.html">Control Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Greenhouses</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="components.html">Components</a> &raquo;</li>
+      
+    <li>HVAC</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/hvac.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hvac">
+<span id="id1"></span><h1>HVAC<a class="headerlink" href="#hvac" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="chp">
+<h2>CHP<a class="headerlink" href="#chp" title="Permalink to this headline">¶</a></h2>
+<p>The CHP model is a performance-based model that assumes constant natural gas consumption and constant
+total efficiency. The electrical efficiency is described by the second-law efficiency and the efficiency of Carnot:</p>
+<div class="math notranslate nohighlight">
+\[\eta_{el} = \eta_{II} \eta_{Carnot}\]</div>
+<p>The second law efficiency is assumed constant and is defined by the previous equation at the nominal conditions. The electrical and thermal power are computed by:</p>
+<div class="math notranslate nohighlight">
+\[\dot{W}_{CHP} = \eta_{el} \dot{Q}_{nom,gas} U_{ONOFF}\]</div>
+<div class="math notranslate nohighlight">
+\[\dot{Q}_{CHP} = \eta_{th} \dot{Q}_{nom,gas} U_{ONOFF}\]</div>
+<p>where the thermal efficiency is described by:</p>
+<div class="math notranslate nohighlight">
+\[\eta_{th} = \eta_{tot} - \eta_{el}\]</div>
+<p>The heat source is assumed to be at a constant temperature. The properties of the primary fluid are computed using the incompressible <em>Cell1Dim</em> model. The model includes a boolean input connector, which defines the operational state of the CHP, and a real output connector for the electrical power.  In the equations, the boolean input is translated to the variable U<sub>ONOFF</sub>.</p>
+<div class="align-center figure">
+<img alt="_images/chp.png" src="_images/chp.png" />
+</div>
+</div>
+<div class="section" id="heat-pump">
+<h2>Heat Pump<a class="headerlink" href="#heat-pump" title="Permalink to this headline">¶</a></h2>
+<p>This heat pump model is a performance-based model, similar to the CHP model. This model is only intended to be used for a simple representation of a heat pump. For a better representation, we suggest to use the <em>HeatPumpConsoclim</em> model.</p>
+<p>In this model, the COP is described by the second-law efficiency and the Carnot efficiency by:</p>
+<div class="math notranslate nohighlight">
+\[COP = \dfrac{\eta_{II}}{\eta_{Carnot}}\]</div>
+<p>The second-law efficiency is assumed to remain unchanged in part-load operation. The nominal heat flow is an input of the model, characteristic of the size of the heat pump. The electrical power consumed by the heat pump is described by:</p>
+<div class="math notranslate nohighlight">
+\[\dot{W} = \dfrac{\dot{Q}}{COP}\]</div>
+<p>In order to account for the lower heat capacity of the heat pump at lower evaporating temperature, a linear relation between these two variables is assumed:</p>
+<div class="math notranslate nohighlight">
+\[\dfrac{\dot{Q}}{\dot{Q}_{nom}} = \dfrac{T_c}{T_{c,nom}}\]</div>
+<p>The properties of the primary fluid are computed using the incompressible <em>Cell1Dim</em> model. The model includes a boolean input connector, which defines the operational state of the heat pump.</p>
+<div class="align-center figure">
+<img alt="_images/hp.png" src="_images/hp.png" />
+</div>
+</div>
+<div class="section" id="heat-pump-consoclim">
+<h2>Heat Pump Consoclim<a class="headerlink" href="#heat-pump-consoclim" title="Permalink to this headline">¶</a></h2>
+<div class="align-center figure">
+<img alt="_images/hpconsoclim.png" src="_images/hpconsoclim.png" />
+</div>
+</div>
+<div class="section" id="thermal-energy-storage">
+<h2>Thermal energy storage<a class="headerlink" href="#thermal-energy-storage" title="Permalink to this headline">¶</a></h2>
+<p>Nodal model of a stratified tank with an internal heat exchanger and ambient heat losses. The following hypothesis are applied:</p>
+<ul class="simple">
+<li>No heat transfer between the different nodes.</li>
+<li>The internal heat exchanger is discretized in the same way as the tank: each cell of the heat exchanger corresponds to one cell of the tank and exchanges heat with that cell only.</li>
+<li>Incompressible fluid in bboth the tank and the heat exchanger.</li>
+</ul>
+<p>The tank is discretized using a modified version of the incompressible <em>Cell1Dim</em> model adding an additional heat port, which acts as a heating resistance. The model also includes a temperature sensor, whose height can be adjusted. The energy balance of the fluid in the tank is described by:</p>
+<div class="math notranslate nohighlight">
+\[\dfrac{V_{tank}}{N} \rho \dfrac{dh}{dt} + \dot{M} (h_{ex}-h_{su}) - A_{hx} \dot{q}_{hx} = \dfrac{A_{amb}}{N} \dot{q}_{amb} + \dot{Q}_{res}\]</div>
+<p>The heat exchanger is modeled using the <em>Flow1Dim</em> component and a wall component. The energy balance of the fluid in the heat exchanger is described by:</p>
+<div class="math notranslate nohighlight">
+\[V_i \rho \dfrac{dh}{dt} + \dot{M} (h_{ex}-h_{su}) = A_i \dot{q}\]</div>
+<div class="align-center figure">
+<img alt="_images/tes.png" src="_images/tes.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cropyield.html" class="btn btn-neutral float-right" title="Crop Yield" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="greenhouse.html" class="btn btn-neutral" title="Greenhouse" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Queralt Altes-Buch.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
