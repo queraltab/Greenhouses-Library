@@ -19,7 +19,7 @@ Explore the Examples package to get a feeling of the modeling possibility that t
 Downloading Greenhouses
 -----------------------
 Greenhouses can be downloaded from its github repository (using the Clone or Download button on the right side of the screen):
-https://github.com/queraltab/GreenhouseLibrary
+https://github.com/queraltab/Greenhouses-Library
 
 License
 -------
