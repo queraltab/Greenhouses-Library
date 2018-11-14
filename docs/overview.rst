@@ -107,7 +107,7 @@ An example of greenhouse model is shown in the figure below. As it can be distin
 .. |CO2| replace:: CO\ :sub:`2`
 
 
-.. _Greenhouses github repository: https://github.com/queraltab/GreenhouseLibrary
+.. _Greenhouses github repository: https://github.com/queraltab/Greenhouses-Library
 .. _ExternalMedia: https://github.com/modelica/ExternalMedia
 .. _CoolProp: http://coolprop.sourceforge.net/
 .. _modelica users guide: https://build.openmodelica.org/Documentation/Modelica.UsersGuide.Connectors.html
