@@ -181,7 +181,8 @@ model Greenhouse
     FFa=pipe_low.FF,
     epsilon_b=0.89,
     FFb=1,
-    nNodes=N.k) annotation (Placement(transformation(
+    nNodes=pipe_low.N)
+                annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-100,-134})));
@@ -191,7 +192,8 @@ model Greenhouse
     FFb=canopy.FF,
     epsilon_a=0.88,
     FFa=pipe_low.FF,
-    nNodes=N.k) annotation (Placement(transformation(
+    nNodes=pipe_low.N)
+                annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-50,-98})));
@@ -203,28 +205,29 @@ model Greenhouse
     FFb=1,
     FFab1=canopy.FF,
     FFab2=pipe_up.FF,
-    nNodes=N.k,
-    FFab3=thScreen.FF_ij) annotation (Placement(transformation(
+    FFab3=thScreen.FF_ij,
+    nNodes=pipe_low.N)    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={6,-134})));
   Flows.HeatTransfer.PipeFreeConvection_N Q_cnv_LowAir(
-    nNodes=N.k,
     A=surface.k,
     d=pipe_low.d,
     freePipe=false,
     N_p=pipe_low.N_p,
-    l=pipe_low.l)
+    l=pipe_low.l,
+    nNodes=pipe_low.N)
     annotation (Placement(transformation(extent={{-4,-124},{16,-104}})));
   Flows.HeatTransfer.Radiation_N Q_rad_LowScr(
     A=surface.k,
     epsilon_a=0.88,
     FFa=pipe_low.FF,
-    nNodes=N.k,
     epsilon_b=1,
     FFb=thScreen.FF_i,
     FFab1=canopy.FF,
-    FFab2=pipe_up.FF) annotation (Placement(transformation(
+    FFab2=pipe_up.FF,
+    nNodes=pipe_low.N)
+                      annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-100,-114})));
@@ -241,20 +244,21 @@ model Greenhouse
     epsilon_a=0.88,
     epsilon_b=0.89,
     FFb=1,
-    nNodes=N.k,
     FFa=pipe_up.FF,
     FFab1=canopy.FF,
-    FFab2=pipe_low.FF) annotation (Placement(transformation(
+    FFab2=pipe_low.FF,
+    nNodes=pipe_up.N)  annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-100,-24})));
   Flows.HeatTransfer.Radiation_N Q_rad_UpCan(
     A=surface.k,
     epsilon_a=0.88,
-    nNodes=N.k,
     epsilon_b=1,
     FFa=pipe_up.FF,
-    FFb=canopy.FF) annotation (Placement(transformation(
+    FFb=canopy.FF,
+    nNodes=pipe_up.N)
+                   annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-42,-48})));
@@ -263,27 +267,27 @@ model Greenhouse
     epsilon_a=0.88,
     epsilon_b=0.84,
     FFb=1,
-    nNodes=N.k,
     FFa=pipe_up.FF,
-    FFab1=thScreen.FF_ij) annotation (Placement(transformation(
+    FFab1=thScreen.FF_ij,
+    nNodes=pipe_up.N)     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={6,-4})));
   Flows.HeatTransfer.PipeFreeConvection_N Q_cnv_UpAir(
-    nNodes=N.k,
     A=surface.k,
     d=pipe_up.d,
     l=pipe_up.l,
     freePipe=true,
-    N_p=pipe_up.N_p)
+    N_p=pipe_up.N_p,
+    nNodes=pipe_up.N)
     annotation (Placement(transformation(extent={{-4,-34},{16,-14}})));
   Flows.HeatTransfer.Radiation_N Q_rad_UpScr(
     A=surface.k,
     epsilon_a=0.88,
     FFa=pipe_low.FF,
-    nNodes=N.k,
     epsilon_b=1,
-    FFb=thScreen.FF_i) annotation (Placement(transformation(
+    FFb=thScreen.FF_i,
+    nNodes=pipe_up.N)  annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-100,-4})));
@@ -457,9 +461,7 @@ model Greenhouse
     annotation (Placement(transformation(extent={{80,108},{96,124}})));
   Modelica.Blocks.Sources.RealExpression h_Air(y=3.8 + (1 - SC.y)*0.4)
     "Height of main zone"
-    annotation (Placement(transformation(extent={{-220,60},{-200,80}})));
-  Modelica.Blocks.Sources.IntegerConstant N(k=5)
-    annotation (Placement(transformation(extent={{-216,84},{-204,96}})));
+    annotation (Placement(transformation(extent={{-220,76},{-200,96}})));
   Modelica.Blocks.Sources.CombiTimeTable SP_new(
     tableOnFile=true,
     tableName="tab",

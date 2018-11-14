@@ -338,5 +338,5 @@ equation
         Text(
           extent={{-81,40},{80,-28}},
           lineColor={0,0,0},
-          textString="Ctrl_ThScreen")}));
+          textString="Ctrl_SC")}));
 end Control_ThScreen;
