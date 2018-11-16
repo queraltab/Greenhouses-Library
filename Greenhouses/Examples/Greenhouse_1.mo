@@ -1,4 +1,4 @@
-within Greenhouses.Examples;
+﻿within Greenhouses.Examples;
 model Greenhouse_1
   "Simulation of a Venlo-type greenhouse for tomato crop cultivated from 10Dec-22Nov (weather data from TMY)"
   Modelica.SIunits.HeatFlux q_low;
@@ -1117,9 +1117,21 @@ Vapour transfer"),
                 fillPattern = FillPattern.Solid,
                 points={{-70,120},{110,0},{-70,-120},{-70,120}})}),
     Documentation(info="<html>
-<p><b><font style=\"font-size: 12pt; \">Simulation of greenhouse climate</b></p>
-<p><big>This example intends to illustrate the simulation of a greenhouse climate. The greenhouse is built by interconnecting all of the energy and mass <a href=\"modelica://Greenhouse.Flows\">Flows</a> presents in a greenhouse to their related <a href=\"modelica://Greenhouse.Components.Greenhouse\">Components</a>. The model has been parametrized using the values of greenhouse design for a Venlo-type greenhouse (typical in the Belgian-Dutch region) and the cultivation techniques for tomato crop.</p>
-<p><big>The input weather data is a TMY for Brussels. The simulated period is from 10th December to 22nd November. The user must place the library in the directory C:/ or change the path to the data input files (fileName in CombiTimeTables).</p>
-<p><big>The goal of this example is to show the energy flows interacting in a greenhouse. Thus, no generation units are modeled for the heating demand. A source model is used instead, whose mass flow rate is controlled by a PID controller. Both the source and the PID are models from the ThermoCycle library (open-source here: <a href=\"http://thermocycle.net\">http://thermocycle.net</a>).</p>
+<p><b></font><font style=\"font-size: 12pt; \">Simulation of greenhouse climate</b></p>
+<p></font><font style=\"font-size: 10pt; \">This example intends to illustrate the simulation of a greenhouse climate. The greenhouse is built by interconnecting all of the energy and mass <a href=\"modelica://Greenhouses.Flows\">Flows</a> presents in a greenhouse to their related <a href=\"modelica://Greenhouses.Components.Greenhouse\">Components</a>. As it can be distinguished, the greenhouse modeled in this example consists of two levels of heating circuits, roof windows (but not side vents), natural ventilation (no forced ventilation) and a movable thermal screen. It should be noted that, when the screen is drawn, the air of the greenhouse is divided in two zones, i.e. below and above the screen. These zones are modeled separately (models air and air_Top) and their climate is assumed to be homogeneous. The models parameters have been set to typical values for Venlo-type greenhouse construction design dedicated to tomato crop cultivation. The greenhouse floor area and the mean greenhouse height are set in two individual block sources.</p>
+<p><big>The simulated greenhouse is located in Belgium and the simulation period is from December 10th to November 22nd. Two data files are required: </p>
+<ul>
+<li><big><i>Weather data</i>: The input weather data for the simulation period is extracted from a TMY for Brussels and can be found in &lsquo;Greenhouses/Resources/Data/10Dec-22Nov.txt&rsquo;. The file contains data for the outside air temperature, air pressure, wind speed and global irradiation. The sky temperature, previously computed in a Python script, is also included in this file. </li>
+<li><big><i>Climate control set-points</i>: The temperature and CO2 set-points for the simulation period are calculated according to the strategy presented in the online documentation and can be found in &lsquo;Greenhouses/Resources/Data/SP_10Dec-22Nov.txt&rsquo;.</li>
+</ul>
+<p><big> These '.txt' files are accessed by means of <i>TMY_and_control</i> and <i>SP_new</i>, which are two CombiTimeTables models from the Modelica Standard Library. The path to the data files is introduced in the variable fileName, which in the example it is set to the folder ‘C:/Greenhouses/Resources/Data’. Therefore, in order for the model to find the data input files, <b>the user must place the library in the directory C:/ or change the path to the data input files</b> (fileName in CombiTimeTables).</p>
+<p><big>The goal of this example is to show the energy flows interacting in a greenhouse. Thus, no generation units are included. Instead, the heating pipes are connected to a water source and sink model. The model includes the following controls:</p>
+<ul>
+<li><big><i>PID_Mdot</i>: A PI controller adjusts the output mass flow rate of the water source connected to the heating pipes by compaing the air temperature set-point and present value.</li>
+<li><big><i>PID_CO2</i>: A PI controller adjusts the output of the CO2 external source by comparing the actual CO2 concentration of the air to its set-point.</li>
+<li><big><i>Ctrl_SC</i>: A state graph adjusts the screen closure (SC) according to the strategy presented in Control Systems. The real inputs must be connected to the air relative humidity, the outdoor temperature, the indoor air temperature set-point and the usable hours of the screen. The usable hours are 1h30 before dusk, 1h30 after dawn and during night. In the global he global outside irradiation</li>
+<li><big><i>vents</i>: A PI controller adjusts the opening of the windows according to the strategy presented in Control Systems. The opening depends mainly on the indoor air relative humidity and temperature.</li>
+<li><big><i>OnOff</i>: controls the ON/OFF operation of the supplementary lighting according to the strategy presented in Control Systems. The control output, previously computed in a Python script, is input as a .txt file by means of the TMY_and_control model.</li>
+</ul>
 </html>"));
 end Greenhouse_1;

@@ -76,5 +76,9 @@ initial equation
           extent={{-60,60},{60,-60}},
           lineColor={0,0,255},
           fillColor={255,255,255},
-          fillPattern=FillPattern.Sphere)}));
+          fillPattern=FillPattern.Sphere)}),
+    Documentation(info="<html>
+    <p><big>This is a simplified model of the <a href=\"modelica://Greenhouses.Components.Greenhouse.Air\">Air</a> model. The top air zone has a very low capacity and is only modeled when the screen is drawn (i.e. mostly at night, to mitigate losses in the lack of short-wave radiation). For this reason, in this model the heat input from short-wave radiation is neglected. </p>
+    <p><big>The model has the same parameters than the Air model, considering that the height of the top air zone is equal to the mean greenhouse height minus the height of the thermal screen.</p>
+</html>"));
 end Air_Top;

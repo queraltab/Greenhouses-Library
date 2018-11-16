@@ -32,5 +32,8 @@ equation
           fillColor={192,192,192},
           fillPattern=FillPattern.Backward,
           origin={0,0},
-          rotation=90)}));
+          rotation=90)}),
+    Documentation(info="<html>
+    <p><big>This is a basic model to compute the water vapor pressure on a surface, which is defined by the saturated vapor pressure at the surface temperature. Therefore, the temperature is an input of the model. The model is used in the Cover, Canopy and ThermalScreen models.  </p>
+</html>"));
 end SurfaceVP;

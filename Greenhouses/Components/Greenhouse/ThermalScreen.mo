@@ -81,9 +81,14 @@ initial equation
           color={0,0,0},
           smooth=Smooth.Bezier)}),
     Documentation(info="<html>
-<p>The present model assumes that the thermal screen is capable of transporting water from the lower side to the upper side through the fabric. </p>
-<p>However, the storage of moisture in the screen is neglected. This implies that the vapour that condenses at the screen is either evaporated at</p>
-<p>the upper side or drips from the screen. Another implication of the neglection of storage is that the rate of evaporation at the upper side of the</p>
-<p>screen is lower or equal to the rate of condensation at the lower side.</p>
+    <p><big>This model applies an energy balance on the thermal screen. The energy balance is done by taking into account:</p>
+<ul>
+<li><big>Sensible heat flows (i.e. all the flows connected to the heat port). Long-wave radiation is exchanged with the heating pipes, the canopy, the floor and the cover. Sensible heat is exchanged with the air through convection.</li>
+<li><big>Latent heat flows associated with condensation or evaporation of moisture. The present model assumes that the thermal screen is capable of transporting water from the lower side to the upper side through the fabric. However, the storage of moisture in the screen is neglected. This implies that the vapor that condensates at the screen is either evaporated at the upper side of drips from the screen. Therefore, the rate of evaporation is lower or equal to the rate of condensation. The latent heat flows are determined by multiplying the moisture flows at the vapor mass port to the latent heat of vaporization</li>
+</ul>
+<p><big>Because the properties of the screen are parameters of the model, the user has the possibility to adapt the model for any type of screen material (e.g. aluminized, non aluminized etc.). </p>
+<p><big>The screen thickness, commonly less than 1 mm, implies a very low heat capacity. Moreover, the screen is mostly drawn at night (i.e. when there is no short-wave irradiation), in order to mitigate heat losses. Because of the latter, in this model the absorbed heat from short-wave radiation is neglected. </p>
+<p><big>The vapor pressure of water at the screen is defined by the saturated vapor pressure for its temperature.</p>
+
 </html>"));
 end ThermalScreen;

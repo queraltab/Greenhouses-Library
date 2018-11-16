@@ -89,5 +89,15 @@ initial equation
           extent={{-60,60},{60,-60}},
           lineColor={0,0,255},
           fillColor={255,255,255},
-          fillPattern=FillPattern.Sphere)}));
+          fillPattern=FillPattern.Sphere)}),
+    Documentation(info="<html>
+    <p><big>This model applies an energy and a moisture mass balance on the air. The energy balance is done by taking into account:</p>
+<ul>
+<li><big>Sensible heat flows (i.e. all the flows connected to the heat port). These include sensible heat flows caused by convection at the heating pipes, the floor, the canopy, the cover, the thermal screen; and by ventilation with the top air zone and the outdoor air. The exchange between the two air zones through the thermal screen occurs because of the porosity material, nature of the latter. The exchange with the outside air accounts for infiltration/exfiltration and natural ventilation through the greenhouse windows.</li>
+<li><big>Short-wave radiation from the sun and/or supplementary lighting absorbed by the greenhouse construction elements and later released to the air (i.e. the forced flow from the input).</li>
+</ul>
+<p><big>Since the short-wave radiation can origin from two sources (the sun and supplementary illumination), the short-wave radiation input connector (i.e. <a href=\"modelica://Greenhouses.Interfaces.Heat.HeatFluxVectorInput\">HeatFluxVectorInput</a>) has the form of a vector. The parameter <i>N_rad</i> defines the dimension of the vector and needs to be set by the user. Therefore, if there is no supplementary lighting, the user must set <i>N_rad</i> to 1 (i.e. radiation only form the sun). However, if there is supplementary lighting, the user must set <i>N_rad</i> to 2 (i.e. radiatio from sun + lighting).</p>
+<p><big>The vapor pressure of water of the greenhouse air is increased by the transpiration of the canopy and decreased by air exchange and condensation at the cover and the screen. This pressure is determined by the moisture mass balance on the air. </p>
+<p><big></p>
+</html>"));
 end Air;

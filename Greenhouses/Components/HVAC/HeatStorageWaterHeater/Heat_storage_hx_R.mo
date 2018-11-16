@@ -277,12 +277,17 @@ equation
           color={0,0,0},
           smooth=Smooth.None)}),
     Documentation(info="<html>
-<p>Nodal model of a stratified tank, with the following hypotheses:</p>
+    <p>Nodal model of a stratified tank with an internal heat exchanger and ambient 
+    heat losses. This model is adapted from the ThermoCycle library. The water tank 
+    is modeled using the energy and mass conservation principles and assuming thermodynamic
+    equilibrium at all times inside the control volume. The following 
+    hypotheses are applied:</p>
 <p><ul>
 <li>No heat transfer between the different nodes</li>
 <li>The internal heat exchanger is discretized in the same way as the tank: each cell of the heat exchanger corresponds to one cell of the tank and exchanges heat with that cell only.</li>
 <li>Incompressible fluid in both the tank and the heat exchanger</li>
+<li>Axial thermal conductivity is neglected</li>
 </ul></p>
-<p><br/>The tank is discretized using a modified version of the incompressible Cell1Dim model adding an additional heat port. The heat exchanger is modeled using the Flow1Dim component and a wall component.</p>
+<p><br/>The tank is discretized using a modified version of the incompressible Cell1Dim model adding an additional heat port (i.e. <a href=\"modelica://Greenhouses.Components.HVAC.HeatStorageWaterHeater.Cell1DimInc_2ports\">Cell1DimInc_2ports</a>). The heat exchanger is modeled using the Flow1DimInc component and a wall component.</p>
 </html>"));
 end Heat_storage_hx_R;

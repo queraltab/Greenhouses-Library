@@ -403,5 +403,26 @@ equation
         Text(
           extent={{-180,-80},{180,-112}},
           lineColor={0,128,0},
-          textString="%name")}));
+          textString="%name")}), Documentation(info="<html>
+          <p><big>
+          In this work, a recent yield model  developed and validated for a 
+          variety of temperatures is implemented. The carbohydrate assimilation 
+          is modeled by distinguishing three crop parts: the leaves, the fruits,
+          and the stems (roots are considered together with the stems). Mass balances 
+          are applied on each part and on the buffer. Carbohydrate flows are computed
+          as a function of fixed parameters related to the tomato crop.
+          </p>
+          <p><big>
+          The inputs of the model are the instantaneous temperature of the canopy, 
+          the CO2 concentration of the greenhouse air and the PAR absorbed by the canopy.
+          Their values are retrieved from the greenhouse climate simulation model,
+          in which the former two are state variables from the <a href=\"modelica://Greenhouses.Components.Greenhouse.Canopy\">Canopy</a>
+          and the <a href=\"modelica://Greenhouses.Components.Greenhouse.Air\">Air</a> models, 
+          and the latter is function of the global irradiation (computed in the 
+          <a href=\"modelica://Greenhouses.Components.Greenhouse.Solar_model\">Solar_model</a> model). 
+          </p>
+          <p><big>
+          A detailed description of the model equations can be found in the online documentation of the library 
+          <a href=\"https://greenhouses-library.readthedocs.io/en/latest\">https://greenhouses-library.readthedocs.io/en/latest</a> </p>
+</html>"));
 end TomatoYieldModel;

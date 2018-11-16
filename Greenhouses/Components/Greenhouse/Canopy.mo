@@ -124,5 +124,16 @@ initial equation
         Line(
           points={{-100,120}},
           color={0,0,0},
-          smooth=Smooth.None)}));
+          smooth=Smooth.None)}),
+    Documentation(info="<html>
+<p><big>This model applies an energy balance on the canopy. The energy balance is done by taking into account:</p>
+<ul>
+<li><big>Sensible heat flows (i.e. all the flows connected to the heat port). These should be the long-wave radiation with the heating pipes, the cover, the floor and the thermal screen. Also, the sensible heat with the main air zone.</li>
+<li><big>Latent heat flows associated with canopy transpiration. The latent heat flows are determined by multiplying the moisture mass flows at the vapor mass port to the latent heat of vaporization.</li>
+<li><big>Short-wave radiation absorbed from the sun and/or supplementary lighting (i.e. the forced flow from the short-wave radiation input).</li>
+</ul>
+<p><big>Since the short-wave radiation can origin from two sources (the sun and supplementary illumination), the short-wave radiation input connector (i.e. <a href=\"modelica://Greenhouses.Interfaces.Heat.HeatFluxVectorInput\">HeatFluxVectorInput</a>) has the form of a vector. The parameter <i>N_rad</i> defines the dimension of the vector and needs to be set by the user. Therefore, if there is no supplementary lighting, the user must set <i>N_rad</i> to 1 (i.e. radiation only form the sun). However, if there is supplementary lighting, the user must set <i>N_rad</i> to 2 (i.e. radiatio from sun + lighting).</p>
+<p><big>The magnitude of the energy exchanged by the canopy depends on the size of the leaves, which is increased by crop growth and decreased by leaf pruining. To take this into account, the leaf area index (LAI), defined as the leaf area per unit of ground area, is used. The LAI is computed in the crop yield model and input in this model.</p>
+<p><big>The vapor pressure of water at the canopy is defined by the saturated vapor pressure for its temperature.</p>
+</html>"));
 end Canopy;

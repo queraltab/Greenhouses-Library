@@ -1,6 +1,6 @@
 within Greenhouses.Components.Greenhouse;
 model HeatingPipe
-  "Primary heating distribution netwrok with a control of pipe mass flow rate. Pipe model using a 1-D fluid flow model (finite volume discretization - incompressible fluid model) from the ThermoCycle library."
+  "Model of a heating distribution netwrok. Pipe model using a 1-D fluid flow model (finite volume discretization - incompressible fluid model)."
   /******************** Parameters ********************/
   parameter Integer N_p(min=1)=1 "number of cells in parallel";
   parameter Integer N(min=1)=2 "number of nodes";
@@ -103,5 +103,10 @@ equation
           points={{-60,-30},{78,-30}},
           color={0,0,0},
           smooth=Smooth.None)}),            Diagram(coordinateSystem(
-          preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics));
+          preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics),
+    Documentation(info="<html>
+    <p><big>The fluid in the heating pipes from the greenhouse heating ciruit is modeled by means of the discretized model for incompressible flow (<a href=\"modelica://Greenhouses.Flows.FluidFlow.Flow1DimInc\">Flow1DimInc</a>), in which a dynamic energy balance and static mass and momentum balances are applied on the fluid cells. Heat is transferred by long-wave radiation to the canopy, floor and cover, and by convection to the air. The heat transfer is set to be computed by an ideal model. However, the user can select other heat transfer models in the parameters of the fluid flow model.
+
+<p><big>Greenhouse heating circuits are commonly made of several parallel heating loops. The user must set the physical characteristics of the circuit (i.e. the number of parallel loops, the pipes diameter, the installed length per loop and the nominal mass flow rate) and the number of nodes in which a loop is discretized. </p>
+</html>"));
 end HeatingPipe;

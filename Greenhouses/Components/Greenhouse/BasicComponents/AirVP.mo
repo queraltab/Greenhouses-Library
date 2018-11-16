@@ -14,7 +14,8 @@ model AirVP
   /*********************** Variables ***********************/
   Real R(unit="J/(kmol.K)")=8314 "gas constant";
   Modelica.SIunits.Temperature T=291;
-  Modelica.SIunits.MolarMass M_H = 18e-3 "kg/mol";
+  Modelica.SIunits.MolarMass M_H = 18e-3
+    "kg/mol masse molaire du vapeur d'eau dans l'air";
   Modelica.SIunits.MassFlowRate MV_flow;
   Modelica.SIunits.Pressure VP(start=VP_start);
 
@@ -56,5 +57,8 @@ initial equation
           lineThickness=0.5,
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid,
-          textString="%name")}));
+          textString="%name")}),
+    Documentation(info="<html>
+    <p>This model applies the mass balance on the moisture content of the air. The water vapour pressure of the air is computed by numerical integration of the differential equation of the moisture content. The mass balance takes into account all the flows connected to the vapor port.</p>
+</html>"));
 end AirVP;

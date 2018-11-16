@@ -70,5 +70,15 @@ initial equation
           rotation=90),                   Text(
           extent={{-100,-34},{120,-94}},
           lineColor={0,0,0},
-          textString="%name")}));
+          textString="%name")}),
+    Documentation(info="<html>
+<p><big>This model applies an energy balance on the floor. The energy balance is done by taking into account:</p>
+<ul>
+<li><big>Sensible heat flows (i.e. all the flows connected to the heat port). Long-wave radiation is exchanged between the floor and the heating pipes, the canopy, the thermal screen and the cover. Sensible heat is exchanged with the air by convection and with the first soil layer by conduction.</li>
+<li><big>Short-wave radiation absorbed from the sun and/or supplementary lighting (i.e. the forced flow from the short-wave radiation input).</li>
+</ul>
+<p><big>Because the properties of the floor are parameters of the model, the user has the possibility to adapt the model for any type of floor material (e.g. concrete, soil, etc.).</p>
+<p><big>Since the short-wave radiation can origin from two sources (the sun and supplementary illumination), the short-wave radiation input connector (i.e. <a href=\"modelica://Greenhouses.Interfaces.Heat.HeatFluxVectorInput\">HeatFluxVectorInput</a>) has the form of a vector. The parameter <i>N_rad</i> defines the dimension of the vector and needs to be set by the user. Therefore, if there is no supplementary lighting, the user must set <i>N_rad</i> to 1 (i.e. radiation only form the sun). However, if there is supplementary lighting, the user must set <i>N_rad</i> to 2 (i.e. radiatio from sun + lighting).</p>
+<p><big>There is no moisture model.</p>
+</html>"));
 end Floor;

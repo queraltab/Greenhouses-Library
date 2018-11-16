@@ -2,8 +2,8 @@ within Greenhouses.Components.HVAC;
 model CHP
 
   //replaceable package Medium = Modelica.Media.Water.WaterIF97_ph;
-  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater
-                                                                                constrainedby
+  replaceable package Medium =
+      Modelica.Media.Water.ConstantPropertyLiquidWater                          constrainedby
     Modelica.Media.Interfaces.PartialMedium "Medium in the component"
       annotation (choicesAllMatching = true);
 
@@ -139,5 +139,10 @@ equation
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={Bitmap(
             extent={{-100,100},{100,-100}}, fileName="modelica://Greenhouses/Resources/Images/chp.png")}),
     experiment(StopTime=3600),
-    __Dymola_experimentSetupOutput);
+    __Dymola_experimentSetupOutput,
+    Documentation(info="<html>
+    <p><big>The CHP model does not consider part-load operation (ON/OFF regulation is assumed). Thus, constant natural gas consumption and total efficiency are assumed. The electrical efficiency is computed assuming a constant second-law efficiency, whose value is computed using the nominal operating conditions.</p>
+    <p><big>The gas source is assumed to be at a constant temperature of 500ºC. The primary side fluid is modeled by means of 1-D incompressible fluid flow model (<a href=\"modelica://Greenhouses.Flows.FluidFlow.Cell1DimInc\">Cell1DimInc</a>), in which a dynamic energy balance and static mass and momentum balances are applied on the fluid. The heat transfer in the primary fluid is modeled with a constant heat transfer coefficient. However, it can be changed to other heat transfer models through the HeatTransfer parameter in the fluid model.</p>
+    <p><big>Furthermore, the model includes a Boolean input connector <i>on_off</i>, which defines the operational state of the CHP. In the equations, the Boolean input is translated to a variable value together with a first order block, which can take into account a start-up time constraint. The model also includes a real output connector <i>Wdot_el</i>, which outputs the value of the generated electrical power. This connector is useful, for example, in the case where a heat pump is powered by the CHP.</p>
+</html>"));
 end CHP;

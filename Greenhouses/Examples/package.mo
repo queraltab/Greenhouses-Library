@@ -2,6 +2,8 @@ within Greenhouses;
 package Examples 
 
 
+
+
 annotation (Icon(graphics={
         Rectangle(
           lineColor={200,200,200},
@@ -22,7 +24,7 @@ annotation (Icon(graphics={
           fillPattern=FillPattern.Solid,
           points={{-58.0,46.0},{42.0,-14.0},{-58.0,-74.0},{-58.0,46.0}})}),
       Documentation(info="<html>
-      <p><big>Most examples of the Greenhouse library make use of some thermal systems models from the ThermoCycle library e.g., pumps, pressure drops, thermal energy storage. The user can download the ThermoCycle library here: <a href=\"http://thermocycle.net\">http://thermocycle.net</a></p>
-      <p><big>The examples make use of data from input files. The user must place the library in the directory C:/ or change the path to the input files (fileName in CombiTimeTables).</p>
+      <h4><big> Important remark! </h4>
+      <p><big>All the examples make use of data from input files (e.g. weather data, climate set-points). These data is contained in '.txt' files that are accessed by means of the 'CombiTimeTables' model from the Modelica Standard Library. For the simulation to find the file, a path needs to be indicated in the variable 'fileName' of the 'CombiTimeTables'. This path is currently set to the directory 'C:/'. Therefore: <h4><big>For the simulation to run, the user must place the library in the directory C:/ or change the path to the input files (fileName in CombiTimeTables). Otherwise, the simulation will not be able to find the data input files.</h4></p>
 </html>"));
 end Examples;

@@ -84,5 +84,15 @@ initial equation
           rotation=90),                   Text(
           extent={{-50,-34},{170,-94}},
           lineColor={0,0,0},
-          textString="%name")}));
+          textString="%name")}),
+    Documentation(info="<html>
+<p><big>This model applies an energy balance on the cover. The energy balance is done by taking into account:</p>
+<ul>
+<li><big>Sensible heat flows (i.e. all the flows connected to the heat port). These should be the sensible heat caused by convection is mainly exhanged with the air (top air zone when the screen is drawn, main air zone in the absence of a thermal screen) and the outside air; and long-wave radiation is exchanged with the heating pipes, the canopy, the floor, the thermal screen and the sky.</li>
+<li><big>Latent heat flows associated with condensation of moisture. In fact, depending on the water vapor pressure difference, condensation may take place at the inner side of the cover. Evaporation of moisture from the cover to the air is neglected because in greenhouses, condensate on the cover is commonly drained. The latent heat flows are determined by multiplying the moisture flows at the vapor mass port to the latent heat of vaporization</li>
+<li><big>Short-wave radiation absorbed from the sun (i.e. the forced flow from the short-wave radiation input).</li>
+</ul>
+<p><big>Because the properties of the cover are parameters of the model, the user has the possibility to adapt the model for any type of cover (single-glass, double-glass, plastic, etc.). </p>
+<p><big>Since glass thickness is commonly small (i.e. 4mm), conduction through the cover is neglected. The vapor pressure of water at the cover is defined by the saturated vapor pressure for its temperature.</p>
+</html>"));
 end Cover;

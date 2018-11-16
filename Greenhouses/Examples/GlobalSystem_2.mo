@@ -379,17 +379,20 @@ Storage"),
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           textString="HP")}), Icon(graphics={
-        Ellipse(lineColor=  {75,138,73},
+        Ellipse(lineColor = {75,138,73},
                 fillColor={255,255,255},
-                fillPattern=  FillPattern.Solid,
+                fillPattern = FillPattern.Solid,
                 extent={{-100,-100},{100,100}}),
-        Polygon(lineColor=  {0,0,255},
-                fillColor=  {75,138,73},
-                pattern=  LinePattern.None,
-                fillPattern=  FillPattern.Solid,
+        Polygon(lineColor = {0,0,255},
+                fillColor = {75,138,73},
+                pattern = LinePattern.None,
+                fillPattern = FillPattern.Solid,
                 points={{-36,60},{64,0},{-36,-60},{-36,60}})}),
     Documentation(info="<html>
-    <p><big>This is a second example aiming at illustrating the energy flows interacting between the greenhouse and generation and storage units. In the previous example <a href=\"modelica://Greenhouse.Examples/GlobalSystem_1\">GlobalSystem_1</a>, a considerable part of the produced electricity is sold back to the grid and, in the absence of subsidies, is remunerated at a price close to the wholesale price of electricity. Because the retail price of electricity is significantly higher than the wholesale price, prosumers have a clear advantage at maximizing their level of self-consumption. </p>
-    <p><big>To evaluate the potential of such activity, we propose a new case study in which we maximize the self-consumption rate through the use of a heat pump. To that end, the heat pump model from the Greenhouse library is used and is connected in series with the CHP. The excess of electricity that initially was being fed back to the grid is now used to power the heat pump. The heat pump is sized so that its nominal electrical capacity is equal to the excess of electricity of the CHP in nominal conditions. </p>
+    <p><big>This is a second example aiming at illustrating the energy flows interacting between the greenhouse and generation and storage units. In the previous example <a href=\"modelica://Greenhouses.Examples.GlobalSystem_1\">GlobalSystem_1</a>, a considerable part of the produced electricity is sold back to the grid. This electricity, in the absence of subsidies, is remunerated at a price close to the wholesale price of electricity. Because the retail price of electricity is significantly higher than the wholesale price, prosumers have a clear advantage at maximizing their level of self-consumption. </p>
+    <p><big>In order to evaluate the potential of such activity, we propose a new case study in which we maximize the self-consumption rate through the use of a heat pump. To that end, the heat pump model from the Greenhouses library is used and is connected in series with the CHP. The excess of electricity that initially was being fed back to the grid is now used to power the heat pump. The heat pump is sized so that its nominal electrical capacity is equal to the excess of electricity of the CHP in nominal conditions. A heat-driven control decides when to run the CHP. The heat pump is powered only by the CHP, and therefore never running independently. Electricity excess not consumed by the heat pump is sold to the grid. The greenhouse electrical demand not covered by the CHP is covered by the grid. The electricity and gas prices are the same than in <a href=\"modelica://Greenhouses.Examples.GlobalSystem_1\">GlobalSystem_1</a>. </p>
+    <h4><big>Results</h4>
+    <p><big>The results obtained from this simulation are discussed in the online documentation: <a href=\"https://greenhouses-library.readthedocs.io/en/latest\">https://greenhouses-library.readthedocs.io/en/latest</a>. A more detailed discussion including a comparison between this example and <a href=\"modelica://Greenhouses.Examples.GlobalSystem_1\">GlobalSystem_1</a> is presented in the following article:</p>
+    <p><big>Altes-Buch Q., Quoilin S., Lemort V.. Modeling and control of CHP generation for greenhouse cultivation including thermal energy storage. In <i>Proceedings of the 31st international conference on efficiency, cost, optimization, simulation and environmental impact of energy systems</i>, Guimaraes, Portugal, June 2018.</p>
 </html>"));
 end GlobalSystem_2;

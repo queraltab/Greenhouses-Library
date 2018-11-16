@@ -3,9 +3,9 @@ model Contacts "Authors' contacts"
   extends Modelica.Icons.Contact;
   annotation (Documentation(info="<html>
 <h4><big>The library is available at</h4>
-<p><big><a href=\"http://thermocycle.net\">https://github.com/queraltab</a></p>
+<p><big><a href=\"https://github.com/queraltab/Greenhouses-Library\">https://github.com/queraltab/Greenhouses-Library</a></p>
 <p><big><br><b>Main Authors:</b></p>
-<p><big>Queralt Altes-Buch &LT;<a href=\"mailto:squoilin@ulg.ac.be\">qaltes@uliege.be</a>&GT;</p>
+<p><big>Queralt Altes-Buch &LT;<a href=\"mailto:qaltes@uliege.be\">qaltes@uliege.be</a>&GT;</p>
 <p><br>University of Liege</p>
 <p>Energy Systems Research Unit - Thermodynamics laboratory</p>
 <p>Campus du Sart-Tilman, Quartier Polytech 1</p>

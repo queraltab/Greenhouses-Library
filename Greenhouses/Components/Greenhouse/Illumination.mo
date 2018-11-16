@@ -1,4 +1,4 @@
-within Greenhouses.Components.Greenhouse;
+﻿within Greenhouses.Components.Greenhouse;
 model Illumination "Artificial Illumination of the greenhouse"
   /******************** Parameters ********************/
   parameter Boolean power_input=false
@@ -122,5 +122,10 @@ equation
           lineColor={0,0,0},
           smooth=Smooth.None,
           fillColor={215,215,215},
-          fillPattern=FillPattern.Solid)}));
+          fillPattern=FillPattern.Solid)}),
+    Documentation(info="<html>
+    <p><big>Although the contrbution of supplementary lighting is very small during summer, in winter it can double the sun input through a day and thus, have an important impact on crop growth. This model computes the short-wave radiation originated from supplementary lighting absorbed by the different components of a greenhouse (i.e. canopy, floor and air).</p>
+    <p><big>Only part of the electric consumption of the supplementary lighting is converted to short-wave radiation. This model is based on high pressure sodium (HPS) lamps, which are a type of high intensity discharge lamps. For HPS, it is common that 17% of the electrical power is converted to NIR and 25% to visible light. Thus, the fraction of radiation absorbed by the greenhouse construction elements and later released to the air is assumed to be 58%.</p>
+    <p><big>The PAR and NIR absorbed by the canopy and the floor are computed similarly than in the <a href=\"modelica://Greenhouses.Components.Greenhouse.Solar_model\">Solar_model</a>. The illumination model icon has one input connector, for the ON-OFF control of the lamps, and three output connectors, whose output values are equal to the absorbed global radiation by (from left to right): the floor, the canopy and the air. Each output connector must be connected to the short-wave input connector of its corresponding component. The model outputs the radiation values in Wm⁻². However, the PAR absorbed values are also available in the model in μmol{photons}m⁻²s⁻¹, for which a conversion factor from global radiation to PAR equal to 1.8 μmol{photons} J⁻¹, characteristic of HPS lamps, is used.</p>
+</html>"));
 end Illumination;

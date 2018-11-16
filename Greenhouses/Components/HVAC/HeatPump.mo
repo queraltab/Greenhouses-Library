@@ -2,8 +2,8 @@ within Greenhouses.Components.HVAC;
 model HeatPump
   "Performance-based model of a heat pump in which we consider a constant secondary-law efficiency and a linear correlation between the nominal power and temperature"
 
-  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater
-                                                                                constrainedby
+  replaceable package Medium =
+      Modelica.Media.Water.ConstantPropertyLiquidWater                          constrainedby
     Modelica.Media.Interfaces.PartialMedium "Medium in the component"
       annotation (choicesAllMatching = true);
 
@@ -162,5 +162,10 @@ equation
           fileName=
               "modelica://PAC/../../../../trane-heat-pump-installation.bmp")}),
     experiment(StopTime=3600),
-    __Dymola_experimentSetupOutput);
+    __Dymola_experimentSetupOutput,
+    Documentation(info="<html>
+    <p><big>This heat pump model does not consider part-load operation (ON/OFF regulation is assumed). The heating power and the heat soure temperature are computed by assuming a linear correlation between their actual and nominal values. The electrical efficiency is computed assuming a constant second-law efficiency, parameter of the model.</p>
+    <p><big>The primary fluid is modeled by means of 1-D incompressible fluid flow model (<a href=\"modelica://Greenhouses.Flows.FluidFlow.Cell1DimInc\">Cell1DimInc</a>), in which a dynamic energy balance and static mass and momentum balances are applied on the fluid. The heat transfer in the primary fluid is modeled with a constant heat transfer coefficient. However, it can be changed to other heat transfer models through the HeatTransfer parameter in the fluid model.</p>
+    <p><big>Furthermore, the model includes a Boolean input connector <i>on_off</i>, which defines the operational state of the heat pump. In the equations, the Boolean input is translated to a variable value together with a first order block, which can take into account a start-up time constraint.</p>
+</html>"));
 end HeatPump;

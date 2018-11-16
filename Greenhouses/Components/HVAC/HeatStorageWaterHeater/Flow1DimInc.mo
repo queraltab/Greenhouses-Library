@@ -122,7 +122,7 @@ equation
                                       graphics={Rectangle(
           extent={{-92,40},{88,-40}},
           lineColor={0,0,255},
-          fillColor={0,255,255},
+          fillColor={170,213,255},
           fillPattern=FillPattern.Solid)}),Documentation(info="<HTML>
        <p><big>This model describes the flow of incompressible fluid through a discretized one dimensional tube. It is obtained by connecting in series <b>N</b> <a href=\"modelica://ThermoCycle.Components.FluidFlow.Pipes.Cell1DimInc\">Cell1DimInc</a>.    
           

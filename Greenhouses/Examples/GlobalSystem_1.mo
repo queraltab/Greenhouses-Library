@@ -271,19 +271,22 @@ Storage"),
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           textString="CHP")}), Icon(graphics={
-        Ellipse(lineColor=  {75,138,73},
+        Ellipse(lineColor = {75,138,73},
                 fillColor={255,255,255},
-                fillPattern=  FillPattern.Solid,
+                fillPattern = FillPattern.Solid,
                 extent={{-100,-100},{100,100}}),
-        Polygon(lineColor=  {0,0,255},
-                fillColor=  {75,138,73},
-                pattern=  LinePattern.None,
-                fillPattern=  FillPattern.Solid,
+        Polygon(lineColor = {0,0,255},
+                fillColor = {75,138,73},
+                pattern = LinePattern.None,
+                fillPattern = FillPattern.Solid,
                 points={{-36,60},{64,0},{-36,-60},{-36,60}})}),
     Documentation(info="<html>
 <p><big>This example intends to illustrate the energy flows interacting between the greenhouse and generation and storage units. To that end, the greenhouse model is used as a grey box and is connected to a CHP unit and a thermal energy storage tank.</p>
-<p><big>The storage tank is based a nodal model from the ThermoCycle library. In this example, it is connected as an open buffer, i.e. the CHP is not connected to the greenhouse but only to the tank.</p>
-<p><big>The CHP unit is sized to provide the peak load of the thermal demand of the greenhouse, which can be extracted from the example <a href=\"modelica://Greenhouse.Examples/Greenhouse_1\">Greenhouse_1</a>. The thermal energy storage unit is sized considering a storage period of 8h and given the DELTAT between the inlet and outlet. </p>
+<p><big>The storage tank is connected as an open buffer, i.e. the CHP is not connected to the greenhouse but only to the tank.</p>
+<p><big>The CHP unit is sized to provide the peak load of the thermal demand of the greenhouse, which can be extracted from the example <a href=\"modelica://Greenhouses.Examples.Greenhouse_1\">Greenhouse_1</a>. The thermal energy storage unit is sized considering a storage period of 8h and given a nominal temperature difference between the inlet and outlet. </p>
 <p><big>The CHP is providing the heating and electrical demand from the greenhouse. Excess of electricity is sold back to the grid. Lack of electricity is bought from the grid. Constant prices are used for the selling and buying of electricty and buying of gas.</p>
+<h4><big>Results</h4>
+    <p><big>The results obtained from this simulation are discussed in the online documentation: <a href=\"https://greenhouses-library.readthedocs.io/en/latest\">https://greenhouses-library.readthedocs.io/en/latest</a>. A more detailed discussion including a comparison between this example and <a href=\"modelica://Greenhouses.Examples.GlobalSystem_2\">GlobalSystem_2</a> is presented in the following article:</p>
+    <p><big>Altes-Buch Q., Quoilin S., Lemort V.. Modeling and control of CHP generation for greenhouse cultivation including thermal energy storage. In <i>Proceedings of the 31st international conference on efficiency, cost, optimization, simulation and environmental impact of energy systems</i>, Guimaraes, Portugal, June 2018.</p>
 </html>"));
 end GlobalSystem_1;

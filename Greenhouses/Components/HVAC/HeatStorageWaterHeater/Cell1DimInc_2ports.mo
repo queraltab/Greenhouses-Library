@@ -164,8 +164,8 @@ equation
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
                     graphics={Rectangle(
           extent={{-80,40},{84,-40}},
-          lineColor={255,0,0},
-          fillColor={0,255,255},
+          lineColor={0,0,255},
+          fillColor={170,213,255},
           fillPattern=FillPattern.Solid)}),
     Documentation(info="<HTML>
           

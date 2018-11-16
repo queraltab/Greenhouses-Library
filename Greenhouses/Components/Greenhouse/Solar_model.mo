@@ -1,4 +1,4 @@
-within Greenhouses.Components.Greenhouse;
+﻿within Greenhouses.Components.Greenhouse;
 model Solar_model "Global, PAR and NIR heat fluxes"
 
   /********************* Parameters ***********************/
@@ -254,5 +254,11 @@ equation
           points={{42,-46},{84,36}},
           color={255,128,0},
           smooth=Smooth.None,
-          arrow={Arrow.None,Arrow.Filled})}));
+          arrow={Arrow.None,Arrow.Filled})}),
+    Documentation(info="<html>
+<p><big>The solar radiation incident in a greenhouse can be split in three spectral parts: ultra violet (UV, from 0.3 to 0.4 μm), visible light (from 0.4 to 0.7 μm) and near infrared light (NIR, from 0.7 to 3 μm). The visible light has an interest for biological growth and is referred as photosynthetically active radiation (PAR) in greenhouse modeling. The fraction of UV is 6- 10% and of PAR is 45-60% of the global radiation. However, for plant growth it is common to assign 50% to PAR, neglect the UV and assign the other 50% to NIR. Besides the spectral division, the solar radiation can be divided in direct and diffuse radiation. The solar model of this work is simplified by making no distinction between diffuse and direct solar radiation and by assuming that the transmission coefficient of the greenhouse cover does not depend on the solar angle.</p>
+<p><big>This model computes the short-wave radiation originated from the sun absorbed by the different components of a greenhouse. Therefore, the optical properties of the greenhouse components are parameters of the model. The user can set the parameters according to their case study. In case the user does not have this data, the default values, which are related to typical materials, can be used. Default values of the parameters are given for tomato crop, single-glass cover, concrete floor and aluminised screen.</p>
+<p><big>A detailed description of the model equations can be found in the online documentation of the library <a href=\"https://greenhouses-library.readthedocs.io/en/latest\">https://greenhouses-library.readthedocs.io/en/latest</a> </p>
+<p><big>The solar model icon has one input connector, for the global irradiation, and four output connectors, whose output values are equal to the absorbed global radiation by (from top to bottom): the cover, the air, the canopy and the floor. Each output connector must be connected to the short-wave input connector of its corresponding component. The model outputs the radiation values in Wm⁻². However, the PAR absorbed values are also available in the model in μmol{photons}m⁻²s⁻¹, for which a conversion factor from global radiation to PAR equal to 2.3 μmol{photons} J⁻¹ is used.</p>
+</html>"));
 end Solar_model;

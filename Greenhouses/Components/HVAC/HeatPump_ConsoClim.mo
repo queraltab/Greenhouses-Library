@@ -309,21 +309,36 @@ equation
           fillPattern=FillPattern.Solid,
           fillColor={0,0,255})}),
           Documentation(info="<html>
-<p>
+<p><big>
 This model is used to determine the performances of a heat pump for different 
 operating conditions. The ConsoClim model developed by the MINES PARISTECH 
 is used. 
 </p>
-<p>
+<p><big>
 The model predicts the performances of the system with three polynomial laws. 
 The parameters of the model are identified with manufacturer data. 
 </p>
-<p>
+<p><big>
 The first and the second law (EIRFT and CAPFT) are used respectively to determine
 the COP and the heating capacity of the machine at full load. These two polynomial
 laws depend on the outside air temperature (T_a_out) and the temperature of the 
 water at the exhaust of the condenser (T_w). The third law is used to determine 
 the performances of the system at part load. 
 </p>
+<p><big>
+The primary side fluid is modeled by means of 1-D incompressible fluid flow model 
+(<a href=\"modelica://Greenhouses.Flows.FluidFlow.Cell1DimInc\">Cell1DimInc</a>), 
+in which a dynamic energy balance and static mass and momentum balances are applied 
+on the fluid. The heat transfer in the primary fluid is modeled with a constant 
+heat transfer coefficient. However, it can be changed to other heat transfer models 
+through the HeatTransfer parameter in the fluid model.
+</p>
+<p><big>
+Furthermore, the model includes a Boolean input connector <i>on_off</i>, which defines 
+the operational state of the heat pump. In the equations, the Boolean input is translated 
+to a variable value together with a first order block, which can take into account a start-up 
+time constraint. The model also includes a real input connector <i>W_dot_set</i> to define the
+power that is injected to the heat pump. This connector is useful, for example, in the case 
+where a heat pump is powered by the CHP electrical generation.</p>
 </html>"));
 end HeatPump_ConsoClim;

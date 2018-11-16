@@ -56,5 +56,8 @@ initial equation
           rotation=90),                   Text(
           extent={{-110,-34},{110,-94}},
           lineColor={0,0,0},
-          textString="%name")}));
+          textString="%name")}),
+    Documentation(info="<html>
+    <p><big>This model computes the energy balance on a surface. The energy balance takes into account all the heat flows connected to the heat port. The properties of the surface are parameters of the model. </p>
+</html>"));
 end Layer;
