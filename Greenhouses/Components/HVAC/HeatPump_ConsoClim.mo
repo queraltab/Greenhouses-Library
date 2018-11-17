@@ -30,8 +30,8 @@ model HeatPump_ConsoClim
 
   parameter Real COP_n=3.9505;
   parameter Real Q_dot_cd_n=10.02 "W";
-  parameter Real T_su_ev_n=7 "°C";
-  parameter Real T_ex_cd_n=35 "°C";
+  parameter Real T_su_ev_n=7 "Â°C";
+  parameter Real T_ex_cd_n=35 "Â°C";
   parameter Real C0=0.949;
   parameter Real C1=-8.05;
   parameter Real C2=111.09;

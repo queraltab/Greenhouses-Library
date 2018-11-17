@@ -91,11 +91,11 @@ protected
   Real theta=0.7 "Degree of curvature of the electron transport rate";
   Real E_j(unit="J/mol")=37e3 "Activation energy for J_POT";
   Real H(unit="J/mol")=22e4 "Deactivation energy";
-  Modelica.SIunits.Temperature T_25K=298.15 "Reference temperature at 25ºC";
+  Modelica.SIunits.Temperature T_25K=298.15 "Reference temperature at 25ÂºC";
   Real Rg(unit="J/(mol.K)")=8.314 "Molar gas constant";
   Real S(unit="J/(mol.K)")=710 "Entropy term";
   Real J_25Leaf_MAX(unit="umol/(m2.s)")=210
-    "Maximum rate of electron transport at 25ºC for the leaf, umol e-/(m2 leaf.s)";
+    "Maximum rate of electron transport at 25ÂºC for the leaf, umol e-/(m2 leaf.s)";
   Real eta_CO2airStom=0.67
     "Conversion factor from the CO2 concentration of the greenhouse air";
   Real c_Gamma(unit="umol/(mol.K)")=1.7
@@ -110,11 +110,11 @@ protected
   Real T_endSumC(unit="degC")=1035
     "Temperature sum when the fruit growth rate is at full potential";
   Real rg_Fruit(unit="mg/(m2.s)")=0.328
-    "Potential fruit growth rate coefficient at 20ºC";
+    "Potential fruit growth rate coefficient at 20ÂºC";
   Real rg_Leaf(unit="mg/(m2.s)")=0.095
-    "Potential leaf growth rate coefficient at 20ºC";
+    "Potential leaf growth rate coefficient at 20ÂºC";
   Real rg_Stem(unit="mg/(m2.s)")=0.074
-    "Potential stem growth rate coefficient at 20ºC";
+    "Potential stem growth rate coefficient at 20ÂºC";
 
   Real r_BufFruit_MAXFrtSet(unit="mg/(m2.s)")=0.05
     "Carbohydrate flow from buffer to the fruits above which fruit set is maximal";
@@ -157,7 +157,7 @@ protected
   Real J_POT(unit="umol/(m2.s)")
     "Potential rate of electron transport, umol e-/(m2.s)";
   Real J_25Can_MAX(unit="umol/(m2.s)")
-    "Maximum rate of electron transport at 25ºC for the canopy";
+    "Maximum rate of electron transport at 25ÂºC for the canopy";
   Real PAR_can(unit="umol/(m2.s)")
     "Total PAR absorbed by the canopy computed in the solar model, umol photon/(m2.s)";
   Real h_CBuf_MCBufOrg "Inhibition coefficient";
