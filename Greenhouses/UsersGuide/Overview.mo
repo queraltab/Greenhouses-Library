@@ -1,4 +1,4 @@
-﻿within Greenhouses.UsersGuide;
+within Greenhouses.UsersGuide;
 class Overview
   extends Modelica.Icons.Info;
 
