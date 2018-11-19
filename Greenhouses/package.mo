@@ -33,5 +33,5 @@ package Greenhouses "The Greenhouses Modelica Library"
 </html>"),
   Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
       graphics={Bitmap(extent={{-100,100},{100,-100}}, fileName=
-            "modelica://ThermoCycle/Resources/Images/ThermoCycleLibrary.png")}));
+            "modelica://Greenhouses/Resources/Images/GreenhousesLibraryIcon.jpg")}));
 end Greenhouses;
