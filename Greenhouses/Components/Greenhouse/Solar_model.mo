@@ -1,4 +1,4 @@
-﻿within Greenhouses.Components.Greenhouse;
+within Greenhouses.Components.Greenhouse;
 model Solar_model "Global, PAR and NIR heat fluxes"
 
   /********************* Parameters ***********************/

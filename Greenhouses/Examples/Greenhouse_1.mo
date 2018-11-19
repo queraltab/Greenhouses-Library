@@ -1,4 +1,4 @@
-﻿within Greenhouses.Examples;
+within Greenhouses.Examples;
 model Greenhouse_1
   "Simulation of a Venlo-type greenhouse for tomato crop cultivated from 10Dec-22Nov (weather data from TMY)"
   Modelica.SIunits.HeatFlux q_low;

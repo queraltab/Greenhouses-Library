@@ -1,4 +1,4 @@
-﻿within Greenhouses.Components.Greenhouse;
+within Greenhouses.Components.Greenhouse;
 model Illumination "Artificial Illumination of the greenhouse"
   /******************** Parameters ********************/
   parameter Boolean power_input=false
