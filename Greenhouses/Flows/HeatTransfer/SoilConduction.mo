@@ -37,7 +37,7 @@ model SoilConduction
     each c_p=2e6,
     each A=A,
     V=A*th_c,
-    steadystate=steadystate)
+    each steadystate=steadystate)
     annotation (Placement(transformation(extent={{-60,64},{-40,84}})));
   Greenhouse.Flows.HeatTransfer.ThermalConductor TC_s[N_s](G=G_s)
     annotation (Placement(transformation(extent={{-4,14},{16,34}})));
@@ -46,7 +46,7 @@ model SoilConduction
     each c_p=1.73e6,
     each A=A,
     V=A*th_s,
-    steadystate=steadystate)
+    each steadystate=steadystate)
     annotation (Placement(transformation(extent={{22,14},{42,34}})));
 equation
   // Connect port_a depending on if there is concrete layers or not
