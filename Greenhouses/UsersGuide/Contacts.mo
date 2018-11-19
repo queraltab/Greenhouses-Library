@@ -5,12 +5,23 @@ model Contacts "Authors' contacts"
 <h4><big>The library is available at</h4>
 <p><big><a href=\"https://github.com/queraltab/Greenhouses-Library\">https://github.com/queraltab/Greenhouses-Library</a></p>
 <p><big><br><b>Main Authors:</b></p>
-<p><big>Queralt Altes-Buch &LT;<a href=\"mailto:qaltes@uliege.be\">qaltes@uliege.be</a>&GT;</p>
-<p><br>University of Liege</p>
-<p>Energy Systems Research Unit - Thermodynamics laboratory</p>
-<p>Campus du Sart-Tilman, Quartier Polytech 1</p>
-<p>All&eacute;e de la D&eacute;couverte 17, B&acirc;timent B49 (P33)</p>
-<p>B-4000 Li&egrave;ge (BELGIUM)</p>
-<p><br><br><br><br><br>This Modelica package is free software and the use is completely at your own risk; it can be redistributed and/or modified under the terms of the Modelica License 2. For license conditions (including the disclaimer of warranty) see <a href=\"Modelica://ControlLibrary.UserGuide.ModelicaLicense2\">ModelicaLicense2</a> or visit <a href=\"http://www.Modelica.org\">http://www.modelica.org/licenses/ModelicaLicense2</a>. </p>
+
+<p style=\"margin-left: 40px;\"><b>Queralt Altes-Buch</b><br>
+Energy Systems Research Unit - Thermodynamics Laboratory (University of Liege)<br>
+Campus du Sart Tilman, Quartier Polytech 1 <br>
+Allee de la Decouverte 17 (Batiment B49) <br>
+4000 Liege <br>
+Belgium<br>
+email: <a href=\"mailto:qaltes@uliege.be\">qaltes@uliege.be</a><br>
+
+
+<p><br><br>
+Licensed by Thermodynamics Laboratory (University of Liege) under the Modelica License 2<br>
+Copyright &copy; 2017-2018, Thermodynamics Laboratory (University of Liege).
+</p>
+
+<p>
+<i>This Modelica package is <u>free</u> software and the use is completely at <u>your own risk</u>; it can be redistributed and/or modified under the terms of the Modelica License 2. For license conditions (including the disclaimer of warranty) see <a href=\"modelica://Modelica.UsersGuide.ModelicaLicense2\">Modelica.UsersGuide.ModelicaLicense2</a> or visit <a href=\"http://www.modelica.org/licenses/ModelicaLicense2\"> http://www.modelica.org/licenses/ModelicaLicense2</a>.</i>
+</p>
 </html>"));
 end Contacts;

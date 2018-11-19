@@ -19,12 +19,21 @@ table   { solid #000; border-collapse: collapse;}
 <body lang=\"en-US\">
 
 <p>
-This package with all of its subpackages is released
-under the &ldquo;Modelica License 2&rdquo; (if not explicitly noted otherwise).</p>
+All files in this directory (Greenhouses) and in all
+subdirectories, especially all files that build package \"Greenhouses\" and all
+files in \"Greenhouses/Resources/\" are licensed by the <b><u>Thermodynamics Laboratory (University of Liege)</u></b> under the <b><u>Modelica License 2</u></b> (if not explicitly noted otherwise).</p>
+
+<p style=\"margin-left: 40px;\"><b>Licensor:</b><br>
+Thermodynamics Laboratory (University of Liege)<br>
+Campus du Sart Tilman, Quartier Polytech 1 <br>
+Allee de la Decouverte 17 (Batiment B49) <br>
+4000 Liege <br>
+Belgium<br>
+web: <a href=\"https://www.labothap.ulg.ac.be\">https://www.labothap.ulg.ac.be</a></p>
+
 
 <p>
 <a href=\"#The_Modelica_License_2-outline\">The Modelica License 2</a><br>
-<a href=\"#How_to_Apply_the_Modelica_License_2-outline\">How to Apply the Modelica License 2</a><br>
 <a href=\"#Frequently_Asked_Questions-outline\">Frequently Asked Questions</a><br>
 </p>
 
@@ -47,7 +56,7 @@ The Modelica License applies to any Original Work that contains the
 following licensing notice adjacent to the copyright notice(s) for
 this Original Work:</p>
 
-<p><b>Licensed by &lt;name of Licensor&gt; under the Modelica License 2</b></p>
+<p><b>Licensed by Thermodynamics Laboratory (University of Liege) under the Modelica License 2</b></p>
 
 <p><b>1. Definitions.</b></p>
 <ol type=\"a\">
@@ -302,64 +311,6 @@ action. This section shall survive the termination of this License.</p>
 
 <hr>
 
-<h4><a name=\"How_to_Apply_the_Modelica_License_2-outline\"></a>
-How to Apply the Modelica License 2</h4>
-
-<p>At
-the top level of your Modelica package and at every important
-subpackage, add the following notices in the info layer of the
-package:</p>
-
-<p>
-Licensed by &lt;Licensor&gt; under the Modelica License 2<br>
-Copyright &copy; &lt;year1&gt;-&lt;year2&gt;, &lt;name of copyright
-holder(s)&gt;.
-</p>
-
-<p>
-<i>This Modelica package is <u>free</u> software and the use is completely at <u>your own risk</u>; it can be redistributed and/or modified under the terms of the Modelica License 2. For license conditions (including the disclaimer of warranty) see <a href=\"modelica://Modelica.UsersGuide.ModelicaLicense2\">Modelica.UsersGuide.ModelicaLicense2</a> or visit <a href=\"http://www.modelica.org/licenses/ModelicaLicense2\"> http://www.modelica.org/licenses/ModelicaLicense2</a>.</i>
-</p>
-
-<p>Include
-a copy of the Modelica License 2 under
-<b>&lt;library&gt;.UsersGuide.ModelicaLicense2</b>
-(use <a href=\"http://www.modelica.org/licenses/ModelicaLicense2.mo\">
-http://www.modelica.org/licenses/ModelicaLicense2.mo</a>).
-Furthermore, add
-the list of authors and contributors under
-<b>&lt;library&gt;.UsersGuide.Contributors</b> or
-<b>&lt;library&gt;.UsersGuide.Contact</b>.</p>
-
-<p>For
-example, sublibrary Modelica.Blocks of the Modelica Standard Library
-may have the following notices:</p>
-
-<p>
-Licensed by Modelica Association under the Modelica License 2<br>
-Copyright &copy; 1998-2008, Modelica Association.
-</p>
-
-<p>
-<i>This Modelica package is <u>free</u> software and the use is completely at <u>your own risk</u>; it can be redistributed and/or modified under the terms of the Modelica License 2. For license conditions (including the disclaimer of warranty) see <a href=\"modelica://Modelica.UsersGuide.ModelicaLicense2\">Modelica.UsersGuide.ModelicaLicense2</a> or visit <a href=\"http://www.modelica.org/licenses/ModelicaLicense2\"> http://www.modelica.org/licenses/ModelicaLicense2</a>.</i>
-</p>
-
-<p>For
-C-source code and documents, add similar notices in the corresponding
-file.</p>
-
-<p>For
-images, add a &ldquo;readme.txt&rdquo; file to the directories where
-the images are stored and include a similar notice in this file.</p>
-
-<p>In
-these cases, save a copy of the Modelica License 2 in one directory
-of the distribution, e.g.,
-<a href=\"http://www.modelica.org/licenses/ModelicaLicense2.html\">
-http://www.modelica.org/licenses/ModelicaLicense2.html</a>
-in directory <b>&lt;library&gt;/Resources/Documentation/ModelicaLicense2.html</b>.
-</p>
-
-<hr>
 
 <h5><a name=\"Frequently_Asked_Questions-outline\"></a>
 Frequently Asked Questions</h5>

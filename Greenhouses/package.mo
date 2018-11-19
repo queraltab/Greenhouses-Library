@@ -30,6 +30,14 @@ package Greenhouses "The Greenhouses Modelica Library"
 <li><b><a href=\"modelica://Greenhouses.Interfaces\">Interfaces</a> </b>contains all the type of connectors used in the library, for heat transfer, vapor transfer, CO2 transfer and fluid flow. </li>
 <li><b><a href=\"modelica://Greenhouses.Functions\">Functions</a> </b>are the empirical correlations used to characterized some of the models presents in the library. </li>
 </ul>
+<p><br><br>
+Licensed by Thermodynamics Laboratory (University of Liege) under the Modelica License 2<br>
+Copyright &copy; 2017-2018, Thermodynamics Laboratory (University of Liege).
+</p>
+
+<p>
+<i>This Modelica package is <u>free</u> software and the use is completely at <u>your own risk</u>; it can be redistributed and/or modified under the terms of the Modelica License 2. For license conditions (including the disclaimer of warranty) see <a href=\"modelica://Modelica.UsersGuide.ModelicaLicense2\">Modelica.UsersGuide.ModelicaLicense2</a> or visit <a href=\"http://www.modelica.org/licenses/ModelicaLicense2\"> http://www.modelica.org/licenses/ModelicaLicense2</a>.</i>
+</p>
 </html>"),
   Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
       graphics={Bitmap(extent={{-100,100},{100,-100}}, fileName=
