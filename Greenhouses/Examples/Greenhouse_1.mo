@@ -448,7 +448,7 @@ model Greenhouse_1
     tableOnFile=true,
     tableName="tab",
     columns=1:10,
-    fileName="C:/Greenhouses/Resources/Data/10Dec-22Nov.txt")
+    fileName=Modelica.Utilities.Files.loadResource("modelica://Greenhouses/Resources/Data/10Dec-22Nov.txt"))
     "Set-points for the climate"
     annotation (Placement(transformation(extent={{-152,152},{-132,172}})));
 
@@ -458,7 +458,7 @@ model Greenhouse_1
     tableOnFile=true,
     tableName="tab",
     columns=1:2,
-    fileName="C:/Greenhouses/Resources/Data/SC_usable_10Dec-22Nov.txt")
+    fileName=Modelica.Utilities.Files.loadResource("modelica://Greenhouses/Resources/Data/SC_usable_10Dec-22Nov.txt"))
     annotation (Placement(transformation(extent={{206,-62},{192,-48}})));
   ControlSystems.Climate.Control_ThScreen SC(R_Glob_can=I_glob.y,
       R_Glob_can_min=35)
@@ -478,7 +478,7 @@ model Greenhouse_1
     tableOnFile=true,
     tableName="tab",
     columns=1:3,
-    fileName="C:/Greenhouses/Resources/Data/SP_10Dec-22Nov.txt")
+    fileName=Modelica.Utilities.Files.loadResource("modelica://Greenhouses/Resources/Data/SP_10Dec-22Nov.txt"))
     "Climate set points 10Dec-22Nov: daily setpoints based on maximizing photosynthesis rate, minimum night temperature of 16, 24h mean temperature of 20"
     annotation (Placement(transformation(extent={{-118,152},{-98,172}})));
 equation
@@ -1121,13 +1121,13 @@ Vapour transfer"),
 <p></font><font style=\"font-size: 10pt; \">This example intends to illustrate the simulation of a greenhouse climate. The greenhouse is built by interconnecting all of the energy and mass <a href=\"modelica://Greenhouses.Flows\">Flows</a> presents in a greenhouse to their related <a href=\"modelica://Greenhouses.Components.Greenhouse\">Components</a>. As it can be distinguished, the greenhouse modeled in this example consists of two levels of heating circuits, roof windows (but not side vents), natural ventilation (no forced ventilation) and a movable thermal screen. It should be noted that, when the screen is drawn, the air of the greenhouse is divided in two zones, i.e. below and above the screen. These zones are modeled separately (models air and air_Top) and their climate is assumed to be homogeneous. The models parameters have been set to typical values for Venlo-type greenhouse construction design dedicated to tomato crop cultivation. The greenhouse floor area and the mean greenhouse height are set in two individual block sources.</p>
 <p><big>The simulated greenhouse is located in Belgium and the simulation period is from December 10th to November 22nd. Two data files are required: </p>
 <ul>
-<li><big><i>Weather data</i>: The input weather data for the simulation period is extracted from a TMY for Brussels and can be found in &lsquo;Greenhouses/Resources/Data/10Dec-22Nov.txt&rsquo;. The file contains data for the outside air temperature, air pressure, wind speed and global irradiation. The sky temperature, previously computed in a Python script, is also included in this file. </li>
-<li><big><i>Climate control set-points</i>: The temperature and CO2 set-points for the simulation period are calculated according to the strategy presented in the online documentation and can be found in &lsquo;Greenhouses/Resources/Data/SP_10Dec-22Nov.txt&rsquo;.</li>
+<li><big><i>Weather data</i>: The input weather data for the simulation period is extracted from a TMY for Brussels and can be found in <a href=\"modelica://Greenhouses/Resources/Data/10Dec-22Nov.txt\">&lsquo;Greenhouses/Resources/Data/10Dec-22Nov.txt&rsquo;</a>. The file contains data for the outside air temperature, air pressure, wind speed and global irradiation. The sky temperature, previously computed in a Python script, is also included in this file. </li>
+<li><big><i>Climate control set-points</i>: The temperature and CO2 set-points for the simulation period are calculated according to the strategy presented in the online documentation and can be found in <a href=\"modelica://Greenhouses/Resources/Data/SP_10Dec-22Nov.txt\">&lsquo;Greenhouses/Resources/Data/SP_10Dec-22Nov.txt&rsquo;</a>.</li>
 </ul>
-<p><big> These '.txt' files are accessed by means of <i>TMY_and_control</i> and <i>SP_new</i>, which are two CombiTimeTables models from the Modelica Standard Library. The path to the data files is introduced in the variable fileName, which in the example it is set to the folder ‘C:/Greenhouses/Resources/Data’. Therefore, in order for the model to find the data input files, <b>the user must place the library in the directory C:/ or change the path to the data input files</b> (fileName in CombiTimeTables).</p>
+<p><big> These '.txt' files are accessed by means of <i>TMY_and_control</i> and <i>SP_new</i>, which are two CombiTimeTables models from the Modelica Standard Library.</p>
 <p><big>The goal of this example is to show the energy flows interacting in a greenhouse. Thus, no generation units are included. Instead, the heating pipes are connected to a water source and sink model. The model includes the following controls:</p>
 <ul>
-<li><big><i>PID_Mdot</i>: A PI controller adjusts the output mass flow rate of the water source connected to the heating pipes by compaing the air temperature set-point and present value.</li>
+<li><big><i>PID_Mdot</i>: A PI controller adjusts the output mass flow rate of the water source connected to the heating pipes by comparing the air temperature set-point and present value.</li>
 <li><big><i>PID_CO2</i>: A PI controller adjusts the output of the CO2 external source by comparing the actual CO2 concentration of the air to its set-point.</li>
 <li><big><i>Ctrl_SC</i>: A state graph adjusts the screen closure (SC) according to the strategy presented in Control Systems. The real inputs must be connected to the air relative humidity, the outdoor temperature, the indoor air temperature set-point and the usable hours of the screen. The usable hours are 1h30 before dusk, 1h30 after dawn and during night. In the global he global outside irradiation</li>
 <li><big><i>vents</i>: A PI controller adjusts the opening of the windows according to the strategy presented in Control Systems. The opening depends mainly on the indoor air relative humidity and temperature.</li>
