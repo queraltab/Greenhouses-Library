@@ -89,5 +89,27 @@ equation
           textString="%name",
           lineColor={0,0,255},
           origin={0,-104},
-          rotation=360)}));
+          rotation=360)}), Documentation(info="<html>
+<p><big>The upward or downward heat exchange by free convection from an horizontal or 
+inclined surface is modeled. In free convection, the Nusselt (Nu) number describing 
+the exchange process can be defined as a function of the Rayleigh (Ra) number [1]. 
+The heat exchange coefficients are therefore modeled based on the Nu-Ra relation. 
+The model can be used for convection at the cover (upward flow, inclined surface), 
+the floor (upward/downward flow, horizontal surface) or the screen (upward flow, 
+horizontal surface). The bi-direction nature of the convective flow on the floor 
+is due to the latter can be warmer or colder than the air above it. The different 
+natures of the flows lead to different Nu-Ra relations for each surface. Therefore, 
+the user should indicate (by means of the Boolean parameters) which surface is 
+being modeled. 
+</p>
+<p><big>
+Depending on the status of the thermal screen, the heat flow to the 
+cover can originate either from the top or the main air zone, and the heat flow to 
+the screen can have a different magnitude. Therefore, when the model is used for 
+the cover or the screen, the screen closure (control variable in the global system)
+is a required input.</p>
+<p>[1] Luc Balemans. Assessment of criteria for energetic effectiveness of
+greenhouse screens. PhD thesis, Agricultural University, Ghent,
+1989.</p>
+</html>"));
 end FreeConvection;

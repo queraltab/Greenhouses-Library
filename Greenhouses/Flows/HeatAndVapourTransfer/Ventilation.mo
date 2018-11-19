@@ -1,4 +1,4 @@
-within Greenhouses.Flows.HeatAndVapourTransfer;
+﻿within Greenhouses.Flows.HeatAndVapourTransfer;
 model Ventilation
   "Heat and vapour mass flows exchanged from the greenhouse air to the outside air by ventilation"
   extends Greenhouses.Interfaces.HeatAndVapour.Element1D;
@@ -11,7 +11,7 @@ model Ventilation
   parameter Boolean topAir=false
     "False for: Main air zone; True for: Top air zone"                  annotation (Dialog(enable=(thermalScreen and upward)));
   parameter Boolean forcedVentilation=false
-    "presence of a thermal screen in the greenhouse";
+    "presence of a mechanical ventilation system in the greenhouse";
   parameter Modelica.SIunits.VolumeFlowRate phi_VentForced=0
     "Air flow capacity of the forced ventilation system" annotation(Dialog(enable=forcedVentilation));
 
@@ -138,13 +138,41 @@ equation
                                    Diagram(coordinateSystem(preserveAspectRatio=
            false, extent={{-100,-100},{100,100}}), graphics),
     Documentation(info="<html>
-<p>Ventilation replaces greenhouse air by outdoor air. In most cases this exchange is governed by natural ventilation through windows, from which the aperture of the windws is controlled by the greenhouse climate controller. However, since greenhouses are not completely air tight, there is also a small uncontrolable ventilation flux caused by leakage.</p>
-<p>The greenhouse leakage rate depends on wind speed and is described by:</p>
-<p><img src=\"modelica://Greenhouse/Images/equations/equation-idob13KG.png\" alt=\"f_leakage = 0.25*c_leakage
-\"/>, <img src=\"modelica://Greenhouse/Images/equations/equation-mMOn6mQp.png\" alt=\"u_wind < 0.25\"/></p>
-<p><img src=\"modelica://Greenhouse/Images/equations/equation-BmZXe19S.png\" alt=\"f_leakage = u_wind*c_leakage\"/>, <img src=\"modelica://Greenhouse/Images/equations/equation-eCDlvOlE.png\" alt=\"u_wind > 0.25\"/></p>
-<p>where <img src=\"modelica://Greenhouse/Images/equations/equation-9meGKjTB.png\" alt=\"c_leakage\"/> (-) is the leakage coefficient which depends in the greenhouse type.</p>
-<p>The indoor air with a heat content <img src=\"modelica://Greenhouse/Images/equations/equation-i1Rs2Q2I.png\" alt=\"rho*Cp_air*T_air\"/> is replaced by outdoor air with a heat content <img src=\"modelica://Greenhouse/Images/equations/equation-CDv0ddvc.png\" alt=\"rho*Cp_air*T_out\"/>. Therefore, when the difference in density is neglected, the heat exchange coefficient for ventilation heat exchange is defined by:</p>
-<p><img src=\"modelica://Greenhouse/Images/equations/equation-EaiGn1qY.png\" alt=\"HEC_AirOut = rho*Cp_air*(f_vent + u*f_leakage)\"/> <img src=\"modelica://Greenhouse/Images/equations/equation-r2aQHcKW.png\" alt=\"[W*m^(-2)*K^(-1)]\"/></p>
+    <p><big>Ventilation replaces greenhouse air by outdoor air. In most cases this exchange 
+    is governed by natural ventilation through windows, from which the aperture of the 
+    windws is controlled by the greenhouse climate controller. However, since greenhouses 
+    are not completely air tight, there is also a small uncontrolable ventilation flux caused by leakage.</p>
+    <p><big>The heat transfer between the inside and outside air due to natural ventilation 
+    is computed as a function of the air exchange rate by using the 
+    <a href=\"modelica://Greenhouses.Flows.HeatAndVapourTransfer.VentilationRates.NaturalVentilationRate_2\">NaturalVentilationRate_2</a> 
+    model. This rate, derived by [1], 
+    depends mainly on two factors. The first one is the windows opening, a required input 
+    which is set by the climate controller. The latter are characteristics of the windows 
+    (e.g. the wind pressure coefficient and the coefficient of energy discharge caused by 
+    friction at the windows), which in order to simplify the model, have been set to 
+    constant values relative to standard roof windows. </p>
+    <p><big>If a mechanical ventilation system is installed, the heat flow caused by 
+    this system also needs to be taken into acount. The heat flow from forced ventilation is also computed as
+a function of the air exchange rate, which depends on the
+capacity of the mechanical ventilation system (parameter
+of the model) and the position of the control valve (required
+input set by the climate controller). This computation is done in the 
+<a href=\"modelica://Greenhouses.Flows.HeatAndVapourTransfer.VentilationRates.ForcedVentilationRate\">ForcedVentilationRate</a> model.
+</p>
+    <p><big>Depending on the status of the thermal screen, the heat flow can 
+    originate either from the top or the main air zones. Therefore, the user must indicate which
+    zone is being modeled through a Boolean parameter. The screen closure 
+    (control variable from the climate controller) is a required input. 
+    </p>
+    <p><big>This model also takes into account the leakage rate through the 
+    greenhouse structure, which is dependent on the wind speed (input of the model) 
+    and the leakage coefficient of the greenhouse (parameter of the model, 
+    characteristic of its structure).</p>
+    
+<p>[1] T. Boulard and A. Baille. A simple greenhouse climate control model
+incorporating effects of ventilation and evaporative cooling. Agricultural
+and Forest Meteorology, 65(3):145–157, August 1993. ISSN
+0168-1923. doi:10.1016/0168-1923(93)90001-X.
+</p>
 </html>"));
 end Ventilation;

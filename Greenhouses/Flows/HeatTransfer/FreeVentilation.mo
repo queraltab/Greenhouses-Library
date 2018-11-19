@@ -73,5 +73,13 @@ equation
               -10},{30,10},{50,-10},{70,10},{80,0},{90,0}},
           color={0,0,255},
           smooth=Smooth.Bezier)}), Diagram(coordinateSystem(preserveAspectRatio=
-           false, extent={{-100,-100},{100,100}}), graphics));
+           false, extent={{-100,-100},{100,100}}), graphics),
+    Documentation(info="<html>
+    <p><big>The heat transfer between the inside and outside air due to natural ventilation 
+    is computed as a function of the air exchange rate. </p>
+    <p><big>This model also takes into account the leakage rate through the 
+    greenhouse structure, which is dependent on the wind speed (input of the model) 
+    and the leakage coefficient of the greenhouse (parameter of the model, 
+    characteristic of its structure).</p>
+</html>"));
 end FreeVentilation;

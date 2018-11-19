@@ -54,5 +54,21 @@ equation
         Text(
           extent={{-180,-84},{180,-120}},
           textString="%name",
-          lineColor={0,0,255})}));
+          lineColor={0,0,255})}), Documentation(info="<html>
+<p><big>The magnitude of convective heat from the heating pipes to the air depends 
+on the pipe position, which implies a free exchange (i.e. pipes in free air) or 
+a hindered exchange (i.e. pipes situated close to the canopy and near the floor). 
+In free convection, the Nusselt (Nu) number describing the exchange process can be 
+defined as a function of the Rayleigh (Ra) number [1]. Therefore, the free exchange 
+is modeled based on the Nu-Ra relation. The hindered exchange, 
+considered to be forced, is modeled by experimental correlations derived by [2]. 
+The user should indicate which exchange is modeled by means of the Boolean parameter 'freePipe'. 
+The diameter of the pipes and the installed pipe length per ground area are also parameters, 
+required to compute the heat exchange coefficient.</p>
+<p>[1] Luc Balemans. Assessment of criteria for energetic effectiveness of
+greenhouse screens. PhD thesis, Agricultural University, Ghent,
+1989.</p>
+<p>[2] G.P.A Bot. Greenhouse climate : from physical processes to a dynamic
+model. PhD thesis, Wageningen University, 1983.</p>
+</html>"));
 end PipeFreeConvection;

@@ -71,5 +71,12 @@ equation
           extent={{-180,-84},{180,-120}},
           textString="%name",
           lineColor={0,0,255})}), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-100,-100},{100,100}}), graphics));
+          extent={{-100,-100},{100,100}}), graphics),
+    Documentation(info="<html>
+    <p><big>This model is a variant of the 
+    <a href=\"modelica://Greenhouses.Flows.HeatTransfer.PipeFreeConvection\">PipeFreeConvection</a> model, 
+    in which one single-port is replaced by a multi-port, thus enabling the computation of the heat flow 
+    when using discretized pipes models. The total heat flow to the air (i.e. heat flow at the single heat port)
+    is defined as the sum of the heat flow from each cell.</font></p>
+</html>"));
 end PipeFreeConvection_N;

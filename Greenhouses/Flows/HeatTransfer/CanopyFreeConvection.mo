@@ -49,5 +49,15 @@ equation
           fillColor={0,127,0},
           fillPattern=FillPattern.Solid)}), Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
-        graphics));
+        graphics),
+    Documentation(info="<html>
+<p><big>The heat exchange coefficient on the leaves of tomato crop was derived 
+experimentally by [1]. However, due to the lack of required input 
+data to compute it, in this model it is simplified to a constant value. Given that 
+this coefficient is expressed per unit of leaf area, in order to compute the global 
+heat exchange coefficient, the LAI, defined as the leaf area per unit of ground area,
+is a required input.</p>
+<p>[1] C. Stanghellini. Transpiration of greenhouse crops : an aid to climate
+management. PhD thesis, Wageningen University, 1987.</p>
+</html>"));
 end CanopyFreeConvection;

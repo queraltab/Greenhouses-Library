@@ -63,5 +63,13 @@ equation
           fillColor={192,192,192},
           fillPattern=FillPattern.Backward)}), Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
-        graphics));
+        graphics),
+    Documentation(info="<html>
+    <p><big>The convection at the outer side of the greenhouse cover is modeled according 
+    to the experimental work of [1], who characterised the heat exchange coefficient 
+    at this saw-tooth surface as a function of the wind speed. The wind speed, being a boundary 
+    condition, is an input of the model. The main parameter is the cover tilt.</p>
+    <p>[1] G.P.A Bot. Greenhouse climate : from physical processes to a dynamic
+model. PhD thesis, Wageningen University, 1983.</p>
+</html>"));
 end OutsideAirConvection;
