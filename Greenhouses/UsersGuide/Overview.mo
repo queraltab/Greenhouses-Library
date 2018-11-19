@@ -1,6 +1,6 @@
 within Greenhouses.UsersGuide;
 class Overview
-  extends Modelica.Icons.Info;
+  extends Modelica.Icons.Information;
 
   annotation (Documentation(info="<html>
   <p><big>The Greenhouse library aims at providing a fully open-source modelling framework for greenhouse climate simulation. The proposed library includes the modelling of greenhouse indoor climate, heating and ventilation systems, climate control systems and crop yield. The goal is to propose a modelling framework capable of simulating the complex interactions and energy flows relative to systems coupling the greenhouse, generation units and storage units. To that end, the library includes robust performance-based models of several generation units, e.g. CHP and heat pumps. </p>
