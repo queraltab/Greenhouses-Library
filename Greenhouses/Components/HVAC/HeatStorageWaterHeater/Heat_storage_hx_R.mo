@@ -121,17 +121,17 @@ parameter Modelica.SIunits.SpecificHeatCapacity c_wall_hx= 500
     annotation (Placement(transformation(extent={{-18,-56},{21,-28}})));
 
 protected
-Real Tsf_[N](min=0);
-Real Twall_[N](min=0);
+Real Tsf_[N](each min=0);
+Real Twall_[N](each min=0);
 
 public
 record SummaryBase
   replaceable Arrays T_profile;
   record Arrays
    parameter Integer n;
-   Real[n] Tsf(min=0);
-   Real[n] Twall(min=0);
-   Real[n] Twf(min=0);
+   Real[n] Tsf(each min=0);
+   Real[n] Twall(each min=0);
+   Real[n] Twf(each min=0);
   end Arrays;
 end SummaryBase;
 replaceable record SummaryClass = SummaryBase;
