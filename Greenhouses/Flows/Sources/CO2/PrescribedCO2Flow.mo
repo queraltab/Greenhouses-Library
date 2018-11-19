@@ -2,12 +2,11 @@ within Greenhouses.Flows.Sources.CO2;
 model PrescribedCO2Flow "Fixed CO2 flow boundary condition"
   /******************* Parameters *******************/
   parameter Real phi_ExtCO2(unit="g/(m2.h)")=27
-    "Specific capacity of the external CO2 source" annotation(Dialog(enable=power_input));
+    "Specific capacity of the external CO2 source";
 
   /******************* Varying inputs *******************/
   Real U_ExtCO2=0
-    "If connector not used, input value here of control valve of the external CO2 source"
-                                                                                                        annotation(Dialog(group="Varying inputs"));
+    "If connector not used, input value here of control valve of the external CO2 source" annotation(Dialog(group="Varying inputs"));
 
   /******************* Variables *******************/
   Real MC_flow(unit="mg/(m2.s)") "Fixed heat flow rate at port";
