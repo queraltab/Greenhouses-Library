@@ -9,7 +9,7 @@ model Ventilation
   parameter Boolean thermalScreen=false
     "presence of a thermal screen in the greenhouse";
   parameter Boolean topAir=false
-    "False for: Main air zone; True for: Top air zone"                  annotation (Dialog(enable=(thermalScreen and upward)));
+    "False for: Main air zone; True for: Top air zone" annotation (Dialog(enable=(thermalScreen)));
   parameter Boolean forcedVentilation=false
     "presence of a mechanical ventilation system in the greenhouse";
   parameter Modelica.SIunits.VolumeFlowRate phi_VentForced=0
