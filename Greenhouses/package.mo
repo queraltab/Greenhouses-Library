@@ -2,13 +2,6 @@ within ;
 package Greenhouses "The Greenhouses Modelica Library"
 
 
-
-
-
-
-
-
-
   annotation (uses(
     conversion(noneFromVersion=""), Modelica(version="3.2.1"),
     DymolaCommands(version="1.1")),  Icon(coordinateSystem(preserveAspectRatio=

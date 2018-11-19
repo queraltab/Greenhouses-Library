@@ -1,5 +1,6 @@
 within Greenhouses.Icons.Water;
 partial model Pump
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics={
         Polygon(

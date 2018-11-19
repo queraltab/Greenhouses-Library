@@ -1,5 +1,6 @@
 within Greenhouses;
 package Components 
+  extends Modelica.Icons.VariantsPackage;
 
 
 

@@ -1,6 +1,7 @@
 within Greenhouses.Examples;
 model Greenhouse_1
   "Simulation of a Venlo-type greenhouse for tomato crop cultivated from 10Dec-22Nov (weather data from TMY)"
+  extends Modelica.Icons.Example;
   Modelica.SIunits.HeatFlux q_low;
   Modelica.SIunits.HeatFlux q_up;
   Modelica.SIunits.HeatFlux q_tot;
@@ -1106,16 +1107,7 @@ Vapour transfer"),
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid)}),
                                  Icon(coordinateSystem(preserveAspectRatio=false,
-          extent={{-240,-180},{240,180}}), graphics={
-        Ellipse(lineColor = {75,138,73},
-                fillColor={255,255,255},
-                fillPattern = FillPattern.Solid,
-                extent={{-180,-180},{180,180}}),
-        Polygon(lineColor = {0,0,255},
-                fillColor = {75,138,73},
-                pattern = LinePattern.None,
-                fillPattern = FillPattern.Solid,
-                points={{-70,120},{110,0},{-70,-120},{-70,120}})}),
+          extent={{-240,-180},{240,180}}), graphics),
     Documentation(info="<html>
 <p><b></font><font style=\"font-size: 12pt; \">Simulation of greenhouse climate</b></p>
 <p></font><font style=\"font-size: 10pt; \">This example intends to illustrate the simulation of a greenhouse climate. The greenhouse is built by interconnecting all of the energy and mass <a href=\"modelica://Greenhouses.Flows\">Flows</a> presents in a greenhouse to their related <a href=\"modelica://Greenhouses.Components.Greenhouse\">Components</a>. As it can be distinguished, the greenhouse modeled in this example consists of two levels of heating circuits, roof windows (but not side vents), natural ventilation (no forced ventilation) and a movable thermal screen. It should be noted that, when the screen is drawn, the air of the greenhouse is divided in two zones, i.e. below and above the screen. These zones are modeled separately (models air and air_Top) and their climate is assumed to be homogeneous. The models parameters have been set to typical values for Venlo-type greenhouse construction design dedicated to tomato crop cultivation. The greenhouse floor area and the mean greenhouse height are set in two individual block sources.</p>

@@ -23,7 +23,8 @@ model HeatingPipe
   /******************** Connectors ********************/
 
   Flows.FluidFlow.Flow1DimInc flow1DimInc(
-    redeclare package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater,
+    redeclare package Medium =
+        Modelica.Media.Water.ConstantPropertyLiquidWater,
     steadystate=true,
     redeclare model Flow1DimIncHeatTransferModel =
         Greenhouses.Flows.FluidFlow.HeatTransfer.Ideal,

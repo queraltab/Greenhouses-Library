@@ -1,6 +1,7 @@
 within Greenhouses.Examples;
 model GlobalSystem_2
   "Greenhouse connected to a CHP, a heat pump and thermal energy storage"
+  extends Modelica.Icons.Example;
   Real Mdot_2ry(unit="kg/s",start=0.528);
   Real Mdot_air(unit="kg/s",start=0.528);
   Real E_gas_CHP(unit="kW.h");
