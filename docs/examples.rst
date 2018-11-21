@@ -13,7 +13,7 @@ The simulated greenhouse is located in Belgium and the simulation period is from
 - *Weather data*: The input weather data for the simulation period is extracted from a TMY for Brussels and can be found in 'Greenhouses/Resources/Data/10Dec-22Nov.txt'. The file contains data for the outside air temperature, air pressure, wind speed and global irradiation. The sky temperature, previously computed in a Python script, is also included in this file.
 - *Climate control set-points*: The temperature and |CO2| set-points for the simulation period are calculated according to the strategy presented in :ref:`control` and can be found in 'Greenhouses/Resources/Data/SP_10Dec-22Nov.txt'.
 
-These *.txt* files are accessed by means of *TMY_and_control* and *SP_new*, which are two *CombiTimeTables* models from the Modelica Standard Library. The path to the data files is introduced in the variable *fileName*, which in the example it is set to the folder 'C:/Greenhouses/Resources/Data'. Therefore, in order for the model to find the data input files, the user must place the library in the directory C:/ or change the path to the files (i.e. *fileName* in the models *TMY_and_control* and *SP_new*).
+These *.txt* files are accessed by means of *TMY_and_control* and *SP_new*, which are two *CombiTimeTables* models from the Modelica Standard Library.
 
 The goal of this example is to show the energy flows interacting in a greenhouse. Thus, no generation units are included. Instead, the heating pipes are connected to a water source and sink model. The model includes the following controls:
 
