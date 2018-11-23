@@ -40,6 +40,7 @@ Contents
    flows
    control
    examples
+   zbibliography
    
 Indices and tables
 ------------------
@@ -49,9 +50,8 @@ Indices and tables
 * :ref:`search`
 
 
-References
-----------
 
-.. bibliography:: docs-references.bib
+
+
 
 .. _University of Liège: https://www.uliege.be

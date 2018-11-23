@@ -107,7 +107,6 @@ An example of greenhouse model is shown in the figure below. As it can be distin
 
 
 
-
 .. |CO2| replace:: CO\ :sub:`2`
 
 
