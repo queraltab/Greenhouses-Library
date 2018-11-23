@@ -1,6 +1,6 @@
 # Greenhouses Library
 
-![License](http://www.modelica.org/licenses/ModelicaLicense2)
+[![Documentation](https://readthedocs.org/projects/greenhouses-library/badge/?branch=master)](https://greenhouses-library.readthedocs.io)
 
 
 The Greenhouses Library is an open-source library for dynamic modelling of greenhouse climate developed in the Modelica language. The library aims at providing a modeling framework capable of simulating not only the energy flows of a greenhouse climate but also the complex interactions and energy flows relative to systems coupling the greenhouse e.g. generation and storage units. In the current literature, a small number of models are openly available for grenhouse climate simulation and crop growth. Although researchers openly present model structures and simulation scenarios, an open-source simulation platform is still lacking. In fact, the most common climate simulation softwares are not open-access and are not able to handle the integration of greenhouses with other thermal systems. The goal of the Greenhouses library is to fill this gap.
