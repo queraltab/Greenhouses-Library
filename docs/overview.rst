@@ -44,7 +44,7 @@ Getting started
 In this tutorial, the necessary steps to lead the correct packages to use Greenhouses with Dymola are reported.
 
 1. Download the Greenhouses library from the `Greenhouses github repository`_.
-2. Launch Dymola 2015 on your computer.
+2. Launch Dymola on your computer.
 3. From the Dymola window, use the *Open* icon to browse to the Greenhouses folder and open the Greenhouses package.mo file.
 
 .. figure:: figures/gettingstarted1.png
@@ -55,7 +55,7 @@ Dymola loads the Greenhouses library and the following will be displayed:
 .. figure:: figures/gettingstarted2.png
 	:figclass: align-center
 
-Congratulations! You have set the environment needed to use the Greenhouses library in Dymola 2015. You are now ready to simulate a wide range of greenhouse climates and thermal systems. Enjoy it!
+Congratulations! You have set the environment needed to use the Greenhouses library in Dymola. You are now ready to simulate a wide range of greenhouse climates and thermal systems. Enjoy it!
 
 
 
