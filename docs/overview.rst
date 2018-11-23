@@ -22,7 +22,8 @@ vapor pressure of water and the |CO2| concentration of the air, which can be inc
 supplementary |CO2| supply by an external source.
 
 Greenhouse climate models have been the object of a substantial literature. While many
-models have been developed (:cite:`bot_greenhouse_1983`, :cite:`de_zwart_analyzing_1996`, :cite:`impron_simple_2007`, :cite:`luo_simulation_2005`,
+models have been developed (:cite:`bot_greenhouse_1983`, :cite:`de_zwart_analyzing_1996`, 
+:cite:`impron_2007`, :cite:`luo_simulation_2005`,
 :cite:`van_ooteghem_optimal_2010` ), most of them can only be used for a single location and for a
 specific greenhouse structure and climate. Recently, a more generic greenhouse climate model
 :cite:`vanthoor_methodology_2011_greenhouse` combining the work of :cite:`bot_greenhouse_1983` and :cite:`de_zwart_analyzing_1996` was developed. The model was validated for a range of climates and greenhouse designs. For the purpose of this
@@ -71,10 +72,14 @@ The Greenhouses library is hierarchically structured into different packages, li
 * **Functions** are the empirical correlations used to characterize some of the models presents in the library.
 * **Icons** defines the graphical interface for some of the models in the library.
 
+
+.. figure:: figures/librarystructure4.png
+	:figclass: align-center
+
+
 The main packages are further divided into sub-packages and models. In Greenhouses, each model has a relative documentation explaining the main features. To access the documentation layer of each model you can click on the INFO icon on the Dymola menu.
 
-
-.. figure:: figures/librarystructure3.png
+.. figure:: figures/information_dymola.png
 	:figclass: align-center
 
 
@@ -84,7 +89,7 @@ Graphical user interface
 
 The developed modeling framework, being object-oriented, is made of independent sub-models for each
 greenhouse component and exchanged flow, that are interconnected to build a greenhouse model. The sub-models interact together through
-standard interfaces called ports. For modeling heat transfer and fluid flow, the heat transfer and the thermo-fluid flow connectors from the Modelica Standard Library are used. For moisture and |CO2| mass transfer, two connectors have been developed. An extra connector is debeloped for the short-wave radiation heat inputs. In total, five connectors are distinguished: 
+standard interfaces called ports. For modeling heat transfer and fluid flow, the heat transfer and the thermo-fluid flow connectors from the Modelica Standard Library are used. For moisture and |CO2| mass transfer, two connectors have been developed. An extra connector is developed for the short-wave radiation heat inputs. In total, five connectors are distinguished: 
 
 - **Heat port**: from the Modelica Standard Library. Graphically represented by a red square, it is a thermal port for 1-dim heat transfer. Temperature (:math:`T` [K]) and heat flow rate (:math:`\dot{Q}` [W]) are the potential and flow variables, respectively.
 - **Water mass port**: graphically represented by a blue square, it is a mass port for 1-dim moisture transfer. The vapor pressure of water (:math:`P_v` [Pa]) and the vapor mass flow rate (:math:`\dot{M}_v` [kg s⁻¹]) are the potential and flow variables, respectively.
