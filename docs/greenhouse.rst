@@ -169,7 +169,7 @@ This model computes the energy balance on the cover. Because the properties of t
 At the cover, many exhanges occur. Sensible heat caused by convection is mainly exhanged with the air (top air zone when the screen is drawn, main air zone in the absence of a thermal screen) and the outside air. Latent flows caused by condensation may appear in the inner side of the cover. Long-wave radiation is exchanged with the heating pipes, the canopy, the floor, the thermal screen and the sky. Moreover, the cover absorbs part of the incident solar irradiation. The energy balance on the cover is therefore described by:
 
 .. math::
-	\rho_{Cov} c_{p,Cov} \dfrac{h_{Cov}}{cos \phi} \dot{T}_{Cov} = \dot{q}_{SunCov} + \dot{q}_{cnv,TopCov} + \dot{q}_{lat,TopCov} + \dot{q}_{cnv,AirCov} + \dot{q}_{lat,AirCov} + \dot{q}_{rad,PipeCov} + \dot{q}_{rad,CanCov} + \dot{q}_{rad,FlrCov} + \dot{q}_{rad,ScrCov} - \dot{q}_{cnv,CovOut} - \dot{q}_{rad,CovSky} 
+	\rho_{Cov} c_{p,Cov} \dfrac{h_{Cov}}{cos \phi} \dfrac{d{T}_{Cov}}{dt} = \dot{q}_{SunCov} + \dot{q}_{cnv,TopCov} + \dot{q}_{lat,TopCov} + \dot{q}_{cnv,AirCov} + \dot{q}_{lat,AirCov} + \dot{q}_{rad,PipeCov} + \dot{q}_{rad,CanCov} + \dot{q}_{rad,FlrCov} + \dot{q}_{rad,ScrCov} - \dot{q}_{cnv,CovOut} - \dot{q}_{rad,CovSky} 
 
 The vapor pressure of water at the cover is defined by the saturated vapor pressure for its temperature.
 
@@ -184,7 +184,7 @@ This model computes the energy balance on the canopy. The main parameter of the 
 The canopy exchanges long-wave radiation with the heating pipes, the cover, the floor and the thermal screen. Also, it exchanges sensible and latent heat with the main air zone. As computed in the solar model, part of the transmitted radiation is absorbed by the canopy. The energy balance is described by:
 
 .. math::
-	LAI c_{Leaf} \dot{T}_{Can} = \dot{q}_{SunCan} + \dot{q}_{IluCan} + \dot{q}_{rad,PipeCan} - \dot{q}_{cnv,CanAir} - \dot{q}_{lat,CanAir} - \dot{q}_{rad,CanCov} - \dot{q}_{rad,CanFlr} + \dot{q}_{rad,CanScr}
+	LAI c_{Leaf} \dfrac{d{T}_{Can}}{dt} = \dot{q}_{SunCan} + \dot{q}_{IluCan} + \dot{q}_{rad,PipeCan} - \dot{q}_{cnv,CanAir} - \dot{q}_{lat,CanAir} - \dot{q}_{rad,CanCov} - \dot{q}_{rad,CanFlr} + \dot{q}_{rad,CanScr}
 
 
 .. figure:: figures/canopy.png
@@ -202,12 +202,12 @@ This model computes the energy and vapor mass balance on the air of the main zon
 Sensible heat is exchanged between the air and the heating pipes, the floor, the canopy, the cover, the thermal screen, the top air zone and the outdoor air. The exchange between the two air zones through the thermal screen occurs because of the porosity material, nature of the latter. The exchange with the outside air accounts for infiltration/exfiltration and natural ventilation through the greenhouse windows. The energy balance on the air of the main zone is dscribed by:
 
 .. math::
-	\rho_{Air} c_{p,Air} h_{Air} \dot{T}_{Air} = \dot{q}_{SunAir} + \dot{q}_{IluAir} + \dot{q}_{cnv,PipeAir} + \dot{q}_{cnv,CanAir} - \dot{q}_{cnv,AirFlr} - \dot{q}_{cnv,AirCov} - \dot{q}_{cnv,AirScr} - \dot{q}_{cnv,AirTop} - \dot{q}_{cnv,AirOut}
+	\rho_{Air} c_{p,Air} h_{Air} \dfrac{d{T}_{Air}}{dt} = \dot{q}_{SunAir} + \dot{q}_{IluAir} + \dot{q}_{cnv,PipeAir} + \dot{q}_{cnv,CanAir} - \dot{q}_{cnv,AirFlr} - \dot{q}_{cnv,AirCov} - \dot{q}_{cnv,AirScr} - \dot{q}_{cnv,AirTop} - \dot{q}_{cnv,AirOut}
 
 The main air zone exchanges air through ventilation processes with the top air compartment and the outside air. The transpiration process of the canopy increases the vapor content of the air. Given the conditions, condensation may occur at the cover and the thermal screen. The vapor pressure of water in the air, defined by the mass balance on the air, is therefore described by:
 
 .. math::
-	M_H \dfrac{h_{Air}}{RT} \dot{P}_{v,Air} = \dot{m}_{v,CanAir} - \dot{m}_{v,AirCov} - \dot{m}_{v,AirScr} - \dot{m}_{v,AirTop} - \dot{m}_{v,AirOut}
+	M_H \dfrac{h_{Air}}{RT} \dfrac{d{P}_{v,Air}}{dt} = \dot{m}_{v,CanAir} - \dot{m}_{v,AirCov} - \dot{m}_{v,AirScr} - \dot{m}_{v,AirTop} - \dot{m}_{v,AirOut}
 
 where M\ :sub:`H` \ is the molar mass of vapor. Although the vapor capacity is a function of temperature (T), this model applies a constant capacity, holding for a temperature of 291 K.
 
@@ -234,7 +234,7 @@ This model computes the energy balance on the floor. The main parameters of the 
 The model can thus be applied to a wide range of floor materials (e.g. soil, concrete). Long-wave radiation is exchanged between the floor and the heating pipes, the canopy, the thermal screen and the cover. Sensible heat is exchanged with the air by convection and with the first soil layer by conduction. Therefore, the energy balance on the floor is described by:
 
 .. math::
-	\rho_{Flr} c_{p,Flr} h_{Flr} \dot{T}_{Flr} = \dot{q}_{SunFlr} + \dot{q}_{IluFlr} + \dot{q}_{cnv,AirFlr} + \dot{q}_{rad,PipeFlr} + \dot{q}_{rad,CanFlr} - \dot{q}_{cnd,FlrSo1} - \dot{q}_{rad,FlrScr} - \dot{q}_{rad,FlrCov}
+	\rho_{Flr} c_{p,Flr} h_{Flr} \dfrac{d{T}_{Flr}}{dt} = \dot{q}_{SunFlr} + \dot{q}_{IluFlr} + \dot{q}_{cnv,AirFlr} + \dot{q}_{rad,PipeFlr} + \dot{q}_{rad,CanFlr} - \dot{q}_{cnd,FlrSo1} - \dot{q}_{rad,FlrScr} - \dot{q}_{rad,FlrCov}
 
 .. figure:: figures/floor.png
 	:figclass: align-center
@@ -254,7 +254,7 @@ The main input of the model is the screen closure (u\ :sub:`SC`\)
 Long-wave radiation is exchanged with the heating pipes, the canopy, the floor and the cover. Sensible heat is exchanged with the air. Latent heat flows may be present if condensation beneath the screen or evaporation above the screen occurs. The energy balance on the screen is therefore described by:
 
 .. math::
-	\rho_{Scr} c_{p,Scr} h_{Scr} \dot{T}_{Scr} = \dot{q}_{rad,PipeScr} + \dot{q}_{rad,CanScr} + \dot{q}_{rad,FlrScr} + \dot{q}_{cnv,AirScr} + \dot{q}_{lat,AirScr} - \dot{q}_{cnv,ScrTop} - \dot{q}_{lat,ScrTop} - \dot{q}_{rad,ScrCov}
+	\rho_{Scr} c_{p,Scr} h_{Scr} \dfrac{d{T}_{Scr}}{dt} = \dot{q}_{rad,PipeScr} + \dot{q}_{rad,CanScr} + \dot{q}_{rad,FlrScr} + \dot{q}_{cnv,AirScr} + \dot{q}_{lat,AirScr} - \dot{q}_{cnv,ScrTop} - \dot{q}_{lat,ScrTop} - \dot{q}_{rad,ScrCov}
 
 The present model assumes that the thermal screen is capable of transporting water from the lower side to the upper side through the fabric. However, the storage of moisture in the screen is neglected. This implies that the vapor that condensates at the screen is either evaporated at the upper side of drips from the screen. Therefore, the rate of evaporation is lower or equal to the rate of condensation.
 
@@ -292,7 +292,7 @@ dynamic energy balance and static mass and momentum balances are applied on the 
 
 Greenhouse heating circuits are commonly made of several parallel heating loops. The main parameters of the model are:
 
-- The pipes diameter (:math:`d`)
+- The pipe's diameter (:math:`d`)
 - The installed length per loop (:math:`l`)
 - The ground floor area (:math:`A`)
 - The number of parallel loops (:math:`N_p`)

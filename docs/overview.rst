@@ -22,9 +22,8 @@ vapor pressure of water and the |CO2| concentration of the air, which can be inc
 supplementary |CO2| supply by an external source.
 
 Greenhouse climate models have been the object of a substantial literature. While many
-models have been developed (:cite:`bot_greenhouse_1983`, :cite:`de_zwart_analyzing_1996`, 
-:cite:`impron_2007`, :cite:`luo_simulation_2005`,
-:cite:`van_ooteghem_optimal_2010` ), most of them can only be used for a single location and for a
+models have been developed (:cite:`bot_greenhouse_1983,de_zwart_analyzing_1996,luo_2005,van_ooteghem_2010,impron_2007`), 
+most of them can only be used for a single location and for a
 specific greenhouse structure and climate. Recently, a more generic greenhouse climate model
 :cite:`vanthoor_methodology_2011_greenhouse` combining the work of :cite:`bot_greenhouse_1983` and :cite:`de_zwart_analyzing_1996` was developed. The model was validated for a range of climates and greenhouse designs. For the purpose of this
 work, the model :cite:`vanthoor_methodology_2011_greenhouse` has been implemented in the Modelica language. It should
@@ -113,6 +112,4 @@ An example of greenhouse model is shown in the figure below. As it can be distin
 
 
 .. _Greenhouses github repository: https://github.com/queraltab/Greenhouses-Library
-.. _ExternalMedia: https://github.com/modelica/ExternalMedia
-.. _CoolProp: http://coolprop.sourceforge.net/
 .. _modelica users guide: https://build.openmodelica.org/Documentation/Modelica.UsersGuide.Connectors.html
