@@ -28,13 +28,13 @@ model HeatingPipe
     steadystate=true,
     redeclare model Flow1DimIncHeatTransferModel =
         Greenhouses.Flows.FluidFlow.HeatTransfer.Ideal,
-    Unom=0,
     N=N,
     A=l*Modelica.Constants.pi*d,
     V=Modelica.Constants.pi*(d/2)^2*l,
     Nt=N_p,
     Discretization=Greenhouses.Functions.Enumerations.Discretizations.upwind_AllowFlowReversal,
     Mdotnom=Mdotnom,
+    Unom=1000,
     pstart=200000,
     Tstart_inlet=353.15,
     Tstart_outlet=323.15)
