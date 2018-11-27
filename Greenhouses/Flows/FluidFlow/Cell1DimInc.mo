@@ -38,20 +38,12 @@ parameter Modelica.SIunits.Pressure pstart "Fluid pressure start value"
     annotation (Dialog(group="Initialization options", tab="Initialization"));
 /********************************* HEAT TRANSFER MODEL ********************************/
 /* Heat transfer Model */
-//   replaceable model HeatTransfer =
-//       Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.IdealFlowHeatTransfer
-//     constrainedby
-//     Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.PartialFlowHeatTransfer
-//     "Wall heat transfer"
-//      annotation (Dialog(tab="Assumptions", group="Heat transfer",enable=use_HeatTransfer),choicesAllMatching=true);
-
  replaceable model HeatTransfer =
- Greenhouse.Flows.FluidFlow.HeatTransfer.MassFlowDependence
+ Greenhouses.Flows.FluidFlow.HeatTransfer.MassFlowDependence
  constrainedby
-    Greenhouse.Flows.FluidFlow.HeatTransfer.BaseClasses.PartialHeatTransferZones
+    Greenhouses.Flows.FluidFlow.HeatTransfer.BaseClasses.PartialHeatTransferZones
     "Convective heat transfer"                                                         annotation (choicesAllMatching = true);
-Greenhouse.Flows.FluidFlow.HeatTransfer.MassFlowDependence
-             heatTransfer( redeclare final package Medium = Medium,
+HeatTransfer heatTransfer( redeclare final package Medium = Medium,
 final n=1,
 final Mdotnom = Mdotnom/Nt,
 final Unom_l = Unom,
