@@ -25,7 +25,7 @@ model Uvents_RH_T_Mdot
     Ti=650,
     PVmin=0.1,
     CSmax=U_max,
-    Kp=-0.1)
+    Kp=-0.5)
     annotation (Placement(transformation(extent={{-20,54},{0,74}})));
   Modelica.Blocks.Sources.Constant RH_max(k=0.85)
     annotation (Placement(transformation(extent={{-60,74},{-40,94}})));
