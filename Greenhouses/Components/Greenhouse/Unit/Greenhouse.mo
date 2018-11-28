@@ -1010,9 +1010,8 @@ equation
       color={0,0,127},
       smooth=Smooth.None));
   annotation (
-      Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-240,
-            -180},{240,180}}),
-                    graphics={
+      Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-240,-180},{240,
+            180}}), graphics={
         Polygon(
           points={{-190,-158},{130,-158},{130,66},{-30,166},{-190,66},{-190,-158}},
           lineColor={135,135,135},
@@ -1104,5 +1103,9 @@ Vapour transfer"),
                                  Icon(coordinateSystem(preserveAspectRatio=false,
           extent={{-240,-180},{240,180}}), graphics={Bitmap(extent={{-214,168},{
               214,-188}}, fileName=
-              "modelica://Greenhouses/Resources/Images/Greenhouse_drawing.png")}));
+              "modelica://Greenhouses/Resources/Images/Greenhouse_drawing.png")}),
+    Documentation(info="<html>
+    <p><big>This is a ready-to-use greenhouse climate simulation model, in which the greenhouse is already built and can directly be connected to other thermal systems. For this purpose, an inlet and outlet port allow the connection of the heating circuit to the required generation unit. Moreover, a Real output connector outputs the vaue of the control signal that sets the mass flow rate of the heating circuit pump.</p>
+    <p><big>As it can be distinguished, the greenhouse modeled in this example consists of two levels of heating circuits, roof windows (but not side vents), natural ventilation (no forced ventilation) and a movable thermal screen. It should be noted that, when the screen is drawn, the air of the greenhouse is divided in two zones, i.e. below and above the screen. These zones are modeled separately (models air and air_Top) and their climate is assumed to be homogeneous. The models parameters have been set to typical values for Venlo-type greenhouse construction design dedicated to tomato crop cultivation. The greenhouse floor area and the mean greenhouse height are set in two individual block sources.</p>
+</html>"));
 end Greenhouse;
