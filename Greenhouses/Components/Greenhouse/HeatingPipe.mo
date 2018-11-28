@@ -32,12 +32,12 @@ model HeatingPipe
     A=l*Modelica.Constants.pi*d,
     V=Modelica.Constants.pi*(d/2)^2*l,
     Nt=N_p,
-    Discretization=Greenhouses.Functions.Enumerations.Discretizations.upwind_AllowFlowReversal,
     Mdotnom=Mdotnom,
     Unom=1000,
     pstart=200000,
     Tstart_inlet=353.15,
-    Tstart_outlet=323.15)
+    Tstart_outlet=323.15,
+    Discretization=Greenhouses.Functions.Enumerations.Discretizations.upwind)
     annotation (Placement(transformation(extent={{-10,-66},{14,-42}})));
 
 public
