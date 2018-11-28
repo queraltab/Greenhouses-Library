@@ -1121,9 +1121,9 @@ Vapour transfer"),
 <ul>
 <li><big><i>PID_Mdot</i>: A PI controller adjusts the output mass flow rate of the water source connected to the heating pipes by comparing the air temperature set-point and present value.</li>
 <li><big><i>PID_CO2</i>: A PI controller adjusts the output of the CO2 external source by comparing the actual CO2 concentration of the air to its set-point.</li>
-<li><big><i>Ctrl_SC</i>: A state graph adjusts the screen closure (SC) according to the strategy presented in Control Systems. The real inputs must be connected to the air relative humidity, the outdoor temperature, the indoor air temperature set-point and the usable hours of the screen. The usable hours are 1h30 before dusk, 1h30 after dawn and during night. In the global he global outside irradiation</li>
-<li><big><i>vents</i>: A PI controller adjusts the opening of the windows according to the strategy presented in Control Systems. The opening depends mainly on the indoor air relative humidity and temperature.</li>
-<li><big><i>OnOff</i>: controls the ON/OFF operation of the supplementary lighting according to the strategy presented in Control Systems. The control output, previously computed in a Python script, is input as a .txt file by means of the TMY_and_control model.</li>
+<li><big><i>Ctrl_SC</i>: A state graph adjusts the screen closure (SC) according to the strategy presented in <a href=\"modelica://Greenhouses.ControlSystems.Climate.Control_ThScreen\">Control_ThScreen</a>. The real inputs must be connected to the air relative humidity, the outdoor temperature, the indoor air temperature set-point and the usable hours of the screen. The usable hours are 1h30 before dusk, 1h30 after dawn and during night.</li>
+<li><big><i>vents</i>: A PI controller adjusts the opening of the windows according to the strategy presented in <a href=\"modelica://Greenhouses.ControlSystems.Climate.Uvents_RH_T_Mdot\">Uvents_RH_T_Mdot</a>. The opening depends mainly on the indoor air relative humidity and temperature.</li>
+<li><big><i>OnOff</i>: controls the ON/OFF operation of the supplementary lighting according to the strategy presented in Control Systems. The control output, previously computed in a Python script, is input as a .txt file by means of the TMY_and_control CombiTimeTable.</li>
 </ul>
 </html>"));
 end Greenhouse_1;
