@@ -51,8 +51,9 @@ equation
     D = 0;
   end if;
   CSbs = Kp*(P + I + D) "Control signal before saturation";
-  CSs = smooth(0, if CSbs > 1 then 1 else if CSbs < 0 then 0 else CSbs)
-    "Saturated control signal";
+//  CSs = smooth(0, if CSbs > 1 then 1 else if CSbs < 0 then 0 else CSbs)
+//    "Saturated control signal";
+  CSs = smooth(0, max(min(1,CSbs),0)) "Saturated control signal";
   track = (CSs - CSbs)/(Kp*Ni);
 initial equation
   if steadyStateInit then
