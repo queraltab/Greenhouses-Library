@@ -7,12 +7,10 @@ model TomatoYieldModel
 
   //***************** Varying inputs *******************//
   Real R_PAR_can(unit="umol/(s.m2)")=460
-    "Total PAR absorbed by the canopy computed in the solar and illumination model"
-                                                                                                        annotation (Dialog(group="Varying inputs"));
+    "Total PAR absorbed by the canopy computed in the solar and illumination model" annotation (Dialog(group="Varying inputs"));
   Real CO2_air(unit="umol/mol")=600
-    "CO2 concentration of the greenhouse air, umol CO2/mol air"                                 annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Temperature T_canK=293.15 "Instantaneous canopy temperature"
-                                                                                  annotation (Dialog(group="Varying inputs"));
+    "CO2 concentration of the greenhouse air, umol CO2/mol air" annotation (Dialog(group="Varying inputs"));
+  Modelica.SIunits.Temperature T_canK=293.15 "Instantaneous canopy temperature" annotation (Dialog(group="Varying inputs"));
 
   //***************** Constant parameters characteristic of the plant ***************************//
   Real C_Buf_MAX(unit="mg/m2") = 20e3 "Maximum buffer capacity";
@@ -20,8 +18,8 @@ model TomatoYieldModel
     "Minimum amount of carbohydrates in the buffer";
 
   //***************** Variables *******************//
-  Real MC_AirBuf(unit="mg/(m2.s)") "Net photosyntesis rate";
-  Real C_Buf(unit="mg/m2") "Carbohydrates in the buffer";
+  Real MC_AirBuf(unit="mg/(m2.s)") "Net photosynthesis rate";
+  Real C_Buf(unit="mg/m2", start=0, fixed=true) "Carbohydrates in the buffer";
   Real CO2_stom(unit="umol/mol")
     "CO2 concentration in the stomata, umol CO2/ mol air";
 
@@ -36,8 +34,8 @@ model TomatoYieldModel
     "Carbohydrate flow from the buffer to the stems and roots";
 
   Real T_canC(unit="degC");
-  Real T_can24C(unit="degC");
-  Real T_canSumC(unit="degC",start=T_canSumC_0) "Temperature sum";
+  Real T_can24C(unit="degC", start=0, fixed=true);
+  Real T_canSumC(unit="degC", start=T_canSumC_0, fixed=true) "Temperature sum";
   parameter Real T_canSumC_0(unit="degC")=0 annotation(Dialog(tab="Initialization"));
 
   Real MN_BufFruit_1(unit="1/(m2.s)")
@@ -46,7 +44,7 @@ model TomatoYieldModel
   Real MC_BufFruit_1(unit="mg/(m2.s)")
     "Carbohydrate flow to the first development stage";
   Real MC_FruitHar(unit="mg/(m2.s)");
-  Real W_Fruit_1_Pot(unit="mg")
+  Real W_Fruit_1_Pot(unit="mg", start=0, fixed=true)
     "Potential dry matter per fruit in fruit development stage one, mg/fruit";
 
   Real MC_BufAir(unit="mg/(m2.s)") "Growth respiration of the total plant";
@@ -59,9 +57,9 @@ model TomatoYieldModel
   Real MC_LeafAir(unit="mg/(m2.s)") "Maintenance respiration of the leaves";
   Real MC_StemAir(unit="mg/(m2.s)")
     "Maintenance respiration of the stems and roots";
-  Real C_Leaf(unit="mg/m2",start=C_Leaf_0) "Carbohydrate weight of leaves";
+  Real C_Leaf(unit="mg/m2",start=C_Leaf_0,fixed=true) "Carbohydrate weight of leaves";
   parameter Real C_Leaf_0(unit="mg/m2")=15e3 annotation(Dialog(tab="Initialization"));
-  Real C_Stem(unit="mg/m2",start=C_Stem_0)
+  Real C_Stem(unit="mg/m2",start=C_Stem_0,fixed=true)
     "Carbohydrate weight of stems and roots";
   parameter Real C_Stem_0(unit="mg/m2")=15e3 annotation(Dialog(tab="Initialization"));
 
@@ -69,7 +67,7 @@ model TomatoYieldModel
     "Maximum allowed carbohydrates stored in the leaves";
   Real MC_LeafHar(unit="mg/(m2.s)") "Leaf harvest rate";
 
-  Real DM_Har(unit="mg/m2") "Accumulated harvested tomato dry matter";
+  Real DM_Har(unit="mg/m2", start=0, fixed=true) "Accumulated harvested tomato dry matter";
 
   Real MC_AirCan(unit="mg/(m2.s)")
     "CH2O flux between the greenhouse air and the canopy, which depends on the canopy photosynthesis rate and respiration processes";
@@ -79,7 +77,7 @@ model TomatoYieldModel
 //   Real W_Fruit_t1[n_dev](start=zeros(n_dev));
 //   Real W_Leaf_t1(start=0);
 //   Real W_Stem_t1(start=0);
-//   Real RGR_Fruit_3[n_dev](unit="1/s");
+//   Real RGR_Fruit_3[n_dev](each unit="1/s");
 //   Real RGR_Leaf_3(unit="1/s");
 //   Real RGR_Stem_3(unit="1/s");
   /******************** Parameters *********************/
@@ -149,7 +147,7 @@ protected
   Modelica.SIunits.Temperature T_can24K;
 
   Real h_CBuf_MCairBuf "Inhibition coefficient";
-  Real P(unit="umol/(m2.s)") "Gross photosyntesis rate at canopy level";
+  Real P(unit="umol/(m2.s)") "Gross photosynthesis rate at canopy level";
   Real R(unit="umol/(m2.s)")
     "Photoresipiration during the photosynthesis process";
   Real Gamma(unit="umol/mol") "CO2 compensation point, umol CO2/ mol air";
@@ -170,29 +168,29 @@ protected
   Real h_T_canSum_MN_Fruit;
   Real eta_BufFruit(unit="d.m2/mg")
     "Conversion factor to ensure that MC_BufFruit equals the sum of the carbohydrates that flow to the different fruit development stages";
-  Real GR[n_dev](unit="mg/d")
+  Real GR[n_dev](each unit="mg/d")
     "Daily potential growth rate per fruit in a development stage, mg CH2O/(fruit.day)";
   Real B(unit="1/d") "Steepness of the curve";
-  Real t_j_FGP[n_dev](unit="d")
+  Real t_j_FGP[n_dev](each unit="d")
     "Number of days after fruit set for development stage j";
   Real M(unit="d") "Fruit development time in days where GR is maximal";
   Real FGP(unit="d") "Fruit Growth period";
-  Real RGR_Fruit[n_dev](unit="1/s") "Net relative growth rate";
+  Real RGR_Fruit[n_dev](each unit="1/s") "Net relative growth rate";
   Real RGR_Leaf(unit="1/s") "Net relative growth rate";
   Real RGR_Stem(unit="1/s") "Net relative growth rate";
-  Real RGR_Fruit_2[n_dev](unit="1/s") "Net relative growth rate";
+  Real RGR_Fruit_2[n_dev](each unit="1/s") "Net relative growth rate";
 
-  Real MN_Fruit[n_dev-1,n_dev](unit="1/(m2.s)")
+  Real MN_Fruit[n_dev-1,n_dev](each unit="1/(m2.s)", each start=0, each fixed=true)
     "Fruit flow through the fruit development stages";
-  Real N_Fruit[n_dev](unit="1/m2")
+  Real N_Fruit[n_dev](each unit="1/m2")
     "Number of fruits in the development stage i, fruits/m2";
-  Real MC_Fruit[n_dev,n_dev+1](unit="mg/(m2.s)")
+  Real MC_Fruit[n_dev,n_dev+1](each unit="mg/(m2.s)")
     "Fruit carbohydrates flow through the fruit development stages";
-  Real C_Fruit[n_dev](unit="mg/m2")
+  Real C_Fruit[n_dev](each unit="mg/m2", each start=0, each fixed=true)
     "Amount of fruit carbohydrates in the development stage i";
-  Real MC_BufFruit_j[n_dev](unit="mg/(m2.s)")
+  Real MC_BufFruit_j[n_dev](each unit="mg/(m2.s)")
     "Carbohydrate flow from the buffer to the remaining development stages";
-  Real MC_FruitAir_j[n_dev](unit="mg/(m2.s)")
+  Real MC_FruitAir_j[n_dev](each unit="mg/(m2.s)")
     "Maintenance respiration of the fruits";
 
 public
@@ -237,7 +235,7 @@ equation
   // MODEL FLOWS //
 
   //***************** Canopy photosynthesis *******************//
-  // Net photosyntesis rate
+  // Net photosynthesis rate
   MC_AirBuf = M_CH2O*h_CBuf_MCairBuf*(P-R);
   h_CBuf_MCairBuf = 1/(1+exp(5e-3*(C_Buf-C_Buf_MAX))) "5e-4, 1e-3";
 
