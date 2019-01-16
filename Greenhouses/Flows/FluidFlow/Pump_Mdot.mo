@@ -21,10 +21,12 @@ model Pump_Mdot "Pump model - Prescribed mass flow rate"
   Modelica.SIunits.Pressure p "Inlet pressure";
   Modelica.SIunits.Density rho(start=1000) "Liquid density";
   Modelica.SIunits.Power Wdot "Power Consumption";
-  Greenhouses.Interfaces.Fluid.FlangeA inlet(redeclare package Medium = Medium)
+  Modelica.Fluid.Interfaces.FluidPort_a inlet(
+                                             redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-92,-14},{-52,24}}),
         iconTransformation(extent={{-92,-14},{-52,24}})));
-  Greenhouses.Interfaces.Fluid.FlangeB outlet(redeclare package Medium = Medium)
+  Modelica.Fluid.Interfaces.FluidPort_b outlet(
+                                              redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{36,54},{76,94}}),
         iconTransformation(extent={{36,54},{76,94}})));
   Modelica.Blocks.Interfaces.RealInput flow_in
@@ -62,7 +64,7 @@ equation
   annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
             -100},{100,100}}),
                          graphics), Diagram(coordinateSystem(
-          preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics),Documentation(info="<html>
+          preserveAspectRatio=true, extent={{-100,-100},{100,100}})),          Documentation(info="<html>
 <p>The Pump model represents the compression of a fluid in a turbo or volumetric machine. It is a lumped model based on performance curves where pump speed is set as an input.</p>
 <p>The assumptions for this model are:</p>
 <p><ul>
