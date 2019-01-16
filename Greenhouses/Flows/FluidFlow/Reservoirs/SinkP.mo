@@ -18,7 +18,7 @@ model SinkP "Pressure sink"
         origin={40,88},
         extent={{-20,-20},{20,20}},
         rotation=270)));
-  Greenhouses.Interfaces.Fluid.FlangeB flangeB(redeclare package Medium =
+  Modelica.Fluid.Interfaces.FluidPort_b flangeB(redeclare package Medium =
         Medium) annotation (Placement(transformation(extent={{-94,-10},{-74,10}}),
         iconTransformation(extent={{-94,-10},{-74,10}})));
 equation
@@ -36,7 +36,7 @@ equation
             100}}), graphics={Text(extent={{-106,92},{-56,50}}, textString=
               "p0"), Text(extent={{54,94},{112,52}}, textString="h")}),
     Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
-            100}}),     graphics),
+            100}})),
     Documentation(info="<HTML> 
     <p><big> Model <b>SinkP</b> sets the boundary pressure of the fluid flowing from the port to the model (i.e. into the model).
 
