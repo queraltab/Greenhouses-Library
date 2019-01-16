@@ -7,10 +7,12 @@ model Cell1DimInc "1-D incompressible fluid flow model"
       annotation (choicesAllMatching = true);
 
 /************ Thermal and fluid ports ***********/
-  Greenhouse.Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
+  Modelica.Fluid.Interfaces.FluidPort_a
+                                      InFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}}),
         iconTransformation(extent={{-120,-20},{-80,20}})));
-  Greenhouse.Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium = Medium)
+  Modelica.Fluid.Interfaces.FluidPort_b
+                                      OutFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{80,-10},{100,10}}),
         iconTransformation(extent={{80,-18},{120,20}})));
   Greenhouse.Interfaces.Heat.ThermalPortL Wall_int annotation (Placement(
@@ -127,8 +129,7 @@ equation
       color={255,0,0},
       smooth=Smooth.None));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=true,  extent={{-100,
-            -100},{100,100}}),
-                      graphics), Icon(graphics={Rectangle(
+            -100},{100,100}})),  Icon(graphics={Rectangle(
           extent={{-92,40},{88,-40}},
           lineColor={0,0,255},
           fillColor={170,213,255},
