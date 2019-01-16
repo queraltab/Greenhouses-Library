@@ -7,10 +7,12 @@ model Cell1DimInc_2ports
       annotation (choicesAllMatching = true);
 
   /************ Thermal and fluid ports ***********/
-  Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
+  Modelica.Fluid.Interfaces.FluidPort_a
+                           InFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}}),
         iconTransformation(extent={{-120,-20},{-80,20}})));
-  Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium = Medium)
+  Modelica.Fluid.Interfaces.FluidPort_b
+                           OutFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{80,-10},{100,10}}),
         iconTransformation(extent={{80,-18},{120,20}})));
   Interfaces.Heat.ThermalPortL Wall_int annotation (Placement(transformation(
@@ -160,7 +162,7 @@ equation
       smooth=Smooth.None));
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-100,-100},{
-            100,100}}), graphics),
+            100,100}})),
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
                     graphics={Rectangle(
           extent={{-80,40},{84,-40}},
