@@ -3,10 +3,11 @@ package Greenhouses "The Greenhouses Modelica Library"
 
 
   annotation (uses(
-    conversion(noneFromVersion=""), Modelica(version="3.2.1"),
-    DymolaCommands(version="1.1")),  Icon(coordinateSystem(preserveAspectRatio=
+    conversion(noneFromVersion=""),
+    DymolaCommands(version="1.1"),
+    Modelica(version="3.2.2")),      Icon(coordinateSystem(preserveAspectRatio=
             false, extent={{-100,-100},{100,100}}), graphics={Bitmap(extent={{
-              -100,100},{100,-100}}, fileName=
+            -100,-100},{100,100}}, fileName=
             "modelica://Greenhouses/Resources/Images/GreenhousesLibraryIcon.jpg")}),
     Documentation(info="<html>
 <p><b></font><font style=\"font-size: 17pt; \">Welcome to the Greenhouses library!</b> </p>
