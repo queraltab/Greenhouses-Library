@@ -405,12 +405,11 @@ model Greenhouse_2
     fileName=Modelica.Utilities.Files.loadResource("modelica://Greenhouses/Resources/Data/SP_10Dec-22Nov.txt"))
     "Climate set points 10Dec-22Nov: daily setpoints based on maximizing photosynthesis rate, minimum night temperature of 16, 24h mean temperature of 20"
     annotation (Placement(transformation(extent={{-118,152},{-98,172}})));
-  Interfaces.Fluid.FlangeB flangeB(redeclare package Medium =
+  Modelica.Fluid.Interfaces.FluidPort_b flangeB(redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (Placement(
-        transformation(extent={{-212,-104},{-192,-84}}),
-                                                   iconTransformation(extent={{
-            -176,-158},{-156,-138}})));
-  Interfaces.Fluid.FlangeA flangeA(redeclare package Medium =
+        transformation(extent={{-212,-104},{-192,-84}}), iconTransformation(
+          extent={{-176,-158},{-156,-138}})));
+  Modelica.Fluid.Interfaces.FluidPort_a flangeA(redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (Placement(
         transformation(extent={{-40,-176},{-20,-156}}), iconTransformation(
           extent={{-176,-60},{-156,-40}})));
