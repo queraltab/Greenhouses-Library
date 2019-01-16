@@ -1,4 +1,4 @@
-within Greenhouses.Components.HVAC;
+﻿within Greenhouses.Components.HVAC;
 model CHP
 
   //replaceable package Medium = Modelica.Media.Water.WaterIF97_ph;
@@ -137,7 +137,8 @@ equation
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}), graphics), Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={Bitmap(
-            extent={{-100,100},{100,-100}}, fileName="modelica://Greenhouses/Resources/Images/chp.png")}),
+            extent={{-100,-100},{100,100}}, fileName=
+              "modelica://Greenhouses/Resources/Images/chp.png")}),
     experiment(StopTime=3600),
     __Dymola_experimentSetupOutput,
     Documentation(info="<html>

@@ -524,16 +524,17 @@ equation
       color={255,207,14},
       smooth=Smooth.Bezier));
   connect(solar_model.R_SunFlr_Glob, floor.R_Flr_Glob[1]) annotation (Line(
-      points={{-176.9,130},{-178,130},{-178,-130.064},{-178,-148.5},{-176.8,-148.5}},
+      points={{-176.9,130},{-178,130},{-178,-130.064},{-178,-149.8},{-176.8,
+          -149.8}},
       color={255,207,14},
       smooth=Smooth.Bezier));
   connect(illu.R_IluFlr_Glob, floor.R_Flr_Glob[2]) annotation (Line(
-      points={{-178,27},{-178,-130.011},{-178,-151.1},{-176.8,-151.1}},
+      points={{-178,27},{-178,-130.011},{-178,-149.8},{-176.8,-149.8}},
       color={255,207,14},
       smooth=Smooth.Bezier));
   connect(illu.R_IluAir_Glob, air.R_Air_Glob[2]) annotation (Line(
-      points={{-166,27},{-166,27},{-166,10},{-156.015,10},{51.5469,10},{72,10},{
-          72,-6},{72,-37},{73,-37}},
+      points={{-166,27},{-166,27},{-166,10},{-156.015,10},{51.5469,10},{72,10},
+          {72,-6},{72,-35.6},{73,-35.6}},
       color={191,0,0},
       smooth=Smooth.Bezier));
   connect(pipe_low.heatPorts, Q_rad_LowCov.heatPorts_a) annotation (Line(
@@ -575,9 +576,9 @@ equation
       smooth=Smooth.Bezier));
 
   connect(solar_model.R_SunAir_Glob, air.R_Air_Glob[1]) annotation (Line(
-      points={{-176.9,141},{-162,141},{-156,141},{-156,129.25},{-156,82},{-156,26.0195},
-          {-156,14},{-142,14},{-146.408,14},{58,14},{72,14},{72,-12},{72,-34.2},
-          {73,-34.2}},
+      points={{-176.9,141},{-162,141},{-156,141},{-156,129.25},{-156,82},{-156,
+          26.0195},{-156,14},{-142,14},{-146.408,14},{58,14},{72,14},{72,-12},{
+          72,-35.6},{73,-35.6}},
       color={191,0,0},
       smooth=Smooth.Bezier));
 
@@ -688,13 +689,13 @@ equation
       smooth=Smooth.Bezier));
 
   connect(canopy.R_Can_Glob[2], illu.R_IluCan_Glob) annotation (Line(
-      points={{-67.5,-49.4},{-67.5,-49.4},{-161.083,-49.4},{-172.75,-49.4},{-172.75,
-          -27.0172},{-172.75,27},{-172,27}},
+      points={{-67.5,-50.8},{-67.5,-49.4},{-161.083,-49.4},{-172.75,-49.4},{
+          -172.75,-27.0172},{-172.75,27},{-172,27}},
       color={255,207,14},
       smooth=Smooth.Bezier));
   connect(canopy.R_Can_Glob[1], solar_model.R_SunCan_Glob) annotation (Line(
-      points={{-67.5,-52.2},{-67.5,-50},{-142.703,-50},{-160,-50},{-160,-31.2969},
-          {-160,118},{-160,136},{-176.9,136},{-176.9,135.5}},
+      points={{-67.5,-50.8},{-67.5,-50},{-142.703,-50},{-160,-50},{-160,
+          -31.2969},{-160,118},{-160,136},{-176.9,136},{-176.9,135.5}},
       color={255,207,14},
       smooth=Smooth.Bezier));
   connect(floor.heatPort, Q_rad_LowFlr.port_b) annotation (Line(
@@ -984,8 +985,8 @@ Vapour transfer"),
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid)}),
                                  Icon(coordinateSystem(preserveAspectRatio=false,
-          extent={{-240,-180},{240,180}}), graphics={Bitmap(extent={{-214,168},{
-              214,-188}}, fileName=
+          extent={{-240,-180},{240,180}}), graphics={Bitmap(extent={{-214,-188},
+              {214,168}}, fileName=
               "modelica://Greenhouses/Resources/Images/Greenhouse_drawing.png")}),
     Documentation(info="<html>
     <p><big>This is a ready-to-use greenhouse climate simulation model, in which the greenhouse is already built and can directly be connected to other thermal systems. For this purpose, an inlet and outlet port allow the connection of the heating circuit to the required generation unit. Moreover, a Real output connector outputs the vaue of the control signal that sets the mass flow rate of the heating circuit pump.</p>
