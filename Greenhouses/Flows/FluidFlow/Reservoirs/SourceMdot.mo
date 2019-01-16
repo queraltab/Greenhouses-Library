@@ -39,7 +39,7 @@ model SourceMdot "Flowrate source for fluid flows"
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={-2,60})));
-  Greenhouses.Interfaces.Fluid.FlangeB flangeB(redeclare package Medium =
+  Modelica.Fluid.Interfaces.FluidPort_b flangeB(redeclare package Medium =
         Medium)
     annotation (Placement(transformation(extent={{80,-10},{100,10}})));
 equation
@@ -65,8 +65,8 @@ equation
         Text(extent={{-76,42},{-30,10}}, textString="Mdot"),
         Text(extent={{40,40},{84,12}}, textString="h"),
         Text(extent={{-20,40},{18,12}}, textString="T")}), Diagram(
-        coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
-                    graphics),Documentation(info="<HTML> 
+        coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}})),
+                              Documentation(info="<HTML> 
                     <p><big> Model <b>SourceMdot</b> represents an ideal mass flow sources, with prescribed enthalpy of the fluid flowing from the model to the port (i.e. out of the model).
                  <p><b><big>Modelling options</b></p>
                <p><big> In the <b>General</b> tab the following option is available:
