@@ -22,9 +22,11 @@ model Pdrop "Linear pressure drop"
   /* Variables */
   Modelica.SIunits.MassFlowRate Mdot(start=Mdot_start);
   Modelica.SIunits.Pressure DELTAp(start=DELTAp_start);
-  Greenhouses.Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
+  Modelica.Fluid.Interfaces.FluidPort_a InFlow(
+                                              redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
-  Greenhouses.Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium =
+  Modelica.Fluid.Interfaces.FluidPort_b OutFlow(
+                                               redeclare package Medium =
         Medium)
     annotation (Placement(transformation(extent={{80,-10},{100,10}})));
 equation
@@ -53,7 +55,7 @@ initial equation
                     graphics={Text(extent={{-100,-40},{100,-74}}, textString=
               "%name")}),
     Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-120,-120},
-            {120,120}}),graphics),
+            {120,120}})),
     Documentation(info="<HTML>
 <p>This very simple model assumes a non-compressible flow for computing the pressure drop</p>
 </HTML>",
