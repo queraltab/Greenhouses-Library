@@ -1,4 +1,4 @@
-within Greenhouses.Components.HVAC;
+﻿within Greenhouses.Components.HVAC;
 model HeatPump_ConsoClim
   "Variation of ConsoClim model. Imposing the Wdot instead of the T_cd"
   replaceable package Medium1 =
@@ -69,16 +69,20 @@ model HeatPump_ConsoClim
     "Maximum temperature at the outlet";
   parameter Modelica.SIunits.Time tau = 60 "Start-up time constant";
 
-  Interfaces.Fluid.FlangeA Supply_cd(redeclare package Medium = Medium1)
+  Modelica.Fluid.Interfaces.FluidPort_a
+                           Supply_cd(redeclare package Medium = Medium1)
     annotation (Placement(transformation(extent={{80,-80},{100,-60}}),
         iconTransformation(extent={{80,-80},{100,-60}})));
-  Interfaces.Fluid.FlangeB Exhaust_cd(redeclare package Medium = Medium1)
+  Modelica.Fluid.Interfaces.FluidPort_b
+                           Exhaust_cd(redeclare package Medium = Medium1)
     annotation (Placement(transformation(extent={{80,60},{100,80}}),
         iconTransformation(extent={{80,60},{100,80}})));
-  Interfaces.Fluid.FlangeA Supply_ev(redeclare package Medium = Medium2)
+  Modelica.Fluid.Interfaces.FluidPort_a
+                           Supply_ev(redeclare package Medium = Medium2)
     annotation (Placement(transformation(extent={{-100,60},{-80,80}}),
         iconTransformation(extent={{-100,60},{-80,80}})));
-  Interfaces.Fluid.FlangeB Exhaust_ev(redeclare package Medium = Medium2)
+  Modelica.Fluid.Interfaces.FluidPort_b
+                           Exhaust_ev(redeclare package Medium = Medium2)
     annotation (Placement(transformation(extent={{-100,-80},{-80,-60}}),
         iconTransformation(extent={{-100,-80},{-80,-60}})));
   Modelica.Blocks.Interfaces.RealInput W_dot_set annotation (Placement(
@@ -240,7 +244,7 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}), graphics), Icon(coordinateSystem(
+            -100},{100,100}})),           Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
         Polygon(
           points={{-10,20},{10,20},{-10,-20},{10,-20},{-10,20}},
@@ -290,24 +294,24 @@ equation
           textString="W_dot_cp"),
         Rectangle(
           extent={{-92,60},{-88,40}},
-          lineColor={0,0,255},
+          lineColor={0,128,255},
           fillPattern=FillPattern.Solid,
-          fillColor={0,0,255}),
+          fillColor={0,128,255}),
         Rectangle(
           extent={{-92,-40},{-88,-60}},
-          lineColor={0,0,255},
+          lineColor={0,128,255},
           fillPattern=FillPattern.Solid,
-          fillColor={0,0,255}),
+          fillColor={0,128,255}),
         Rectangle(
           extent={{88,60},{92,40}},
-          lineColor={0,0,255},
+          lineColor={0,128,255},
           fillPattern=FillPattern.Solid,
-          fillColor={0,0,255}),
+          fillColor={0,128,255}),
         Rectangle(
           extent={{88,-40},{92,-60}},
-          lineColor={0,0,255},
+          lineColor={0,128,255},
           fillPattern=FillPattern.Solid,
-          fillColor={0,0,255})}),
+          fillColor={0,128,255})}),
           Documentation(info="<html>
 <p><big>
 This model is used to determine the performances of a heat pump for different 
