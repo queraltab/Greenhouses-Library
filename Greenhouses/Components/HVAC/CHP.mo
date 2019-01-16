@@ -56,10 +56,12 @@ model CHP
         rotation=90,
         origin={-50,6})));
 
-  Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
+  Modelica.Fluid.Interfaces.FluidPort_a
+                           InFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-90,-48},{-70,-28}}),
         iconTransformation(extent={{-110,-92},{-90,-72}})));
-  Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium = Medium)
+  Modelica.Fluid.Interfaces.FluidPort_b
+                           OutFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-92,58},{-72,78}}),
         iconTransformation(extent={{-110,6},{-90,26}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a HeatSource
@@ -135,7 +137,7 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}), graphics), Icon(coordinateSystem(
+            -100},{100,100}})),           Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={Bitmap(
             extent={{-100,-100},{100,100}}, fileName=
               "modelica://Greenhouses/Resources/Images/chp.png")}),
