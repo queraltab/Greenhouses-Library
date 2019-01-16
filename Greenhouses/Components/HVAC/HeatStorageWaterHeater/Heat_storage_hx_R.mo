@@ -140,16 +140,20 @@ SummaryClass Summary( T_profile( n=N, Tsf = Tsf_,  Twall = Twall_, Twf = cell1Di
   Interfaces.Heat.ThermalPortL Wall_ext annotation (Placement(transformation(
           extent={{-14,48},{16,60}}), iconTransformation(extent={{-40,-6},{-34,
             12}})));
-  Interfaces.Fluid.FlangeA MainFluid_su(redeclare package Medium = MainFluid)
+  Modelica.Fluid.Interfaces.FluidPort_a
+                           MainFluid_su(redeclare package Medium = MainFluid)
     annotation (Placement(transformation(extent={{-52,-94},{-32,-74}}),
         iconTransformation(extent={{-42,-84},{-32,-74}})));
-  Interfaces.Fluid.FlangeB SecondaryFluid_ex(redeclare package Medium =
-        SecondaryFluid) annotation (Placement(transformation(extent={{-64,-76},
-            {-44,-56}}), iconTransformation(extent={{34,-36},{46,-24}})));
-  Interfaces.Fluid.FlangeB MainFluid_ex(redeclare package Medium = MainFluid)
+  Modelica.Fluid.Interfaces.FluidPort_b
+                           SecondaryFluid_ex(redeclare package Medium =
+        SecondaryFluid) annotation (Placement(transformation(extent={{-68,-76},
+            {-48,-56}}), iconTransformation(extent={{34,-36},{46,-24}})));
+  Modelica.Fluid.Interfaces.FluidPort_b
+                           MainFluid_ex(redeclare package Medium = MainFluid)
     annotation (Placement(transformation(extent={{-14,72},{6,92}}),
         iconTransformation(extent={{-6,80},{6,92}})));
-  Interfaces.Fluid.FlangeA SecondaryFluid_su(redeclare package Medium =
+  Modelica.Fluid.Interfaces.FluidPort_a
+                           SecondaryFluid_su(redeclare package Medium =
         SecondaryFluid) annotation (Placement(transformation(extent={{54,-76},{
             74,-56}}), iconTransformation(extent={{34,28},{46,40}})));
   Modelica.Blocks.Interfaces.BooleanInput R_on_off annotation (Placement(
@@ -221,7 +225,7 @@ equation
       smooth=Smooth.None));
   connect(SecondaryFluid_ex, flow1Dim.OutFlow)
                                            annotation (Line(
-      points={{-54,-66},{-54,-66.8583},{-13,-66.8583}},
+      points={{-58,-66},{-58,-66.8583},{-13,-66.8583}},
       color={0,0,255},
       smooth=Smooth.None));
   connect(flow1Dim.InFlow, SecondaryFluid_su)
@@ -238,7 +242,7 @@ equation
           -6.63},{2.32,-1.5}},
       color={255,0,0},
       smooth=Smooth.None), Diagram(coordinateSystem(preserveAspectRatio=false,
-          extent={{-100,-100},{100,100}}), graphics),
+          extent={{-100,-100},{100,100}})),
     experiment(StopTime=5000),
     __Dymola_experimentSetupOutput,
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
