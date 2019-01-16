@@ -22,10 +22,12 @@ public
  end SummaryClass;
  SummaryClass Summary( T_profile(n=N, T_cell = Cells[:].T), n=N, h = Cells[:].h, hnode = hnode_, rho = Cells.rho, T = Cells.T, Mdot = InFlow.m_flow, p = Cells[1].p);
 /************ Thermal and fluid ports ***********/
-  Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
+  Modelica.Fluid.Interfaces.FluidPort_a
+                           InFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}}),
         iconTransformation(extent={{-120,-20},{-80,20}})));
-  Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium = Medium)
+  Modelica.Fluid.Interfaces.FluidPort_b
+                           OutFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{80,-10},{100,10}}),
         iconTransformation(extent={{80,-18},{120,20}})));
   Interfaces.Heat.ThermalPort Wall_int(N=N) annotation (Placement(
@@ -116,8 +118,7 @@ equation
       color={0,0,255},
       smooth=Smooth.None));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-120,
-            -120},{120,120}}),
-                      graphics), Icon(coordinateSystem(preserveAspectRatio=true,
+            -120},{120,120}})),  Icon(coordinateSystem(preserveAspectRatio=true,
                   extent={{-120,-120},{120,120}}),
                                       graphics={Rectangle(
           extent={{-92,40},{88,-40}},
