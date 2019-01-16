@@ -44,11 +44,13 @@ public
   Interfaces.Heat.HeatPorts_a[N] heatPorts annotation (Placement(transformation(
           extent={{-10,-10},{10,10}}), iconTransformation(extent={{-40,30},{40,
             50}})));
-  Interfaces.Fluid.FlangeA pipe_in(redeclare package Medium =
+  Modelica.Fluid.Interfaces.FluidPort_a
+                           pipe_in(redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (Placement(
         transformation(extent={{-90,-10},{-70,10}}), iconTransformation(extent=
             {{-90,-10},{-70,10}})));
-  Interfaces.Fluid.FlangeB pipe_out(redeclare package Medium =
+  Modelica.Fluid.Interfaces.FluidPort_b
+                           pipe_out(redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (Placement(
         transformation(extent={{70,-10},{90,10}}), iconTransformation(extent={{
             70,-10},{90,10}})));
@@ -104,7 +106,7 @@ equation
           points={{-60,-30},{78,-30}},
           color={0,0,0},
           smooth=Smooth.None)}),            Diagram(coordinateSystem(
-          preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics),
+          preserveAspectRatio=false, extent={{-100,-100},{100,100}})),
     Documentation(info="<html>
     <p><big>The fluid in the heating pipes from the greenhouse heating ciruit is modeled by means of the discretized model for incompressible flow (<a href=\"modelica://Greenhouses.Flows.FluidFlow.Flow1DimInc\">Flow1DimInc</a>), in which a dynamic energy balance and static mass and momentum balances are applied on the fluid cells. Heat is transferred by long-wave radiation to the canopy, floor and cover, and by convection to the air. The heat transfer is set to be computed by an ideal model. However, the user can select other heat transfer models in the parameters of the fluid flow model.
 
