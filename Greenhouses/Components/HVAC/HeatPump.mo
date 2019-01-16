@@ -48,10 +48,12 @@ model HeatPump
         rotation=90,
         origin={-50,6})));
 
-  Interfaces.Fluid.FlangeA InFlow(redeclare package Medium = Medium)
+  Modelica.Fluid.Interfaces.FluidPort_a
+                           InFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-90,-48},{-70,-28}}),
         iconTransformation(extent={{-100,-76},{-80,-56}})));
-  Interfaces.Fluid.FlangeB OutFlow(redeclare package Medium = Medium)
+  Modelica.Fluid.Interfaces.FluidPort_b
+                           OutFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-92,58},{-72,78}}),
         iconTransformation(extent={{-100,58},{-80,78}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a HeatSource
@@ -106,7 +108,7 @@ equation
       color={191,0,0},
       smooth=Smooth.None));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}), graphics), Icon(coordinateSystem(
+            -100},{100,100}})),           Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics
         ={
         Polygon(
@@ -145,14 +147,14 @@ equation
           smooth=Smooth.None),
         Rectangle(
           extent={{-92,60},{-88,40}},
-          lineColor={0,0,255},
+          lineColor={0,128,255},
           fillPattern=FillPattern.Solid,
-          fillColor={0,0,255}),
+          fillColor={0,128,255}),
         Rectangle(
           extent={{-92,-40},{-88,-60}},
-          lineColor={0,0,255},
+          lineColor={0,128,255},
           fillPattern=FillPattern.Solid,
-          fillColor={0,0,255})}),
+          fillColor={0,128,255})}),
     experiment(StopTime=3600),
     __Dymola_experimentSetupOutput,
     Documentation(info="<html>
