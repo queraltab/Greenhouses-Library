@@ -1,4 +1,4 @@
-within Greenhouses.Components.CropYield;
+﻿within Greenhouses.Components.CropYield;
 model TomatoYieldModel
 
   //***************** Parameters *******************//
@@ -180,9 +180,8 @@ protected
   Real RGR_Stem(unit="1/s") "Net relative growth rate";
   Real RGR_Fruit_2[n_dev](each unit="1/s") "Net relative growth rate";
 
-  Real MN_Fruit[n_dev-1,n_dev](each unit="1/(m2.s)", each start=0, each fixed=true)
-    "Fruit flow through the fruit development stages";
-  Real N_Fruit[n_dev](each unit="1/m2")
+  Real MN_Fruit[n_dev-1,n_dev](each unit="1/(m2.s)", each start=0, each fixed=true) "Fruit flow through the fruit development stages";
+  Real N_Fruit[n_dev](each unit="1/m2", each start=0, each fixed=true)
     "Number of fruits in the development stage i, fruits/m2";
   Real MC_Fruit[n_dev,n_dev+1](each unit="mg/(m2.s)")
     "Fruit carbohydrates flow through the fruit development stages";
