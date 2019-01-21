@@ -94,16 +94,16 @@ parameter Modelica.SIunits.SpecificHeatCapacity c_wall_hx= 500
     annotation (Placement(transformation(extent={{20,-84},{-16,-50}})));
   Cell1DimInc_2ports                                                           cell1DimInc_hx[N](
     redeclare package Medium = MainFluid,
-    each Vi=V_tank/N,
     each Mdotnom=1,
     each Unom=U_amb,
     each Unom_hx=Unom_hx,
-    each Ai=A_amb/N,
     each pstart=pstart_tank,
     hstart=hstart_tank,
-    each A_hx=1/(N2 - N1 + 1),
     redeclare model HeatTransfer =
-        Greenhouses.Flows.FluidFlow.HeatTransfer.Constant)
+        Greenhouses.Flows.FluidFlow.HeatTransfer.Constant,
+    each Vi=V_tank/(N2 - N1 + 1),
+    each Ai=A_amb/(N2 - N1 + 1),
+    each A_hx=A_hx/(N2 - N1 + 1))
     annotation (Placement(transformation(extent={{-16,-10},{18,24}})));
 
   Interfaces.Heat.ThermalPortConverter thermalPortConverter(N=N2 - N1 + 1)
