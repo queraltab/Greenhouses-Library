@@ -155,7 +155,8 @@ model GlobalSystem_2
     tableOnFile=true,
     tableName="tab",
     columns=1:10,
-    fileName=Modelica.Utilities.Files.loadResource("modelica://Greenhouse/Resources/Data/10Dec-22Nov.txt"))
+    fileName=Modelica.Utilities.Files.loadResource(
+        "modelica://Greenhouses/Resources/Data/10Dec-22Nov.txt"))
     "TMY of Brussels for the period of 10Dec to 22Nov"
     annotation (Placement(transformation(extent={{-76,80},{-62,94}})));
 equation
