@@ -4,6 +4,8 @@ model Control_1 "Controller for the CHP and heat pump and TES"
   parameter Modelica.SIunits.Temperature T_min = 273.15+50
     "Lowest level of tank 1 and 2";
   parameter Modelica.SIunits.Time waitTime=2 "Wait time, between operations";
+  parameter Modelica.SIunits.MassFlowRate Mdot_max=38 "Maximum mass flow rate in the greenhouse heating circuit";
+  Modelica.SIunits.Temperature T_high_tank = 90+273.15 annotation(Dialog(group="Varying inputs"));
 
   Modelica.StateGraph.InitialStep All_off(nIn=1, nOut=1)
                                           annotation (Placement(transformation(
@@ -27,7 +29,8 @@ model Control_1 "Controller for the CHP and heat pump and TES"
         rotation=0)));
   Modelica.StateGraph.Step runCHP(nIn=1, nOut=1) annotation (Placement(
         transformation(extent={{-32,-14},{-12,6}}, rotation=0)));
-  Modelica.StateGraph.Transition T2(condition=T_tank > T_max)
+  Modelica.StateGraph.Transition T2(condition=T_tank > T_max or Mdot_1ry <= 0.1
+        *Mdot_max or T_high_tank > T_max)
     annotation (Placement(transformation(extent={{3,6},{23,-14}},  rotation=
            0)));
   Modelica.Blocks.Logical.Hysteresis hysteresis(
@@ -37,9 +40,10 @@ model Control_1 "Controller for the CHP and heat pump and TES"
     annotation (Placement(transformation(extent={{-80,-68},{-60,-48}})));
   Modelica.Blocks.Logical.Not not1
     annotation (Placement(transformation(extent={{-46,-68},{-26,-48}})));
-  Modelica.StateGraph.Transition T1(condition=T_tank < T_min or T_tank <
-        T_max - 10 and Mdot_1ry > 0.4)
-    annotation (Placement(transformation(extent={{-73,10},{-53,-10}},
+  Modelica.StateGraph.Transition T1(condition=T_tank < T_min and T_high_tank <
+        T_max and Mdot_1ry > 0.1*Mdot_max or T_tank < T_max - 10 and Mdot_1ry
+         > Mdot_max)
+    annotation (Placement(transformation(extent={{-73,6},{-53,-14}},
                                                                    rotation=
            0)));
   Modelica.Blocks.Interfaces.RealInput Mdot_1ry(
@@ -82,11 +86,11 @@ equation
       color={255,0,255},
       smooth=Smooth.None));
   connect(All_off.outPort[1],T1. inPort) annotation (Line(
-      points={{-51.5,40},{-48,40},{-48,26},{-82,26},{-82,0},{-67,0}},
+      points={{-51.5,40},{-50,40},{-50,26},{-88,26},{-88,-4},{-67,-4}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(T1.outPort, runCHP.inPort[1]) annotation (Line(
-      points={{-61.5,0},{-48,0},{-48,-4},{-33,-4}},
+      points={{-61.5,-4},{-33,-4}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Set_ElectricalHeater.y, ElectricalHeater) annotation (Line(
