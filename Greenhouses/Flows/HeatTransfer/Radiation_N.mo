@@ -22,14 +22,14 @@ model Radiation_N "Lumped thermal element for radiation heat transfer"
   Real FFab4 = 0 "View factor of intermediate element between A and B"
     annotation (Dialog(group="Varying inputs"));
 
-  Real dT4[nNodes];
+  Real dT4[N];
   Modelica.SIunits.HeatFlowRate Q_flow;
   Real REC_ab(unit="W/(m2.K4)");
 
   // Discretization
-  parameter Integer nNodes(min=1)=2 "Number of discrete flow volumes";
+  parameter Integer N(min=1)=2 "Number of discrete flow volumes";
 
-  Greenhouses.Interfaces.Heat.HeatPorts_a[nNodes] heatPorts_a annotation (
+  Greenhouses.Interfaces.Heat.HeatPorts_a[N] heatPorts_a annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -41,12 +41,12 @@ model Radiation_N "Lumped thermal element for radiation heat transfer"
              port_b annotation (Placement(transformation(extent={{90,-10},{110,10}},
                       rotation=0)));
 equation
-  for i in 1:nNodes loop
+  for i in 1:N loop
     dT4[i]=heatPorts_a[i].T^4 - port_b.T^4;
   end for;
 
   REC_ab = epsilon_a*epsilon_b*FFa*FFb*(1-FFab1)*(1-FFab2)*(1-FFab3)*(1-FFab4)*Modelica.Constants.sigma;
-  heatPorts_a.Q_flow = A/nNodes*REC_ab*dT4;
+  heatPorts_a.Q_flow = A/N*REC_ab*dT4;
 
   Q_flow = sum(heatPorts_a.Q_flow);
 
