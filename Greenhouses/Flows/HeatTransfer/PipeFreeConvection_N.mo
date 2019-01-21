@@ -4,7 +4,7 @@ model PipeFreeConvection_N
 
   /*********************** Parameters ***********************/
   parameter Integer N_p(min=1)=1 "number of pipes in parallel";
-  parameter Integer nNodes(min=1)=2 "number of nodes for pipe side";
+  parameter Integer N(min=1)=2 "number of cells for pipe side";
   parameter Modelica.SIunits.Area A "floor surface";
   parameter Modelica.SIunits.Length d
     "characteristic dimension of the pipe (pipe diameter)";
@@ -13,12 +13,12 @@ model PipeFreeConvection_N
     "true if pipe in free air, false if hindered pipe";
 
   /*********************** Variables ***********************/
-  Modelica.SIunits.CoefficientOfHeatTransfer HEC_ab[nNodes];
-  Real alpha[nNodes];
+  Modelica.SIunits.CoefficientOfHeatTransfer HEC_ab[N];
+  Real alpha[N];
   Modelica.SIunits.HeatFlowRate Q_flow;
-  Modelica.SIunits.TemperatureDifference dT[nNodes] "port_a.T - port_b.T";
+  Modelica.SIunits.TemperatureDifference dT[N] "port_a.T - port_b.T";
 
-  Greenhouses.Interfaces.Heat.HeatPorts_a[nNodes] heatPorts_a annotation (
+  Greenhouses.Interfaces.Heat.HeatPorts_a[N] heatPorts_a annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -30,7 +30,7 @@ model PipeFreeConvection_N
              port_b annotation (Placement(transformation(extent={{90,-10},{110,10}},
                       rotation=0)));
 equation
-  for i in 1:nNodes loop
+  for i in 1:N loop
     dT[i] = heatPorts_a[i].T-port_b.T;
     if freePipe then
       alpha[i] = 1.28*d^(-0.25)*max(1e-9,abs(dT[i]))^0.25;
@@ -39,7 +39,7 @@ equation
     end if;
     HEC_ab[i] = alpha[i]*Modelica.Constants.pi*d*l*N_p/A
       "*A_pipe/A to change units from m-2pipe to m-2floor";
-    heatPorts_a[i].Q_flow = A/nNodes*HEC_ab[i]*dT[i];
+    heatPorts_a[i].Q_flow = A/N*HEC_ab[i]*dT[i];
   end for;
 
   Q_flow = sum(heatPorts_a.Q_flow);
