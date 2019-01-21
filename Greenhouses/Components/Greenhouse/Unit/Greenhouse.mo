@@ -433,8 +433,10 @@ model Greenhouse
   Modelica.Blocks.Sources.CombiTimeTable TMY_and_control(
     tableOnFile=true,
     tableName="tab",
-    fileName="E:/Dropbox/Models/modelica libraries/Data/10Dec-22Nov.txt",
-    columns=1:10) "Set-points for the climate"
+    columns=1:10,
+    fileName=Modelica.Utilities.Files.loadResource(
+        "modelica://Greenhouses/Resources/Data/10Dec-22Nov.txt"))
+                  "Set-points for the climate"
     annotation (Placement(transformation(extent={{-152,152},{-132,172}})));
 
   Modelica.Blocks.Sources.RealExpression CO2_SP_var(y=SP_new.y[3]*1.94)
@@ -443,8 +445,8 @@ model Greenhouse
     tableOnFile=true,
     tableName="tab",
     columns=1:2,
-    fileName=
-        "E:/Dox/Queralt - Server/Modelica/Data/SC_usable_10Dec-22Nov.txt")
+    fileName=Modelica.Utilities.Files.loadResource(
+        "modelica://Greenhouses/Resources/Data/SC_usable_10Dec-22Nov.txt"))
     annotation (Placement(transformation(extent={{206,-62},{192,-48}})));
   ControlSystems.Climate.Control_ThScreen SC(R_Glob_can=I_glob.y,
       R_Glob_can_min=35)
@@ -463,8 +465,9 @@ model Greenhouse
   Modelica.Blocks.Sources.CombiTimeTable SP_new(
     tableOnFile=true,
     tableName="tab",
-    fileName="E:/Dox/Queralt - Server/Modelica/Data/SP_10Dec-22Nov.txt",
-    columns=1:3)
+    columns=1:3,
+    fileName=Modelica.Utilities.Files.loadResource(
+        "modelica://Greenhouses/Resources/Data/SP_10Dec-22Nov.txt"))
     "Climate set points 10Dec-22Nov: daily setpoints based on maximizing photosynthesis rate, minimum night temperature of 16, 24h mean temperature of 20"
     annotation (Placement(transformation(extent={{-118,152},{-98,172}})));
   Modelica.Fluid.Interfaces.FluidPort_a flangeA(redeclare package Medium =
