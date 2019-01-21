@@ -182,7 +182,7 @@ model Greenhouse_2
     FFa=pipe_low.FF,
     epsilon_b=0.89,
     FFb=1,
-    nNodes=pipe_low.N) annotation (Placement(transformation(
+    N=pipe_low.N) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-100,-134})));
@@ -192,7 +192,7 @@ model Greenhouse_2
     FFb=canopy.FF,
     epsilon_a=0.88,
     FFa=pipe_low.FF,
-    nNodes=pipe_low.N) annotation (Placement(transformation(
+    N=pipe_low.N) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-50,-98})));
@@ -204,7 +204,7 @@ model Greenhouse_2
     FFb=1,
     FFab1=canopy.FF,
     FFab3=thScreen.FF_ij,
-    nNodes=pipe_low.N) annotation (Placement(transformation(
+    N=pipe_low.N) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={6,-134})));
@@ -214,7 +214,7 @@ model Greenhouse_2
     freePipe=false,
     N_p=pipe_low.N_p,
     l=pipe_low.l,
-    nNodes=pipe_low.N)
+    N=pipe_low.N)
     annotation (Placement(transformation(extent={{-4,-124},{16,-104}})));
   Greenhouses.Flows.HeatTransfer.Radiation_N Q_rad_LowScr(
     A=surface.k,
@@ -223,7 +223,7 @@ model Greenhouse_2
     epsilon_b=1,
     FFb=thScreen.FF_i,
     FFab1=canopy.FF,
-    nNodes=pipe_low.N) annotation (Placement(transformation(
+    N=pipe_low.N) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-100,-114})));
@@ -527,16 +527,16 @@ equation
       color={255,207,14},
       smooth=Smooth.Bezier));
   connect(solar_model.R_SunFlr_Glob, floor.R_Flr_Glob[1]) annotation (Line(
-      points={{-176.9,130},{-178,130},{-178,-130.064},{-178,-148.5},{-176.8,-148.5}},
+      points={{-176.9,130},{-178,130},{-178,-130.064},{-178,-149.8},{-176.8,-149.8}},
       color={255,207,14},
       smooth=Smooth.Bezier));
   connect(illu.R_IluFlr_Glob, floor.R_Flr_Glob[2]) annotation (Line(
-      points={{-178,27},{-178,-130.011},{-178,-151.1},{-176.8,-151.1}},
+      points={{-178,27},{-178,-130.011},{-178,-149.8},{-176.8,-149.8}},
       color={255,207,14},
       smooth=Smooth.Bezier));
   connect(illu.R_IluAir_Glob, air.R_Air_Glob[2]) annotation (Line(
       points={{-166,27},{-166,27},{-166,10},{-156.015,10},{51.5469,10},{72,10},{
-          72,-6},{72,-37},{73,-37}},
+          72,-6},{72,-35.6},{73,-35.6}},
       color={191,0,0},
       smooth=Smooth.Bezier));
   connect(pipe_low.heatPorts, Q_rad_LowCov.heatPorts_a) annotation (Line(
@@ -579,8 +579,8 @@ equation
 
   connect(solar_model.R_SunAir_Glob, air.R_Air_Glob[1]) annotation (Line(
       points={{-176.9,141},{-162,141},{-156,141},{-156,129.25},{-156,82},{-156,26.0195},
-          {-156,14},{-142,14},{-146.408,14},{58,14},{72,14},{72,-12},{72,-34.2},
-          {73,-34.2}},
+          {-156,14},{-142,14},{-146.408,14},{58,14},{72,14},{72,-12},{72,-35.6},
+          {73,-35.6}},
       color={191,0,0},
       smooth=Smooth.Bezier));
 
@@ -691,12 +691,12 @@ equation
       smooth=Smooth.Bezier));
 
   connect(canopy.R_Can_Glob[2], illu.R_IluCan_Glob) annotation (Line(
-      points={{-67.5,-49.4},{-67.5,-49.4},{-161.083,-49.4},{-172.75,-49.4},{-172.75,
+      points={{-67.5,-50.8},{-67.5,-49.4},{-161.083,-49.4},{-172.75,-49.4},{-172.75,
           -27.0172},{-172.75,27},{-172,27}},
       color={255,207,14},
       smooth=Smooth.Bezier));
   connect(canopy.R_Can_Glob[1], solar_model.R_SunCan_Glob) annotation (Line(
-      points={{-67.5,-52.2},{-67.5,-50},{-142.703,-50},{-160,-50},{-160,-31.2969},
+      points={{-67.5,-50.8},{-67.5,-50},{-142.703,-50},{-160,-50},{-160,-31.2969},
           {-160,118},{-160,136},{-176.9,136},{-176.9,135.5}},
       color={255,207,14},
       smooth=Smooth.Bezier));
