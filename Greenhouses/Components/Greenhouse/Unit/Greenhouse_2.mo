@@ -179,7 +179,7 @@ model Greenhouse_2
     FFa=pipe_low.FF,
     epsilon_b=0.89,
     FFb=1,
-    nNodes=pipe_low.N) annotation (Placement(transformation(
+    N=pipe_low.N) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-100,-134})));
@@ -189,7 +189,7 @@ model Greenhouse_2
     FFb=canopy.FF,
     epsilon_a=0.88,
     FFa=pipe_low.FF,
-    nNodes=pipe_low.N) annotation (Placement(transformation(
+    N=pipe_low.N) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-50,-98})));
@@ -201,7 +201,7 @@ model Greenhouse_2
     FFb=1,
     FFab1=canopy.FF,
     FFab3=thScreen.FF_ij,
-    nNodes=pipe_low.N) annotation (Placement(transformation(
+    N=pipe_low.N) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={6,-134})));
@@ -211,7 +211,7 @@ model Greenhouse_2
     freePipe=false,
     N_p=pipe_low.N_p,
     l=pipe_low.l,
-    nNodes=pipe_low.N)
+    N=pipe_low.N)
     annotation (Placement(transformation(extent={{-4,-124},{16,-104}})));
   Greenhouses.Flows.HeatTransfer.Radiation_N Q_rad_LowScr(
     A=surface.k,
@@ -220,7 +220,7 @@ model Greenhouse_2
     epsilon_b=1,
     FFb=thScreen.FF_i,
     FFab1=canopy.FF,
-    nNodes=pipe_low.N) annotation (Placement(transformation(
+    N=pipe_low.N) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-100,-114})));
