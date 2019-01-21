@@ -3,7 +3,7 @@ model HeatingPipe
   "Model of a heating distribution netwrok. Pipe model using a 1-D fluid flow model (finite volume discretization - incompressible fluid model)."
   /******************** Parameters ********************/
   parameter Integer N_p(min=1)=1 "number of cells in parallel";
-  parameter Integer N(min=1)=2 "number of nodes";
+  parameter Integer N(min=1)=2 "number of cells";
   //parameter Modelica.SIunits.Temperature T_inlet_min
   //  "Pipe Fluid Minimum Inlet Temperature";
   parameter Modelica.SIunits.Diameter d "pipe diameter";
