@@ -4,6 +4,8 @@ model Control_2 "Controller for the CHP and heat pump and TES"
   parameter Modelica.SIunits.Temperature T_min = 273.15+50
     "Lowest level of tank 1 and 2";
   parameter Modelica.SIunits.Time waitTime=2 "Wait time, between operations";
+  parameter Modelica.SIunits.MassFlowRate Mdot_max=38 "Maximum mass flow rate in the greenhouse heating circuit";
+  Modelica.SIunits.MassFlowRate Mdot_1ry = 30 annotation(Dialog(group="Varying inputs"));
 
   Modelica.StateGraph.InitialStep All_off(nIn=1, nOut=1)
                                           annotation (Placement(transformation(
@@ -28,9 +30,10 @@ model Control_2 "Controller for the CHP and heat pump and TES"
   Modelica.StateGraph.Step runCHP(nIn=1, nOut=1) annotation (Placement(
         transformation(extent={{-32,-14},{-12,6}}, rotation=0)));
   Modelica.StateGraph.Transition T2(
-    condition=T_tank > T_max or T_su_hx > (99 + 273.15),
     enableTimer=true,
-    waitTime=60)
+    waitTime=60,
+    condition=T_tank > T_max or T_su_hx > (90 + 273.15) or Mdot_1ry < 0.1*
+        Mdot_max)
     annotation (Placement(transformation(extent={{3,6},{23,-14}},  rotation=
            0)));
   Modelica.Blocks.Logical.Hysteresis hysteresis(
@@ -40,8 +43,8 @@ model Control_2 "Controller for the CHP and heat pump and TES"
     annotation (Placement(transformation(extent={{-80,-68},{-60,-48}})));
   Modelica.Blocks.Logical.Not not1
     annotation (Placement(transformation(extent={{-46,-68},{-26,-48}})));
-  Modelica.StateGraph.Transition T1(condition=T_tank < T_min and T_su_hx <
-        363.15)
+  Modelica.StateGraph.Transition T1(condition=T_tank < T_min and T_su_hx < 363.15
+         and Mdot_1ry > 0.1*Mdot_max)
     annotation (Placement(transformation(extent={{-73,10},{-53,-10}},
                                                                    rotation=
            0)));
