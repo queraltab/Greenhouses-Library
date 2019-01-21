@@ -17,7 +17,7 @@ The documentation is available on the main website: https://greenhouses-library.
 
 ### License
 
-The Greenhouses package is free software licensed under the Modelica License 2. It can be redistributed and/or modified under the terms of this license.
+The Greenhouses package is free software licensed under the 3-clause BSD License. It can be redistributed and/or modified under the terms of this license.
 
 
 ### Main developers
