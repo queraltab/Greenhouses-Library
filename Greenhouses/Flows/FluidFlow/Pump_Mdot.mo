@@ -65,7 +65,9 @@ equation
             -100},{100,100}}),
                          graphics), Diagram(coordinateSystem(
           preserveAspectRatio=true, extent={{-100,-100},{100,100}})),          Documentation(info="<html>
-<p>The Pump model represents the compression of a fluid in a turbo or volumetric machine. It is a lumped model based on performance curves where pump speed is set as an input.</p>
+          
+          <p>The Pump model represents the compression of a fluid in a turbo or volumetric machine. It is a lumped model based on performance curves where pump speed is set as an input.</p>
+          <p>This model is an adapted version of the model Pump_Mdot from ThermoCycle Library. In order to make it compatible with the Greenhouses library, the fluid ports have been replaced by the Modelica Standard Library fluidPort. </p>
 <p>The assumptions for this model are:</p>
 <p><ul>
 <li>No dynamics ( it is considered negligible when compared to the one characterizing the heat exchanger).</li>
