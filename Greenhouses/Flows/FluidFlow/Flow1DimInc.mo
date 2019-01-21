@@ -137,7 +137,10 @@ equation
           lineColor={0,0,255},
           fillColor={170,213,255},
           fillPattern=FillPattern.Solid)}),Documentation(info="<html>
-<p>This model is a variation of the Flow1DimInc model from the ThermoCycle Library. A port adapter is added in order to make it compatible with the Modelica Heat Port, used in the Greenhouse library.</p>
+          <p>This model is a variation of the Flow1DimInc model from the ThermoCycle Library. In order to make it compatible with the Greenhouses library, the following changes have been added:</p>
+          <ul><li>The fluid ports have been replaced by the Modelica Standard Library fluidPort.
+          <li>The heat port has been replaced by the Modelica Standard Library heatPort.
+          </ul>
 <p>This model describes the flow of incompressible fluid through a discretized one dimensional tube. It is obtained by connecting in series <b>N</b> <a href=\"modelica://ThermoCycle.Components.FluidFlow.Pipes.Cell1DimInc\">Cell1DimInc</a>. </p>
 <p>The model is characterized by a SummaryClass that provide a quick access to the following variables once the model is simulated: </p>
 <ul>
