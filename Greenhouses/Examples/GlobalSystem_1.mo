@@ -1,5 +1,6 @@
 within Greenhouses.Examples;
-model GlobalSystem_1 "Greenhouse connected to a CHP and thermal energy storage"
+model GlobalSystem_1
+  "Greenhouse connected to a CHP and thermal energy storage"
   extends Modelica.Icons.Example;
   Real Mdot_2ry(start=0.528);
   Real E_gas_CHP(unit="kW.h");
@@ -113,7 +114,7 @@ model GlobalSystem_1 "Greenhouse connected to a CHP and thermal energy storage"
   Modelica.Blocks.Sources.RealExpression set_Mdot_2ry(y=Mdot_2ry)
     annotation (Placement(transformation(extent={{-88,-18},{-74,-6}})));
 equation
-  Mdot_2ry = if time<1e4 then 20 else (if controller.CHP then 15 else 0);
+  Mdot_2ry = if time<1e4 then 20 else (if controller.CHP then 15 else 1);
 
   der(E_gas_CHP*1e3*3600) = CHP.Qdot_gas;
   der(E_el_CHP*1e3*3600) = CHP.Wdot_el;
