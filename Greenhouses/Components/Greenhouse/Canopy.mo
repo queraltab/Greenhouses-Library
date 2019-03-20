@@ -62,7 +62,7 @@ equation
   L_can = massPort.MV_flow*2.45e6;
 
   heatPort.Q_flow = Q_flow;
-  der(T) = 1/(Cap_leaf*LAI)*(Q_flow + P_Can + L_can);
+  der(T) = 1/(Cap_leaf*LAI*A)*(Q_flow + P_Can + L_can);
 
   connect(portT.y,preTem. T)
     annotation (Line(points={{-47,-52},{-52,-52},{-54,-52}},
@@ -79,8 +79,7 @@ initial equation
     der(T)=0;
   end if;
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}),
-                         graphics), Icon(coordinateSystem(preserveAspectRatio=false,
+            -100},{100,100}})),     Icon(coordinateSystem(preserveAspectRatio=false,
           extent={{-100,-100},{100,100}}), graphics={
         Polygon(
           points={{-6,-34},{-46,-14},{-46,2},{-34,-4},{-44,14},{-52,22},{-52,30},{
