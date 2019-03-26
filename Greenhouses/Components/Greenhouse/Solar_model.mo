@@ -1,9 +1,7 @@
-within Greenhouses.Components.Greenhouse;
+﻿within Greenhouses.Components.Greenhouse;
 model Solar_model "Global, PAR and NIR heat fluxes"
 
   /********************* Parameters ***********************/
-  parameter Modelica.SIunits.HeatCapacity Cap_leaf=1200
-    "heat capacity of a square meter of canopy leaves";
   parameter Modelica.SIunits.Area A "floor surface";
   parameter Real eta_glob_air=0.1
     "Ratio of global radiation absorbed by greenhouse construction elements";
