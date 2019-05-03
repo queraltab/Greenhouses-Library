@@ -24,6 +24,11 @@ its small heat capacity"
   Real RH(min=0,max=1) "Relative humidity of the air";
   Modelica.SIunits.Volume V;
 
+  Modelica.SIunits.Pressure P_atm=101325 "Atmospheric pressure";
+  Real R_a = 287 "Gas constant for dry air R_a = R_d (J/(kg.K))";
+  Real R_s = 461.5;
+  Modelica.SIunits.MassFraction w_air "Air humidity ratio (kg water / kg dry air)";
+
   /******************** Connectors ********************/
 protected
   Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature preTem
@@ -49,8 +54,9 @@ equation
   rho = Modelica.Media.Air.ReferenceAir.Air_pT.density_pT(1e5,heatPort.T);
   der(T) = 1/(rho*c_p*V)*Q_flow;
 
-  RH = massPort.VP/.Greenhouses.Functions.SaturatedVapourPressure(heatPort.T -
-    273.15);
+  //RH = massPort.VP/.Greenhouses.Functions.SaturatedVapourPressure(heatPort.T -273.15);
+  w_air = massPort.VP * R_a / (P_atm - massPort.VP) / R_s;
+  RH=Modelica.Media.Air.MoistAir.relativeHumidity_pTX(P_atm, heatPort.T, {w_air});
 
   connect(portT.y,preTem. T)
     annotation (Line(points={{-37,20},{-42,20}}, color={0,0,127}));
