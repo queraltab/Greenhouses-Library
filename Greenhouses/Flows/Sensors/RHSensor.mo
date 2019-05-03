@@ -1,7 +1,10 @@
 within Greenhouses.Flows.Sensors;
 model RHSensor "Relative Humidity sensor"
-  Modelica.SIunits.Pressure VP;
-  Modelica.SIunits.Pressure VPsat;
+
+  Modelica.SIunits.Pressure P_atm=101325 "Atmospheric pressure";
+  Real R_a = 287 "Gas constant for dry air R_a = R_d (J/(kg.K))";
+  Real R_s = 461.5;
+  Modelica.SIunits.MassFraction w_air "Air humidity ratio (kg water / kg dry air)";
 
   Modelica.Blocks.Interfaces.RealOutput RH
     "Absolute temperature as output signal"
@@ -15,10 +18,10 @@ equation
   heatPort.Q_flow = 0;
 
   // Relative humidity
-  VP=massPort.VP;
-  VPsat = Greenhouses.Functions.SaturatedVapourPressure(heatPort.T - 273.15);
-  RH = massPort.VP/Greenhouses.Functions.SaturatedVapourPressure(heatPort.T -
-    273.15);
+  w_air = massPort.VP * R_a / (P_atm - massPort.VP) / R_s;
+  RH=Modelica.Media.Air.MoistAir.relativeHumidity_pTX(P_atm, heatPort.T, {w_air});
+
+
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-100,-100},{100,
             100}}),     graphics),
