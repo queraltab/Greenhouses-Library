@@ -24,12 +24,12 @@ model NaturalVentilationRate_2
   Modelica.SIunits.Temperature T_b=276.15 annotation (Dialog(group="Varying inputs"));
 
   /*********************** Variables ***********************/
-  Real f_vent;
-  Real f_leakage "Air exchange rate due to leakage";
+  Real f_vent(unit="m3/(m2.s)");
+  Real f_leakage(unit="m3/(m2.s)") "Air exchange rate due to leakage";
   Modelica.SIunits.Temperature T_mean;
-  output Real f_vent_top
+  output Real f_vent_top(unit="m3/(m2.s)")
     "Air exchange rate at the top air compartment in presence of a thermal screen";
-  output Real f_vent_air "Air exchange rate at the main air compartment";
+  output Real f_vent_air(unit="m3/(m2.s)") "Air exchange rate at the main air compartment";
 
 equation
   T_mean = (T_a+T_b)/2;
