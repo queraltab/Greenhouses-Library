@@ -5,7 +5,6 @@ model Ventilation
 
   /*********************** Parameters ***********************/
   parameter Modelica.SIunits.Area A "Greenhouse floor surface";
-//   parameter Real c_leakage=1.5e-4 "Greenhouse leakage coefficient";
   parameter Boolean thermalScreen=false
     "presence of a thermal screen in the greenhouse";
   parameter Boolean topAir=false
@@ -53,9 +52,6 @@ equation
   else
     f_vent = NaturalVentilationRate.f_vent_top;
   end if;
-
-//   // Leakage rate
-//   f_leakage = max(0.25,u)*c_leakage;
 
   // Forced ventilation rate
   if forcedVentilation then
