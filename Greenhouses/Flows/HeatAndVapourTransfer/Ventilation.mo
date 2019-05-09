@@ -46,7 +46,7 @@ model Ventilation
     U_VentForced=U_VentForced)
     annotation (Placement(transformation(extent={{-20,-60},{20,-20}})));
 equation
-  // Natural ventilation rate
+  // Natural ventilation rate (including leakage)
   if not topAir then
     f_vent = NaturalVentilationRate.f_vent_air;
   else
@@ -64,14 +64,15 @@ equation
   else
     f_ventForced=0;
   end if;
-  //f_vent_total = f_vent+f_leakage+f_ventForced;
+
+  // Total ventilation
   f_vent_total = f_vent+f_ventForced;
 
   // Heat transfer
   HEC_ab=rho_air*c_p_air*f_vent_total;
   Q_flow = A*HEC_ab*dT;
 
-  //Mass transfer
+  // Moisture transfer
   MV_flow = A*M_H*f_vent_total/R*(MassPort_a.VP/HeatPort_a.T - MassPort_b.VP/HeatPort_b.T);
 
   annotation (Icon(graphics={
