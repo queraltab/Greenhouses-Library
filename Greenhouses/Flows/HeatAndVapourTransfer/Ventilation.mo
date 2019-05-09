@@ -26,15 +26,12 @@ model Ventilation
   Modelica.SIunits.CoefficientOfHeatTransfer HEC_ab;
   Modelica.SIunits.Density rho_air=1.2;
   Modelica.SIunits.SpecificHeatCapacity c_p_air=1005;
-  Real f_vent
+  Real f_vent(unit="m3/(m2.s)")
     "Air exchange rate from the greenhouse air to the outside air function of wind and temperature";
-//   Real f_leakage "Air exchange rate due to leakage";
   Real R=8314 "gas constant";
   Modelica.SIunits.MolarMass M_H = 18;
-  Real f_vent_total;
-  Real f_ventForced;
-  //Real VEC_TopOut(unit="kg/(s.Pa.m2)") "Mass transfer coefficient";
-  //Real MV_flow2;
+  Real f_vent_total(unit="m3/(m2.s)");
+  Real f_ventForced(unit="m3/(m2.s)");
 
   VentilationRates.NaturalVentilationRate_2 NaturalVentilationRate(
     thermalScreen=thermalScreen,
@@ -75,29 +72,10 @@ equation
   f_vent_total = f_vent+f_ventForced;
 
   // Heat transfer
-//   if thermalScreen then
-//     if topAir then
-//       HEC_ab=rho_air*c_p_air*f_vent_total;
-//     else
-//       HEC_ab=0;
-//     end if;
-//   else
-//     HEC_ab=rho_air*c_p_air*f_vent_total;
-//   end if;
   HEC_ab=rho_air*c_p_air*f_vent_total;
-
   Q_flow = A*HEC_ab*dT;
 
   //Mass transfer
-//   if not topAir then
-//     VEC_TopOut=0;
-//     MV_flow = A*M_H*f_vent_total/R*(MassPort_a.VP/HeatPort_a.T - MassPort_b.VP/HeatPort_b.T);
-//     MV_flow2=0;
-//   else
-//     VEC_TopOut=M_H*f_vent_total/R/283;
-//     MV_flow = A*M_H*f_vent_total/R/283*dP;
-//     MV_flow2 = A*M_H*f_vent_total/R*(MassPort_a.VP/HeatPort_a.T - MassPort_b.VP/HeatPort_b.T);
-//   end if;
   MV_flow = A*M_H*f_vent_total/R*(MassPort_a.VP/HeatPort_a.T - MassPort_b.VP/HeatPort_b.T);
 
   annotation (Icon(graphics={
