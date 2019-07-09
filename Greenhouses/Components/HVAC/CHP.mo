@@ -1,28 +1,23 @@
 ﻿within Greenhouses.Components.HVAC;
 model CHP
-
   //replaceable package Medium = Modelica.Media.Water.WaterIF97_ph;
   replaceable package Medium =
       Modelica.Media.Water.ConstantPropertyLiquidWater                          constrainedby
     Modelica.Media.Interfaces.PartialMedium "Medium in the component"
       annotation (choicesAllMatching = true);
-
   parameter Modelica.SIunits.Volume V=0.005 "Internal volume";
   parameter Modelica.SIunits.Area A = 10 "Heat exchange area";
   //parameter Real eta_II = 0.4 "Second law efficiency of the CHP";
   parameter Real eta_tot = 0.9 "Total efficiency of the CHP";
   parameter Modelica.SIunits.Time tau = 60 "Start-up time constant";
-
   parameter Modelica.SIunits.Temperature Th_start = 500+273.15
     "Start value for the condenser temperature"      annotation(Dialog(tab="Initialization"));
   parameter Modelica.SIunits.Temperature Tmax = 273.15 + 100
     "Maximum temperature at the outlet";
-
 //   parameter Modelica.SIunits.Mass M_wall= 69
 //     "Mass of the metal wall between the two fluids";
 //   parameter Modelica.SIunits.SpecificHeatCapacity c_wall= 500
 //     "Specific heat capacity of metal wall";
-
   Real eta_el "Electrical efficiency of the CHP";
   Real eta_th "Thermal efficiency of the CHP";
   Modelica.SIunits.Power Wdot;
@@ -33,13 +28,11 @@ model CHP
   Modelica.SIunits.MassFlowRate Mdot_nom_fuel;
   Modelica.SIunits.Temperature T_water_ex_CHP;
   Modelica.SIunits.Power Qdot_gas;
-
   Real eta_el_nom "Nominal electrical efficiency of the CHP";
   Real eta_th_nom "Nominal thermal efficiency of the CHP";
   Real eta_II_nom;
   Modelica.SIunits.Temperature Th;
   Modelica.SIunits.Temperature Tc_nom;
-
   Flows.FluidFlow.Cell1DimInc                        fluid(
     redeclare package Medium = Medium,
     Mdotnom=0.1,
@@ -52,10 +45,9 @@ model CHP
     pstart=10000000000,
     Discretization=Greenhouses.Functions.Enumerations.Discretizations.upwind_AllowFlowReversal)
                         annotation (Placement(transformation(
-        extent={{10,10},{-10,-10}},
+        extent={{-8,8},{8,-8}},
         rotation=90,
         origin={-50,6})));
-
   Modelica.Fluid.Interfaces.FluidPort_a
                            InFlow(redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-90,-48},{-70,-28}}),
@@ -65,8 +57,8 @@ model CHP
     annotation (Placement(transformation(extent={{-92,58},{-72,78}}),
         iconTransformation(extent={{-110,6},{-90,26}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a HeatSource
-    annotation (Placement(transformation(extent={{70,20},{90,40}}),
-        iconTransformation(extent={{80,30},{90,40}})));
+    annotation (Placement(transformation(extent={{14,24},{34,44}}),
+        iconTransformation(extent={{24,34},{34,44}})));
   Interfaces.Heat.HeatPortConverter heatPortConverter(A=A, N=1)
     annotation (Placement(transformation(extent={{-14,-4},{-34,16}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow prescribedHeatFlow
@@ -80,7 +72,7 @@ model CHP
         rotation=90,
         origin={2,-92})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=tau)
-    annotation (Placement(transformation(extent={{-6,42},{14,62}})));
+    annotation (Placement(transformation(extent={{-10,40},{10,60}})));
   Modelica.Blocks.Interfaces.RealOutput Wdot_el annotation (Placement(
         transformation(extent={{100,-60},{120,-40}}), iconTransformation(
           extent={{100,-60},{120,-40}})));
@@ -90,52 +82,40 @@ equation
   HeatSource.T = Th;
   //HeatSource.Q_flow = Mdot_nom_fuel*LHV;
   HeatSource.Q_flow * eta_tot = Qdot+Wdot;
-
   eta_th_nom = 0.5;
   eta_el_nom = 0.4;
   eta_II_nom = eta_el_nom / (1-Tc_nom/Th_nom);
   Th_nom=Th;
   Tc_nom=90+273.17;
-
   eta_th + eta_el = eta_tot;
   eta_el = eta_II_nom*(1-Tc/Th);
   Wdot = eta_el*Mdot_nom_fuel*LHV;
   Qdot = eta_th*Mdot_nom_fuel*LHV;
-
   Tc = T_water_ex_CHP;
   //T_water_ex_CHP = fluid.Wall_int.T;
   T_water_ex_CHP=T_ex_CHP.T;
-
   Wdot_el= firstOrder.y*firstOrder.u* Wdot;
   prescribedHeatFlow.Q_flow = firstOrder.y*firstOrder.u* Qdot;
   Qdot_gas = firstOrder.y*firstOrder.u* HeatSource.Q_flow;
-
   if cardinality(on_off)==0 then
     on_off = true "Pressure set by parameter";
   end if;
   assert(fluid.T < Tmax,"Maximum temperature reached at the heat pump outlet");
   firstOrder.u= if on_off then 1 else 0;
-
-  connect(InFlow, fluid.OutFlow) annotation (Line(
-      points={{-80,-38},{-50,-38},{-50,-4},{-49.9,-4}},
-      color={0,0,255},
-      smooth=Smooth.None));
-  connect(OutFlow, fluid.InFlow) annotation (Line(
-      points={{-82,68},{-50,68},{-50,16}},
-      color={0,0,255},
-      smooth=Smooth.None));
   connect(fluid.Wall_int, heatPortConverter.thermalPortL) annotation (Line(
-      points={{-45,6},{-34,6}},
+      points={{-46,6},{-34,6}},
       color={255,0,0},
       smooth=Smooth.None));
   connect(heatPortConverter.heatPort, prescribedHeatFlow.port) annotation (Line(
       points={{-14,6},{8,6}},
       color={191,0,0},
       smooth=Smooth.None));
-  connect(T_ex_CHP.port, fluid.InFlow) annotation (Line(
-      points={{-30,40},{-40,40},{-40,32},{-50,32},{-50,16}},
-      color={0,127,255},
-      smooth=Smooth.None));
+  connect(InFlow, fluid.InFlow) annotation (Line(points={{-80,-38},{-50,-38},{
+          -50,-2}}, color={0,127,255}));
+  connect(fluid.OutFlow, OutFlow) annotation (Line(points={{-49.92,14},{-50,14},
+          {-50,68},{-82,68}}, color={0,127,255}));
+  connect(T_ex_CHP.port, OutFlow) annotation (Line(points={{-30,40},{-40,40},{
+          -40,32},{-50,32},{-50,68},{-82,68}}, color={0,127,255}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),           Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={Bitmap(
