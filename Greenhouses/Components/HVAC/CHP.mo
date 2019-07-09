@@ -8,6 +8,8 @@ model CHP
   parameter Modelica.SIunits.Volume V=0.005 "Internal volume";
   parameter Modelica.SIunits.Area A = 10 "Heat exchange area";
   //parameter Real eta_II = 0.4 "Second law efficiency of the CHP";
+  parameter Modelica.SIunits.MassFlowRate Mdotnom=10
+    "Nominal mass flow rate of the working fluid";
   parameter Real eta_tot = 0.9 "Total efficiency of the CHP";
   parameter Modelica.SIunits.Time tau = 60 "Start-up time constant";
   parameter Modelica.SIunits.Temperature Th_start = 500+273.15
@@ -35,15 +37,14 @@ model CHP
   Modelica.SIunits.Temperature Tc_nom;
   Flows.FluidFlow.Cell1DimInc                        fluid(
     redeclare package Medium = Medium,
-    Mdotnom=0.1,
     Vi=V,
     Ai=A,
     hstart=Medium.specificEnthalpy_pT(1E5, Th_start),
     Unom=1000,
-    redeclare model HeatTransfer =
-        Greenhouses.Flows.FluidFlow.HeatTransfer.Constant,
+    Discretization=Greenhouses.Functions.Enumerations.Discretizations.upwind_AllowFlowReversal,
+    Mdotnom=Mdotnom,
     pstart=10000000000,
-    Discretization=Greenhouses.Functions.Enumerations.Discretizations.upwind_AllowFlowReversal)
+    redeclare model HeatTransfer = Flows.FluidFlow.HeatTransfer.Constant)
                         annotation (Placement(transformation(
         extent={{-8,8},{8,-8}},
         rotation=90,
@@ -58,7 +59,7 @@ model CHP
         iconTransformation(extent={{-110,6},{-90,26}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a HeatSource
     annotation (Placement(transformation(extent={{14,24},{34,44}}),
-        iconTransformation(extent={{24,34},{34,44}})));
+        iconTransformation(extent={{26,34},{40,48}})));
   Interfaces.Heat.HeatPortConverter heatPortConverter(A=A, N=1)
     annotation (Placement(transformation(extent={{-14,-4},{-34,16}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow prescribedHeatFlow
@@ -110,12 +111,12 @@ equation
       points={{-14,6},{8,6}},
       color={191,0,0},
       smooth=Smooth.None));
-  connect(InFlow, fluid.InFlow) annotation (Line(points={{-80,-38},{-50,-38},{
-          -50,-2}}, color={0,127,255}));
+  connect(InFlow, fluid.InFlow) annotation (Line(points={{-80,-38},{-50,-38},{-50,
+          -2}}, color={0,127,255}));
   connect(fluid.OutFlow, OutFlow) annotation (Line(points={{-49.92,14},{-50,14},
           {-50,68},{-82,68}}, color={0,127,255}));
-  connect(T_ex_CHP.port, OutFlow) annotation (Line(points={{-30,40},{-40,40},{
-          -40,32},{-50,32},{-50,68},{-82,68}}, color={0,127,255}));
+  connect(T_ex_CHP.port, OutFlow) annotation (Line(points={{-30,40},{-40,40},{-40,
+          32},{-50,32},{-50,68},{-82,68}}, color={0,127,255}));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),           Icon(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={Bitmap(
