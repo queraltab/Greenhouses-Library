@@ -1,37 +1,21 @@
-﻿within Greenhouses.Components.HVAC;
+within Greenhouses.Components.HVAC;
 model HeatPump_ConsoClim
   "Variation of ConsoClim model. Imposing the Wdot instead of the T_cd"
   replaceable package Medium1 =
       Modelica.Media.Water.ConstantPropertyLiquidWater                          constrainedby
     Modelica.Media.Interfaces.PartialMedium "Medium in the component condenser"
       annotation (choicesAllMatching = true);
-
   replaceable package Medium2 =
       Modelica.Media.Water.ConstantPropertyLiquidWater                          constrainedby
     Modelica.Media.Interfaces.PartialMedium
     "Medium in the component evaporator"
       annotation (choicesAllMatching = true);
-
-  Modelica.Blocks.Interfaces.RealOutput W_dot_cp(start = 1) "[W]"
-    annotation (Placement(transformation(extent={{54,98},{74,118}}),
-        iconTransformation(
-        extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={60,110})));
-  Modelica.Blocks.Interfaces.RealOutput COP(start = 1)
-    annotation (Placement(transformation(extent={{-70,100},{-50,120}}),
-        iconTransformation(
-        extent={{10,-10},{-10,10}},
-        rotation=-90,
-        origin={-60,110})));
-
   parameter Modelica.SIunits.Volume V=0.005 "Internal volume";
   parameter Modelica.SIunits.Area A = 10 "Heat exchange area";
-
-  parameter Real COP_n=3.9505;
-  parameter Real Q_dot_cd_n=10.02 "W";
-  parameter Real T_su_ev_n=7 "°C";
-  parameter Real T_ex_cd_n=35 "°C";
+  parameter Real COP_n=3.9505 "Nominal coefficient of performance";
+  parameter Modelica.SIunits.HeatFlowRate Q_dot_cd_n=10.02 "Nominal thermal power at the condenser";
+  parameter Modelica.SIunits.Temperature T_su_ev_n=7 "Nominal supply temperature at the evaporator";
+  parameter Modelica.SIunits.Temperature T_ex_cd_n=35 "Nominal exhaust temperature at the condenser";
   parameter Real C0=0.949;
   parameter Real C1=-8.05;
   parameter Real C2=111.09;
@@ -44,7 +28,6 @@ model HeatPump_ConsoClim
   parameter Real b = 0.2299;
   parameter Boolean Variable_Compressor_Speed = false
     "Set false if the compressor speed is constant";
-
   Modelica.SIunits.MassFlowRate m_dot_ev;
   Modelica.SIunits.SpecificEnthalpy h_su_ev;
   Modelica.SIunits.SpecificEnthalpy h_ex_ev;
@@ -55,7 +38,9 @@ model HeatPump_ConsoClim
   Modelica.SIunits.Temperature T_ex_cd;
   Modelica.SIunits.InstantaneousPower W_dot_n;
   Modelica.SIunits.InstantaneousPower W_dot_fl;
-  Modelica.SIunits.InstantaneousPower W_dot_pl;
+  Modelica.SIunits.InstantaneousPower W_dot_cp;
+  //Modelica.SIunits.InstantaneousPower W_dot_pl;
+  Real COP;
   Real DELTA_T;
   Real EIRFT;
   Real COP_fl;
@@ -63,12 +48,17 @@ model HeatPump_ConsoClim
   Real PLR;
   Real EIRFPLR;
 
+  Real PLR_30;
+  Real EIRFPLR_30;
+  Real COP_30;
+  Modelica.SIunits.HeatFlowRate Q_dot_30;
+  Modelica.SIunits.InstantaneousPower W_dot_30;
+
   parameter Modelica.SIunits.Temperature Th_start = 35+273.15
     "Start value for the condenser temperature"      annotation(Dialog(tab="Initialization"));
   parameter Modelica.SIunits.Temperature Tmax = 273.15 + 100
     "Maximum temperature at the outlet";
   parameter Modelica.SIunits.Time tau = 60 "Start-up time constant";
-
   Modelica.Fluid.Interfaces.FluidPort_a
                            Supply_cd(redeclare package Medium = Medium1)
     annotation (Placement(transformation(extent={{80,-80},{100,-60}}),
@@ -110,7 +100,7 @@ model HeatPump_ConsoClim
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow prescribedHeatFlow
     annotation (Placement(transformation(extent={{-46,-6},{-26,14}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=tau)
-    annotation (Placement(transformation(extent={{4,52},{24,72}})));
+    annotation (Placement(transformation(extent={{4,54},{24,74}})));
   Modelica.Blocks.Interfaces.BooleanInput on_off annotation (Placement(
         transformation(
         extent={{-20,-20},{20,20}},
@@ -128,100 +118,83 @@ equation
   end if;
   assert(fluid.T < Tmax,"Maximum temperature reached at the heat pump outlet");
   firstOrder.u= if on_off then 1 else 0;
-
   m_dot_ev = Supply_ev.m_flow;
   Supply_ev.m_flow + Exhaust_ev.m_flow = 0;
   Supply_ev.p = Exhaust_ev.p;
   h_su_ev = inStream(Supply_ev.h_outflow);
   h_su_ev = Supply_ev.h_outflow;
   h_ex_ev = Exhaust_ev.h_outflow;
-
   W_dot_n = Q_dot_cd_n/COP_n;
-
   prescribedHeatFlow.Q_flow = firstOrder.y*firstOrder.u* Q_dot_cd;
-
   Q_dot_ev = m_dot_ev*(h_su_ev-h_ex_ev);
   Q_dot_cd = W_dot_cp+Q_dot_ev;
-
-  DELTA_T = T_su_ev/T_ex_cd - ((T_su_ev_n+273.15)/(T_ex_cd_n+273.15));
+  DELTA_T = T_su_ev/T_ex_cd - (T_su_ev_n/T_ex_cd_n);
   T_su_ev = Medium2.temperature(state=Medium2.setState_phX(Supply_ev.p,h_su_ev,Supply_ev.Xi_outflow));
   T_ex_cd = T_ex_cd_sensor.T;
   EIRFT = C0+C1*DELTA_T+C2*DELTA_T^2;
   COP_fl = COP_n/EIRFT;
-
-  CAPFT = min(1,D0 + D1*(T_su_ev - (T_su_ev_n+273.15)) + D2*(T_ex_cd - (T_ex_cd_n+273.15)));
+  CAPFT = D0 + D1*(T_su_ev - T_su_ev_n) + D2*(T_ex_cd - T_ex_cd_n);
   Q_dot_cd_fl = CAPFT*Q_dot_cd_n;
   W_dot_fl = Q_dot_cd_fl/COP_fl;
 
   PLR = min(1,max(0,Q_dot_cd/Q_dot_cd_fl));
-  W_dot_pl = EIRFPLR*W_dot_fl;
-  EIRFPLR = K1+(K2-K1)*PLR+(1-K2)*PLR^2;
+
+  //******************************* For PLR > 30%
+  //W_dot_pl = EIRFPLR*W_dot_fl;
+  //EIRFPLR = K1+(K2-K1)*PLR+(1-K2)*PLR^2;
+  EIRFPLR = W_dot_set/W_dot_fl;
+  //PLR = 0.0181675 + 1.36394*EIRFPLR - 0.531124*EIRFPLR^2 + 0.1495*EIRFPLR^3;
+  //Q_dot_cd = PLR*Q_dot_cd_fl;
+
+  //******************************* For PLR = 30%
+  PLR_30=0.3;
+  EIRFPLR_30 = K1+(K2-K1)*PLR_30+(1-K2)*PLR_30^2;
+  W_dot_30 = W_dot_n*EIRFT*CAPFT*EIRFPLR_30;
+  Q_dot_30 = PLR_30*Q_dot_cd_fl;
+  COP_30 = Q_dot_30/W_dot_30;
+
+  //******************************* For PLR < 30%
+  // ON-OFF mode
+
 
   if noEvent(Variable_Compressor_Speed) then
-
-    if noEvent((W_dot_set <= W_dot_fl) and (W_dot_set >=0)) then
-
+    if noEvent((W_dot_set <= W_dot_fl) and (W_dot_set >0)) then
       W_dot_cp = W_dot_set;
-
-      if noEvent(PLR >= 0.3) then
-        COP = COP_fl*(PLR/(a*PLR+b));
-        Q_dot_cd = W_dot_cp*COP;
-
-      elseif noEvent(PLR <=0) then
-        Q_dot_cd = 0;
-        COP = 0;
-
+      if noEvent(W_dot_set >= W_dot_30) then
+        // PLR >=0.3
+        Q_dot_cd=(0.017575812 + 1.36394*EIRFPLR - 0.531124*EIRFPLR^2 + 0.1495*EIRFPLR^3)*Q_dot_cd_fl "which is: PLR*Q_dot_cd_fl, where PLR is obtained from this correlation: EIRFPLR = K1+(K2-K1)*PLR+(1-K2)*PLR^2";
+        COP = Q_dot_cd/W_dot_cp;
       else
-        COP = 0.3*Q_dot_cd_fl/(W_dot_n*EIRFT*CAPFT*(K1+(K2-K1)*0.3+(1-K2)*0.3^2))*(PLR/(a*PLR+0.3*b));
-        Q_dot_cd = W_dot_cp*COP;
-
+        // PLR < 0.3
+        Q_dot_cd = max(0,(W_dot_set*COP_30-b*Q_dot_cd_fl*0.3))/a;
+        COP = Q_dot_cd/W_dot_cp;
       end if;
-
-    elseif noEvent((W_dot_set <= W_dot_fl) and (W_dot_set < 0)) then
-
+    elseif noEvent((W_dot_set <= W_dot_fl) and (W_dot_set <= 0)) then
       Q_dot_cd = 0;
       W_dot_cp = 0;
       COP = 0;
-
     else
-
       W_dot_cp = W_dot_fl;
-      COP = Q_dot_cd_fl/W_dot_fl;
+      COP = COP_fl;
       Q_dot_cd = Q_dot_cd_fl;
-
     end if;
-
   else
-
-    if noEvent((W_dot_set <= W_dot_fl) and (W_dot_set >=0)) then
-
+    if noEvent((W_dot_set <= W_dot_fl) and (W_dot_set >0)) then
       W_dot_cp = W_dot_set;
-
-      if noEvent(PLR >= 0) then
-        Q_dot_cd = W_dot_cp*COP;
-        COP = COP_fl*(PLR/(a*PLR+b));
-
-      else
-        Q_dot_cd = 0;
-        COP = 0;
-
-      end if;
-
-    elseif noEvent((W_dot_set <= W_dot_fl) and (W_dot_set < 0)) then
-
+      Q_dot_cd = max(0,(W_dot_cp*COP_fl - b*Q_dot_cd_fl))/a;
+      COP = Q_dot_cd/W_dot_cp;
+    elseif noEvent((W_dot_set <= W_dot_fl) and (W_dot_set <= 0)) then
       Q_dot_cd = 0;
       W_dot_cp = 0;
       COP = 0;
-
     else
-
       W_dot_cp = W_dot_fl;
-      COP = Q_dot_cd_fl/W_dot_fl;
+      COP = COP_fl;
       Q_dot_cd = Q_dot_cd_fl;
-
     end if;
-
   end if;
+
+
 
   connect(fluid.Wall_int,heatPortConverter. thermalPortL) annotation (Line(
       points={{43,4},{20,4}},
@@ -284,14 +257,6 @@ equation
           extent={{-100,100},{100,-100}},
           pattern=LinePattern.None,
           lineColor={0,0,0}),
-        Text(
-          extent={{-80,98},{-40,84}},
-          lineColor={0,0,255},
-          textString="COP"),
-        Text(
-          extent={{34,100},{84,80}},
-          lineColor={0,0,255},
-          textString="W_dot_cp"),
         Rectangle(
           extent={{-92,60},{-88,40}},
           lineColor={0,128,255},
