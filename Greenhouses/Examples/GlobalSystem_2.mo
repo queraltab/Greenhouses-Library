@@ -10,21 +10,16 @@ model GlobalSystem_2
   Real E_th_CHP(unit="kW.h");
   Real E_th_HP(unit="kW.h");
   Real E_th_total(unit="kW.h");
-
   Real E_th_G(unit="kW.h");
-
   Real E_amb_TES(unit="kW.h");
-
   Real E_el_sell(unit="kW.h");
   Real E_el_buy(unit="kW.h");
-
   Real Pi_buy(unit="1/(kW.h)")=0.1415 "50euro/MWh";
   Real Pi_sell(unit="1/(kW.h)")=0.0472;
   Real Pi_gas(unit="1/(kW.h)")=0.0355;
   Real C_sell;
   Real C_buy;
   Real C_gas;
-
   Real E_gas_CHP_kWhm2(unit="kW.h/m2");
   Real E_el_CHP_kWhm2(unit="kW.h/m2");
   Real E_th_CHP_kWhm2(unit="kW.h/m2");
@@ -35,19 +30,15 @@ model GlobalSystem_2
   Real E_amb_TES_kWhm2(unit="kW.h/m2");
   Real E_el_sell_kWhm2(unit="kW.h/m2");
   Real E_el_buy_kWhm2(unit="kW.h/m2");
-
   Real W_CHP_net(unit="W");
   Real W_sell(unit="W");
   Real W_buy(unit="W");
   Real W_residual(unit="W");
-
   Greenhouses.Components.HVAC.CHP CHP(
     redeclare package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater,
-
     Tmax=373.15,
     Th_nom=773.15)
     annotation (Placement(transformation(extent={{-20,-20},{10,10}})));
-
   Modelica.Fluid.Sensors.Temperature T_ex_CHP(redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater)
     annotation (Placement(transformation(extent={{-32,2},{-24,8}})));
@@ -83,7 +74,6 @@ model GlobalSystem_2
     Tstart_inlet_hx=333.15,
     Tstart_outlet_hx=313.15)
     annotation (Placement(transformation(extent={{-10,26},{-40,56}})));
-
   Modelica.Fluid.Sensors.Temperature T_ex_TES(redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater)
     annotation (Placement(transformation(extent={{-44,30},{-52,36}})));
@@ -93,7 +83,6 @@ model GlobalSystem_2
   Modelica.Fluid.Sensors.Temperature T_ex_G(redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater)
     annotation (Placement(transformation(extent={{-16,34},{-8,40}})));
-
   Greenhouses.Flows.FluidFlow.Pump_Mdot pump_2ry(redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater)
     annotation (Placement(transformation(extent={{-60,-64},{-48,-52}})));
@@ -103,10 +92,8 @@ model GlobalSystem_2
   Greenhouses.Flows.FluidFlow.Pdrop pdrop_2ry(
     Mdot_max=0.5,
     redeclare package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater,
-
     DELTAp_max=1100)
     annotation (Placement(transformation(extent={{-88,-64},{-76,-52}})));
-
   Greenhouses.Components.Greenhouse.Unit.Greenhouse G
     annotation (Placement(transformation(extent={{46,26},{94,62}})));
   ControlSystems.HVAC.Control_2 controller(
@@ -120,11 +107,9 @@ model GlobalSystem_2
     annotation (Placement(transformation(extent={{24,44},{36,56}})));
   Greenhouses.Flows.FluidFlow.Pdrop pdrop_1ry(
     redeclare package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater,
-
     Mdot_max=0.5,
     DELTAp_max=1100)
     annotation (Placement(transformation(extent={{-6,48},{6,60}})));
-
   Greenhouses.Flows.FluidFlow.Reservoirs.SinkP sinkP_1ry(redeclare package
       Medium = Modelica.Media.Water.ConstantPropertyLiquidWater, p0=1000000)
     annotation (Placement(transformation(extent={{6,62},{-6,74}})));
@@ -138,11 +123,11 @@ model GlobalSystem_2
   Greenhouses.Components.HVAC.HeatPump_ConsoClim HP(
     COP_n=3.5,
     Q_dot_cd_n=490e3,
-    T_su_ev_n=7,
-    T_ex_cd_n=35,
     redeclare package Medium1 =
         Modelica.Media.Water.ConstantPropertyLiquidWater,
-    redeclare package Medium2 = Modelica.Media.Air.SimpleAir)
+    redeclare package Medium2 = Modelica.Media.Air.SimpleAir,
+    T_su_ev_n=280.15,
+    T_ex_cd_n=308.15)
     annotation (Placement(transformation(extent={{0,-56},{-20,-36}})));
   Greenhouses.Flows.FluidFlow.Reservoirs.SinkP sinkP_air(redeclare package
       Medium = Modelica.Media.Air.SimpleAir, p0=100000)
@@ -163,31 +148,24 @@ model GlobalSystem_2
 equation
   Mdot_2ry = if time<1e4 then 10 else (if controller.CHP then 5 else 0);
   Mdot_air = if time<1e4 then 1 else (if controller.CHP then 1 else 0);
-
   der(E_gas_CHP*1e3*3600) = CHP.Qdot_gas;
   der(E_el_CHP*1e3*3600) = CHP.Wdot_el;
   der(E_th_CHP*1e3*3600) = CHP.prescribedHeatFlow.Q_flow;
   der(E_th_HP*1e3*3600) = HP.Q_dot_cd;
   der(E_el_HP*1e3*3600) = HP.W_dot_cp;
   E_th_total = E_th_CHP + E_th_HP;
-
   E_th_G = G.E_th_tot;
-
   der(E_amb_TES*1e3*3600) = sum(TES.cell1DimInc_hx.Q_tot);
-
   W_CHP_net = CHP.Wdot_el - HP.W_dot_cp;
   W_sell = max(0,W_CHP_net-G.illu.W_el);
   W_buy = max(0,G.illu.W_el-W_CHP_net);
   W_residual = G.illu.W_el-W_CHP_net
     "Positive: residual load (buy), negative: too much (sell)";
-
   der(E_el_sell*1e3*3600) = max(0,W_CHP_net-G.illu.W_el);
   der(E_el_buy*1e3*3600) = max(0,G.illu.W_el-W_CHP_net);
-
   C_sell = Pi_sell*E_el_sell;
   C_buy = Pi_buy*E_el_buy;
   C_gas = Pi_gas*E_gas_CHP;
-
   E_gas_CHP_kWhm2=E_gas_CHP/G.surface.k;
   E_el_CHP_kWhm2=E_el_CHP/G.surface.k;
   E_el_HP_kWhm2=E_el_HP/G.surface.k;
@@ -198,7 +176,6 @@ equation
   E_amb_TES_kWhm2=E_amb_TES/G.surface.k;
   E_el_sell_kWhm2=E_el_sell/G.surface.k;
   E_el_buy_kWhm2=E_el_buy/G.surface.k;
-
   connect(T_ex_CHP.port, CHP.OutFlow) annotation (Line(
       points={{-28,2},{-28,-2.6},{-20,-2.6}},
       color={0,127,255},
@@ -210,7 +187,7 @@ equation
       smooth=Smooth.None,
       pattern=LinePattern.Dash));
   connect(Qdot_nom_gas_CHP.port, CHP.HeatSource) annotation (Line(
-      points={{18,0},{18,0.25},{7.75,0.25}},
+      points={{18,0},{18,1.15},{-0.05,1.15}},
       color={191,0,0},
       smooth=Smooth.None));
   connect(set_Qdot_nom_gas_CHP.y, Qdot_nom_gas_CHP.Q_flow) annotation (Line(
@@ -242,7 +219,6 @@ equation
       points={{-76.96,-42},{-68,-42},{-68,-57.7},{-58.32,-57.7}},
       color={0,0,255},
       smooth=Smooth.None));
-
   connect(T_ex_TES.port, TES.SecondaryFluid_su) annotation (Line(
       points={{-48,30},{-42,30},{-42,46.1},{-31,46.1}},
       color={0,127,255},
@@ -303,7 +279,6 @@ equation
       color={0,0,127},
       smooth=Smooth.None,
       pattern=LinePattern.Dash));
-
   connect(pump_2ry.outlet, HP.Supply_cd) annotation (Line(
       points={{-50.64,-53.56},{-34.32,-53.56},{-34.32,-53},{-19,-53}},
       color={0,0,255},
@@ -331,7 +306,6 @@ equation
       points={{-1,-53},{6.5,-53},{6.5,-52},{14.96,-52}},
       color={135,135,135},
       smooth=Smooth.None));
-
   connect(CHP.Wdot_el, HP.W_dot_set) annotation (Line(
       points={{11.5,-12.5},{11.5,-12},{44,-12},{44,-64},{-10,-64},{-10,-57}},
       color={255,128,0},
