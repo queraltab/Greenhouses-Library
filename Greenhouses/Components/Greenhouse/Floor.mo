@@ -37,11 +37,11 @@ public
         rotation=-90,
         origin={-60,40})));
 equation
-  if max({cardinality(R_Flr_Glob[i]) for i in 1:size(R_Flr_Glob, 1)}) == 0 then
-    for i in 1:N_rad loop
+  for i in 1:N_rad loop
+    if (cardinality(R_Flr_Glob[i]) == 0) then
       R_Flr_Glob[i]=0;
-    end for;
-  end if;
+    end if;
+  end for;
   P_Flr = sum(R_Flr_Glob)*A;
 
   // Balance on the floor

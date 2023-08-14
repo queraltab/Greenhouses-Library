@@ -54,11 +54,11 @@ public
         rotation=-90,
         origin={-50,60})));
 equation
-  if max({cardinality(R_Air_Glob[i]) for i in 1:size(R_Air_Glob, 1)}) == 0 then
-    for i in 1:N_rad loop
+  for i in 1:N_rad loop
+    if cardinality(R_Air_Glob[i]) == 0 then
       R_Air_Glob[i]=0;
-    end for;
-  end if;
+    end if;
+  end for;
   P_Air = sum(R_Air_Glob)*A;
 
   V= A*h_Air;
