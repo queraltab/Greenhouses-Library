@@ -5,7 +5,7 @@ package Greenhouses "The Greenhouses Modelica Library"
   annotation (uses(
     conversion(noneFromVersion=""),
     DymolaCommands(version="1.1"),
-    Modelica(version="3.2.2")),      Icon(coordinateSystem(preserveAspectRatio=
+    Modelica(version="3.2.3")),      Icon(coordinateSystem(preserveAspectRatio=
             false, extent={{-100,-100},{100,100}}), graphics={Bitmap(extent={{
             -100,-100},{100,100}}, fileName=
             "modelica://Greenhouses/Resources/Images/GreenhousesLibraryIcon.jpg")}),
