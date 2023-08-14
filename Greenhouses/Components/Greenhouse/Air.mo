@@ -54,7 +54,7 @@ public
         rotation=-90,
         origin={-50,60})));
 equation
-  if cardinality(R_Air_Glob)==0 then
+  if max({cardinality(R_Air_Glob[i]) for i in 1:size(R_Air_Glob, 1)}) == 0 then
     for i in 1:N_rad loop
       R_Air_Glob[i]=0;
     end for;

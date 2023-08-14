@@ -49,7 +49,7 @@ public
         transformation(extent={{-50,60},{-10,100}}), iconTransformation(extent=
             {{-50,60},{-10,100}})));
 equation
-  if cardinality(R_Can_Glob)==0 then
+  if max({cardinality(R_Can_Glob[i]) for i in 1:size(R_Can_Glob, 1)}) == 0 then
     for i in 1:N_rad loop
       R_Can_Glob[i]=0;
     end for;
