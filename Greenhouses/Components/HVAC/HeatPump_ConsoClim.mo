@@ -86,7 +86,7 @@ model HeatPump_ConsoClim
     Ai=A,
     Unom=1000,
     redeclare package Medium = Medium1,
-    hstart=Medium1.specificEnthalpy_pT(1E5, Th_start),
+    hstart=Medium1.specificEnthalpy_pTX(1E5, Th_start, Medium1.reference_X),
     redeclare model HeatTransfer =
         Greenhouses.Flows.FluidFlow.HeatTransfer.Constant,
     pstart=10000000000,

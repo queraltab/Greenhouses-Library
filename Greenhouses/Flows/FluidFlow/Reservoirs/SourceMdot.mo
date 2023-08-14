@@ -51,7 +51,7 @@ equation
     in_T = T_0 "Temperature set by parameter";
   end if;
   if UseT then
-    h = Medium.specificEnthalpy_pTX(p,in_T,fill(0,0));
+    h = Medium.specificEnthalpy_pTX(p,in_T,Medium.reference_X);
     flangeB.h_outflow = h;
   else
     flangeB.h_outflow = in_h;

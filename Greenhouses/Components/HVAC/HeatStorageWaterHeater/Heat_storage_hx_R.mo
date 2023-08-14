@@ -59,7 +59,7 @@ parameter Modelica.SIunits.SpecificHeatCapacity c_wall_hx= 500
     "Tank outlet temperature start value"
      annotation (Dialog(tab="Initialization"));
   parameter Modelica.SIunits.SpecificEnthalpy hstart_tank[N]=linspace(
-        MainFluid.specificEnthalpy_pT(pstart_tank,Tstart_inlet_tank),MainFluid.specificEnthalpy_pT(pstart_tank,Tstart_outlet_tank),
+        MainFluid.specificEnthalpy_pTX(pstart_tank,Tstart_inlet_tank,MainFluid.reference_X),MainFluid.specificEnthalpy_pTX(pstart_tank,Tstart_outlet_tank,MainFluid.reference_X),
         N) "Start value of enthalpy vector (initialized by default)" annotation (Dialog(tab="Initialization"));
 
   parameter Modelica.SIunits.Pressure pstart_hx=1E5
