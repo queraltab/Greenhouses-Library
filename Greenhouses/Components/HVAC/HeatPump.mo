@@ -37,7 +37,7 @@ model HeatPump
     Mdotnom=0.1,
     Vi=V,
     Ai=A,
-    hstart=Medium.specificEnthalpy_pT(1E5, Th_start),
+    hstart=Medium.specificEnthalpy_pTX(1E5, Th_start, Medium.reference_X),
     Unom=1000,
     redeclare model HeatTransfer =
         Greenhouses.Flows.FluidFlow.HeatTransfer.Constant,
