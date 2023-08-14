@@ -3,19 +3,23 @@ model NaturalVentilationRate_1
   "Air exchange rate from the greenhouse air to the outside air function of wind and temperature by De Jong (1990)"
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Angle phi=25/180*Modelica.Constants.pi
+  parameter Modelica.Units.SI.Angle phi=25/180*Modelica.Constants.pi
     "inclination of the roof (0 if horizontal, 25 for typical cover)";
   parameter Real fr_window=0.078 "number of windows per m2 greenhouse";
-  parameter Modelica.SIunits.Length l "length of the window";
-  parameter Modelica.SIunits.Length h "width of the window";
+  parameter Modelica.Units.SI.Length l "length of the window";
+  parameter Modelica.Units.SI.Length h "width of the window";
     parameter Boolean thermalScreen=false
     "presence of a thermal screen in the greenhouse";
 
   /*********************** Varying inputs ***********************/
-  Modelica.SIunits.Velocity u= 0 "Wind speed"     annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Angle theta_l=0 "window opening at the leeside side" annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Angle theta_w=0 "window opening at the windward side" annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.TemperatureDifference dT=10 annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Velocity u=0 "Wind speed"
+    annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Angle theta_l=0 "window opening at the leeside side"
+    annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Angle theta_w=0 "window opening at the windward side"
+    annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.TemperatureDifference dT=10
+    annotation (Dialog(group="Varying inputs"));
 
   /*********************** Variables ***********************/
   Real f_vent;

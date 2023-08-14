@@ -1,10 +1,10 @@
 within Greenhouses.Flows.Sensors;
 model RHSensor "Relative Humidity sensor"
 
-  Modelica.SIunits.Pressure P_atm=101325 "Atmospheric pressure";
+  Modelica.Units.SI.Pressure P_atm=101325 "Atmospheric pressure";
   Real R_a = 287 "Gas constant for dry air R_a = R_d (J/(kg.K))";
   Real R_s = 461.5;
-  Modelica.SIunits.MassFraction w_air "Air humidity ratio (kg water / kg dry air)";
+  Modelica.Units.SI.MassFraction w_air "Air humidity ratio (kg water / kg dry air)";
 
   Modelica.Blocks.Interfaces.RealOutput RH
     "Absolute temperature as output signal"

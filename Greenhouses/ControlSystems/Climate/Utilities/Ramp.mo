@@ -1,11 +1,11 @@
 within Greenhouses.ControlSystems.Climate.Utilities;
 block Ramp "Generate ramp signal"
   parameter Real height=1 "Height of ramps";
-  parameter Modelica.SIunits.Time duration(min=0.0, start=2)
+  parameter Modelica.Units.SI.Time duration(min=0.0, start=2)
     "Duration of ramp (= 0.0 gives a Step)";
   parameter Real offset=0 "Offset of output signal";
-  Modelica.SIunits.Time startTime=0 "Output = offset for time < startTime"
-                                           annotation(Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Time startTime=0 "Output = offset for time < startTime"
+    annotation (Dialog(group="Varying inputs"));
   extends Modelica.Blocks.Interfaces.SO;
 
 equation

@@ -5,16 +5,17 @@ model CHP
       Modelica.Media.Water.ConstantPropertyLiquidWater                          constrainedby
     Modelica.Media.Interfaces.PartialMedium "Medium in the component"
       annotation (choicesAllMatching = true);
-  parameter Modelica.SIunits.Volume V=0.005 "Internal volume";
-  parameter Modelica.SIunits.Area A = 10 "Heat exchange area";
+  parameter Modelica.Units.SI.Volume V=0.005 "Internal volume";
+  parameter Modelica.Units.SI.Area A=10 "Heat exchange area";
   //parameter Real eta_II = 0.4 "Second law efficiency of the CHP";
-  parameter Modelica.SIunits.MassFlowRate Mdotnom=10
+  parameter Modelica.Units.SI.MassFlowRate Mdotnom=10
     "Nominal mass flow rate of the working fluid";
   parameter Real eta_tot = 0.9 "Total efficiency of the CHP";
-  parameter Modelica.SIunits.Time tau = 60 "Start-up time constant";
-  parameter Modelica.SIunits.Temperature Th_start = 500+273.15
-    "Start value for the condenser temperature"      annotation(Dialog(tab="Initialization"));
-  parameter Modelica.SIunits.Temperature Tmax = 273.15 + 100
+  parameter Modelica.Units.SI.Time tau=60 "Start-up time constant";
+  parameter Modelica.Units.SI.Temperature Th_start=500 + 273.15
+    "Start value for the condenser temperature"
+    annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.Temperature Tmax=273.15 + 100
     "Maximum temperature at the outlet";
 //   parameter Modelica.SIunits.Mass M_wall= 69
 //     "Mass of the metal wall between the two fluids";
@@ -22,19 +23,19 @@ model CHP
 //     "Specific heat capacity of metal wall";
   Real eta_el "Electrical efficiency of the CHP";
   Real eta_th "Thermal efficiency of the CHP";
-  Modelica.SIunits.Power Wdot;
-  Modelica.SIunits.Power Qdot;
-  parameter Modelica.SIunits.Temperature Th_nom=500+273.15;
-  Modelica.SIunits.Temperature Tc;
+  Modelica.Units.SI.Power Wdot;
+  Modelica.Units.SI.Power Qdot;
+  parameter Modelica.Units.SI.Temperature Th_nom=500 + 273.15;
+  Modelica.Units.SI.Temperature Tc;
   Real LHV=1000;
-  Modelica.SIunits.MassFlowRate Mdot_nom_fuel;
-  Modelica.SIunits.Temperature T_water_ex_CHP;
-  Modelica.SIunits.Power Qdot_gas;
+  Modelica.Units.SI.MassFlowRate Mdot_nom_fuel;
+  Modelica.Units.SI.Temperature T_water_ex_CHP;
+  Modelica.Units.SI.Power Qdot_gas;
   Real eta_el_nom "Nominal electrical efficiency of the CHP";
   Real eta_th_nom "Nominal thermal efficiency of the CHP";
   Real eta_II_nom;
-  Modelica.SIunits.Temperature Th;
-  Modelica.SIunits.Temperature Tc_nom;
+  Modelica.Units.SI.Temperature Th;
+  Modelica.Units.SI.Temperature Tc_nom;
   Flows.FluidFlow.Cell1DimInc                        fluid(
     redeclare package Medium = Medium,
     Vi=V,

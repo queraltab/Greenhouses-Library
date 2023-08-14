@@ -4,16 +4,15 @@ model MV_cnv_evaporation
   extends Greenhouses.Interfaces.Vapour.Element1D;
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "floor surface";
+  parameter Modelica.Units.SI.Area A "floor surface";
 
   /*********************** Varying inputs ***********************/
-  Modelica.SIunits.CoefficientOfHeatTransfer HEC_ab=0
+  Modelica.Units.SI.CoefficientOfHeatTransfer HEC_ab=0
     "Heat transfer coefficient between nodes a and b, provided by the adecuate model in HeatTransfer folder"
-                                                                                                        annotation (Dialog(group="Varying inputs"));
+    annotation (Dialog(group="Varying inputs"));
   Real VEC_AirScr(unit="kg/(s.Pa.m2)")=0
-    "Mass transfer coefficient at the lower part of the screen in contact with the main air zone"
-                                                                                                        annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Pressure VP_air=1e5 "Vapour pressure at the main air zone";
+    "Mass transfer coefficient at the lower part of the screen in contact with the main air zone"       annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Pressure VP_air=1e5 "Vapour pressure at the main air zone";
 
   /*********************** Variables ***********************/
   Real VEC_ab(unit="kg/(s.Pa.m2)") "Mass transfer coefficient";

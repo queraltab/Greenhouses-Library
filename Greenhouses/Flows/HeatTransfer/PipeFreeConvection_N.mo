@@ -5,18 +5,18 @@ model PipeFreeConvection_N
   /*********************** Parameters ***********************/
   parameter Integer N_p(min=1)=1 "number of pipes in parallel";
   parameter Integer N(min=1)=2 "number of cells for pipe side";
-  parameter Modelica.SIunits.Area A "floor surface";
-  parameter Modelica.SIunits.Length d
+  parameter Modelica.Units.SI.Area A "floor surface";
+  parameter Modelica.Units.SI.Length d
     "characteristic dimension of the pipe (pipe diameter)";
-  parameter Modelica.SIunits.Length l "length of heating pipes";
+  parameter Modelica.Units.SI.Length l "length of heating pipes";
   parameter Boolean freePipe=true
     "true if pipe in free air, false if hindered pipe";
 
   /*********************** Variables ***********************/
-  Modelica.SIunits.CoefficientOfHeatTransfer HEC_ab[N];
+  Modelica.Units.SI.CoefficientOfHeatTransfer HEC_ab[N];
   Real alpha[N];
-  Modelica.SIunits.HeatFlowRate Q_flow;
-  Modelica.SIunits.TemperatureDifference dT[N] "port_a.T - port_b.T";
+  Modelica.Units.SI.HeatFlowRate Q_flow;
+  Modelica.Units.SI.TemperatureDifference dT[N] "port_a.T - port_b.T";
 
   Greenhouses.Interfaces.Heat.HeatPorts_a[N] heatPorts_a annotation (
       Placement(transformation(

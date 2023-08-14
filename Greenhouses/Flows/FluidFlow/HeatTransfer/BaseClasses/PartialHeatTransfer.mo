@@ -12,11 +12,11 @@ partial model PartialHeatTransfer
     "Thermodynamic states of flow segments";
 
   //Outputs defined by the heat transfer model
-  output Modelica.SIunits.HeatFlux[n] q_dot "Heat flux";
+  output Modelica.Units.SI.HeatFlux[n] q_dot "Heat flux";
 
     //Variables
 
-    Modelica.SIunits.Temperature[n] T_fluid = Medium.temperature(FluidState)
+  Modelica.Units.SI.Temperature[n] T_fluid=Medium.temperature(FluidState)
     "Temperature of the fluid for the heat transfer process";
 
   Greenhouses.Interfaces.Heat.ThermalPortL[n] thermalPortL annotation (

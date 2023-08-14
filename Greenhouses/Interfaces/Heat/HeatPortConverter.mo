@@ -6,7 +6,7 @@ model HeatPortConverter "Convert thermal port into heat port"
   Greenhouses.Interfaces.Heat.ThermalPortL thermalPortL annotation (
       Placement(transformation(extent={{95,-5},{105,5}}),
         iconTransformation(extent={{90,-10},{110,10}})));
-parameter Modelica.SIunits.Area A = 1 "Heat exchange area";
+  parameter Modelica.Units.SI.Area A=1 "Heat exchange area";
 equation
   thermalPortL.T = heatPort.T;
   thermalPortL.phi = -heatPort.Q_flow/A;

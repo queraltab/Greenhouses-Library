@@ -4,15 +4,16 @@ model Convection_Evaporation
   extends Greenhouses.Interfaces.HeatAndVapour.Element1D;
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "floor surface";
+  parameter Modelica.Units.SI.Area A "floor surface";
 
   /*********************** Varying inputs ***********************/
   Real SC=0 "Screen closure 1:closed, 0:open" annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.MassFlowRate MV_AirScr=0
-    "Mass flow rate from the main air zone to the screen" annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.MassFlowRate MV_AirScr=0
+    "Mass flow rate from the main air zone to the screen"
+    annotation (Dialog(group="Varying inputs"));
 
   /*********************** Variables ***********************/
-  Modelica.SIunits.CoefficientOfHeatTransfer HEC_ab;
+  Modelica.Units.SI.CoefficientOfHeatTransfer HEC_ab;
   Real VEC_ab(unit="kg/(s.Pa.m2)") "Mass transfer coefficient";
 
 equation

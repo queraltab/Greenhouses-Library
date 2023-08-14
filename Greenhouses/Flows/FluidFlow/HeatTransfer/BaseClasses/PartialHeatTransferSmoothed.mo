@@ -16,10 +16,10 @@ partial model PartialHeatTransferSmoothed
       choice=2 "Two-phase",
       choice=3 "Gaseous"));
 
-  Modelica.SIunits.CoefficientOfHeatTransfer[n] U;
-  Modelica.SIunits.CoefficientOfHeatTransfer U_nom_LTP;
-  Modelica.SIunits.CoefficientOfHeatTransfer U_nom_TPV;
-  Modelica.SIunits.CoefficientOfHeatTransfer U_nom;
+  Modelica.Units.SI.CoefficientOfHeatTransfer[n] U;
+  Modelica.Units.SI.CoefficientOfHeatTransfer U_nom_LTP;
+  Modelica.Units.SI.CoefficientOfHeatTransfer U_nom_TPV;
+  Modelica.Units.SI.CoefficientOfHeatTransfer U_nom;
 
   Real LTP(min=0, max=1);
   Real TPV(min=0, max=1);

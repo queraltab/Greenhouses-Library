@@ -3,9 +3,9 @@ model MassFlowDependence_IdealFluid
 
 extends
     Greenhouses.Flows.FluidFlow.HeatTransfer.BaseClasses.PartialHeatTransferZones_IdealFluid;
-input Modelica.SIunits.CoefficientOfHeatTransfer Unom
+  input Modelica.Units.SI.CoefficientOfHeatTransfer Unom
     "Nominal heat transfer coefficient- Average of liquid two phase and vapor";
-Modelica.SIunits.CoefficientOfHeatTransfer U "Heat transfer coefficient";
+  Modelica.Units.SI.CoefficientOfHeatTransfer U "Heat transfer coefficient";
 
 equation
     U = Unom*noEvent(0.00001 + abs(M_dot/Mdotnom)^0.8);

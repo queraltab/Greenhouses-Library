@@ -7,30 +7,31 @@ model HeatPump
     Modelica.Media.Interfaces.PartialMedium "Medium in the component"
       annotation (choicesAllMatching = true);
 
-  parameter Modelica.SIunits.Volume V=0.005 "Internal volume";
-  parameter Modelica.SIunits.Area A = 10 "Heat exchange area";
+  parameter Modelica.Units.SI.Volume V=0.005 "Internal volume";
+  parameter Modelica.Units.SI.Area A=10 "Heat exchange area";
   parameter Real eta_II = 0.4 "Second law efficiency of the HP";
-  parameter Modelica.SIunits.Time tau = 60 "Start-up time constant";
-  parameter Modelica.SIunits.Power Qdot_nom = 10E3 "Nominal heating capacity";
-  parameter Modelica.SIunits.Temperature Th_nom=35+273.15
+  parameter Modelica.Units.SI.Time tau=60 "Start-up time constant";
+  parameter Modelica.Units.SI.Power Qdot_nom=10E3 "Nominal heating capacity";
+  parameter Modelica.Units.SI.Temperature Th_nom=35 + 273.15
     "Nominal heat sink temperature";
-  parameter Modelica.SIunits.Temperature Tc_nom=273.15
+  parameter Modelica.Units.SI.Temperature Tc_nom=273.15
     "Nominal heat source temperature";
-  parameter Modelica.SIunits.Mass M_wall= 69
+  parameter Modelica.Units.SI.Mass M_wall=69
     "Mass of the metal wall between the two fluids";
-  parameter Modelica.SIunits.SpecificHeatCapacity c_wall= 500
+  parameter Modelica.Units.SI.SpecificHeatCapacity c_wall=500
     "Specific heat capacity of metal wall";
-  parameter Modelica.SIunits.Temperature Th_start = 35+273.15
-    "Start value for the condenser temperature"      annotation(Dialog(tab="Initialization"));
-  parameter Modelica.SIunits.Temperature Tmax = 273.15 + 100
+  parameter Modelica.Units.SI.Temperature Th_start=35 + 273.15
+    "Start value for the condenser temperature"
+    annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.Temperature Tmax=273.15 + 100
     "Maximum temperature at the outlet";
   Real COP;
   Real COP_nom;
-  Modelica.SIunits.Power Wdot;
-  Modelica.SIunits.Power Wdot_nom;
-  Modelica.SIunits.Power Qdot;
-  Modelica.SIunits.Temperature Th;
-  Modelica.SIunits.Power Wdot_in;
+  Modelica.Units.SI.Power Wdot;
+  Modelica.Units.SI.Power Wdot_nom;
+  Modelica.Units.SI.Power Qdot;
+  Modelica.Units.SI.Temperature Th;
+  Modelica.Units.SI.Power Wdot_in;
 
   Flows.FluidFlow.Cell1DimInc                        fluid(
     redeclare package Medium = Medium,
@@ -109,8 +110,8 @@ equation
       smooth=Smooth.None));
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),           Icon(coordinateSystem(
-          preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics
-        ={
+          preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics=
+         {
         Polygon(
           points={{-10,20},{10,20},{-10,-20},{10,-20},{-10,20}},
           lineColor={0,0,0},

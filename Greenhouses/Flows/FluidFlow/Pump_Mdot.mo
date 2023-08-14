@@ -2,25 +2,24 @@ within Greenhouses.Flows.FluidFlow;
 model Pump_Mdot "Pump model - Prescribed mass flow rate"
   import Greenhouses;
   /***************************************** FLUID *****************************************/
-  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater
-                                                                                constrainedby
+  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater constrainedby
     Modelica.Media.Interfaces.PartialMedium "Medium in the component"
       annotation (choicesAllMatching = true);
   extends Greenhouses.Icons.Water.Pump;
 
   /***************************************** PARAMETERS *****************************************/
-  parameter Modelica.SIunits.MassFlowRate Mdot_0 = 1
+  parameter Modelica.Units.SI.MassFlowRate Mdot_0=1
     "Mass flow if external signal not connected";
   parameter Real eta_is=1 "Overall Isentropic efficiency of the pump";
   parameter Boolean NeglectDELTAh=true
     "if true, neglects the enthalpy difference due to the compression";
 
   /***************************************** VARIABLES *****************************************/
-  Modelica.SIunits.MassFlowRate Mdot "Mass flow rate";
-  Modelica.SIunits.SpecificEnthalpy h "Fluid specific enthalpy";
-  Modelica.SIunits.Pressure p "Inlet pressure";
-  Modelica.SIunits.Density rho(start=1000) "Liquid density";
-  Modelica.SIunits.Power Wdot "Power Consumption";
+  Modelica.Units.SI.MassFlowRate Mdot "Mass flow rate";
+  Modelica.Units.SI.SpecificEnthalpy h "Fluid specific enthalpy";
+  Modelica.Units.SI.Pressure p "Inlet pressure";
+  Modelica.Units.SI.Density rho(start=1000) "Liquid density";
+  Modelica.Units.SI.Power Wdot "Power Consumption";
   Modelica.Fluid.Interfaces.FluidPort_a inlet(
                                              redeclare package Medium = Medium)
     annotation (Placement(transformation(extent={{-92,-14},{-52,24}}),

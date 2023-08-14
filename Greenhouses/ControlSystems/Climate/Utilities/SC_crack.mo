@@ -13,7 +13,7 @@ block SC_crack
 
   //Modelica.SIunits.Time startTime;
 protected
-  discrete Modelica.SIunits.Time entryTime "Time instant when u became true";
+  discrete Modelica.Units.SI.Time entryTime "Time instant when u became true";
 initial equation
   pre(entryTime) = 0;
   //pre(startTime)=0;

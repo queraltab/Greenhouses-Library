@@ -132,8 +132,8 @@ model GlobalSystem_2
   Greenhouses.Flows.FluidFlow.Reservoirs.SinkP sinkP_air(redeclare package
       Medium = Modelica.Media.Air.SimpleAir, p0=100000)
     annotation (Placement(transformation(extent={{14,-58},{26,-46}})));
-  Greenhouses.Flows.FluidFlow.Reservoirs.SourceMdot sourceMdot(redeclare
-      package Medium = Modelica.Media.Air.SimpleAir, Mdot_0=1)
+  Greenhouses.Flows.FluidFlow.Reservoirs.SourceMdot sourceMdot(redeclare package
+              Medium = Modelica.Media.Air.SimpleAir, Mdot_0=1)
     annotation (Placement(transformation(extent={{26,-44},{14,-32}})));
   Modelica.Blocks.Sources.RealExpression set_Mdot_air(y=Mdot_air)
     annotation (Placement(transformation(extent={{42,-40},{28,-28}})));

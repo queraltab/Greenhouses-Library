@@ -5,9 +5,8 @@ partial model Element1D_discretized
   // Discretization
   parameter Integer nNodes(min=1)=2 "Number of discrete flow volumes";
 
-  Modelica.SIunits.HeatFlowRate Q_flow[nNodes]
-    "Heat flow rate from port_a -> port_b";
-  Modelica.SIunits.TemperatureDifference dT[nNodes] "port_a.T - port_b.T";
+  Modelica.Units.SI.HeatFlowRate Q_flow[nNodes] "Heat flow rate from port_a -> port_b";
+  Modelica.Units.SI.TemperatureDifference dT[nNodes] "port_a.T - port_b.T";
   Greenhouses.Interfaces.Heat.HeatPorts_a[nNodes] heatPorts_a annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},

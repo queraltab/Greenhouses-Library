@@ -3,20 +3,21 @@ model Floor
   /******************** Parameters ********************/
   parameter Integer N_rad=2
     "Short-wave radiations are 2: if sun and illumination; 1 if just sun";
-  parameter Modelica.SIunits.Density rho;
-  parameter Modelica.SIunits.SpecificHeatCapacity c_p;
-  parameter Modelica.SIunits.Volume V;
-  parameter Modelica.SIunits.Area A "floor surface";
+  parameter Modelica.Units.SI.Density rho;
+  parameter Modelica.Units.SI.SpecificHeatCapacity c_p;
+  parameter Modelica.Units.SI.Volume V;
+  parameter Modelica.Units.SI.Area A "floor surface";
 
   /******************** Initialization ********************/
-  parameter Modelica.SIunits.Temperature T_start=298 annotation(Dialog(tab = "Initialization"));
+  parameter Modelica.Units.SI.Temperature T_start=298
+    annotation (Dialog(tab="Initialization"));
   parameter Boolean steadystate=false
     "if true, sets the derivative of T to zero during Initialization"     annotation (Dialog(group="Initialization options", tab="Initialization"));
 
   /******************** Variables ********************/
-  Modelica.SIunits.HeatFlowRate Q_flow "Heat flow rate from port_a -> port_b";
-  Modelica.SIunits.Temperature T;
-  Modelica.SIunits.Power P_Flr "total short-wave power to the floor";
+  Modelica.Units.SI.HeatFlowRate Q_flow "Heat flow rate from port_a -> port_b";
+  Modelica.Units.SI.Temperature T;
+  Modelica.Units.SI.Power P_Flr "total short-wave power to the floor";
 
   /******************** Connectors ********************/
 protected

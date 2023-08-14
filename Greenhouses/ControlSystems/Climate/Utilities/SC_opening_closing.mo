@@ -1,6 +1,6 @@
 within Greenhouses.ControlSystems.Climate.Utilities;
 model SC_opening_closing "Screen closing/opening control for warm/cold days"
-  Modelica.SIunits.Time entryTime=0 annotation(Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Time entryTime=0 annotation (Dialog(group="Varying inputs"));
   parameter Boolean warmDay=true "True if warm day, False if cold day";
   parameter Boolean opening=true "True if opening, False if closing";
   Modelica.Blocks.Sources.Constant start_closed(k=1)

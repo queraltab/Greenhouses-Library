@@ -4,31 +4,33 @@ model Ventilation
   extends Greenhouses.Interfaces.HeatAndVapour.Element1D;
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "Greenhouse floor surface";
+  parameter Modelica.Units.SI.Area A "Greenhouse floor surface";
   parameter Boolean thermalScreen=false
     "presence of a thermal screen in the greenhouse";
   parameter Boolean topAir=false
     "False for: Main air zone; True for: Top air zone" annotation (Dialog(enable=(thermalScreen)));
   parameter Boolean forcedVentilation=false
     "presence of a mechanical ventilation system in the greenhouse";
-  parameter Modelica.SIunits.VolumeFlowRate phi_VentForced=0
-    "Air flow capacity of the forced ventilation system" annotation(Dialog(enable=forcedVentilation));
+  parameter Modelica.Units.SI.VolumeFlowRate phi_VentForced=0
+    "Air flow capacity of the forced ventilation system"
+    annotation (Dialog(enable=forcedVentilation));
 
   /*********************** Varying inputs ***********************/
   Real SC=0 "Screen closure 1:closed, 0:open" annotation (Dialog(enable=(thermalScreen), group="Varying inputs"));
-  Modelica.SIunits.Velocity u= 0 "Wind speed"     annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Velocity u=0 "Wind speed"
+    annotation (Dialog(group="Varying inputs"));
   Real U_vents(min=0,max=1)=0
     "From 0 to 1, control of the aperture of the roof vents"                             annotation (Dialog(group="Varying inputs"));
   Real U_VentForced=0 "From 0 to 1, control of the forced ventilation"   annotation (Dialog(group="Varying inputs",enable=forcedVentilation));
 
   /*********************** Variables ***********************/
-  Modelica.SIunits.CoefficientOfHeatTransfer HEC_ab;
-  Modelica.SIunits.Density rho_air=1.2;
-  Modelica.SIunits.SpecificHeatCapacity c_p_air=1005;
+  Modelica.Units.SI.CoefficientOfHeatTransfer HEC_ab;
+  Modelica.Units.SI.Density rho_air=1.2;
+  Modelica.Units.SI.SpecificHeatCapacity c_p_air=1005;
   Real f_vent(unit="m3/(m2.s)")
     "Air exchange rate from the greenhouse air to the outside air function of wind and temperature";
   Real R=8314 "gas constant";
-  Modelica.SIunits.MolarMass M_H = 18;
+  Modelica.Units.SI.MolarMass M_H=18;
   Real f_vent_total(unit="m3/(m2.s)");
   Real f_ventForced(unit="m3/(m2.s)");
 

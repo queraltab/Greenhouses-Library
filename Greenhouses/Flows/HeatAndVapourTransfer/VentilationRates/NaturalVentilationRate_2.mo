@@ -11,22 +11,24 @@ model NaturalVentilationRate_2
     "Ventilation global wind pressure coefficient, function of greenhouse shape";
   parameter Real eta_RfFlr=0.1
     "Ratio between the maximum roof vent area and the greenhouse floor area A_roof/A_floor";
-  parameter Modelica.SIunits.Length h_vent=0.68
+  parameter Modelica.Units.SI.Length h_vent=0.68
     "Vertical dimension of a single ventilation opening";
   parameter Real c_leakage=1.5e-4 "Greenhouse leakage coefficient";
 
   /*********************** Varying inputs ***********************/
   Real SC=0 "Screen closure 1:closed, 0:open" annotation (Dialog(enable=(thermalScreen and not floor), group="Varying inputs"));
   Real U_roof(min=0,max=1)=0 "Control of the aperture of the roof vents"  annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Velocity u= 0 "Wind speed"     annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.TemperatureDifference dT=10 "T_a-T_b" annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Temperature T_a=293.15 annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Temperature T_b=276.15 annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Velocity u=0 "Wind speed"
+    annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.TemperatureDifference dT=10 "T_a-T_b"
+    annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Temperature T_a=293.15 annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Temperature T_b=276.15 annotation (Dialog(group="Varying inputs"));
 
   /*********************** Variables ***********************/
   Real f_vent(unit="m3/(m2.s)");
   Real f_leakage(unit="m3/(m2.s)") "Air exchange rate due to leakage";
-  Modelica.SIunits.Temperature T_mean;
+  Modelica.Units.SI.Temperature T_mean;
   output Real f_vent_top(unit="m3/(m2.s)")
     "Air exchange rate at the top air compartment in presence of a thermal screen";
   output Real f_vent_air(unit="m3/(m2.s)") "Air exchange rate at the main air compartment";

@@ -2,19 +2,18 @@ within Greenhouses.Flows.FluidFlow.Reservoirs;
 model SourceMdot "Flowrate source for fluid flows"
   //The pressure is defined by the next component!
   extends Greenhouses.Icons.Water.SourceW;
-  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater
-                                                                                constrainedby
+  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater constrainedby
     Modelica.Media.Interfaces.PartialMedium "Medium in the component"
       annotation (choicesAllMatching = true);
 
-  parameter Modelica.SIunits.MassFlowRate Mdot_0=0
-    "Mass flowrate if no connector";
-  parameter Modelica.SIunits.Pressure p=101325 "Pressure";
+  parameter Modelica.Units.SI.MassFlowRate Mdot_0=0 "Mass flowrate if no connector";
+  parameter Modelica.Units.SI.Pressure p=101325 "Pressure";
   parameter Boolean UseT=true "Use temperature as input instead of enthalpy";
-  parameter Modelica.SIunits.Temperature T_0=298.15
-    "Temperature if no connector"                                                 annotation (Dialog(enable=UseT));
-  parameter Modelica.SIunits.SpecificEnthalpy h_0=0 "Enthalpy if no connector" annotation (Dialog(enable=not UseT));
-  Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+  parameter Modelica.Units.SI.Temperature T_0=298.15 "Temperature if no connector"
+    annotation (Dialog(enable=UseT));
+  parameter Modelica.Units.SI.SpecificEnthalpy h_0=0 "Enthalpy if no connector"
+    annotation (Dialog(enable=not UseT));
+  Modelica.Units.SI.SpecificEnthalpy h "specific enthalpy";
   Modelica.Blocks.Interfaces.RealInput in_Mdot annotation (Placement(
         transformation(
         origin={-40,60},

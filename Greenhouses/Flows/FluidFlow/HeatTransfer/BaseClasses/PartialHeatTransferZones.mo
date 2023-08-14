@@ -5,14 +5,14 @@ partial model PartialHeatTransferZones
 extends
     Greenhouses.Flows.FluidFlow.HeatTransfer.BaseClasses.PartialHeatTransfer;
 
-input Modelica.SIunits.MassFlowRate Mdotnom "Nomnial Mass flow rate";
-input Modelica.SIunits.CoefficientOfHeatTransfer Unom_l
+  input Modelica.Units.SI.MassFlowRate Mdotnom "Nomnial Mass flow rate";
+  input Modelica.Units.SI.CoefficientOfHeatTransfer Unom_l
     "Nominal heat transfer coefficient liquid side";
-input Modelica.SIunits.CoefficientOfHeatTransfer Unom_tp
+  input Modelica.Units.SI.CoefficientOfHeatTransfer Unom_tp
     "nominal heat transfer coefficient two phase side";
-input Modelica.SIunits.CoefficientOfHeatTransfer Unom_v
+  input Modelica.Units.SI.CoefficientOfHeatTransfer Unom_v
     "nominal heat transfer coefficient vapor side";
-input Modelica.SIunits.MassFlowRate M_dot "Inlet massflow";
+  input Modelica.Units.SI.MassFlowRate M_dot "Inlet massflow";
 //input Modelica.SIunits.Length diameter "Hydraulic diameter";
 input Real x "Vapor quality";
 annotation(Documentation(info="<html>

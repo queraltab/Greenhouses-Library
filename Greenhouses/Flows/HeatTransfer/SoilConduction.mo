@@ -1,21 +1,21 @@
 within Greenhouses.Flows.HeatTransfer;
 model SoilConduction
   import Greenhouse = Greenhouses;
-  parameter Modelica.SIunits.Area A "floor surface";
+  parameter Modelica.Units.SI.Area A "floor surface";
   parameter Integer N_c(min=0)=2 "number of concrete layers";
   parameter Integer N_s(min=1)=5 "number of soil layers";
-  parameter Modelica.SIunits.ThermalConductivity lambda_c=1.7
+  parameter Modelica.Units.SI.ThermalConductivity lambda_c=1.7
     "Thermal conductivity of concrete";
-  parameter Modelica.SIunits.ThermalConductivity lambda_s=0.85
+  parameter Modelica.Units.SI.ThermalConductivity lambda_s=0.85
     "Thermal conductivity of soil";
   parameter Boolean steadystate=false
     "if true, sets the derivative of T of each layer to zero during Initialization"
     annotation (Dialog(group="Initialization options", tab="Initialization"));
-  Modelica.SIunits.ThermalConductance G_s[N_s];
-  Modelica.SIunits.ThermalConductance G_c[N_c-1];
-  Modelica.SIunits.ThermalConductance G_cc;
-  Modelica.SIunits.Length th_s[N_s] "thickness of the soil layers";
-  Modelica.SIunits.Length th_c[N_c-1] "thickness of the concrete layers";
+  Modelica.Units.SI.ThermalConductance G_s[N_s];
+  Modelica.Units.SI.ThermalConductance G_c[N_c - 1];
+  Modelica.Units.SI.ThermalConductance G_cc;
+  Modelica.Units.SI.Length th_s[N_s] "thickness of the soil layers";
+  Modelica.Units.SI.Length th_c[N_c - 1] "thickness of the concrete layers";
   Integer N_cc;
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a port_a

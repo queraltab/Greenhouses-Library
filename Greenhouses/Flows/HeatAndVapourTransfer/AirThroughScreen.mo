@@ -4,22 +4,22 @@ model AirThroughScreen
   extends Greenhouses.Interfaces.HeatAndVapour.Element1D;
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "floor surface";
-  parameter Modelica.SIunits.Length W "length of the screen when closed (SC=1)";
+  parameter Modelica.Units.SI.Area A "floor surface";
+  parameter Modelica.Units.SI.Length W "length of the screen when closed (SC=1)";
   parameter Real K "Screen flow coefficient (check values in Info)";
 
   /*********************** Varying inputs ***********************/
   Real SC=0 "Screen closure 1:closed, 0:open" annotation (Dialog(group="Varying inputs"));
 
   /*********************** Variables ***********************/
-  Modelica.SIunits.CoefficientOfHeatTransfer HEC_ab;
-  Modelica.SIunits.Density rho_air;
-  Modelica.SIunits.Density rho_mean;
-  Modelica.SIunits.Density rho_top;
-  Modelica.SIunits.SpecificHeatCapacity c_p_air=1005;
+  Modelica.Units.SI.CoefficientOfHeatTransfer HEC_ab;
+  Modelica.Units.SI.Density rho_air;
+  Modelica.Units.SI.Density rho_mean;
+  Modelica.Units.SI.Density rho_top;
+  Modelica.Units.SI.SpecificHeatCapacity c_p_air=1005;
   Real f_AirTop;
   Real R=8314 "gas constant";
-  Modelica.SIunits.MolarMass M_H = 18;
+  Modelica.Units.SI.MolarMass M_H=18;
   Real VEC_AirTop(unit="kg/(s.Pa.m2)") "Mass transfer coefficient";
   Real MV_flow2;
 

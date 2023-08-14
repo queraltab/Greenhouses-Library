@@ -4,12 +4,13 @@ model Uvents_RH_T_Mdot
   import Greenhouse = Greenhouses;
   Real RH_air_input=0.75
     "If connector not used, input here the relative humidity of the air"                      annotation(Dialog(group="Varying inputs"));
-  Modelica.SIunits.Temperature T_air=293.15 annotation(Dialog(group="Varying inputs"));
-  Modelica.SIunits.Temperature T_air_sp=293.15 annotation(Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Temperature T_air=293.15 annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Temperature T_air_sp=293.15
+    annotation (Dialog(group="Varying inputs"));
 
-  Modelica.SIunits.MassFlowRate Mdot=0.528 annotation(Dialog(group="Varying inputs"));
+  Modelica.Units.SI.MassFlowRate Mdot=0.528 annotation (Dialog(group="Varying inputs"));
 
-  Modelica.SIunits.Temperature Tmax_tomato=299.15;
+  Modelica.Units.SI.Temperature Tmax_tomato=299.15;
   parameter Real U_max=1;
   Modelica.Blocks.Interfaces.RealOutput y
     annotation (Placement(transformation(extent={{100,-10},{120,10}}),

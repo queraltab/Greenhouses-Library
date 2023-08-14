@@ -3,9 +3,9 @@ model CO2_Air "CO2 mass balance of an air volume"
   import Greenhouse = Greenhouses;
 
   /*********************** Parameters ***********************/
-  Modelica.SIunits.Length cap_CO2=4
+  Modelica.Units.SI.Length cap_CO2=4
     "Capacity of the air to store CO2, equals the height of the air compartment"
-                                                                                 annotation(Dialog(group="Varying inputs"));
+    annotation (Dialog(group="Varying inputs"));
 
   /*********************** Initialization ***********************/
   parameter Real CO2_start(unit="mg/m3")=1940 annotation(Dialog(tab = "Initialization"));

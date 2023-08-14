@@ -1,7 +1,7 @@
 within Greenhouses.Interfaces.Heat;
 model HeatPortConverter_ThermoCycle_Modelica
   "Heat port converter from the Modelica Library to the ThermoCycle Library heat port models"
-  parameter Modelica.SIunits.Area A "Heat transfer area";
+  parameter Modelica.Units.SI.Area A "Heat transfer area";
   parameter Integer N(min=1)=2 "Number of ports in series";
   parameter Integer Nt(min=1)=1 "Number of cells in parallel";
   ThermalPort                                     thermocyclePort(N=N)

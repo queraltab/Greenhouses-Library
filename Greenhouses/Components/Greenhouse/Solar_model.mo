@@ -2,7 +2,7 @@
 model Solar_model "Global, PAR and NIR heat fluxes"
 
   /********************* Parameters ***********************/
-  parameter Modelica.SIunits.Area A "floor surface";
+  parameter Modelica.Units.SI.Area A "floor surface";
   parameter Real eta_glob_air=0.1
     "Ratio of global radiation absorbed by greenhouse construction elements";
 
@@ -33,25 +33,25 @@ model Solar_model "Global, PAR and NIR heat fluxes"
   /********************** Variables ***********************/
 //   Modelica.SIunits.HeatFlux R_SunCov_Glob;
 //   Modelica.SIunits.HeatFlux R_SunAir_Glob;
-  Modelica.SIunits.HeatFlux R_t_PAR "Transmited flux of the cover";
-  Modelica.SIunits.HeatFlux R_NIR "Incident flux on the cover";
-  Modelica.SIunits.HeatFlux R_t_Glob
+  Modelica.Units.SI.HeatFlux R_t_PAR "Transmited flux of the cover";
+  Modelica.Units.SI.HeatFlux R_NIR "Incident flux on the cover";
+  Modelica.Units.SI.HeatFlux R_t_Glob
     "Total transmitted flux, radiation above the canopy";
 
 //   Modelica.SIunits.HeatFlux R_SunCan_Glob "total short-wave radiation to the canopy";
-  Modelica.SIunits.HeatFlux R_SunCan_PAR;
-  Modelica.SIunits.HeatFlux R_FlrCan_PAR;
-  Modelica.SIunits.HeatFlux R_SunCan_NIR;
-  Modelica.SIunits.HeatFlux R_PAR_Can "Total PAR absorbed by the canopy";
+  Modelica.Units.SI.HeatFlux R_SunCan_PAR;
+  Modelica.Units.SI.HeatFlux R_FlrCan_PAR;
+  Modelica.Units.SI.HeatFlux R_SunCan_NIR;
+  Modelica.Units.SI.HeatFlux R_PAR_Can "Total PAR absorbed by the canopy";
   Real R_PAR_Can_umol(unit="umol/(s.m2)") "Total PAR absorbed by the canopy";
 //   Modelica.SIunits.HeatFlux R_SunFlr_Glob "total short-wave radiation to the floor";
-  Modelica.SIunits.HeatFlux R_SunFlr_PAR;
-  Modelica.SIunits.HeatFlux R_SunFlr_NIR;
+  Modelica.Units.SI.HeatFlux R_SunFlr_PAR;
+  Modelica.Units.SI.HeatFlux R_SunFlr_NIR;
 
-  Modelica.SIunits.Power P_SunCov_Glob;
-  Modelica.SIunits.Power P_SunCan_Glob;
-  Modelica.SIunits.Power P_SunAir_Glob;
-  Modelica.SIunits.Power P_SunFlr_Glob;
+  Modelica.Units.SI.Power P_SunCov_Glob;
+  Modelica.Units.SI.Power P_SunCan_Glob;
+  Modelica.Units.SI.Power P_SunAir_Glob;
+  Modelica.Units.SI.Power P_SunFlr_Glob;
 
   Real tau_CF_NIR;
   Real rho_CF_NIR;

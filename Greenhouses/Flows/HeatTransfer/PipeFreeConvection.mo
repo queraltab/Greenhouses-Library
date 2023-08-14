@@ -4,16 +4,15 @@ model PipeFreeConvection
   extends Modelica.Thermal.HeatTransfer.Interfaces.Element1D;
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "floor surface";
-  parameter Modelica.SIunits.Length d
+  parameter Modelica.Units.SI.Area A "floor surface";
+  parameter Modelica.Units.SI.Length d
     "characteristic dimension of the pipe (pipe diameter)";
-  parameter Modelica.SIunits.Length l
-    "length of heating pipes per m^2 floor surface";
+  parameter Modelica.Units.SI.Length l "length of heating pipes per m^2 floor surface";
   parameter Boolean freePipe=true
     "true if pipe in free air, false if hindered pipe";
 
   /*********************** Variables ***********************/
-  Modelica.SIunits.CoefficientOfHeatTransfer HEC_ab;
+  Modelica.Units.SI.CoefficientOfHeatTransfer HEC_ab;
   Real alpha;
 
 equation

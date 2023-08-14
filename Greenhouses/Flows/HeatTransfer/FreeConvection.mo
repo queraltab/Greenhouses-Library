@@ -5,9 +5,9 @@ model FreeConvection "Upward or downward heat exchange by free convection from a
   extends Modelica.Thermal.HeatTransfer.Interfaces.Element1D;
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Angle phi
+  parameter Modelica.Units.SI.Angle phi
     "inclination of the surface (0 if horizontal, 25 for typical cover)";
-  parameter Modelica.SIunits.Area A "floor surface";
+  parameter Modelica.Units.SI.Area A "floor surface";
   parameter Boolean floor=false
     "true if floor, false if cover or thermal screen heat flux";
   //parameter Real X=3 "characteristic dimension of the floor - half diameter of Benard-cell" annotation (Dialog(enable=(not upward)));
@@ -22,11 +22,11 @@ model FreeConvection "Upward or downward heat exchange by free convection from a
   Real SC=0 "Screen closure 1:closed, 0:open" annotation (Dialog(enable=(thermalScreen and not floor), group="Varying inputs"));
 
   /*********************** Variables ***********************/
-  Modelica.SIunits.CoefficientOfHeatTransfer HEC_ab;
+  Modelica.Units.SI.CoefficientOfHeatTransfer HEC_ab;
   Real s=11
     "Slope of the differentiable switch function for vapour pressure differences";
-  Modelica.SIunits.CoefficientOfHeatTransfer HEC_up_flr;
-  Modelica.SIunits.CoefficientOfHeatTransfer HEC_down_flr;
+  Modelica.Units.SI.CoefficientOfHeatTransfer HEC_up_flr;
+  Modelica.Units.SI.CoefficientOfHeatTransfer HEC_down_flr;
 
 equation
   if not floor then

@@ -2,25 +2,24 @@ within Greenhouses.Components.HVAC.HeatStorageWaterHeater;
 model MetalWall
 parameter Integer N(min=1)=10 "Number of cells";
 // Wall initial values:
-parameter Modelica.SIunits.Area Aext "Heat exchange area external side";
-parameter Modelica.SIunits.Area Aint "Heat exchange area internal side";
- final parameter Modelica.SIunits.Area Aext_i=Aext/N
+  parameter Modelica.Units.SI.Area Aext "Heat exchange area external side";
+  parameter Modelica.Units.SI.Area Aint "Heat exchange area internal side";
+  final parameter Modelica.Units.SI.Area Aext_i=Aext/N
     "Heat exchange area of one cell external side";
- final parameter Modelica.SIunits.Area Aint_i=Aint/N
+  final parameter Modelica.Units.SI.Area Aint_i=Aint/N
     "Heat exchange area of one cell internal side";
-  parameter Modelica.SIunits.Mass M_wall "Wall mass";
-  parameter Modelica.SIunits.SpecificHeatCapacity c_wall
+  parameter Modelica.Units.SI.Mass M_wall "Wall mass";
+  parameter Modelica.Units.SI.SpecificHeatCapacity c_wall
     "Specific heat capacity of the metal";
-  parameter Modelica.SIunits.Temperature Tstart_wall_1
+  parameter Modelica.Units.SI.Temperature Tstart_wall_1
     "Wall temperature start value - first node"
     annotation (Dialog(tab="Initialization"));
-  parameter Modelica.SIunits.Temperature Tstart_wall_end
-    "Wall temperature start value - last node"
-    annotation (Dialog(tab="Initialization"));
-  parameter Modelica.SIunits.Temperature Tstart_wall[N]=linspace(
-        Tstart_wall_1,
-        Tstart_wall_end,
-        N) "Start value of temperature vector (initialized by default)"
+  parameter Modelica.Units.SI.Temperature Tstart_wall_end
+    "Wall temperature start value - last node" annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.Temperature Tstart_wall[N]=linspace(
+      Tstart_wall_1,
+      Tstart_wall_end,
+      N) "Start value of temperature vector (initialized by default)"
     annotation (Dialog(tab="Initialization"));
 /*Numerical Option */
 parameter Boolean steadystate_T_wall=true
@@ -32,14 +31,14 @@ parameter Boolean steadystate_T_wall=true
       Placement(transformation(extent={{-30,-20},{30,0}}), iconTransformation(
           extent={{-32,-40},{28,-20}})));
 /* METAL WALL */
-Modelica.SIunits.Temperature T_wall[N](start=linspace(
-          Tstart_wall_1,
-          Tstart_wall_end,
-          N)) "Cell temperatures";
+  Modelica.Units.SI.Temperature T_wall[N](start=linspace(
+        Tstart_wall_1,
+        Tstart_wall_end,
+        N)) "Cell temperatures";
 
-Modelica.SIunits.Power Q_tot_int
+  Modelica.Units.SI.Power Q_tot_int
     "Total heat flux exchanged by the internal thermal port";
-Modelica.SIunits.Power Q_tot_ext
+  Modelica.Units.SI.Power Q_tot_ext
     "Total heat flux exchanged by the external thermal port";
 equation
   for j in 1:N loop

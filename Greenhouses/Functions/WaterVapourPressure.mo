@@ -4,7 +4,7 @@ function WaterVapourPressure
   input Real TSat(unit="degC",displayUnit="degC",
                                           nominal=20) "Saturation temperature";
   input Real RH(nominal=70) "(0...100) %, Relative humidity";
-  output Modelica.SIunits.Pressure VP "Water vapour pressure";
+  output Modelica.Units.SI.Pressure VP "Water vapour pressure";
 
 algorithm
   VP := RH/100*Greenhouses.Functions.SaturatedVapourPressure(TSat);

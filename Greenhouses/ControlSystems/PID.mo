@@ -1,8 +1,8 @@
 within Greenhouses.ControlSystems;
 model PID "ISA PID controller with anti-windup"
   parameter Real Kp "Proportional gain (normalised units)";
-  parameter Modelica.SIunits.Time Ti "Integral time";
-  parameter Modelica.SIunits.Time Td=0 "Derivative time";
+  parameter Modelica.Units.SI.Time Ti "Integral time";
+  parameter Modelica.Units.SI.Time Td=0 "Derivative time";
   parameter Real Nd=1 "Derivative action up to Nd / Td rad/s";
   parameter Real Ni=1 "Ni*Ti is the time constant of anti-windup compensation";
   parameter Real b=1 "Setpoint weight on proportional action";

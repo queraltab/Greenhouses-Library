@@ -1,8 +1,9 @@
 within Greenhouses.ControlSystems.Climate;
 model Control_ThScreen
   "Controller for the thermal screen closure including a crack for dehumidification (of 2% and 4%)"
-  Modelica.SIunits.HeatFlux R_Glob_can=0 annotation(Dialog(group="Varying inputs"));
-  Modelica.SIunits.HeatFlux R_Glob_can_min=32 annotation(Dialog(group="Varying inputs"));
+  Modelica.Units.SI.HeatFlux R_Glob_can=0 annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.HeatFlux R_Glob_can_min=32
+    annotation (Dialog(group="Varying inputs"));
 
   Integer op;
   Integer cl;
@@ -54,7 +55,7 @@ model Control_ThScreen
     annotation (Placement(transformation(extent={{-31,-66},{-22,-76}},
                                                                    rotation=
            0)));
-  Modelica.StateGraph.StepWithSignal opening_ColdDay(nIn=3)
+  Modelica.StateGraph.StepWithSignal opening_ColdDay(nIn=3, nOut=1)
     annotation (Placement(transformation(extent={{18,4},{28,14}})));
   Modelica.Blocks.Logical.Timer timer annotation (Placement(transformation(
             extent={{26,-12},{34,-4}}, rotation=0)));
@@ -66,7 +67,7 @@ model Control_ThScreen
              0)));
   Modelica.StateGraph.Step open(nOut=1, nIn=2) annotation (Placement(
         transformation(extent={{70,-18},{90,2}}, rotation=0)));
-  Modelica.StateGraph.StepWithSignal opening_WarmDay(nIn=3)
+  Modelica.StateGraph.StepWithSignal opening_WarmDay(nIn=3, nOut=1)
     annotation (Placement(transformation(extent={{18,-30},{28,-20}})));
   Modelica.Blocks.Logical.Timer timer1
                                       annotation (Placement(transformation(
@@ -78,7 +79,7 @@ model Control_ThScreen
         60)
     annotation (Placement(transformation(extent={{40,-46},{48,-38}}, rotation=
              0)));
-  Modelica.StateGraph.StepWithSignal closing_ColdDay
+  Modelica.StateGraph.StepWithSignal closing_ColdDay(nIn=1, nOut=1)
     annotation (Placement(transformation(extent={{2,-76},{12,-66}})));
   Modelica.Blocks.Logical.Timer timer2
                                       annotation (Placement(transformation(

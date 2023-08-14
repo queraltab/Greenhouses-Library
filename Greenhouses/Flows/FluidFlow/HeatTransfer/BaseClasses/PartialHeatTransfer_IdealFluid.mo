@@ -8,7 +8,7 @@ partial model PartialHeatTransfer_IdealFluid
   // Inputs provided to heat transfer model
 
   //Outputs defined by the heat transfer model
-  output Modelica.SIunits.HeatFlux q_dot "Heat flux";
+  output Modelica.Units.SI.HeatFlux q_dot "Heat flux";
 
   Greenhouses.Interfaces.Heat.ThermalPortL thermalPortL annotation (Placement(
         transformation(extent={{-24,56},{20,76}}), iconTransformation(extent={{

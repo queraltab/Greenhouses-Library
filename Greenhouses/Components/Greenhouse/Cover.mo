@@ -1,25 +1,26 @@
 within Greenhouses.Components.Greenhouse;
 model Cover
   /******************** Parameters ********************/
-  parameter Modelica.SIunits.Density rho=2600 "Cover density (glass)";
-  parameter Modelica.SIunits.SpecificHeatCapacity c_p=840
+  parameter Modelica.Units.SI.Density rho=2600 "Cover density (glass)";
+  parameter Modelica.Units.SI.SpecificHeatCapacity c_p=840
     "Cover specific thermal capacity";
-  parameter Modelica.SIunits.Length h_cov=1e-3 "Thickness of the cover";
-  parameter Modelica.SIunits.Angle phi "Roof slope";
-  parameter Modelica.SIunits.Area A "Greenhouse floor surface";
+  parameter Modelica.Units.SI.Length h_cov=1e-3 "Thickness of the cover";
+  parameter Modelica.Units.SI.Angle phi "Roof slope";
+  parameter Modelica.Units.SI.Area A "Greenhouse floor surface";
 
   /******************** Initialization ********************/
-  parameter Modelica.SIunits.Temperature T_start=298 annotation(Dialog(tab = "Initialization"));
+  parameter Modelica.Units.SI.Temperature T_start=298
+    annotation (Dialog(tab="Initialization"));
   parameter Boolean steadystate=false
     "if true, sets the derivative of T to zero during Initialization"
     annotation (Dialog(group="Initialization options", tab="Initialization"));
 
   /******************** Variables ********************/
-  Modelica.SIunits.HeatFlowRate Q_flow "Heat flow rate from port_a -> port_b";
-  Modelica.SIunits.Temperature T;
-  Modelica.SIunits.Power P_SunCov "Absorbed power by the surface";
-  Modelica.SIunits.HeatFlowRate L_cov "latent heat to the cover";
-  Modelica.SIunits.Volume V;
+  Modelica.Units.SI.HeatFlowRate Q_flow "Heat flow rate from port_a -> port_b";
+  Modelica.Units.SI.Temperature T;
+  Modelica.Units.SI.Power P_SunCov "Absorbed power by the surface";
+  Modelica.Units.SI.HeatFlowRate L_cov "latent heat to the cover";
+  Modelica.Units.SI.Volume V;
 
   /******************** Connectors ********************/
 protected

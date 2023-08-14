@@ -3,8 +3,8 @@ model ForcedVentilationRate
   "Air exchange rate due to a forced ventilation system"
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "Greenhouse floor surface";
-  parameter Modelica.SIunits.VolumeFlowRate phi_VentForced
+  parameter Modelica.Units.SI.Area A "Greenhouse floor surface";
+  parameter Modelica.Units.SI.VolumeFlowRate phi_VentForced
     "Air flow capacity of the forced ventilation system";
 
   /*********************** Varying inputs ***********************/

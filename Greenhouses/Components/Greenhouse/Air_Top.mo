@@ -3,13 +3,14 @@ model Air_Top "Temperature of air in top compartment computed by static equation
 its small heat capacity"
 
   /******************** Parameters ********************/
-  parameter Modelica.SIunits.SpecificHeatCapacity c_p=1e3;
-  parameter Modelica.SIunits.Length h_Top
+  parameter Modelica.Units.SI.SpecificHeatCapacity c_p=1e3;
+  parameter Modelica.Units.SI.Length h_Top
     "Height of the top air compartment (mean greenhouse height minus thermal screen height)";
-  parameter Modelica.SIunits.Area A "Greenhouse floor surface";
+  parameter Modelica.Units.SI.Area A "Greenhouse floor surface";
 
   /******************** Initialization ********************/
-  parameter Modelica.SIunits.Temperature T_start=298 annotation(Dialog(tab = "Initialization"));
+  parameter Modelica.Units.SI.Temperature T_start=298
+    annotation (Dialog(tab="Initialization"));
   parameter Boolean steadystate=false
     "if true, sets the derivative of T to zero during Initialization"
     annotation (Dialog(group="Initialization options", tab="Initialization"));
@@ -18,16 +19,16 @@ its small heat capacity"
     annotation (Dialog(group="Initialization options", tab="Initialization"));
 
   /******************** Variables ********************/
-  Modelica.SIunits.HeatFlowRate Q_flow "Heat flow rate from port_a -> port_b";
-  Modelica.SIunits.Temperature T;
-  Modelica.SIunits.Density rho;
+  Modelica.Units.SI.HeatFlowRate Q_flow "Heat flow rate from port_a -> port_b";
+  Modelica.Units.SI.Temperature T;
+  Modelica.Units.SI.Density rho;
   Real RH(min=0,max=1) "Relative humidity of the air";
-  Modelica.SIunits.Volume V;
+  Modelica.Units.SI.Volume V;
 
-  Modelica.SIunits.Pressure P_atm=101325 "Atmospheric pressure";
+  Modelica.Units.SI.Pressure P_atm=101325 "Atmospheric pressure";
   Real R_a = 287 "Gas constant for dry air R_a = R_d (J/(kg.K))";
   Real R_s = 461.5;
-  Modelica.SIunits.MassFraction w_air "Air humidity ratio (kg water / kg dry air)";
+  Modelica.Units.SI.MassFraction w_air "Air humidity ratio (kg water / kg dry air)";
 
   /******************** Connectors ********************/
 protected

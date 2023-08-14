@@ -4,12 +4,12 @@ model MV_ventilation
   extends Greenhouses.Interfaces.Vapour.Element1D;
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "floor surface";
-  parameter Modelica.SIunits.Angle phi=25/180*Modelica.Constants.pi
+  parameter Modelica.Units.SI.Area A "floor surface";
+  parameter Modelica.Units.SI.Angle phi=25/180*Modelica.Constants.pi
     "inclination of the roof (0 if horizontal, 25 for typical cover)";
   parameter Real fr_window=0.078 "number of windows per m2 greenhouse";
-  parameter Modelica.SIunits.Length l "length of the window";
-  parameter Modelica.SIunits.Length h "width of the window";
+  parameter Modelica.Units.SI.Length l "length of the window";
+  parameter Modelica.Units.SI.Length h "width of the window";
   parameter Boolean thermalScreen=false
     "presence of a thermal screen in the greenhouse";
   parameter Boolean topAir=false
@@ -17,18 +17,21 @@ model MV_ventilation
 
   /*********************** Varying inputs ***********************/
 
-  Modelica.SIunits.Angle theta_l=0 "window opening at the leeside side" annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Angle theta_w=0 "window opening at the windward side" annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Temperature T_a=300 "Temperature at port a (filled square)"
+  Modelica.Units.SI.Angle theta_l=0 "window opening at the leeside side"
     annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Temperature T_b=300 "Temperature at port b (empty square)"
+  Modelica.Units.SI.Angle theta_w=0 "window opening at the windward side"
     annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Velocity u= 0 "Wind speed"     annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Temperature T_a=300 "Temperature at port a (filled square)"
+    annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Temperature T_b=300 "Temperature at port b (empty square)"
+    annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Velocity u=0 "Wind speed"
+    annotation (Dialog(group="Varying inputs"));
 
   /*********************** Variables ***********************/
   Real f_vent;
   Real R=8314 "gas constant";
-  Modelica.SIunits.MolarMass M_H = 18 "kg/kmol";
+  Modelica.Units.SI.MolarMass M_H=18 "kg/kmol";
 
   HeatAndVapourTransfer.VentilationRates.NaturalVentilationRate_1
     airExchangeRate(

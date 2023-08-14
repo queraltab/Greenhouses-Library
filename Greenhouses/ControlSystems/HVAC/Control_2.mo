@@ -1,11 +1,12 @@
 within Greenhouses.ControlSystems.HVAC;
 model Control_2 "Controller for the CHP and heat pump and TES"
-  parameter Modelica.SIunits.Temperature T_max=273.15+60 "Fill level of tank 1";
-  parameter Modelica.SIunits.Temperature T_min = 273.15+50
+  parameter Modelica.Units.SI.Temperature T_max=273.15 + 60 "Fill level of tank 1";
+  parameter Modelica.Units.SI.Temperature T_min=273.15 + 50
     "Lowest level of tank 1 and 2";
-  parameter Modelica.SIunits.Time waitTime=2 "Wait time, between operations";
-  parameter Modelica.SIunits.MassFlowRate Mdot_max=38 "Maximum mass flow rate in the greenhouse heating circuit";
-  Modelica.SIunits.MassFlowRate Mdot_1ry = 30 annotation(Dialog(group="Varying inputs"));
+  parameter Modelica.Units.SI.Time waitTime=2 "Wait time, between operations";
+  parameter Modelica.Units.SI.MassFlowRate Mdot_max=38
+    "Maximum mass flow rate in the greenhouse heating circuit";
+  Modelica.Units.SI.MassFlowRate Mdot_1ry=30 annotation (Dialog(group="Varying inputs"));
 
   Modelica.StateGraph.InitialStep All_off(nIn=1, nOut=1)
                                           annotation (Placement(transformation(

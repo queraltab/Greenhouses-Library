@@ -2,9 +2,9 @@ within Greenhouses.Examples;
 model Greenhouse_1
   "Simulation of a Venlo-type greenhouse for tomato crop cultivated from 10Dec-22Nov (weather data from TMY)"
   extends Modelica.Icons.Example;
-  Modelica.SIunits.HeatFlux q_low;
-  Modelica.SIunits.HeatFlux q_up;
-  Modelica.SIunits.HeatFlux q_tot;
+  Modelica.Units.SI.HeatFlux q_low;
+  Modelica.Units.SI.HeatFlux q_up;
+  Modelica.Units.SI.HeatFlux q_tot;
 
   Real E_th_tot_kWhm2(unit="kW.h/m2");
   Real E_th_tot(unit="kW.h");

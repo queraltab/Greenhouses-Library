@@ -4,19 +4,25 @@ partial model PartialPlateHeatExchangerCorrelation
       extends
     Greenhouses.Flows.FluidFlow.HeatTransfer.BaseClasses.PartialHeatTransferCorrelation;
 
-  parameter Modelica.SIunits.Length a_hat(min=0,displayUnit="mm",nominal=0.002) = 0.002
-    "Corrugation amplitude"
-  annotation (Dialog(group="Geometry"));
+  parameter Modelica.Units.SI.Length a_hat(
+    min=0,
+    displayUnit="mm",
+    nominal=0.002) = 0.002 "Corrugation amplitude" annotation (Dialog(group="Geometry"));
 
-  parameter Modelica.SIunits.Angle phi(min=0,displayUnit="deg",nominal=1) = Modelica.SIunits.Conversions.from_deg(45)
-    "Corrugation angle"
-  annotation (Dialog(group="Geometry"));
-  parameter Modelica.SIunits.Length Lambda(min=0,displayUnit="mm",nominal=0.01) = 0.0126
-    "Corrugation wavelength"
-  annotation (Dialog(group="Geometry"));
-  parameter Modelica.SIunits.Length B_p(min=0,displayUnit="cm",nominal=0.10) = 0.1
-    "Plate flow width"
-  annotation (Dialog(group="Geometry"));
+  parameter Modelica.Units.SI.Angle phi(
+    min=0,
+    displayUnit="deg",
+    nominal=1) = Modelica.Units.Conversions.from_deg(45) "Corrugation angle"
+    annotation (Dialog(group="Geometry"));
+  parameter Modelica.Units.SI.Length Lambda(
+    min=0,
+    displayUnit="mm",
+    nominal=0.01) = 0.0126 "Corrugation wavelength"
+    annotation (Dialog(group="Geometry"));
+  parameter Modelica.Units.SI.Length B_p(
+    min=0,
+    displayUnit="cm",
+    nominal=0.10) = 0.1 "Plate flow width" annotation (Dialog(group="Geometry"));
 
   // ... and the more specific ones
   parameter Real X =   2 * Modelica.Constants.pi*a_hat/Lambda "Wave number"
@@ -24,14 +30,12 @@ partial model PartialPlateHeatExchangerCorrelation
   parameter Real Phi = 1/6 * ( 1 + sqrt(1+X^2) + 4 * sqrt(1+X^2/2))
     "Enhancement factor"
   annotation (Dialog(group="Advanced geometry"));
-  replaceable parameter Modelica.SIunits.Length d_h = 4 * a_hat / Phi
-    "Characteristic length"
-  annotation (Dialog(group="Advanced geometry"));
-  replaceable parameter Modelica.SIunits.Area A_cro = 2 * a_hat * B_p
-    "Cross-sectional area"
-  annotation (Dialog(group="Advanced geometry"));
+  replaceable parameter Modelica.Units.SI.Length d_h=4*a_hat/Phi
+    "Characteristic length" annotation (Dialog(group="Advanced geometry"));
+  replaceable parameter Modelica.Units.SI.Area A_cro=2*a_hat*B_p "Cross-sectional area"
+    annotation (Dialog(group="Advanced geometry"));
 
-  Modelica.SIunits.CoefficientOfHeatTransfer alpha "The calculated HTC";
+  Modelica.Units.SI.CoefficientOfHeatTransfer alpha "The calculated HTC";
 
 equation
   // Enhanced HTC,we can use the projected area for HX calculations
