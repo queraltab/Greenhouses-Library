@@ -250,8 +250,6 @@ equation
       color={255,0,0},
       smooth=Smooth.None), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-100,-100},{100,100}})),
-    experiment(StopTime=5000),
-    __Dymola_experimentSetupOutput,
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
         graphics={
         Ellipse(

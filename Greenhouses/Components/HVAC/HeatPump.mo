@@ -156,8 +156,6 @@ equation
           lineColor={0,128,255},
           fillPattern=FillPattern.Solid,
           fillColor={0,128,255})}),
-    experiment(StopTime=3600),
-    __Dymola_experimentSetupOutput,
     Documentation(info="<html>
     <p><big>This heat pump model does not consider part-load operation (ON/OFF regulation is assumed). The heating power and the heat soure temperature are computed by assuming a linear correlation between their actual and nominal values. The electrical efficiency is computed assuming a constant second-law efficiency, parameter of the model.</p>
     <p><big>The primary fluid is modeled by means of 1-D incompressible fluid flow model (<a href=\"modelica://Greenhouses.Flows.FluidFlow.Cell1DimInc\">Cell1DimInc</a>), in which a dynamic energy balance and static mass and momentum balances are applied on the fluid. The heat transfer in the primary fluid is modeled with a constant heat transfer coefficient. However, it can be changed to other heat transfer models through the HeatTransfer parameter in the fluid model.</p>
