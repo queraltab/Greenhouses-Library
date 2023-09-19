@@ -64,10 +64,8 @@ final FluidState={fluidState})
   Medium.Temperature T "Fluid temperature";
   //Modelica.SIunits.Temperature T_wall "Internal wall temperature";
   Medium.Density rho "Fluid cell density";
-  Modelica.Units.SI.SpecificEnthalpy hnode_su(start=hstart)
-    "Enthalpy state variable at inlet node";
-  Modelica.Units.SI.SpecificEnthalpy hnode_ex(start=hstart)
-    "Enthalpy state variable at outlet node";
+  Modelica.Units.SI.SpecificEnthalpy hnode_su "Enthalpy state variable at inlet node";
+  Modelica.Units.SI.SpecificEnthalpy hnode_ex "Enthalpy state variable at outlet node";
   Modelica.Units.SI.HeatFlux qdot "heat flux at each cell";
 //   Modelica.SIunits.CoefficientOfHeatTransfer U
 //     "Heat transfer coefficient between wall and working fluid";

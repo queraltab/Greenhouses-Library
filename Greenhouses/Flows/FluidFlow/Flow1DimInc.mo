@@ -20,7 +20,7 @@ public
     Modelica.Units.SI.MassFlowRate Mdot;
     Modelica.Units.SI.Pressure p;
  end SummaryClass;
- SummaryClass Summary( T_profile(n=N, T_cell = Cells[:].T), n=N, h = Cells[:].h, hnode = hnode_, rho = Cells.rho, T = Cells.T, Mdot = InFlow.m_flow, p = Cells[1].p);
+ SummaryClass Summary(T_profile(n=N, T_cell = Cells[:].T), n=N, h = Cells[:].h, hnode = hnode_, rho = Cells.rho, T = Cells.T, Mdot = InFlow.m_flow, p = Cells[1].p);
 /************ Thermal and fluid ports ***********/
   Modelica.Fluid.Interfaces.FluidPort_a
                                       InFlow(redeclare package Medium = Medium)
