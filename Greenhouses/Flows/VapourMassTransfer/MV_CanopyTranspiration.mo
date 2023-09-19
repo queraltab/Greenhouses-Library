@@ -4,7 +4,7 @@ model MV_CanopyTranspiration
   extends Greenhouses.Interfaces.Vapour.Element1D;
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "floor surface";
+  parameter Modelica.Units.SI.Area A "floor surface";
 //   parameter Boolean rb_constant=true
 //     "if true, constant boundary layer resistance of the canopy for vapour transport, else, computed with d and u";
 //  parameter Modelica.SIunits.Length d=0.5 "characteristic length of the leaf" annotation (Dialog(enable=not rb_constant));
@@ -15,9 +15,10 @@ model MV_CanopyTranspiration
     annotation (Dialog(group="Varying inputs"));
 //  Modelica.SIunits.Velocity u = 0.04 "Local air velocity"   annotation (Dialog(group="Varying inputs",enable=not rb_constant));
 //  Modelica.SIunits.HeatFlux I_g = 300 "outside global solar radiation"  annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.HeatFlux R_can = 100 "Global irradiation above the canopy"  annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.HeatFlux R_can=100 "Global irradiation above the canopy"
+    annotation (Dialog(group="Varying inputs"));
 
-  Modelica.SIunits.Temperature T_can=300 "Temperature of the canopy (port a)"
+  Modelica.Units.SI.Temperature T_can=300 "Temperature of the canopy (port a)"
     annotation (Dialog(group="Varying inputs"));
 //  Modelica.SIunits.Temperature T_air=300
 //    "Temperature of the inside air (port b)"
@@ -26,12 +27,12 @@ model MV_CanopyTranspiration
   /*********************** Variables ***********************/
   Real E_kgsm2(unit="kg/(s.m2)") "Canopy transpiration";
   Real E_Wm2(unit="W/m2") "Canopy transpiration";
-  Modelica.SIunits.PressureCoefficient gamma=65.8 "psychometric constant";
+  Modelica.Units.SI.PressureCoefficient gamma=65.8 "psychometric constant";
   Real r_s(unit="s/m") "stomatal resistance of the leaves";
   Real r_bV(unit="s/m") "boundary layer resistance to heat mass of the leaves";
 //  Real r_bH(unit="s/m") "boundary layer resistance to heat transfer of the leaves";
-  Modelica.SIunits.Density rho=1.23 "of the air";
-  Modelica.SIunits.SpecificHeatCapacity C_p=1005 "of the air";
+  Modelica.Units.SI.Density rho=1.23 "of the air";
+  Modelica.Units.SI.SpecificHeatCapacity C_p=1005 "of the air";
 
   Real Le=0.89 "Lewis number for vapour";
   Real r_min(unit="s/m") "minimum possible canopy resistance";
@@ -39,19 +40,18 @@ model MV_CanopyTranspiration
   Real r_T "temperature resistance";
   Real r_CO2 "CO2 resistance";
   Real r_VP "vapour pressure deficit resistance";
-  Modelica.SIunits.Pressure VP_can "vapour pressure of the canopy";
-  Modelica.SIunits.Pressure VP_air "vapour pressure of interior air";
+  Modelica.Units.SI.Pressure VP_can "vapour pressure of the canopy";
+  Modelica.Units.SI.Pressure VP_air "vapour pressure of interior air";
   Real C_1(unit="W/m2");
   Real C_2(unit="W/m2");
   Real C_3(unit="1/K2");
   Real C_4;
   Real C_5(unit="1/Pa2");
-  Modelica.SIunits.Temperature T_m
+  Modelica.Units.SI.Temperature T_m
     "temperature at which the resistance on the leave is minimal";
   Real VEC_canAir(unit="kg/(s.Pa.m2)") "Mass transfer coefficient";
   Real S_rs;
-  Modelica.SIunits.SpecificEnergy DELTAH=2.45e6
-    "latent heat of water vaporization";
+  Modelica.Units.SI.SpecificEnergy DELTAH=2.45e6 "latent heat of water vaporization";
 
   Real r_s2(unit="s/m");
 

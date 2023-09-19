@@ -1,10 +1,12 @@
-within Greenhouses.Components.Greenhouse;
+﻿within Greenhouses.Components.Greenhouse;
 model Illumination "Artificial Illumination of the greenhouse"
   /******************** Parameters ********************/
   parameter Boolean power_input=false
     "True if input is a power flux, False if input is the total power and greenhouse floor surface";
-  parameter Modelica.SIunits.Power P_el "Total electrical power" annotation(Dialog(enable=not power_input));
-  parameter Modelica.SIunits.Area A "floor surface" annotation(Dialog(enable=not power_input));
+  parameter Modelica.Units.SI.Power P_el "Total electrical power"
+    annotation (Dialog(enable=not power_input));
+  parameter Modelica.Units.SI.Area A "floor surface"
+    annotation (Dialog(enable=not power_input));
   parameter Real p_el(unit="W/m2")= 55 annotation(Dialog(enable=power_input));
 
   parameter Real K1_PAR=0.7 annotation (Dialog(group="Canopy"));
@@ -21,20 +23,20 @@ model Illumination "Artificial Illumination of the greenhouse"
     annotation (Dialog(group="Varying inputs"));
 
   /******************** Variables ********************/
-  Modelica.SIunits.HeatFlux R_NIR "near infrared radiation";
-  Modelica.SIunits.HeatFlux R_PAR "visible light";
+  Modelica.Units.SI.HeatFlux R_NIR "near infrared radiation";
+  Modelica.Units.SI.HeatFlux R_PAR "visible light";
   Real tau_CF_NIR;
   Real rho_CF_NIR;
   Real alpha_CanNIR;
   Real alpha_FlrNIR;
-  Modelica.SIunits.HeatFlux R_IluCan_PAR;
-  Modelica.SIunits.HeatFlux R_FlrCan_PAR;
-  Modelica.SIunits.HeatFlux R_IluCan_NIR;
-  Modelica.SIunits.HeatFlux R_IluFlr_PAR;
-  Modelica.SIunits.HeatFlux R_IluFlr_NIR;
-  Modelica.SIunits.HeatFlux R_PAR_Can;
+  Modelica.Units.SI.HeatFlux R_IluCan_PAR;
+  Modelica.Units.SI.HeatFlux R_FlrCan_PAR;
+  Modelica.Units.SI.HeatFlux R_IluCan_NIR;
+  Modelica.Units.SI.HeatFlux R_IluFlr_PAR;
+  Modelica.Units.SI.HeatFlux R_IluFlr_NIR;
+  Modelica.Units.SI.HeatFlux R_PAR_Can;
   Real P(unit="W/m2");
-  Modelica.SIunits.Power W_el;
+  Modelica.Units.SI.Power W_el;
   Real eta_GlobPAR(unit="umol/J")= 1.8
     "umol PAR / J global radiation, High pressure sodium lamps";
   Real R_PAR_Can_umol(unit="umol/(s.m2)");

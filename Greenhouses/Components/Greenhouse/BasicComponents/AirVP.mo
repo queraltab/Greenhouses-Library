@@ -4,20 +4,21 @@ model AirVP
   import Greenhouse = Greenhouses;
 
   /*********************** Parameters ***********************/
-  Modelica.SIunits.Volume V_air=1e3 annotation(Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Volume V_air=1e3 annotation (Dialog(group="Varying inputs"));
 
   /*********************** Initialization ***********************/
-  parameter Modelica.SIunits.Pressure VP_start=0.04e5 annotation(Dialog(tab = "Initialization"));
+  parameter Modelica.Units.SI.Pressure VP_start=0.04e5
+    annotation (Dialog(tab="Initialization"));
   parameter Boolean steadystate=true
     "if true, sets the derivative of VP to zero during Initialization"     annotation (Dialog(group="Initialization options", tab="Initialization"));
 
   /*********************** Variables ***********************/
   Real R(unit="J/(kmol.K)")=8314 "gas constant";
-  Modelica.SIunits.Temperature T=291;
-  Modelica.SIunits.MolarMass M_H = 18e-3
+  Modelica.Units.SI.Temperature T=291;
+  Modelica.Units.SI.MolarMass M_H=18e-3
     "kg/mol masse molaire du vapeur d'eau dans l'air";
-  Modelica.SIunits.MassFlowRate MV_flow;
-  Modelica.SIunits.Pressure VP(start=VP_start);
+  Modelica.Units.SI.MassFlowRate MV_flow;
+  Modelica.Units.SI.Pressure VP(start=VP_start);
 
   /******************** Connectors ********************/
   Greenhouse.Interfaces.Vapour.WaterMassPort_a port(VP(start=VP_start))

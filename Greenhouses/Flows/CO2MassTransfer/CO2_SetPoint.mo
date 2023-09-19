@@ -1,7 +1,7 @@
 within Greenhouses.Flows.CO2MassTransfer;
 model CO2_SetPoint
   "The CO2 setpoint depends on the global radiation and the aperture of the ventilation openings"
-  parameter Modelica.SIunits.HeatFlux I_g_max=500
+  parameter Modelica.Units.SI.HeatFlux I_g_max=500
     "Outdoor global radiation at which the maximum CO2 concentration set-point could be reached";
   parameter Real U_vents_max=0.1
     "Window aperture at which the minimum CO2 concentration set-point could be reached";
@@ -11,7 +11,8 @@ model CO2_SetPoint
     "Minimum CO2 concentration set-point";
 
   Real U_vents=0 "Window aperture" annotation(Dialog(group="Varying inputs"));
-  Modelica.SIunits.HeatFlux I_g=300 "Outdoor global radiation" annotation(Dialog(group="Varying inputs"));
+  Modelica.Units.SI.HeatFlux I_g=300 "Outdoor global radiation"
+    annotation (Dialog(group="Varying inputs"));
 
   Real f_Ig;
   Real g_Uv;

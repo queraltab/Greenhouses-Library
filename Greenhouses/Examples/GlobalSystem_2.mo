@@ -132,8 +132,8 @@ model GlobalSystem_2
   Greenhouses.Flows.FluidFlow.Reservoirs.SinkP sinkP_air(redeclare package
       Medium = Modelica.Media.Air.SimpleAir, p0=100000)
     annotation (Placement(transformation(extent={{14,-58},{26,-46}})));
-  Greenhouses.Flows.FluidFlow.Reservoirs.SourceMdot sourceMdot(redeclare
-      package Medium = Modelica.Media.Air.SimpleAir, Mdot_0=1)
+  Greenhouses.Flows.FluidFlow.Reservoirs.SourceMdot sourceMdot(redeclare package
+              Medium = Modelica.Media.Air.SimpleAir, Mdot_0=1)
     annotation (Placement(transformation(extent={{26,-44},{14,-32}})));
   Modelica.Blocks.Sources.RealExpression set_Mdot_air(y=Mdot_air)
     annotation (Placement(transformation(extent={{42,-40},{28,-28}})));
@@ -365,6 +365,7 @@ Storage"),
                 pattern = LinePattern.None,
                 fillPattern = FillPattern.Solid,
                 points={{-36,60},{64,0},{-36,-60},{-36,60}})}),
+    experiment(StopTime=3600),
     Documentation(info="<html>
     <p><big>This is a second example aiming at illustrating the energy flows interacting between the greenhouse and generation and storage units. In the previous example <a href=\"modelica://Greenhouses.Examples.GlobalSystem_1\">GlobalSystem_1</a>, a considerable part of the produced electricity is sold back to the grid. This electricity, in the absence of subsidies, is remunerated at a price close to the wholesale price of electricity. Because the retail price of electricity is significantly higher than the wholesale price, prosumers have a clear advantage at maximizing their level of self-consumption. </p>
     <p><big>In order to evaluate the potential of such activity, we propose a new case study in which we maximize the self-consumption rate through the use of a heat pump. To that end, the heat pump model from the Greenhouses library is used and is connected in series with the CHP. The excess of electricity that initially was being fed back to the grid is now used to power the heat pump. The heat pump is sized so that its nominal electrical capacity is equal to the excess of electricity of the CHP in nominal conditions. A heat-driven control decides when to run the CHP. The heat pump is powered only by the CHP, and therefore never running independently. Electricity excess not consumed by the heat pump is sold to the grid. The greenhouse electrical demand not covered by the CHP is covered by the grid. The electricity and gas prices are the same than in <a href=\"modelica://Greenhouses.Examples.GlobalSystem_1\">GlobalSystem_1</a>. </p>

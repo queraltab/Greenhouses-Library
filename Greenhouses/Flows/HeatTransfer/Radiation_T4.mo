@@ -3,7 +3,7 @@ model Radiation_T4 "Lumped thermal element for radiation heat transfer"
   extends Modelica.Thermal.HeatTransfer.Interfaces.Element1D;
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "floor surface";
+  parameter Modelica.Units.SI.Area A "floor surface";
   parameter Real epsilon_a "emissivity coefficient of surface A";
   parameter Real epsilon_b "emissivity coefficient of surface B";
 

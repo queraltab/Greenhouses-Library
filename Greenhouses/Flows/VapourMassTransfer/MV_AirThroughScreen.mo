@@ -4,31 +4,31 @@ model MV_AirThroughScreen
   extends Greenhouses.Interfaces.Vapour.Element1D;
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "floor surface";
+  parameter Modelica.Units.SI.Area A "floor surface";
   parameter Boolean input_f_AirTop=true
     "True if input the exchange rate, False to compute it in this model";
   parameter Real f_AirTop=0
     "Air exchange rate computed in model AirThroughScreen"                       annotation (Dialog(enable=(input_f_AirTop)));
-  parameter Modelica.SIunits.Length W "length of the screen when closed (SC=1)"
-                                                                                annotation (Dialog(enable=(not input_f_AirTop)));
+  parameter Modelica.Units.SI.Length W "length of the screen when closed (SC=1)"
+    annotation (Dialog(enable=(not input_f_AirTop)));
   parameter Real K "Screen flow coefficient (check values in Info)" annotation (Dialog(enable=(not input_f_AirTop)));
 
   /*********************** Varying inputs ***********************/
   Real SC=0 "Screen closure 1:closed, 0:open" annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Temperature T_a=300 "Temperature at port a (filled square)"
-    annotation (Dialog(enable=(not input_f_AirTop),group="Varying inputs"));
-  Modelica.SIunits.Temperature T_b=300 "Temperature at port b (empty square)"
-    annotation (Dialog(enable=(not input_f_AirTop),group="Varying inputs"));
+  Modelica.Units.SI.Temperature T_a=300 "Temperature at port a (filled square)"
+    annotation (Dialog(enable=(not input_f_AirTop), group="Varying inputs"));
+  Modelica.Units.SI.Temperature T_b=300 "Temperature at port b (empty square)"
+    annotation (Dialog(enable=(not input_f_AirTop), group="Varying inputs"));
 
   /*********************** Variables ***********************/
   Real f_AirTopp;
-  Modelica.SIunits.Density rho_air;
-  Modelica.SIunits.Density rho_mean;
-  Modelica.SIunits.Density rho_top;
-  Modelica.SIunits.SpecificHeatCapacity c_p_air=1005;
+  Modelica.Units.SI.Density rho_air;
+  Modelica.Units.SI.Density rho_mean;
+  Modelica.Units.SI.Density rho_top;
+  Modelica.Units.SI.SpecificHeatCapacity c_p_air=1005;
   Real R=8314 "gas constant";
-  Modelica.SIunits.MolarMass M_H = 18;
-  Modelica.SIunits.TemperatureDifference dT;
+  Modelica.Units.SI.MolarMass M_H=18;
+  Modelica.Units.SI.TemperatureDifference dT;
   Real VEC_AirTop(unit="kg/(s.Pa.m2)") "Mass transfer coefficient";
 
 equation

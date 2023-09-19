@@ -10,7 +10,8 @@ model TomatoYieldModel
     "Total PAR absorbed by the canopy computed in the solar and illumination model" annotation (Dialog(group="Varying inputs"));
   Real CO2_air(unit="umol/mol")=600
     "CO2 concentration of the greenhouse air, umol CO2/mol air" annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Temperature T_canK=293.15 "Instantaneous canopy temperature" annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Temperature T_canK=293.15 "Instantaneous canopy temperature"
+    annotation (Dialog(group="Varying inputs"));
 
   //***************** Constant parameters characteristic of the plant ***************************//
   Real C_Buf_MAX(unit="mg/m2") = 20e3 "Maximum buffer capacity";
@@ -89,7 +90,7 @@ protected
   Real theta=0.7 "Degree of curvature of the electron transport rate";
   Real E_j(unit="J/mol")=37e3 "Activation energy for J_POT";
   Real H(unit="J/mol")=22e4 "Deactivation energy";
-  Modelica.SIunits.Temperature T_25K=298.15 "Reference temperature at 25ºC";
+  Modelica.Units.SI.Temperature T_25K=298.15 "Reference temperature at 25ºC";
   Real Rg(unit="J/(mol.K)")=8.314 "Molar gas constant";
   Real S(unit="J/(mol.K)")=710 "Entropy term";
   Real J_25Leaf_MAX(unit="umol/(m2.s)")=210
@@ -144,7 +145,7 @@ protected
   Real k=1 "Gain of the process to calculate the 24 hour mean temperature";
 
   /**************************** Variables ************************/
-  Modelica.SIunits.Temperature T_can24K;
+  Modelica.Units.SI.Temperature T_can24K;
 
   Real h_CBuf_MCairBuf "Inhibition coefficient";
   Real P(unit="umol/(m2.s)") "Gross photosynthesis rate at canopy level";

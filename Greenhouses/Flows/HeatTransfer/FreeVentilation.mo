@@ -3,12 +3,12 @@ model FreeVentilation "Heat exchange by ventilation"
   extends Modelica.Thermal.HeatTransfer.Interfaces.Element1D;
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "floor surface";
-  parameter Modelica.SIunits.Angle phi=25/180*Modelica.Constants.pi
+  parameter Modelica.Units.SI.Area A "floor surface";
+  parameter Modelica.Units.SI.Angle phi=25/180*Modelica.Constants.pi
     "inclination of the roof (0 if horizontal, 25 for typical cover)";
   parameter Real fr_window=0.078 "number of windows per m2 greenhouse";
-  parameter Modelica.SIunits.Length l "length of the window";
-  parameter Modelica.SIunits.Length h "width of the window";
+  parameter Modelica.Units.SI.Length l "length of the window";
+  parameter Modelica.Units.SI.Length h "width of the window";
   parameter Real f_leakage=1.5e-4 "Greenhouse leakage coefficient";
   parameter Boolean thermalScreen=false
     "presence of a thermal screen in the greenhouse";
@@ -17,14 +17,17 @@ model FreeVentilation "Heat exchange by ventilation"
 
   /*********************** Varying inputs ***********************/
 
-  Modelica.SIunits.Angle theta_l=0 "window opening at the leeside side" annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Angle theta_w=0 "window opening at the windward side" annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Velocity u= 0 "Wind speed"     annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Angle theta_l=0 "window opening at the leeside side"
+    annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Angle theta_w=0 "window opening at the windward side"
+    annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Velocity u=0 "Wind speed"
+    annotation (Dialog(group="Varying inputs"));
 
   /*********************** Variables ***********************/
-  Modelica.SIunits.CoefficientOfHeatTransfer HEC_ab;
-  Modelica.SIunits.Density rho_air=1.2;
-  Modelica.SIunits.SpecificHeatCapacity c_p_air=1005;
+  Modelica.Units.SI.CoefficientOfHeatTransfer HEC_ab;
+  Modelica.Units.SI.Density rho_air=1.2;
+  Modelica.Units.SI.SpecificHeatCapacity c_p_air=1005;
   Real f_vent;
 
   HeatAndVapourTransfer.VentilationRates.NaturalVentilationRate_1

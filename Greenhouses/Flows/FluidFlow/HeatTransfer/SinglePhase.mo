@@ -13,7 +13,7 @@ replaceable model LiquidCorrelation =
 
 //Modelica.SIunits.CoefficientOfHeatTransfer Unom
 //    "Nominal heat transfer coefficient- Average of liquid two phase and vapor";
-Modelica.SIunits.CoefficientOfHeatTransfer[n] U "Heat transfer coefficient";
+  Modelica.Units.SI.CoefficientOfHeatTransfer[n] U "Heat transfer coefficient";
 
   LiquidCorrelation   liquidCorrelation(  redeclare final package Medium = Medium, state = FluidState[1],  m_dot = M_dot, q_dot = q_dot[1]);
 

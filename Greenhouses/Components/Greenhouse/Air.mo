@@ -3,14 +3,15 @@ model Air
   /******************** Parameters ********************/
   parameter Integer N_rad=2
     "Short-wave radiations are 2: if sun and illumination; 1 if just sun";
-  parameter Modelica.SIunits.Density rho=1.2;
-  parameter Modelica.SIunits.SpecificHeatCapacity c_p=1e3;
-  parameter Modelica.SIunits.Area A "Greenhouse floor surface";
+  parameter Modelica.Units.SI.Density rho=1.2;
+  parameter Modelica.Units.SI.SpecificHeatCapacity c_p=1e3;
+  parameter Modelica.Units.SI.Area A "Greenhouse floor surface";
 
   Real h_Air(unit="m")=4 "Height of the main air zone" annotation(Dialog(group="Varying inputs"));
 
   /******************** Initialization ********************/
-  parameter Modelica.SIunits.Temperature T_start=298 annotation(Dialog(tab = "Initialization"));
+  parameter Modelica.Units.SI.Temperature T_start=298
+    annotation (Dialog(tab="Initialization"));
   parameter Boolean steadystate=false
     "if true, sets the derivative of T to zero during Initialization"
     annotation (Dialog(group="Initialization options", tab="Initialization"));
@@ -19,16 +20,16 @@ model Air
     annotation (Dialog(group="Initialization options", tab="Initialization"));
 
   /******************** Variables ********************/
-  Modelica.SIunits.HeatFlowRate Q_flow "Heat flow rate from port_a -> port_b";
-  Modelica.SIunits.Temperature T;
-  Modelica.SIunits.Power P_Air;
+  Modelica.Units.SI.HeatFlowRate Q_flow "Heat flow rate from port_a -> port_b";
+  Modelica.Units.SI.Temperature T;
+  Modelica.Units.SI.Power P_Air;
   Real RH(min=0,max=1) "Relative humidity of the air";
-  Modelica.SIunits.Volume V;
+  Modelica.Units.SI.Volume V;
 
-  Modelica.SIunits.Pressure P_atm=101325 "Atmospheric pressure";
+  Modelica.Units.SI.Pressure P_atm=101325 "Atmospheric pressure";
   Real R_a = 287 "Gas constant for dry air R_a = R_d (J/(kg.K))";
   Real R_s = 461.5;
-  Modelica.SIunits.MassFraction w_air "Air humidity ratio (kg water / kg dry air)";
+  Modelica.Units.SI.MassFraction w_air "Air humidity ratio (kg water / kg dry air)";
 
   /******************** Connectors ********************/
 protected
@@ -54,11 +55,11 @@ public
         rotation=-90,
         origin={-50,60})));
 equation
-  if cardinality(R_Air_Glob)==0 then
-    for i in 1:N_rad loop
+  for i in 1:N_rad loop
+    if cardinality(R_Air_Glob[i]) == 0 then
       R_Air_Glob[i]=0;
-    end for;
-  end if;
+    end if;
+  end for;
   P_Air = sum(R_Air_Glob)*A;
 
   V= A*h_Air;

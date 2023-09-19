@@ -12,13 +12,11 @@ model Heat_storage_hx_R
     Modelica.Media.Interfaces.PartialMedium "Medium in the component"
       annotation (choicesAllMatching = true);
 
-  parameter Modelica.SIunits.Length htot=1 "Total height of the tank";
-  parameter Modelica.SIunits.Length h1=0.3
+  parameter Modelica.Units.SI.Length htot=1 "Total height of the tank";
+  parameter Modelica.Units.SI.Length h1=0.3
     "Height of the bottom of the heat exchanger";
-  parameter Modelica.SIunits.Length h2=0.6
-    "Height of the top of the heat exchanger";
-  parameter Modelica.SIunits.Length h_T = 0.7
-    "Height of the temperature sensor";
+  parameter Modelica.Units.SI.Length h2=0.6 "Height of the top of the heat exchanger";
+  parameter Modelica.Units.SI.Length h_T=0.7 "Height of the temperature sensor";
 
   parameter Integer N=15 "Total number of cells";
   parameter Integer N1=integer(h1*N/htot)
@@ -28,49 +26,58 @@ model Heat_storage_hx_R
   parameter Integer N_T = integer(h_T*N/htot)
     "Cell corresponding to the tempearture sensor";
 
-  parameter Modelica.SIunits.Area A_amb=2
-    "Total heat exchange area from the tank to the ambient" annotation(group="Tank");
-  parameter Modelica.SIunits.Area A_hx=1
-    "Total heat exchanger area from in the heat exchanger" annotation(group="Heat exchanger");
-  parameter Modelica.SIunits.Volume V_tank=0.3 "Total capacity of the tank" annotation(group="Tank");
-  parameter Modelica.SIunits.Volume V_hx=0.005
-    "Internal volume of the heat exchanger" annotation(group="Heat exchanger");
-  parameter Modelica.SIunits.MassFlowRate Mdot_nom=0.1
-    "Nominal mass flow rate in the heat exchanger" annotation(group="Heat exchanger");
-  parameter Modelica.SIunits.CoefficientOfHeatTransfer U_amb=1
-    "Heat transfer coefficient between the tank and the ambient" annotation(group="Tank");
-  parameter Modelica.SIunits.CoefficientOfHeatTransfer Unom_hx=4000
-    "Nominal heat transfer coefficient in the heat exchanger" annotation(group="Heat exchanger");
+  parameter Modelica.Units.SI.Area A_amb=2
+    "Total heat exchange area from the tank to the ambient" annotation (group="Tank");
+  parameter Modelica.Units.SI.Area A_hx=1
+    "Total heat exchanger area from in the heat exchanger"
+    annotation (group="Heat exchanger");
+  parameter Modelica.Units.SI.Volume V_tank=0.3 "Total capacity of the tank"
+    annotation (group="Tank");
+  parameter Modelica.Units.SI.Volume V_hx=0.005 "Internal volume of the heat exchanger"
+    annotation (group="Heat exchanger");
+  parameter Modelica.Units.SI.MassFlowRate Mdot_nom=0.1
+    "Nominal mass flow rate in the heat exchanger" annotation (group="Heat exchanger");
+  parameter Modelica.Units.SI.CoefficientOfHeatTransfer U_amb=1
+    "Heat transfer coefficient between the tank and the ambient"
+    annotation (group="Tank");
+  parameter Modelica.Units.SI.CoefficientOfHeatTransfer Unom_hx=4000
+    "Nominal heat transfer coefficient in the heat exchanger"
+    annotation (group="Heat exchanger");
 
-parameter Modelica.SIunits.Mass M_wall_hx= 5
-    "Mass of the metal wall between the two fluids" annotation(group="Heat exchanger");
-parameter Modelica.SIunits.SpecificHeatCapacity c_wall_hx= 500
-    "Specific heat capacity of metal wall" annotation(group="Heat exchanger");
- parameter Modelica.SIunits.Power Wdot_res=3000
+  parameter Modelica.Units.SI.Mass M_wall_hx=5
+    "Mass of the metal wall between the two fluids" annotation (group="Heat exchanger");
+  parameter Modelica.Units.SI.SpecificHeatCapacity c_wall_hx=500
+    "Specific heat capacity of metal wall" annotation (group="Heat exchanger");
+  parameter Modelica.Units.SI.Power Wdot_res=3000
     "Nominal power of the electrical resistance";
- parameter Modelica.SIunits.Temperature Tmax = 273.15+90;
+  parameter Modelica.Units.SI.Temperature Tmax=273.15 + 90;
 
- parameter Modelica.SIunits.Pressure pstart_tank=1E5
-    "Tank pressure start value"      annotation (Dialog(tab="Initialization"));
-  parameter Modelica.SIunits.Temperature Tstart_inlet_tank=273.15+10
-    "Tank inlet temperature start value"
-     annotation (Dialog(tab="Initialization"));
-  parameter Modelica.SIunits.Temperature Tstart_outlet_tank=273.15+60
-    "Tank outlet temperature start value"
-     annotation (Dialog(tab="Initialization"));
-  parameter Modelica.SIunits.SpecificEnthalpy hstart_tank[N]=linspace(
-        MainFluid.specificEnthalpy_pT(pstart_tank,Tstart_inlet_tank),MainFluid.specificEnthalpy_pT(pstart_tank,Tstart_outlet_tank),
-        N) "Start value of enthalpy vector (initialized by default)" annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.Pressure pstart_tank=1E5 "Tank pressure start value"
+    annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.Temperature Tstart_inlet_tank=273.15 + 10
+    "Tank inlet temperature start value" annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.Temperature Tstart_outlet_tank=273.15 + 60
+    "Tank outlet temperature start value" annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.SpecificEnthalpy hstart_tank[N]=linspace(
+      MainFluid.specificEnthalpy_pTX(
+        pstart_tank,
+        Tstart_inlet_tank,
+        MainFluid.reference_X),
+      MainFluid.specificEnthalpy_pTX(
+        pstart_tank,
+        Tstart_outlet_tank,
+        MainFluid.reference_X),
+      N) "Start value of enthalpy vector (initialized by default)"
+    annotation (Dialog(tab="Initialization"));
 
-  parameter Modelica.SIunits.Pressure pstart_hx=1E5
-    "Heat exchanger pressure start value"
-                                     annotation (Dialog(tab="Initialization"));
-  parameter Modelica.SIunits.Temperature Tstart_inlet_hx=273.15+70
+  parameter Modelica.Units.SI.Pressure pstart_hx=1E5
+    "Heat exchanger pressure start value" annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.Temperature Tstart_inlet_hx=273.15 + 70
     "Heat exchanger inlet temperature start value"
-     annotation (Dialog(tab="Initialization"));
-  parameter Modelica.SIunits.Temperature Tstart_outlet_hx=273.15+50
+    annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.Temperature Tstart_outlet_hx=273.15 + 50
     "Heat exchanger outlet temperature start value"
-     annotation (Dialog(tab="Initialization"));
+    annotation (Dialog(tab="Initialization"));
 
   parameter Boolean steadystate_tank=true
     "if true, sets the derivative of h (working fluids enthalpy in each cell) to zero during Initialization"
@@ -243,8 +250,6 @@ equation
       color={255,0,0},
       smooth=Smooth.None), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-100,-100},{100,100}})),
-    experiment(StopTime=5000),
-    __Dymola_experimentSetupOutput,
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
         graphics={
         Ellipse(

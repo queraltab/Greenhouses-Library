@@ -1,6 +1,6 @@
 within Greenhouses.ControlSystems.Climate;
 model Control_Illu "Controller for the artificial illumination"
-  Modelica.SIunits.HeatFlux R_t_PAR=0 annotation(Dialog(group="Varying inputs"));
+  Modelica.Units.SI.HeatFlux R_t_PAR=0 annotation (Dialog(group="Varying inputs"));
   parameter Real R_illu(unit "W/m2")=100;
 
   Real E_acc(unit="W.s/m2") "Accumulated PAR light";
@@ -74,7 +74,7 @@ model Control_Illu "Controller for the artificial illumination"
         3600)
     annotation (Placement(transformation(extent={{40,52},{48,60}},   rotation=
              0)));
-  Modelica.StateGraph.StepWithSignal newDay(nIn=1)
+  Modelica.StateGraph.StepWithSignal newDay(nIn=1, nOut=1)
     annotation (Placement(transformation(extent={{10,66},{24,80}})));
 equation
   E_acc_limit = 1.2*1000*3600 "1.2 kWh/m2";

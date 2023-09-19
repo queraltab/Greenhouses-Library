@@ -3,9 +3,9 @@ model MassFlowDependence
 
 extends
     Greenhouses.Flows.FluidFlow.HeatTransfer.BaseClasses.PartialHeatTransferZones;
-Modelica.SIunits.CoefficientOfHeatTransfer Unom
+  Modelica.Units.SI.CoefficientOfHeatTransfer Unom
     "Nominal heat transfer coefficient- Average of liquid two phase and vapor";
-Modelica.SIunits.CoefficientOfHeatTransfer[n] U "Heat transfer coefficient";
+  Modelica.Units.SI.CoefficientOfHeatTransfer[n] U "Heat transfer coefficient";
 
 equation
   for i in 1:n loop

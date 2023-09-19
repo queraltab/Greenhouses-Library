@@ -2,10 +2,10 @@ within Greenhouses.Components.Greenhouse;
 model ThermalScreen
 
   /******************** Parameters ********************/
-  parameter Modelica.SIunits.Density rho=0.2e3;
-  parameter Modelica.SIunits.SpecificHeatCapacity c_p=1.8e3;
-  parameter Modelica.SIunits.Length h=0.35e-3 "thickness of the thermal screen";
-  parameter Modelica.SIunits.Area A "floor surface";
+  parameter Modelica.Units.SI.Density rho=0.2e3;
+  parameter Modelica.Units.SI.SpecificHeatCapacity c_p=1.8e3;
+  parameter Modelica.Units.SI.Length h=0.35e-3 "thickness of the thermal screen";
+  parameter Modelica.Units.SI.Area A "floor surface";
   parameter Real tau_FIR=0.15
     "FIR transmission coefficient of the thermal screen";
 
@@ -13,17 +13,18 @@ model ThermalScreen
   Real SC=0 "Screen closure 1:closed, 0:open" annotation (Dialog(group="Varying inputs"));
 
   /******************** Initialization ********************/
-  parameter Modelica.SIunits.Temperature T_start=298 annotation(Dialog(tab = "Initialization"));
+  parameter Modelica.Units.SI.Temperature T_start=298
+    annotation (Dialog(tab="Initialization"));
   parameter Boolean steadystate=false
     "if true, sets the derivative of T to zero during Initialization"
     annotation (Dialog(group="Initialization options", tab="Initialization"));
 
   /******************** Variables ********************/
-  Modelica.SIunits.HeatFlowRate Q_flow "Heat flow rate from port_a -> port_b";
-  Modelica.SIunits.Temperature T;
+  Modelica.Units.SI.HeatFlowRate Q_flow "Heat flow rate from port_a -> port_b";
+  Modelica.Units.SI.Temperature T;
   Real FF_i;
   Real FF_ij;
-  Modelica.SIunits.HeatFlowRate L_scr "latent heat to the screen";
+  Modelica.Units.SI.HeatFlowRate L_scr "latent heat to the screen";
 
   /******************** Connectors ********************/
 protected

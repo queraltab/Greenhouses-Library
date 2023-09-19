@@ -264,6 +264,7 @@ Storage"),
                 pattern = LinePattern.None,
                 fillPattern = FillPattern.Solid,
                 points={{-36,60},{64,0},{-36,-60},{-36,60}})}),
+    experiment(StopTime=3600),
     Documentation(info="<html>
 <p><big>This example intends to illustrate the energy flows interacting between the greenhouse and generation and storage units. To that end, the greenhouse model is used as a grey box and is connected to a CHP unit and a thermal energy storage tank.</p>
 <p><big>The storage tank is connected as an open buffer, i.e. the CHP is not connected to the greenhouse but only to the tank.</p>

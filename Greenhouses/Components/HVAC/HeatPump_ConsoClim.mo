@@ -10,12 +10,15 @@ model HeatPump_ConsoClim
     Modelica.Media.Interfaces.PartialMedium
     "Medium in the component evaporator"
       annotation (choicesAllMatching = true);
-  parameter Modelica.SIunits.Volume V=0.005 "Internal volume";
-  parameter Modelica.SIunits.Area A = 10 "Heat exchange area";
+  parameter Modelica.Units.SI.Volume V=0.005 "Internal volume";
+  parameter Modelica.Units.SI.Area A=10 "Heat exchange area";
   parameter Real COP_n=3.9505 "Nominal coefficient of performance";
-  parameter Modelica.SIunits.HeatFlowRate Q_dot_cd_n=10.02 "Nominal thermal power at the condenser";
-  parameter Modelica.SIunits.Temperature T_su_ev_n=7 "Nominal supply temperature at the evaporator";
-  parameter Modelica.SIunits.Temperature T_ex_cd_n=35 "Nominal exhaust temperature at the condenser";
+  parameter Modelica.Units.SI.HeatFlowRate Q_dot_cd_n=10.02
+    "Nominal thermal power at the condenser";
+  parameter Modelica.Units.SI.Temperature T_su_ev_n=7
+    "Nominal supply temperature at the evaporator";
+  parameter Modelica.Units.SI.Temperature T_ex_cd_n=35
+    "Nominal exhaust temperature at the condenser";
   parameter Real C0=0.949;
   parameter Real C1=-8.05;
   parameter Real C2=111.09;
@@ -28,17 +31,17 @@ model HeatPump_ConsoClim
   parameter Real b = 0.2299;
   parameter Boolean Variable_Compressor_Speed = false
     "Set false if the compressor speed is constant";
-  Modelica.SIunits.MassFlowRate m_dot_ev;
-  Modelica.SIunits.SpecificEnthalpy h_su_ev;
-  Modelica.SIunits.SpecificEnthalpy h_ex_ev;
-  Modelica.SIunits.HeatFlowRate Q_dot_cd;
-  Modelica.SIunits.HeatFlowRate Q_dot_ev;
-  Modelica.SIunits.HeatFlowRate Q_dot_cd_fl;
-  Modelica.SIunits.Temperature T_su_ev;
-  Modelica.SIunits.Temperature T_ex_cd;
-  Modelica.SIunits.InstantaneousPower W_dot_n;
-  Modelica.SIunits.InstantaneousPower W_dot_fl;
-  Modelica.SIunits.InstantaneousPower W_dot_cp;
+  Modelica.Units.SI.MassFlowRate m_dot_ev;
+  Modelica.Units.SI.SpecificEnthalpy h_su_ev;
+  Modelica.Units.SI.SpecificEnthalpy h_ex_ev;
+  Modelica.Units.SI.HeatFlowRate Q_dot_cd;
+  Modelica.Units.SI.HeatFlowRate Q_dot_ev;
+  Modelica.Units.SI.HeatFlowRate Q_dot_cd_fl;
+  Modelica.Units.SI.Temperature T_su_ev;
+  Modelica.Units.SI.Temperature T_ex_cd;
+  Modelica.Units.SI.InstantaneousPower W_dot_n;
+  Modelica.Units.SI.InstantaneousPower W_dot_fl;
+  Modelica.Units.SI.InstantaneousPower W_dot_cp;
   //Modelica.SIunits.InstantaneousPower W_dot_pl;
   Real COP;
   Real DELTA_T;
@@ -51,14 +54,15 @@ model HeatPump_ConsoClim
   Real PLR_30;
   Real EIRFPLR_30;
   Real COP_30;
-  Modelica.SIunits.HeatFlowRate Q_dot_30;
-  Modelica.SIunits.InstantaneousPower W_dot_30;
+  Modelica.Units.SI.HeatFlowRate Q_dot_30;
+  Modelica.Units.SI.InstantaneousPower W_dot_30;
 
-  parameter Modelica.SIunits.Temperature Th_start = 35+273.15
-    "Start value for the condenser temperature"      annotation(Dialog(tab="Initialization"));
-  parameter Modelica.SIunits.Temperature Tmax = 273.15 + 100
+  parameter Modelica.Units.SI.Temperature Th_start=35 + 273.15
+    "Start value for the condenser temperature"
+    annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.Temperature Tmax=273.15 + 100
     "Maximum temperature at the outlet";
-  parameter Modelica.SIunits.Time tau = 60 "Start-up time constant";
+  parameter Modelica.Units.SI.Time tau=60 "Start-up time constant";
   Modelica.Fluid.Interfaces.FluidPort_a
                            Supply_cd(redeclare package Medium = Medium1)
     annotation (Placement(transformation(extent={{80,-80},{100,-60}}),
@@ -86,7 +90,7 @@ model HeatPump_ConsoClim
     Ai=A,
     Unom=1000,
     redeclare package Medium = Medium1,
-    hstart=Medium1.specificEnthalpy_pT(1E5, Th_start),
+    hstart=Medium1.specificEnthalpy_pTX(1E5, Th_start, Medium1.reference_X),
     redeclare model HeatTransfer =
         Greenhouses.Flows.FluidFlow.HeatTransfer.Constant,
     pstart=10000000000,

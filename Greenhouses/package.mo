@@ -2,10 +2,8 @@ within ;
 package Greenhouses "The Greenhouses Modelica Library"
 
 
-  annotation (uses(
-    conversion(noneFromVersion=""),
-    DymolaCommands(version="1.1"),
-    Modelica(version="3.2.2")),      Icon(coordinateSystem(preserveAspectRatio=
+  annotation (uses(Modelica(version="4.0.0")),
+                                     Icon(coordinateSystem(preserveAspectRatio=
             false, extent={{-100,-100},{100,100}}), graphics={Bitmap(extent={{
             -100,-100},{100,100}}, fileName=
             "modelica://Greenhouses/Resources/Images/GreenhousesLibraryIcon.jpg")}),
@@ -35,5 +33,7 @@ Copyright &copy; 2017-2018, Thermodynamics Laboratory (University of Liege).
 </html>"),
   Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
       graphics={Bitmap(extent={{-100,100},{100,-100}}, fileName=
-            "modelica://Greenhouses/Resources/Images/GreenhousesLibraryIcon.jpg")}));
+            "modelica://Greenhouses/Resources/Images/GreenhousesLibraryIcon.jpg")}),
+  version="1",
+  conversion(noneFromVersion=""));
 end Greenhouses;

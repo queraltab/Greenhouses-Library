@@ -1,8 +1,7 @@
 within Greenhouses.Flows.FluidFlow;
 model Cell1DimInc "1-D incompressible fluid flow model"
   import Greenhouse = Greenhouses;
-  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater
-                                                                                constrainedby
+  replaceable package Medium = Modelica.Media.Water.ConstantPropertyLiquidWater constrainedby
     Modelica.Media.Interfaces.PartialMedium "Medium in the component"
       annotation (choicesAllMatching = true);
 
@@ -21,14 +20,14 @@ model Cell1DimInc "1-D incompressible fluid flow model"
 /************ Geometric characteristics **************/
   parameter Integer Nt(min=1)=1 "Number of cells in parallel";
   constant Real pi = Modelica.Constants.pi "pi-greco";
-  parameter Modelica.SIunits.Volume Vi "Volume of a single cell";
-  parameter Modelica.SIunits.Area Ai "Lateral surface of a single cell";
-  parameter Modelica.SIunits.MassFlowRate Mdotnom "Nominal fluid flow rate";
-  parameter Modelica.SIunits.CoefficientOfHeatTransfer Unom
+  parameter Modelica.Units.SI.Volume Vi "Volume of a single cell";
+  parameter Modelica.Units.SI.Area Ai "Lateral surface of a single cell";
+  parameter Modelica.Units.SI.MassFlowRate Mdotnom "Nominal fluid flow rate";
+  parameter Modelica.Units.SI.CoefficientOfHeatTransfer Unom
     "Nominal Heat transfer coefficient ";
   /************ FLUID INITIAL VALUES ***************/
-parameter Modelica.SIunits.Pressure pstart "Fluid pressure start value"
-                                     annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.Pressure pstart "Fluid pressure start value"
+    annotation (Dialog(tab="Initialization"));
   parameter Medium.SpecificEnthalpy hstart=1E5 "Start value of enthalpy"
     annotation (Dialog(tab="Initialization"));
 /****************** NUMERICAL OPTIONS  ***********************/
@@ -59,21 +58,19 @@ final FluidState={fluidState})
 /***************  VARIABLES ******************/
   Medium.ThermodynamicState  fluidState;
   Medium.AbsolutePressure p(start=pstart);
-  Modelica.SIunits.MassFlowRate M_dot(start=Mdotnom/Nt);
+  Modelica.Units.SI.MassFlowRate M_dot(start=Mdotnom/Nt);
   Medium.SpecificEnthalpy h(start=hstart, stateSelect = StateSelect.always)
     "Fluid specific enthalpy at the cells";
   Medium.Temperature T "Fluid temperature";
   //Modelica.SIunits.Temperature T_wall "Internal wall temperature";
   Medium.Density rho "Fluid cell density";
-  Modelica.SIunits.SpecificEnthalpy hnode_su(start=hstart)
-    "Enthalpy state variable at inlet node";
-  Modelica.SIunits.SpecificEnthalpy hnode_ex(start=hstart)
-    "Enthalpy state variable at outlet node";
-  Modelica.SIunits.HeatFlux qdot "heat flux at each cell";
+  Modelica.Units.SI.SpecificEnthalpy hnode_su "Enthalpy state variable at inlet node";
+  Modelica.Units.SI.SpecificEnthalpy hnode_ex "Enthalpy state variable at outlet node";
+  Modelica.Units.SI.HeatFlux qdot "heat flux at each cell";
 //   Modelica.SIunits.CoefficientOfHeatTransfer U
 //     "Heat transfer coefficient between wall and working fluid";
-  Modelica.SIunits.Power Q_tot "Total heat flux exchanged by the thermal port";
-  Modelica.SIunits.Mass M_tot "Total mass of the fluid in the component";
+  Modelica.Units.SI.Power Q_tot "Total heat flux exchanged by the thermal port";
+  Modelica.Units.SI.Mass M_tot "Total mass of the fluid in the component";
 /***********************************  EQUATIONS ************************************/
 equation
   /* Fluid Properties */

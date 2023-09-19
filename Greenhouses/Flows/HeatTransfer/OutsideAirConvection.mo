@@ -4,15 +4,16 @@ model OutsideAirConvection
   extends Modelica.Thermal.HeatTransfer.Interfaces.Element1D;
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "floor surface";
-  parameter Modelica.SIunits.Angle phi
+  parameter Modelica.Units.SI.Area A "floor surface";
+  parameter Modelica.Units.SI.Angle phi
     "inclination of the surface (0 if horizontal, 25 for typical cover)";
 
   /*********************** Varying inputs ***********************/
-  Modelica.SIunits.Velocity u= 0 "Wind speed"     annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Velocity u=0 "Wind speed"
+    annotation (Dialog(group="Varying inputs"));
 
   /*********************** Variables ***********************/
-  Modelica.SIunits.CoefficientOfHeatTransfer HEC_ab;
+  Modelica.Units.SI.CoefficientOfHeatTransfer HEC_ab;
   Real alpha;
   Real s=11
     "Slope of the differentiable switch function for vapour pressure differences";

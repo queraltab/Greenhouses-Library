@@ -6,14 +6,14 @@ model MuleyManglik1999
   extends
     Greenhouses.Flows.FluidFlow.HeatTransfer.BaseClasses.PartialPlateHeatExchangerCorrelation;
 
-  parameter Modelica.SIunits.ReynoldsNumber Re_lam =  400 "Fully laminar";
-  parameter Modelica.SIunits.ReynoldsNumber Re_tur = 1000 "Fully turbulent";
-  Modelica.SIunits.ReynoldsNumber Re(min=0);
+  parameter Modelica.Units.SI.ReynoldsNumber Re_lam=400 "Fully laminar";
+  parameter Modelica.Units.SI.ReynoldsNumber Re_tur=1000 "Fully turbulent";
+  Modelica.Units.SI.ReynoldsNumber Re(min=0);
   Real lamTur(min=-0.1,max=1.1);
-  Modelica.SIunits.PrandtlNumber Pr(min=0);
-  Modelica.SIunits.NusseltNumber Nu(min=0);
-  Modelica.SIunits.NusseltNumber Nu_lam(min=0);
-  Modelica.SIunits.NusseltNumber Nu_tur(min=0);
+  Modelica.Units.SI.PrandtlNumber Pr(min=0);
+  Modelica.Units.SI.NusseltNumber Nu(min=0);
+  Modelica.Units.SI.NusseltNumber Nu_lam(min=0);
+  Modelica.Units.SI.NusseltNumber Nu_tur(min=0);
 
   Medium.Density rho;
   Medium.Temperature T;
@@ -23,8 +23,8 @@ model MuleyManglik1999
   Medium.DynamicViscosity eta_f_w "Viscosity of fluid at wall temperature";
   Medium.ThermalConductivity lambda;
   Medium.ThermodynamicState state_f_w "Thermodynamic state at wall";
-  Modelica.SIunits.VolumeFlowRate V_dot "Volume flow";
-  Modelica.SIunits.Velocity w "Fluid velocity";
+  Modelica.Units.SI.VolumeFlowRate V_dot "Volume flow";
+  Modelica.Units.SI.Velocity w "Fluid velocity";
 
   Real commonTerm;
 
@@ -60,13 +60,11 @@ equation
   Nu = (1-lamTur)*Nu_lam + lamTur*Nu_tur;
 
   commonTerm = Pr^(1/3) * ( eta/eta_f_w) ^(0.14);
-  Nu_tur = (2.668e-1 - 6.967e-3*phi + 7.244e-5*phi^2)
-  * ( 2.078e+1 - 5.094e+1*Phi + 4.116e+1*Phi^2 - 1.015e+1*Phi^3)
-  * Re^( 0.728+0.0543*sin( Modelica.Constants.pi * phi/Modelica.SIunits.Conversions.from_deg(45) + 3.7))
-  * commonTerm;
+  Nu_tur =(2.668e-1 - 6.967e-3*phi + 7.244e-5*phi^2)*(2.078e+1 - 5.094e+1*Phi +
+    4.116e+1*Phi^2 - 1.015e+1*Phi^3)*Re^(0.728 + 0.0543*sin(Modelica.Constants.pi*phi/
+    Modelica.Units.Conversions.from_deg(45) + 3.7))*commonTerm;
 
-  Nu_lam = 0.44*(phi/Modelica.SIunits.Conversions.from_deg(30))^(0.38)
-  * Re^(1/2) * commonTerm;
+  Nu_lam =0.44*(phi/Modelica.Units.Conversions.from_deg(30))^(0.38)*Re^(1/2)*commonTerm;
 
   annotation (Documentation(info="<html>
 <dl><dt>article <a name=\"Muley1999\">(</a>Muley1999)</dt>

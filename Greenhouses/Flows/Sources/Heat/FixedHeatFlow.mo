@@ -1,6 +1,6 @@
 within Greenhouses.Flows.Sources.Heat;
 model FixedHeatFlow "Fixed heat flow boundary condition"
-  parameter Modelica.SIunits.HeatFlowRate Q_flow "Fixed heat flow rate at port";
+  parameter Modelica.Units.SI.HeatFlowRate Q_flow "Fixed heat flow rate at port";
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_b port annotation (
       Placement(transformation(extent={{90,-10},{110,10}}, rotation=0)));

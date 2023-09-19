@@ -13,11 +13,12 @@ model MC_ventilation
   Real SC=0 "Screen closure 1:closed, 0:open" annotation (Dialog(group="Varying inputs",enable=thermalScreen));
   Real U_vents(min=0,max=1)=0
     "From 0 to 1, control of the aperture of the roof vents"                             annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Temperature T_a=300 "Temperature at port a (filled square)"
+  Modelica.Units.SI.Temperature T_a=300 "Temperature at port a (filled square)"
     annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Temperature T_b=300 "Temperature at port b (empty square)"
+  Modelica.Units.SI.Temperature T_b=300 "Temperature at port b (empty square)"
     annotation (Dialog(group="Varying inputs"));
-  Modelica.SIunits.Velocity u= 0 "Wind speed"     annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Velocity u=0 "Wind speed"
+    annotation (Dialog(group="Varying inputs"));
 
   /*********************** Variables ***********************/
   Real f_vent;

@@ -16,18 +16,18 @@ model DittusBoelter1930
   parameter Real b = 0.800 "Reynolds exponent";
   parameter Real c = 0.400 "Prandl exponent: 0.4 heating, 0.3 cooling";
 
-  Modelica.SIunits.Length cLen(min=0) "Characteristic length";
-  Modelica.SIunits.Velocity cVel "Characteristic velocity";
+  Modelica.Units.SI.Length cLen(min=0) "Characteristic length";
+  Modelica.Units.SI.Velocity cVel "Characteristic velocity";
 
-  Modelica.SIunits.ReynoldsNumber Re(min=0);
-  Modelica.SIunits.PrandtlNumber Pr(min=0);
-  Modelica.SIunits.NusseltNumber Nu(min=0);
+  Modelica.Units.SI.ReynoldsNumber Re(min=0);
+  Modelica.Units.SI.PrandtlNumber Pr(min=0);
+  Modelica.Units.SI.NusseltNumber Nu(min=0);
 
   Medium.ThermalConductivity lambda;
   Medium.DynamicViscosity eta;
   Medium.Density rho;
 
-  Modelica.SIunits.VolumeFlowRate V_dot;
+  Modelica.Units.SI.VolumeFlowRate V_dot;
 
 equation
   rho = Medium.density(state);
@@ -50,7 +50,7 @@ equation
 annotation(Documentation(info="<html>
 
 <p><big> The model <b>DittusBoelter</b> extends the partial model
- <a href=\"modelica://ThermoCycle.Components.HeatFlow.HeatTransfer.BaseClasses.PartialSinglePhaseCorrelation\">PartialSinglePhaseCorrelation\</a> and allows the user to define
+ <a href=\"modelica://ThermoCycle.Components.HeatFlow.HeatTransfer.BaseClasses.PartialSinglePhaseCorrelation\">PartialSinglePhaseCorrelation</a> and allows the user to define
  the value of the hydraulic diameter for the calculation of the heat transfer coefficient based on the DittusBoelter correlation.
  <p></p>
 </html>"));

@@ -5,12 +5,12 @@ partial model PartialHeatTransferZones_IdealFluid
 extends
     Greenhouses.Flows.FluidFlow.HeatTransfer.BaseClasses.PartialHeatTransfer_IdealFluid;
 
-input Modelica.SIunits.MassFlowRate Mdotnom "Nomnial Mass flow rate";
-input Modelica.SIunits.CoefficientOfHeatTransfer Unom
+  input Modelica.Units.SI.MassFlowRate Mdotnom "Nomnial Mass flow rate";
+  input Modelica.Units.SI.CoefficientOfHeatTransfer Unom
     "Nominal heat transfer coefficient liquid side";
-input Modelica.SIunits.MassFlowRate M_dot "Inlet massflow";
+  input Modelica.Units.SI.MassFlowRate M_dot "Inlet massflow";
 
-input Modelica.SIunits.Temperature T_fluid "Temperature of the fluid";
+  input Modelica.Units.SI.Temperature T_fluid "Temperature of the fluid";
 
 annotation(Documentation(info="<html>
 

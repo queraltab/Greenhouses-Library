@@ -1,10 +1,10 @@
 within Greenhouses.Components.Greenhouse.BasicComponents;
 model Layer
   /******************** Parameters ********************/
-  parameter Modelica.SIunits.Density rho;
-  parameter Modelica.SIunits.SpecificHeatCapacity c_p;
-  Modelica.SIunits.Volume V=1  annotation (Dialog(group="Varying inputs"));
-  parameter Modelica.SIunits.Area A "floor surface";
+  parameter Modelica.Units.SI.Density rho;
+  parameter Modelica.Units.SI.SpecificHeatCapacity c_p;
+  Modelica.Units.SI.Volume V=1 annotation (Dialog(group="Varying inputs"));
+  parameter Modelica.Units.SI.Area A "floor surface";
 
   /******************** Initialization ********************/
   parameter Boolean steadystate=true
@@ -12,8 +12,8 @@ model Layer
     annotation (Dialog(group="Initialization options", tab="Initialization"));
 
   /******************** Variables ********************/
-  Modelica.SIunits.HeatFlowRate Q_flow "Heat flow rate from port_a -> port_b";
-  Modelica.SIunits.Temperature T;
+  Modelica.Units.SI.HeatFlowRate Q_flow "Heat flow rate from port_a -> port_b";
+  Modelica.Units.SI.Temperature T;
 
   /******************** Connectors ********************/
 protected

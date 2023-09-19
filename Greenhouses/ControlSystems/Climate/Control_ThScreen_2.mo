@@ -1,9 +1,10 @@
 within Greenhouses.ControlSystems.Climate;
 model Control_ThScreen_2
   "Controller for the thermal screen closure and crack for humidity and temperature"
-  Modelica.SIunits.HeatFlux R_Glob_can=0 annotation(Dialog(group="Varying inputs"));
-  Modelica.SIunits.HeatFlux R_Glob_can_min=32 annotation(Dialog(group="Varying inputs"));
-  Modelica.SIunits.Temperature T_air=293.15 annotation(Dialog(group="Varying inputs"));
+  Modelica.Units.SI.HeatFlux R_Glob_can=0 annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.HeatFlux R_Glob_can_min=32
+    annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Temperature T_air=293.15 annotation (Dialog(group="Varying inputs"));
 
   Integer op;
   Integer cl;
@@ -54,7 +55,7 @@ model Control_ThScreen_2
     annotation (Placement(transformation(extent={{-31,-46},{-22,-56}},
                                                                    rotation=
            0)));
-  Modelica.StateGraph.StepWithSignal opening_ColdDay
+  Modelica.StateGraph.StepWithSignal opening_ColdDay(nIn=1, nOut=1)
     annotation (Placement(transformation(extent={{2,32},{12,42}})));
   Modelica.Blocks.Logical.Timer timer annotation (Placement(transformation(
             extent={{10,16},{18,24}},  rotation=0)));
@@ -65,7 +66,7 @@ model Control_ThScreen_2
              0)));
   Modelica.StateGraph.Step open(nOut=1, nIn=2) annotation (Placement(
         transformation(extent={{52,10},{72,30}}, rotation=0)));
-  Modelica.StateGraph.StepWithSignal opening_WarmDay
+  Modelica.StateGraph.StepWithSignal opening_WarmDay(nIn=1, nOut=1)
     annotation (Placement(transformation(extent={{2,-2},{12,8}})));
   Modelica.Blocks.Logical.Timer timer1
                                       annotation (Placement(transformation(
@@ -75,7 +76,7 @@ model Control_ThScreen_2
   Modelica.Blocks.Logical.GreaterEqualThreshold greaterEqual1(threshold=32*60)
     annotation (Placement(transformation(extent={{24,-18},{32,-10}}, rotation=
              0)));
-  Modelica.StateGraph.StepWithSignal closing_ColdDay
+  Modelica.StateGraph.StepWithSignal closing_ColdDay(nIn=1, nOut=1)
     annotation (Placement(transformation(extent={{2,-56},{12,-46}})));
   Modelica.Blocks.Logical.Timer timer2
                                       annotation (Placement(transformation(

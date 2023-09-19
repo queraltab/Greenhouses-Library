@@ -1,12 +1,13 @@
 within Greenhouses.ControlSystems.Climate;
 model Uvents_T_Mdot
   "PI for the window's opening. The control is based on the maximum air temperature allowed in the greenhouse."
-  Modelica.SIunits.Temperature T_air=293.15 annotation(Dialog(group="Varying inputs"));
-  Modelica.SIunits.Temperature T_air_sp=293.15 annotation(Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Temperature T_air=293.15 annotation (Dialog(group="Varying inputs"));
+  Modelica.Units.SI.Temperature T_air_sp=293.15
+    annotation (Dialog(group="Varying inputs"));
 
-  Modelica.SIunits.MassFlowRate Mdot=0.528 annotation(Dialog(group="Varying inputs"));
+  Modelica.Units.SI.MassFlowRate Mdot=0.528 annotation (Dialog(group="Varying inputs"));
 
-  Modelica.SIunits.Temperature Tmax_tomato=299.15;
+  Modelica.Units.SI.Temperature Tmax_tomato=299.15;
   parameter Real U_max=1;
   Modelica.Blocks.Interfaces.RealOutput y
     annotation (Placement(transformation(extent={{100,-10},{120,10}}),

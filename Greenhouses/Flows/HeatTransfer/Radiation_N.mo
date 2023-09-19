@@ -2,7 +2,7 @@ within Greenhouses.Flows.HeatTransfer;
 model Radiation_N "Lumped thermal element for radiation heat transfer"
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "floor surface";
+  parameter Modelica.Units.SI.Area A "floor surface";
   parameter Real epsilon_a "emissivity coefficient of surface A";
   parameter Real epsilon_b "emissivity coefficient of surface B";
 //   parameter Modelica.SIunits.Temperature T_inlet_min=333.15
@@ -23,7 +23,7 @@ model Radiation_N "Lumped thermal element for radiation heat transfer"
     annotation (Dialog(group="Varying inputs"));
 
   Real dT4[N];
-  Modelica.SIunits.HeatFlowRate Q_flow;
+  Modelica.Units.SI.HeatFlowRate Q_flow;
   Real REC_ab(unit="W/(m2.K4)");
 
   // Discretization

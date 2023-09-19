@@ -3,12 +3,13 @@ model Canopy
   /********************* Parameters ***********************/
   parameter Integer N_rad=2
     "Short-wave radiations are 2: if sun and illumination; 1 if just sun";
-  parameter Modelica.SIunits.HeatCapacity Cap_leaf=1200
+  parameter Modelica.Units.SI.HeatCapacity Cap_leaf=1200
     "heat capacity of a square meter of canopy leaves";
-  parameter Modelica.SIunits.Area A "floor surface";
+  parameter Modelica.Units.SI.Area A "floor surface";
 
   /******************* Initialization *********************/
-  parameter Modelica.SIunits.Temperature T_start=298 annotation(Dialog(tab = "Initialization"));
+  parameter Modelica.Units.SI.Temperature T_start=298
+    annotation (Dialog(tab="Initialization"));
   parameter Boolean steadystate=false
     "if true, sets the derivative of T to zero during Initialization"
     annotation (Dialog(group="Initialization options", tab="Initialization"));
@@ -18,12 +19,12 @@ model Canopy
     annotation (Dialog(group="Varying inputs"));
 
   /********************** Variables ***********************/
-  Modelica.SIunits.HeatFlowRate Q_flow
+  Modelica.Units.SI.HeatFlowRate Q_flow
     "Heat flow rate from long-wave radiation and convection";
-  Modelica.SIunits.Temperature T;
-  Modelica.SIunits.Power P_Can
+  Modelica.Units.SI.Temperature T;
+  Modelica.Units.SI.Power P_Can
     "Total heat flow rate to the canopy from solar short-wave radiation";
-  Modelica.SIunits.HeatFlowRate L_can "latent heat to the canopy";
+  Modelica.Units.SI.HeatFlowRate L_can "latent heat to the canopy";
   Real FF;
 
   /********************* Connectors *********************/
@@ -49,11 +50,11 @@ public
         transformation(extent={{-50,60},{-10,100}}), iconTransformation(extent=
             {{-50,60},{-10,100}})));
 equation
-  if cardinality(R_Can_Glob)==0 then
     for i in 1:N_rad loop
-      R_Can_Glob[i]=0;
+      if cardinality(R_Can_Glob[i]) == 0 then
+        R_Can_Glob[i]=0;
+      end if;
     end for;
-  end if;
   P_Can = sum(R_Can_Glob)*A;
 
   // Long-wave radiation model

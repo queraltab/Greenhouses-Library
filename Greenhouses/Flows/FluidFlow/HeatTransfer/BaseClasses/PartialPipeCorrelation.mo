@@ -4,11 +4,10 @@ partial model PartialPipeCorrelation
       extends
     Greenhouses.Flows.FluidFlow.HeatTransfer.BaseClasses.PartialHeatTransferCorrelation;
 
-  parameter Modelica.SIunits.Length d_h "Hydraulic diameter"
-  annotation (Dialog(group="Geometry"));
-  parameter Modelica.SIunits.Area A_cro = Modelica.Constants.pi * d_h^2 / 4
-    "Cross-sectional area"
-  annotation (Dialog(group="Advanced geometry"));
+  parameter Modelica.Units.SI.Length d_h "Hydraulic diameter"
+    annotation (Dialog(group="Geometry"));
+  parameter Modelica.Units.SI.Area A_cro=Modelica.Constants.pi*d_h^2/4
+    "Cross-sectional area" annotation (Dialog(group="Advanced geometry"));
 
 annotation(Documentation(info="<html>
 <p><b><font style=\"font-size: 11pt; color: #008000; \">Pipe flow correlations</font></b></p>

@@ -8,14 +8,14 @@ model Gnielinski2010 "Gnielinski pipe equations"
   import Modelica.Constants.pi;
 
   // General variables
-  parameter Modelica.SIunits.Length d_i(min=0) = d_h
+  parameter Modelica.Units.SI.Length d_i(min=0) = d_h
     "Hydraulic diameter (2*V/A_lateral)";
-  parameter Modelica.SIunits.Length l(min=0) =   0.250 "Pipe or plate length";
+  parameter Modelica.Units.SI.Length l(min=0) = 0.250 "Pipe or plate length";
   //parameter Modelica.SIunits.Area A_cro(min=0) = Modelica.Constants.pi * d_i^2 / 4 "Cross-sectional area";
-  Modelica.SIunits.ReynoldsNumber Re(min=0);
-  Modelica.SIunits.ReynoldsNumber Re_tur(min=0);
-  Modelica.SIunits.ReynoldsNumber Re_lam(min=0);
-  Modelica.SIunits.PrandtlNumber Pr(min=0);
+  Modelica.Units.SI.ReynoldsNumber Re(min=0);
+  Modelica.Units.SI.ReynoldsNumber Re_tur(min=0);
+  Modelica.Units.SI.ReynoldsNumber Re_lam(min=0);
+  Modelica.Units.SI.PrandtlNumber Pr(min=0);
 
   // Fluid properties
   Medium.ThermalConductivity lambda;
@@ -24,29 +24,29 @@ model Gnielinski2010 "Gnielinski pipe equations"
   Medium.Density rho;
 
   // VDI Heat Atlas, 2010, page 694
-  Modelica.SIunits.NusseltNumber Nu_m_T_1(min=0);
-  Modelica.SIunits.NusseltNumber Nu_m_T_2(min=0);
-  Modelica.SIunits.NusseltNumber Nu_m_T_3(min=0);
-  Modelica.SIunits.NusseltNumber Nu_m_T(min=0);
+  Modelica.Units.SI.NusseltNumber Nu_m_T_1(min=0);
+  Modelica.Units.SI.NusseltNumber Nu_m_T_2(min=0);
+  Modelica.Units.SI.NusseltNumber Nu_m_T_3(min=0);
+  Modelica.Units.SI.NusseltNumber Nu_m_T(min=0);
 
   // VDI Heat Atlas, 2010, page 696, fully developed turbulent flow
   Real gamma;
   Real xtra "Reynolds correction factor";
   Real zeta "Friction factor";
   Real K "Correction term";
-  Modelica.SIunits.NusseltNumber Nu_m(min=0);
+  Modelica.Units.SI.NusseltNumber Nu_m(min=0);
 
   // Other things to define
-  Modelica.SIunits.Length cLen(min=0) "Characteristic length";
-  Modelica.SIunits.Velocity cVel "Characteristic velocity";
+  Modelica.Units.SI.Length cLen(min=0) "Characteristic length";
+  Modelica.Units.SI.Velocity cVel "Characteristic velocity";
 
   // Output variables
-  Modelica.SIunits.NusseltNumber Nu(min=0);
+  Modelica.Units.SI.NusseltNumber Nu(min=0);
 
   // General purpose variables
   Real numerator;
   Real denominator;
-  Modelica.SIunits.VolumeFlowRate V_dot;
+  Modelica.Units.SI.VolumeFlowRate V_dot;
 
 equation
   // Get transport properties from Medium model

@@ -3,8 +3,8 @@ model CanopyFreeConvection "Leaves heat exchange by free convection with air"
   extends Modelica.Thermal.HeatTransfer.Interfaces.Element1D;
 
   /*********************** Parameters ***********************/
-  parameter Modelica.SIunits.Area A "floor surface";
-  parameter Modelica.SIunits.CoefficientOfHeatTransfer U=5
+  parameter Modelica.Units.SI.Area A "floor surface";
+  parameter Modelica.Units.SI.CoefficientOfHeatTransfer U=5
     "Leaves heat transfer coefficient ";
 
   /*********************** Varying inputs ***********************/
@@ -12,7 +12,7 @@ model CanopyFreeConvection "Leaves heat exchange by free convection with air"
     annotation (Dialog(group="Varying inputs"));
 
   /*********************** Variables ***********************/
-  Modelica.SIunits.CoefficientOfHeatTransfer HEC_ab;
+  Modelica.Units.SI.CoefficientOfHeatTransfer HEC_ab;
 
 equation
   HEC_ab = 2*LAI*U;
